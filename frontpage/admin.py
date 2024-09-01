@@ -1,0 +1,87 @@
+from django.contrib import admin
+from django.forms import TextInput, Textarea
+from django.db import models
+from .models import Carousel,Teacher,Department,Category,Tag,Branch,NavItem,NavElement,Page,ServiceBox,Notice,Post,Template
+# Register your models here.
+from sortedm2m_filter_horizontal_widget.forms import SortedFilteredSelectMultiple
+
+
+    # ...
+
+    
+@admin.register(Carousel)
+class CaroselAdmin(admin.ModelAdmin):
+    list_display=['cid', 'cname','ctext','cimage']
+
+@admin.register(Teacher)
+class ProfileAdmin(admin.ModelAdmin):
+    model = Teacher
+@admin.register(Department)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'name','code',]
+    list_filter=[  'name','code',]
+
+@admin.register(Branch)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'name','code',]
+    list_filter=[  'name','code',]
+
+
+@admin.register(Category)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'name',]
+    filter_fields=[  'name',]
+
+
+@admin.register(Tag)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'name',]
+    filter_fields=[  'name',]
+
+@admin.register(Template)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'name','directory']
+    filter_fields=[  'name',]
+    
+@admin.register(Page)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'heading','title','body','link','template']
+    filter_fields=[  'title']
+    list_filter=[  'category']
+    
+
+@admin.register(Post)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'heading','title','body']
+    filter_fields=[  'title',]
+@admin.register(Notice)
+class UserAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size':'100'})},
+        models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
+    }
+    list_display=[  'title','body']
+    filter_fields=[  'title',] 
+    
+@admin.register(NavElement)
+class NavElementAdmin(admin.ModelAdmin):
+    filter_horizontal = ['page',]
+    list_display=[  'head',]
+    search_fields=[  'head',]
+    def formfield_for_manytomany(self, db_field, request=None, **kwargs):
+        if db_field.name == 'page':
+            kwargs['widget'] = SortedFilteredSelectMultiple()
+        return super(NavElementAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
+
+    
+@admin.register(NavItem)
+class UserAdmin(admin.ModelAdmin):
+    filter_horizontal = ['navelement',]
+    list_display=[  'name',]
+    search_fields=[  'name',]
+
+@admin.register(ServiceBox)
+class UserAdmin(admin.ModelAdmin):
+    filter_horizontal = ['element',]
+    list_display=[  'title',]
+    search_fields=[  'title',]

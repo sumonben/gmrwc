@@ -1,0 +1,35 @@
+{% load static %}
+<div id="banner-slider" style=" position:relative;">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+            
+                                  <!-- //file-rajshahi.portal.gov.bd/files/www.bogra.gov.bd/top_banner/c988406c_3ca2_4f44_90bc_cedc47530830/14572f4000cd37952441124eadfa0c18.png -->
+                                  <div class="carousel-item  w-100 active">
+                                      <a title="" href="/bn/site/top_banner/ক্ষুদ্র-ও-মাঝারি-শিল্পে-সমৃদ্ধ-বগুড়া-জেলা">
+                                      <!-- <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b45/7ab/618b457abacd7498109935.jpg" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা"> -->
+                                      <img style="height: 242px;" src="{%static 'images/college_gate.jpg'%}" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা">
+                                      </a>
+                                  </div>
+                                                           
+      {% for carousel in carousels %}      
+      <div class="carousel-item  w-100 ">
+          <a title="" href="/bn/site/top_banner/G5fC-বগুড়া-জেলা-ব্র্যান্ডিং">
+          <!-- <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/files/www.bogra.gov.bd/top_banner/c988406c_3ca2_4f44_90bc_cedc47530830/14572f4000cd37952441124eadfa0c18.png" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং"> -->
+          <img style="height: 242px;" src="{{ carousel.cimage.url }}" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং">
+          </a>
+      </div>
+     {% endfor %}        
+                                  <!-- //file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b46/6f2/618b466f2634c119530378.jpg -->
+            
+            
+      <div class="carousel-item  w-100 ">
+          <a title="" href="/bn/site/top_banner/ক্ষুদ্র-ও-মাঝারি-শিল্পে-সমৃদ্ধ-বগুড়া-জেলা">
+          <!-- <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b45/7ab/618b457abacd7498109935.jpg" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা"> -->
+          <img style="height: 242px; float: right;" src="{%static 'images/founder.jpg'%}" class="d-block " alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা">
+          </a>
+      </div>
+    </div>
+  </div>
+  <!--/carousel-->
+  
+  </div>
