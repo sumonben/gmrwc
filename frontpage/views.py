@@ -28,7 +28,6 @@ def showPage(request, type,heading, id):
     page=Page.objects.filter(id=id).distinct().first()
     notices=Post.objects.all().order_by('-id')
     departments=Department.objects.filter(name=heading).first()
-    print(departments.id)
     '''books=Book.objects.all().select_related('author').order_by('-id')[:7]
     categories=Category.objects.all()
     tags=Tag.objects.all()
@@ -71,7 +70,7 @@ def showPage(request, type,heading, id):
      #   return render(request,'postview/showpost.html',context=context)
     
     if(page.type=='1'):
-        return render(request,'postview/showpage.html',context=context)
+        return render(request,'account/login.html',context=context)
     elif(page.type=='2'):
         return render(request,page.template.directory+'/'+page.template.name,context=context)
     else:
