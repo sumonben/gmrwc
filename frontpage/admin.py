@@ -18,12 +18,12 @@ class ProfileAdmin(admin.ModelAdmin):
     model = Teacher
 @admin.register(Department)
 class UserAdmin(admin.ModelAdmin):
-    list_display=[  'name','code',]
+    list_display=[  'serial','name','code',]
     list_filter=[  'name','code',]
 
 @admin.register(Branch)
 class UserAdmin(admin.ModelAdmin):
-    list_display=[  'name','code',]
+    list_display=[   'serial','name','code',]
     list_filter=[  'name','code',]
 
 
@@ -45,14 +45,14 @@ class UserAdmin(admin.ModelAdmin):
     
 @admin.register(Page)
 class UserAdmin(admin.ModelAdmin):
-    list_display=[  'heading','title','body','link','template']
+    list_display=[   'serial','heading','title','body','link','template']
     filter_fields=[  'title']
     list_filter=[  'category']
     
 
 @admin.register(Post)
 class UserAdmin(admin.ModelAdmin):
-    list_display=[  'heading','title','body']
+    list_display=[   'serial','heading','title','body']
     filter_fields=[  'title',]
 @admin.register(Notice)
 class UserAdmin(admin.ModelAdmin):
@@ -66,22 +66,20 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(NavElement)
 class NavElementAdmin(admin.ModelAdmin):
     filter_horizontal = ['page',]
-    list_display=[  'head',]
+    list_display=[   'serial','head',]
     search_fields=[  'head',]
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
-        if db_field.name == 'page':
+        if db_field.name == 'your_sortedm2m_field_name':
             kwargs['widget'] = SortedFilteredSelectMultiple()
         return super(NavElementAdmin, self).formfield_for_manytomany(db_field, request, **kwargs)
-
-    
 @admin.register(NavItem)
 class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ['navelement',]
-    list_display=[  'name',]
+    list_display=[   'serial','name',]
     search_fields=[  'name',]
 
 @admin.register(ServiceBox)
 class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ['element',]
-    list_display=[  'title',]
+    list_display=[   'serial','title',]
     search_fields=[  'title',]

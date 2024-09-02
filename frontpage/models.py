@@ -42,6 +42,7 @@ class Carousel(models.Model):
     cimage=models.ImageField(upload_to='media/',blank=True,null=True)
 
 class Department(models.Model):
+    serial=models.IntegerField(default=10)
     name=models.CharField(max_length=100,unique=True)
     code=models.CharField(max_length=20, null=True,blank=True)
     
@@ -50,6 +51,7 @@ class Department(models.Model):
 
 
 class Branch(models.Model):
+    serial=models.IntegerField(default=10)
     code=models.CharField(max_length=20, null=True,blank=True)
     name=models.CharField(max_length=100,unique=True)
     
@@ -103,6 +105,7 @@ class Template(models.Model):
             return self.directory+'/'+self.name
       
 class Page(models.Model):
+    serial=models.IntegerField(default=10)
     heading=models.CharField(max_length=100,blank=True,null=True)
     title=models.CharField(max_length=500,blank=True,null=True)
     body=RichTextUploadingField(blank=True,null=True)
@@ -113,9 +116,12 @@ class Page(models.Model):
     category=models.ManyToManyField(Category,blank=True,null=True,)
     tag=models.ManyToManyField(Tag,blank=True,null=True,)
     published=models.BooleanField(default=False)
+    class Meta:
+        ordering = ['serial']
     def __str__(self):
         return self.heading
 class Post(models.Model):
+    serial=models.IntegerField(default=10)
     heading=models.CharField(max_length=100,blank=True,null=True)
     title=models.CharField(max_length=500)
     body=RichTextField(blank=True,null=True)
@@ -124,24 +130,33 @@ class Post(models.Model):
     category=models.ManyToManyField(Category,blank=True,null=True,)
     tag=models.ManyToManyField(Tag,blank=True,null=True,)
     published=models.BooleanField(default=False)
+    class Meta:
+        ordering = ['serial']
     def __str__(self):
         return self.title
 
 class NavElement(models.Model):
+    serial=models.IntegerField(default=10)
     head=models.CharField(max_length=100,unique=True)
     page=models.ManyToManyField(Page, null=True, blank=True)
+    class Meta:
+        ordering = ['serial']
     def __str__(self):
         return self.head
 
 class NavItem(models.Model):
+    serial=models.IntegerField(default=10)
     name=models.CharField(max_length=100,unique=True)
     navelement=models.ManyToManyField(NavElement, null=True,blank=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True)
+    class Meta:
+        ordering = ['serial']
     def __str__(self):
         return self.name
 
 
 class ServiceBox(models.Model):
+    serial=models.IntegerField(default=10)
     title=models.CharField(max_length=100,unique=True)
     element=models.ManyToManyField(Page, null=True, blank=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True)

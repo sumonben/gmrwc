@@ -8,11 +8,11 @@ class frontpage_view(ListCreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'frontpage/govtpage.html'
     def get(self, request):
-        carousels = Carousel.objects.all
-        pages = Page.objects.all
-        navitems=NavItem.objects.all
+        carousels = Carousel.objects.all().order_by('cid')
+        pages = Page.objects.all().order_by('serial')
+        navitems=NavItem.objects.all().order_by('serial')
         notices=Post.objects.all().order_by('-id')
-        service_boxes=ServiceBox.objects.all()
+        service_boxes=ServiceBox.objects.all().order_by('serial')
 
         #chapters = Chapter.objects.all
         #news = News.objects.all
@@ -24,7 +24,7 @@ class frontpage_view(ListCreateAPIView):
 def showPage(request, type,heading, id):
 
     carousels = Carousel.objects.all
-    navitems=NavItem.objects.all    
+    navitems=NavItem.objects.all.order_by('serial')   
     page=Page.objects.filter(id=id).distinct().first()
     notices=Post.objects.all().order_by('-id')
     departments=Department.objects.filter(name=heading).first()
