@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.forms import TextInput, Textarea
 from django.db import models
-from .models import Carousel,Teacher,Department,Category,Tag,Branch,NavItem,NavElement,Page,ServiceBox,Notice,Post,Template
+from .models import Carousel,Category,Tag,NavItem,NavElement,Page,ServiceBox,Notice,Post,Template
 # Register your models here.
 from sortedm2m_filter_horizontal_widget.forms import SortedFilteredSelectMultiple
 
@@ -13,7 +13,7 @@ from sortedm2m_filter_horizontal_widget.forms import SortedFilteredSelectMultipl
 class CaroselAdmin(admin.ModelAdmin):
     list_display=['cid', 'cname','ctext','cimage']
 
-@admin.register(Teacher)
+'''@admin.register(Teacher)
 class ProfileAdmin(admin.ModelAdmin):
     model = Teacher
 @admin.register(Department)
@@ -25,7 +25,7 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display=[   'serial','name','code',]
     list_filter=[  'name','code',]
-
+'''
 
 @admin.register(Category)
 class UserAdmin(admin.ModelAdmin):

@@ -12,9 +12,7 @@
     <meta property="og:title" content="নথি | অফিস ব্যবস্থাপনা">
     <meta property="og:image" content="https://nothi.gov.bd/img/nothi_logo_login.png">
 
-    <link rel="stylesheet" href="https://www.nothi.gov.bd/a2i/demo-files/demo.css">
-    <link rel="stylesheet" href="https://www.nothi.gov.bd/a2i/style.css">
-    <link rel="stylesheet" href="https://www.nothi.gov.bd/css/style.css">
+    
 
     <link href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
@@ -22,9 +20,9 @@
     <link href="https://www.nothi.gov.bd/assets/admin/pages/css/login-soft.css" rel="stylesheet" type="text/css">
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="https://www.nothi.gov.bd/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css">
-    <link href="https://www.nothi.gov.bd/assets/global/css/plugins.css" rel="stylesheet" type="text/css">
-    <link href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-toastr/toastr.min.css" rel="stylesheet" type="text/css">
-    <link href="https://www.nothi.gov.bd/assets/admin/pages/css/blog.css" rel="stylesheet" type="text/css">
+    
+    
+    
 
     <script src="https://www.nothi.gov.bd/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 
@@ -58,8 +56,74 @@
         * {
             font-size: 13pt!important;
         }
+        @font-face {
+            font-family: 'a2i';
+            src:url("{% static 'fonts/a2i.eot'%}")format("truetype");
+            src:url("{% static 'fonts/a2i.woff'%}") format('woff'),
+                url('https://www.nothi.gov.bd/a2i/fonts/a2i.svg?x2nlfd#a2i') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            i {
+                font-family: 'a2i';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+            
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            .a2i_gn_send1:before {
+                content: "\e88f";
+            }
+            .a2i_gn_send2:before {
+                content: "\e890";
+            }
+            .a2i_gn_sender1:before {
+                content: "\e891";
+            }
+            .a2i_gn_sender2:before {
+                content: "\e892";
+            }
+        }
+        @font-face {
+            font-family: 'efile';
+            src:url("{% static 'fonts/efile.eot'%}")format("truetype");
+            src:url("{% static 'fonts/efile.woff'%}") format('woff'),
+                url('https://www.nothi.gov.bd/a2i/fonts/efile.svg?x2nlfd#a2i') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            i {
+                font-family: 'a2i';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+            
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .efile-view1:before {
+                content: "\e6f9";
+            }
+            .efile-view2:before {
+                content: "\e6fa";
+            }
+            .efile-view3:before {
+                content: "\e6fb";
+            }
+            
+        } 
+        
     </style>
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -337,16 +401,12 @@
     </div>
 </noscript>
 <!--Need To add nothi-custom-->
-<link href="https://www.nothi.gov.bd/assets/global/css/nothi-custom.css" rel="stylesheet" type="text/css">
-<link href="https://www.nothi.gov.bd/assets/global/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-
-<script src="https://www.nothi.gov.bd/assets/global/scripts/nothi-custom.js?v=v2.0.0.7" type="text/javascript"></script>
 <style>
     @font-face {
         font-family: 'a2i';
-        src:url('fonts/a2i.eot?x2nlfd');
-        src:url('fonts/a2i.woff?x2nlfd') format('woff'),
-            url('fonts/a2i.svg?x2nlfd#a2i') format('svg');
+        src:url('https://www.nothi.gov.bd/a2i/fonts/a2i.eot?x2nlfd');
+        src:url('https://www.nothi.gov.bd/a2i/fonts/a2i.woff?x2nlfd') format('woff'),
+            url('https://www.nothi.gov.bd/a2i/fonts/a2i.svg?x2nlfd#a2i') format('svg');
         font-weight: normal;
         font-style: normal;
     }
@@ -364,15 +424,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
-    .efile-view1:before {
-        content: "\e6f9";
-    }
-    .efile-view2:before {
-        content: "\e6fa";
-    }
-    .efile-view3:before {
-        content: "\e6fb";
-    }
+    
     .tabbable-custom > .nav-tabs > li {
         margin-right: 2px;
         border-top: 2px solid #eeeeee;
@@ -432,6 +484,16 @@
     .helpdeskPanel {
 
     }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' -40,
+          'wdth'400,
+          'GRAD' 0,
+          'opsz' 10
+
+        }
+        
 </style>
     <link rel="stylesheet" href="{%static 'css/icon.css'%}">
 <div class="alert alert-danger" id="GChrome" style="display: none;">
@@ -442,7 +504,7 @@
     <div class="tabbable-custom nav-justified" style="background: #FFFFFF!important; margin-bottom:0;">
         <ul class="nav nav-tabs nav-justified">
             <li class="active">
-                <a href="#tab_loginname" data-toggle="tab">ইউজার আইডি</a>
+                <a href="#tab_loginname" data-toggle="tab">ইউজার ইমেইল</a>
             </li>
             <li>
                 <a href="#tab_userid" data-toggle="tab">ইউজার নেম</a>
@@ -455,11 +517,12 @@
         <div class="tab-content">
             <!-- >ইউজার আইডি TAB -->
             <div class="tab-pane active" id="tab_loginname">
-                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="/login"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <input type="hidden" name="fingerprint" id="fingerprint" value="3779767603">                <div class="row">
+                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'login' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <input type="hidden" name="fingerprint" id="fingerprint" value="3779767603">                <div class="row">
+                    {% csrf_token %}
                     <div class="col-xs-6">
-                        <div class="input text"><input type="text" name="username" class="form-control" autocomplete="off" placeholder="ইউজার আইডি" id="username"></div>                    </div>
+                        <div class="input text"><input type="text" name="username" class="form-control" autocomplete="off" placeholder="ইউজার ইমেইল" id="username"></div>                    </div>
                     <div class="col-xs-6 inputWithIcon">
-                        <div class="input password"><input type="password" name="password" class="form-control" autocomplete="off" placeholder="পাসওয়ার্ড" id="password"></div><i class="fa fa-eye" aria-hidden="true"></i>
+                        <div class="input password"><input type="password" name="password" class="form-control" autocomplete="off" placeholder="পাসওয়ার্ড" id="password"></div><i class="efile-view1"></i>
 
                     </div>
                 </div>
@@ -475,11 +538,12 @@
             <!-- END >ইউজার আইডি TAB -->
             <!-- ইউজার নেম TAB -->
             <div class="tab-pane" id="tab_userid">
-                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="/login"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <div class="row">
+                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'login' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <div class="row">
+                {% csrf_token %}
                     <div class="col-xs-6">
-                        <div class="input text"><input type="text" name="alias" class="form-control" autocomplete="off" placeholder="ইউজার নেম" id="alias"></div>                    </div>
+                        <div class="input text"><input type="text" name="username" class="form-control" autocomplete="off" placeholder="ইউজার নেম" id="alias"></div>                    </div>
                     <div class="col-xs-6 inputWithIcon">
-                        <div class="input password"><input type="password" name="password" class="form-control" autocomplete="off" placeholder="পাসওয়ার্ড" id="password2"></div><span class="efile-view1 "></span>
+                        <div class="input password"><input type="password" name="password" class="form-control" autocomplete="off" placeholder="পাসওয়ার্ড" id="password2"></div><span class="efile-view1"></span>
                     </div>
                 </div>
                 <div class="row">

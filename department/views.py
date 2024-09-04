@@ -3,7 +3,9 @@ from django.shortcuts import redirect, render
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from frontpage.models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Department
+from frontpage.models import Carousel,Page,NavItem,NavElement,Post,ServiceBox
+from .models import Department
+
 # Create your views here.
 def DepartmentPage(request, type,heading, id):
 

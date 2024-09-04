@@ -32,7 +32,8 @@ SECRET_KEY = 'django-insecure-bp%m!abw*9i(5w03ppawu9jyl0&if-l#++6n2enu41)xvnym@y
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#AUTH_USER_MODEL='account.CustomUser'
+AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
 
 # Application definition
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
     'frontpage',
     'department',
     'ckeditor',

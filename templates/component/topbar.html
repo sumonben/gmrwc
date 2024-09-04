@@ -1,11 +1,11 @@
+
 <div id="top">
     <div class="blocks">
 
 <div class="top-menu">
     <div class="row mb-2 mb-md-0">
-        <div id="start-np" autofocus="autofocus" style="opacity:0;font-size:1px;position: absolute;">Wellcome to National Portal</div>
-        <div class="col-8 col-md-3 bd-gov-site"><a href="http://www.bangladesh.gov.bd/" target="_blank" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন">বাংলাদেশ জাতীয় তথ্য বাতায়ন</a></div>
-        <div class="d-none d-md-block col-md-8 middle-form" id="sitesDropdown">
+        <div class="col-8 col-md-3 bd-gov-site" style="margin-top: 5px;"><a href="http://www.bangladesh.gov.bd/" target="_blank" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন">বাংলাদেশ জাতীয় তথ্য বাতায়ন</a></div>
+        <div class="d-none d-md-block col-md-5 middle-form" id="sitesDropdown">
             <div class="form-item">
                 <select title="বিভাগ নির্বাচন করতে এখানে ক্লিক করুন" class="chzn-select doptors mt-2 mt-md-0" id="doptor">
                     <option>---</option>
@@ -53,78 +53,31 @@
     
             </div>
         </div>
-        <div class="col-4 col-md-1">
+        <div class="col-4 col-md-3">
             <!-- <button id="lang-btn" class="btn btn-primary btn-sm float-right">English</button> -->
-            <select class="custom-select rounded " id="lang-switcher">
-                                    <option value="bn" selected>Bangla</option>
-                                    <option value="en" >English</option>
-                            </select>
+            <div style="margin-top: 5px;padding: 0;float:right">
+                <a  class="search-btn" href="{% url 'login' %}">Login </a>&nbsp
+                <a  class="search-btn" href="{% url 'register' %}">Registration </a>
+
+            </div>
+            
+            
         </div>
         
     </div>
     
-<div class="another_portal d-none">
-    <a href="javascript:;" class="show-menu" id="mob_navigation" title="সরকারি অন্যান্য পোর্টাল দেখুন">
-    
-    <i class="fas fa-bars" style="background-color:#683091;"></i>
-    <span style="margin-left:10px;"> সরকারি অন্যান্য পোর্টাল দেখুন   </span>
-    </a>
 </div>
-<div class="portal_cont">
-    <div class="form-item">
-        <select title="বিভাগ নির্বাচন করতে এখানে ক্লিক করুন" class="chzn-select doptors mb-2" id="mob_doptor">
 
-            <option value="alldiv">বিভাগ </option>
 
-                                <option value="2">
-                                    দপ্তর অফিসসমূহ
-                    <!-- দপ্তর অফিসসমূহ -->
-                </option>
-            <!-- <option value="2">দপ্তর অফিসসমূহ</option> -->
 
-                                <option value="4">
-                                    বিভাগ পর্যায়ের সরকারি অফিস
-                    <!-- Divisional Govt. Office -->
-                </option>
-            <!-- <option value="4">Divisional Govt. Office</option> -->
 
-                                <option value="5">
-                                    জেলা পর্যায়ের সরকারি অফিস
-                    <!-- District Govt. Office -->
-                </option>
-            <!-- <option value="5">District Govt. Office</option> -->
 
-                                <option value="6">
-                                    উপজেলা পর্যায়ের সরকারি অফিস
-                    <!-- Upazila Level Govt. Office -->
-                </option>
-            <!-- <option value="6">Upazila Level Govt. Office</option> -->
 
-                                <option value="7">
-                                    আঞ্চলিক অফিসসমূহ
-                    <!-- Union Govt. Office -->
-                </option>
-            <!-- <option value="7">Union Govt. Office</option> -->
 
-                        </select>
-        
-        <select title="" class="chzn-select doptors d-none" id="first_level"></select>
-        <select title="" class="chzn-select doptors d-none" id="second_level"></select>
-        <select title="" class="chzn-select doptors d-none" id="third_level"></select>
-        <select title="" class="chzn-select doptors d-none" id="forth_level"></select>
 
-        <button class="btn btn-primary btn-sm" id="doptor_navigation_go">Go</button>
-        
-        <!-- <select title="" class="chzn-select doptors d-none mb-2" id="mob_first_level"></select>
-        
-        <select title="" class="chzn-select doptors d-none mb-2" id="mob_second_level"></select>
-        
-        <select title="" class="chzn-select doptors d-none mb-2" id="mob_third_level"></select>
-        
-        <select title="" class="chzn-select doptors d-none" id="mob_forth_level"></select>
-        
-        <button class="btn btn-primary btn-sm" id="mob_doptor_navigation_go">Go</button> -->
 
-    </div>
-</div>
-</div>
+
+
+
+
+

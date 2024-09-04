@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Department
+from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox
+from department.models import Department
 # Create your views here.
 class frontpage_view(ListCreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -23,11 +24,12 @@ class frontpage_view(ListCreateAPIView):
         return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes})
 def showPage(request, type,heading, id):
 
-    carousels = Carousel.objects.all
-    navitems=NavItem.objects.all.order_by('serial')   
+    carousels = Carousel.objects.all().order_by('cid')
+    navitems=NavItem.objects.all().order_by('serial')  
     page=Page.objects.filter(id=id).distinct().first()
     notices=Post.objects.all().order_by('-id')
     departments=Department.objects.filter(name=heading).first()
+
     '''books=Book.objects.all().select_related('author').order_by('-id')[:7]
     categories=Category.objects.all()
     tags=Tag.objects.all()

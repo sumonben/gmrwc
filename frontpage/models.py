@@ -41,42 +41,6 @@ class Carousel(models.Model):
     ctext=RichTextField(blank=True,null=True)
     cimage=models.ImageField(upload_to='media/',blank=True,null=True)
 
-class Department(models.Model):
-    serial=models.IntegerField(default=10)
-    name=models.CharField(max_length=100,unique=True)
-    code=models.CharField(max_length=20, null=True,blank=True)
-    
-    def __str__(self):
-        return self.name
-
-
-class Branch(models.Model):
-    serial=models.IntegerField(default=10)
-    code=models.CharField(max_length=20, null=True,blank=True)
-    name=models.CharField(max_length=100,unique=True)
-    
-    def __str__(self):
-        return self.name
-
-class Teacher(models.Model):
-    tid=models.IntegerField()
-    name=models.CharField(max_length=100)
-    email=models.EmailField()
-    phone=models.CharField(max_length=11)
-    designation=models.CharField(max_length=100,choices = DESIGNATION_CHOICES, default = '4')
-    position=models.CharField(max_length=100,choices = POSITION_CHOICES, default = '1')
-    service_id=models.CharField(max_length=25)
-    batch=models.CharField(max_length=25,choices = BCS_BATCH, default = '0')
-    merit=models.CharField(max_length=25,blank=True, null=True)
-    department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
-    branch=models.ManyToManyField(Branch, null=True, blank=True,)
-    first_joining_date=models.DateField(blank=True, null=True)
-    joining_date=models.DateField(blank=True, null=True)
-    release_date=models.DateField(blank=True, null=True)
-    image=models.ImageField(upload_to='media/',blank=True,null=True) 
-    signature=models.ImageField(upload_to='media/',blank=True,null=True)
-    message=RichTextField(blank=True,null=True)
-    bio=RichTextField(blank=True,null=True)
 
 class Notice(models.Model):
     title=models.CharField(max_length=1000)

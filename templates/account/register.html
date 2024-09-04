@@ -1,0 +1,1285 @@
+{% load static %}
+<html lang="en"><!--<![endif]--><!-- BEGIN HEAD --><head>
+    <meta charset="utf-8">
+    <title>নথি | অফিস ব্যবস্থাপনা</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    
+    <meta property="og:title" content="নথি | অফিস ব্যবস্থাপনা">
+    <meta property="og:image" content="https://nothi.gov.bd/img/nothi_logo_login.png">
+
+    
+
+    <link href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css">
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link href="https://www.nothi.gov.bd/assets/admin/pages/css/login-soft.css" rel="stylesheet" type="text/css">
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="https://www.nothi.gov.bd/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css">
+    
+    
+    
+
+    <script src="https://www.nothi.gov.bd/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-toastr/toastr.min.css">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    
+    <style>
+        .login {
+
+            background: url('https://www.nothi.gov.bd/img/bg_image.jpg') no-repeat center center #CDE7A8 fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        input {
+            width: 100% !important;
+            padding: 10px !important;
+            border: none #a0a9b4 !important;
+            border-bottom: 1px solid !important;
+            color: #868e97 !important;
+            font-size: 13px !important;
+            margin-bottom: 20px !important;
+        }
+        input[type=text],input[type=password] {
+            font-size: 13pt !important;
+        }
+        * {
+            font-size: 13pt!important;
+        }
+        @font-face {
+            font-family: 'a2i';
+            src:url("{% static 'fonts/a2i.eot'%}")format("truetype");
+            src:url("{% static 'fonts/a2i.woff'%}") format('woff'),
+                url('https://www.nothi.gov.bd/a2i/fonts/a2i.svg?x2nlfd#a2i') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            i {
+                font-family: 'a2i';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+            
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            .a2i_gn_send1:before {
+                content: "\e88f";
+            }
+            .a2i_gn_send2:before {
+                content: "\e890";
+            }
+            .a2i_gn_sender1:before {
+                content: "\e891";
+            }
+            .a2i_gn_sender2:before {
+                content: "\e892";
+            }
+        }
+        @font-face {
+            font-family: 'efile';
+            src:url("{% static 'fonts/efile.eot'%}")format("truetype");
+            src:url("{% static 'fonts/efile.woff'%}") format('woff'),
+                url('https://www.nothi.gov.bd/a2i/fonts/efile.svg?x2nlfd#a2i') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            i {
+                font-family: 'a2i';
+                speak: none;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+            
+                /* Better Font Rendering =========== */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            .efile-view1:before {
+                content: "\e6f9";
+            }
+            .efile-view2:before {
+                content: "\e6fa";
+            }
+            .efile-view3:before {
+                content: "\e6fb";
+            }
+            
+        } 
+        
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body class="login" style="font-family: Nikosh!important;font-size: 13pt!important;">
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+<div class="menu-toggler sidebar-toggler">
+</div>
+<!-- END SIDEBAR TOGGLER BUTTON -->
+<!-- BEGIN LOGO -->
+<style>
+
+    .panel-primary > .panel-heading {
+        background-color: #596c47 !important;
+    }
+
+    .panel-primary > .panel-heading + .panel-collapse .panel-body {
+        border-top-color: #596c47 !important;
+    }
+
+    .login .logo {
+        margin: 10px auto 5px auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .login .content h3 {
+        color: #404040;
+    }
+
+    .login .content{
+        margin: 0 auto;
+        margin-bottom: 0px;
+        padding: 5px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+</style>
+
+<style>
+    .strikethrough {
+        position: relative;
+    }
+    .strikethrough:before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 50%;
+        right: 0;
+        border-top: 1px solid;
+        border-color: inherit;
+
+        -webkit-transform:rotate(-14deg);
+        -moz-transform:rotate(-14deg);
+        -ms-transform:rotate(-14deg);
+        -o-transform:rotate(-14deg);
+        transform:rotate(-14deg);
+    }
+</style>
+<div class="bg-grey text-center font-lg" id="SSLMessageForWindows" hidden="">
+</div>
+<div class="bg-red text-center font-lg">
+    <marquee onmouseover="this.stop();" onmouseout="this.start();">
+        <a href="#" class="showNoticeDetails" style="color:white" data-id="14">সম্মা&zwnj;নিত ন&zwnj;থি ব্যবহারকা&zwnj;রীগণ ন&zwnj;থির সা&zwnj;পোর্ট ই&zwnj;মেইল প&zwnj;রিবর্তন করা হ&zwnj;য়ে&zwnj;ছে। এখন থে&zwnj;কে ন&zwnj;থির সা&zwnj;পোর্ট  সংক্রান্ত বিষ&zwnj;য়ে যোগা&zwnj;যো&zwnj;গের জন্য support@nothi.gov.bd ইমেইলে মেইল পাঠা&zwnj;নোর জন্য স&zwnj;বিনয় অন&zwnj;ু&zwnj;রোধ করা হ&zwnj;লো। 
+ধন্যবাদা&zwnj;ন্তে -ন&zwnj;থি টিম।</a>
+    <!--নথি অ্যাপ্লিকেশনের নেটওয়ার্ক উন্নীতকরণের কাজ আজ (৩১ আগস্ট ২০২০) সন্ধ্যা ৮ঃ০০ টা হতে  চলমান থাকবে। উক্ত সময়ে নথি অ্যাপ্লিকেশনের কার্যক্রম বন্ধ থাকবে । সাময়িক অসুবিধার জন্য আমরা আন্তরিকভাবে দুঃখিত।-->
+        </marquee>
+</div>
+<div id="noticeDetails" class="modal fade modal-purple" data-backdrop="static" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title">নোটিশ</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default red round-corner-5" data-dismiss="modal">বন্ধ করুন</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://www.nothi.gov.bd/js/client.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $("#Script-disable-div").css("display", "none");
+
+        var client = new ClientJS();
+        var fingerprint = client.getFingerprint(); // Calculate Device/Browser
+        if (!client.isChrome()) {
+            $("#GChrome").show();
+			$("#form-div").show();
+        }else{
+			$("#form-div").css("display", "block");
+        }
+                if(client.isWindows()){
+//            $("#SSLMessageForWindows").show();
+        }
+        if(client.isMobileAndroid()){
+            $("#SSLMessageForAndroid").show();
+        }
+        if( client.isMobileIOS()){
+            $("#SSLMessageForIOS").show();
+        }
+                $("#fingerprint").val(fingerprint);
+
+
+        $('.showNoticeDetails').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '/maintenance_notice_view/'+$(this).data('id'),
+                type: 'get',
+                success: function (response) {
+                    // Add response in Modal body
+                    $("#noticeDetails").find('.modal-body').html('<h2>'+response.title+'</h2><h4>'+(response.details.replace(/(?:\r\n|\r|\n)/g, '<br>'))+'</h4>');
+
+                    // Display Modal
+                    $('#noticeDetails').modal('show');
+                }
+            })
+        })
+    });
+</script>
+<style>
+    .header-countdown-content {
+        width: 480px;
+        display: inline-block;
+        background: #f0f7e5;
+        border-radius: 0 0 5px 5px !important;
+        box-shadow: black 1px 1px 6px -1px;
+    }
+    .header-countdown-content > * {
+        vertical-align: middle;
+    }
+    .time-wrap {
+        display: inline-block;
+        margin: 0;
+        text-align: right;
+    }
+    #time .countdown-item {
+        border: solid 1px #6a448e4d;
+        width: 75px !important;
+        display: inline-block;
+        padding: 0px !important;
+        border-radius: 5px !important;
+        /*background:#ffffff;*/
+        font-family: Nikosh, calibri, serif;
+        text-align: center;
+    }
+    #time .countdown-item span {
+        display: block;
+        /*background: #f1f1f1;*/
+        padding: 5px;
+        /*border-radius: 3px !important;*/
+        color: #6a448e;
+        border-top:solid 1px #6a448e4d
+    }
+    #time .countdown-item div {
+        font-size: 50px !important;
+        color: green;
+    }
+    .logobd img {
+        height: 32px !important;
+        width:auto !important;
+    }
+</style>
+<script>
+    function pad(num, size) {
+        var s = "00" + num;
+        return s.substr(s.length-size);
+    }
+    function enTobn(input) {
+        var numbers = {
+            0: '০',
+            1: '১',
+            2: '২',
+            3: '৩',
+            4: '৪',
+            5: '৫',
+            6: '৬',
+            7: '৭',
+            8: '৮',
+            9: '৯'
+        };
+        var output = '';
+
+        if (typeof (input) == 'number') {
+            input = input.toString();
+        }
+        for (var i = 0; i < input.length; ++i) {
+            if (numbers.hasOwnProperty(input[i])) {
+                output += numbers[input[i]];
+            } else {
+                output += input[i];
+            }
+        }
+        return output;
+    }
+    const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+    let countDown = new Date('Mar 16, 2020 23:59:59').getTime(),
+        x = setInterval(function () {
+
+            let now = new Date().getTime(),
+                distance = countDown - now;
+
+            document.getElementById('days').innerText = enTobn(pad(Math.floor(distance / (day)), 2)),
+                document.getElementById('hours').innerText = enTobn(pad(Math.floor((distance % (day)) / (hour)), 2)),
+                document.getElementById('minutes').innerText = enTobn(pad(Math.floor((distance % (hour)) / (minute)), 2)),
+                document.getElementById('seconds').innerText = enTobn(pad(Math.floor((distance % (minute)) / second), 2));
+
+        }, second)
+</script>
+<div style="text-align: center;display:none;">
+    <div class="header-countdown-content">
+        <img src="/img/mujib.png" style="width:140px;" alt="" class="img-fluid">
+        <div class="time-wrap">
+            <div id="time">
+                <div class="countdown-item">
+                    <div id="days">-১৬৩০</div>
+                    <span>দিন</span>
+                </div>
+
+                <div class="countdown-item">
+                    <div id="hours">-২০</div>
+                    <span>ঘণ্টা</span>
+                </div>
+
+                <div class="countdown-item">
+                    <div id="minutes">-১৮</div>
+                    <span>মিনিট</span>
+                </div>
+
+                <div class="countdown-item">
+                    <div id="seconds">-৫৮</div>
+                    <span>সেকেন্ড</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="logo" style="color:#000;margin-top:0;margin-bottom:0;">
+    <img style="width: 100px" src="{% static 'images/gmrwc_logo.png' %}" alt="">
+    <h1>রেজিস্ট্রেশন করুন </h1>
+</div>
+<div class="text-center font-lg" id="SSLMessageForAndroid" hidden="">
+
+    <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.tappware.nothi&amp;hl=en">
+        ডাউনলোড করুন নথির অ্যান্ড্রয়েড অ্যাপ
+    </a>
+</div>
+
+<style>
+    .content{
+        width: 600px;
+    }
+    @media(max-width:768px) {
+        .content{
+            width:200px;
+        } 
+    }
+</style>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content" style="width: 600px;" >
+    <!--    <p class="alert alert-info">নথির নতুন আপডেট এর কারনে অনুগ্রহ করে ব্রাউজারের কেশ পরিষ্কার করুন</p>-->
+        <!-- BEGIN LOGIN FORM -->
+
+<noscript>
+    <div id="Script-disable-div" class="alert alert-danger">দুঃখিত, আপনার ব্রাউজার জাভাস্ক্রিপ্ট সমর্থন করে না! অনুগ্রহপুর্বক জাভাস্ক্রিপ্ট চালু করুন অথবা ব্রাউজার আপডেট করুন।
+    </div>
+</noscript>
+<!--Need To add nothi-custom-->
+<style>
+    @font-face {
+        font-family: 'a2i';
+        src:url('https://www.nothi.gov.bd/a2i/fonts/a2i.eot?x2nlfd');
+        src:url('https://www.nothi.gov.bd/a2i/fonts/a2i.woff?x2nlfd') format('woff'),
+            url('https://www.nothi.gov.bd/a2i/fonts/a2i.svg?x2nlfd#a2i') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    i {
+        font-family: 'a2i';
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+    
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .tabbable-custom > .nav-tabs > li {
+        margin-right: 2px;
+        border-top: 2px solid #eeeeee;
+        border-right: 1px solid #dddddd;
+    }
+    .tabbable-custom > .nav-tabs > li:first-child {
+        border-left: 1px solid #dddddd;
+    }
+    .tabbable-custom > .nav-tabs > li:last-child {
+        margin-right: 0px;
+    }
+    .tab-pane{
+        padding-top:10pt;
+    }
+
+    .tabbable-custom > .nav-tabs > li.active{
+        border-top: 3px solid #F3565D;
+        border-left: 2px solid #F3565D;
+        border-right: 2px solid #F3565D;
+        border-bottom:0px;
+    }
+
+    .tabbable-custom > .nav-tabs > li:first-child.active{
+        border-left: 0px solid #F3565D;
+    }
+    .tabbable-custom > .nav-tabs > li:last-child.active{
+        border-right: 0px solid #F3565D;
+    }
+
+    input {
+        width: 100% !important;
+        padding: 5px !important;
+        border: 1px solid #CACACA!important;
+        /* border: none #a0a9b4 !important; */
+        /* border-bottom: 1px solid !important; */
+        color: #000000 !important;
+        font-size: 13px !important;
+        margin-bottom: 20px !important;
+    }
+    .inputWithIcon{
+        position:relative;
+    }
+
+    .inputWithIcon .efile-view1{
+        position:absolute;
+        right:0px;
+        top:0px;
+        margin:9px 8px;
+        color:#aaa;
+        transition:.3s;
+        cursor: pointer;
+        background-color: white;
+    }
+     input[name=password]{
+        padding-right: 25px!important;
+    }
+    .helpdeskPanel {
+
+    }
+        
+        
+</style>
+    <link rel="stylesheet" href="{%static 'css/icon.css'%}">
+<div class="alert alert-danger" id="GChrome" style="display: none;">
+    অনুগ্রহপূর্বক নথি অ্যাপ্লিকেশনের সকল কার্যক্রম উপভোগ করতে Google Chrome ব্যবহার করুন। Google Chrome ইন্সটল না থাকলে
+    <a target="_blank" href="https://www.google.com/chrome/"> এখানে ক্লিক করুন </a>।
+</div>
+<div id="form-div" style="display: block;">
+    <div class="tabbable-custom nav-justified" style="background: #FFFFFF!important; margin-bottom:0;">
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#tab_loginname" data-toggle="tab">ইউজার ইমেইল</a>
+            </li>
+            <li>
+                <a href="#tab_userid" data-toggle="tab">ইউজার নেম</a>
+            </li>
+            <li>
+                <a href="#tab_password" data-toggle="tab">পাসওয়ার্ড রিসেট</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- >ইউজার আইডি TAB -->
+            <div class="tab-pane active" id="tab_loginname">
+                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'login' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <input type="hidden" name="fingerprint" id="fingerprint" value="3779767603">                <div class="row">
+                    {% csrf_token %}
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.name}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.email}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.phone}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.class_roll}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.registration}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.exam_roll}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>সেশনঃ</h1>{{form.session}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>বিভাগঃ </h1>{{form.department}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>ক্যাটাগরিঃ </h1>{{form.student_category}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>কোন বর্ষঃ </h1>{{form.class_year}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>পাশের বছরঃ </h1>{{form.passing_year}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>ছবিঃ </h1>{{form.image}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text"> 
+                            <h1>স্বাক্ষরঃ </h1>{{form.signature}}
+                        </div>                    
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 text-left">
+                        <div class="display-none" style="font-size: 14px !important;color: gray;">বর্তমান ইন্টারনেট গতি: <span style="font-size: 14px !important;color: gray;" id="progress">১২.৮৩ এমবিপিএস</span></div>
+                    </div>
+                    <div class="col-xs-4 text-right">
+                        <button class="btn btn-sm blue" type="submit" style="margin-bottom:0px;margin-top:-7px;">প্রবেশ <i class="fs0 efile-login2"></i></button>
+                    </div>
+                </div>
+                </form>            </div>
+            <!-- END >ইউজার আইডি TAB -->
+            <!-- ইউজার নেম TAB -->
+            <div class="tab-pane" id="tab_userid">
+                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'login' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <div class="row">
+                {% csrf_token %}
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.name}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6 inputWithIcon">
+                        <div class="input password"><input type="password" name="password" class="form-control" autocomplete="off" placeholder="পাসওয়ার্ড" id="password2"></div><span class="efile-view1"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 text-right">
+                        <button class="btn btn-sm blue" type="submit">প্রবেশ <i class="fs0 efile-login2"></i></button>
+                    </div>
+                </div>
+                </form>            </div>
+            <!-- END ইউজার নেম TAB -->
+            <!-- পাসওয়ার্ড ভুলে গেছেন TAB -->
+            <div class="tab-pane" id="tab_password">
+                <form method="post" accept-charset="utf-8" class="login-form forget-form" action="/users/javascript:;" novalidate="novalidate" style="display: block;"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="text" placeholder="ইউজার আইডি" class="form-control" autocomplete="off" name="username"></div>
+                    <div class="col-xs-6">
+                        <input type="text" placeholder="ইমেইল" autocomplete="off" class="form-control" name="email"></div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xs-12 text-right">
+                        <button class="btn btn-sm green" type="button">অনুরোধ করুন <i class="fs1 a2i_gn_send1"></i>
+                        </button>
+                    </div>
+                </div>
+                </form>            </div>
+            <!-- END পাসওয়ার্ড ভুলে গেছেন TAB -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4 text-left">
+            <a href="#" onclick="showhelpdeskPanel()" class="btn btn-link" style="margin-top:12px;">
+                <i class="fa fa-question-circle" style="font-size: 10px !important;"></i>
+                হেল্প ডেস্ক
+                <i class="fa fa-chevron-up icon-changer" style="font-size: 10px !important;"></i>
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4" style="margin-bottom:0px;padding-bottom:0px;margin-top:12px;">
+                    </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 text-right" style="margin-bottom:0px;padding-bottom:0px">
+            <div class="logoa2i" align="right">
+
+                <a style="text-decoration: none;text-align:right" class="btn btn-link" id="isdp-links-button" data-toggle="popover" data-original-title="" title=""><img src="" style="height:36px;margin-top:0px;margin-right:0px" alt="MyGov"></a>
+
+                <div id="isdp-plus-plus" style="display:none;">
+                    <style type="text/css">
+                        *{box-sizing:border-box;}
+                        .popover {max-width: fit-content;padding:0;}
+                        .popover .popover-content {padding:0;}
+                        .popover .popover-body {padding:0;}
+                        #isdp-links img{max-width:95%}
+                        .es_links{position:relative;box-shadow:0 0 10px #eee;left:0;right:0;margin:auto;width:300px;}
+                        .es_links_wrap{
+                            display: -ms-flexbox !important;
+                            display: flex !important;
+                            -ms-flex-wrap: wrap !important;
+                            flex-wrap: wrap !important;
+                        }
+                        .es_links_wrap div{
+                            font-size: 13pt!important;
+                        }
+                        .es_links_wrap .link{
+                            display: -ms-flexbox !important;
+                            display: flex !important;
+                            align-items:center;
+                            justify-content:center;
+                            background:#fff;
+                            padding:5px;
+                            box-shadow:0 0 1px #ddd inset;
+                            transition:all .3s;
+                            -ms-flex: 0 0 33.333333%;
+                            flex: 0 0 33.333333%;
+                            max-width: 99.999999%;
+                        }
+                        .es_links_wrap .link:hover{
+                            box-shadow: 0 0 50px #ddd inset;
+                        }
+                        .link:not(:nth-child(3n+3)) {
+                            border-right: 1px dashed silver !important;
+                        }
+                        #isdp-links {
+                            position:relative;
+                            background: #fff;
+                            border-radius: 4px;
+                            /*padding: 20px;*/
+                            font-size: 25px;
+                            text-align: center;
+                            transition: all 0.2s;
+                            margin: 0 auto;
+                        }
+                        #isdp-links button {
+                            background: #0084ff;
+                            border: none;
+                            padding:5px;
+                            border-radius:5px;
+                            cursor:pointer;
+                        }
+                    </style>
+                    <div id="isdp-links" style="text-align: right;z-index: 999;">
+                        <div class="es_links">
+                            <div class="es_links_wrap">
+                                <div class="link">সেবা গ্রহীতা</div>
+                                <div class="link">সাহায্যকারী</div>
+                                <div class="link">দাপ্তরিক</div>
+
+                                <a class="link" href="https://eksheba.gov.bd/" target="_blank"><img src="https://i.imgur.com/fV9yG6z.png" alt="একসেবা" title="একসেবা"></a>
+                                <a class="link" href="http://333.gov.bd/" target="_blank"><img src="https://i.imgur.com/aYVXLgT.png" alt="333 Service at Doorstep" title="333 Service at Doorstep"></a>
+
+                                <a class="link" href="https://nothi.gov.bd/" target="_blank"><img src="https://www.nothi.gov.bd/img/nothi_logo_login.png" alt="নথি | অফিস ব্যবস্থাপনা" title="নথি | অফিস ব্যবস্থাপনা"></a>
+                                <a class="link" href="https://www.mygov.bd/" target="_blank"><img src="" alt="My Gov - আমার সরকার" title="My Gov - আমার সরকার"></a>
+
+                                <a class="link" href="http://uddokta.eksheba.gov.bd/" target="_blank"><img src="https://i.ibb.co/gR2S2zd/Uddokta.png" alt="একসেবা : উদ্যোক্তার জন্য এক ঠিকানায় সব সেবা" title="একসেবা : উদ্যোক্তার জন্য এক ঠিকানায় সব সেবা"></a>
+                                <a class="link" href="https://doptor.gov.bd/" target="_blank"><img src="https://i.imgur.com/eFMcrft.png" alt="ekSheba Government" title="ekSheba Government"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#isdp-links-button').popover({
+                            title: "",
+                            content: $("#isdp-plus-plus").html(),
+                            html: true,
+                            placement: "auto",
+                            animation: true,
+                            trigger: 'click'
+                        });
+                    });
+                    $('body').on('click', function (e) {
+                        $('[data-toggle=popover]').each(function () {
+                            // hide any open popovers when the anywhere else in the body is clicked
+                            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                                $(this).popover('hide');
+                            }
+                        });
+                    });
+                </script>
+            </div>
+
+
+    </div>
+</div>
+<div class="create-help helpdeskPanel" style="
+    display: block;
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    z-index: 100;
+    width: 470px;
+    border-top: 1px solid rgb(85, 119, 119);
+">
+
+<div id="PhoneNumber" class="modal modal-purple" aria-hidden="false">
+	<div class="modal-dialog" style="width:95%;">
+		<div class="modal-content">
+			<div class="modal-header"><button data-dismiss="modal">×</button><h4 style="color: white;font-size: 22px !important;margin-top: 0px;">হেল্প ডেস্কের ফোন নম্বর সমূহ</h4></div>
+			<div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="text center">
+                        <th class="text-center">মন্ত্রণালয়/দপ্তর/সংস্থা</th>
+                        <th class="text-center">চট্টগ্রাম বিভাগ</th>
+                        <th class="text-center">রাজশাহী ও বরিশাল বিভাগ</th>
+                        <th class="text-center">খুলনা বিভাগ</th>
+                        <th class="text-center">সিলেট বিভাগ</th>
+                        <th class="text-center">ঢাকা বিভাগ</th>
+                        <th class="text-center">রংপুর বিভাগ</th>
+                        <th class="text-center">ময়মনসিংহ বিভাগ</th>
+                    </tr>
+                    <tr>
+                        <td><a title="মন্ত্রণালয়/দপ্তর/সংস্থা"><i class="glyphicon glyphicon-phone"></i> 
+                                +৮৮ ০১৫৫০৭০৩০০১
+                            </a></td>
+                        <td><a title="চট্টগ্রাম বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০০৪
+                            </a></td>
+                        <td><a title="রাজশাহী ও বরিশাল বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০০৫
+                            </a></td>
+                        <td><a title="খুলনা বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০০৭
+                            </a></td>
+                        <td><a title="সিলেট বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০১১
+                            </a></td>
+                        <td><a title="ঢাকা বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০০৯
+                            </a></td>
+                        <td><a title="রংপুর বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০০২
+                            </a></td>
+                        <td><a title="ময়মনসিংহ বিভাগ"><i class="glyphicon glyphicon-phone"></i>
+                                +৮৮ ০১৫৫০৭০৩০০৮
+                            </a></td>
+                    </tr>
+                    <tr>
+                        <td><a title="মন্ত্রণালয়/দপ্তর/সংস্থা"><i class="glyphicon glyphicon-phone"></i> +৮৮ ০১৫৫০৭০৩০০২</a></td>
+                    </tr>
+                    <tr>
+                        <td><a title="মন্ত্রণালয়/দপ্তর/সংস্থা"><i class="glyphicon glyphicon-phone"></i> +৮৮ ০১৫৫০৭০৩০০৩</a></td>
+                    </tr>
+                    <tr>
+                        <td><a title="মন্ত্রণালয়/দপ্তর/সংস্থা"><i class="glyphicon glyphicon-phone"></i> +৮৮ ০১৫৫০৭০৩০০৬</a></td>
+                    </tr>
+                    <tr>
+                        <td><a title="মন্ত্রণালয়/দপ্তর/সংস্থা"><i class="glyphicon glyphicon-phone"></i> +৮৮ ০১৫৫০৭০৩০১০</a></td>
+                    </tr>
+                    </thead>
+                </table>
+			</div>
+			<div class="modal-footer">
+				<div class="btn-group btn-group-round"><span class="btn red" data-dismiss="modal">বন্ধ করুন</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-xs-6">
+            <div class="form-group ">    
+                
+                <a title="ফোন নম্বরগুলি দেখুন" class="btn-link font-md PhoneNumber" href="#" data-toggle="modal" data-target="#PhoneNumber"> <i class="glyphicon glyphicon-phone"></i> হেল্প ডেস্কের ফোন নম্বর</a><br>
+                <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:support@nothi.gov.bd" style="font-size: 12pt!important;font-family:auto">support@nothi.gov.bd</a><br>
+                <img src="/img/fb.png" style="margin-left:-2px;"><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href="https://fb.com/groups/nothi/"> নথি (ফেসবুক গ্রুপ)</a><br>
+                <a class="btn-link font-md" href="/downloadApp"><i class="fa fa-mobile-phone" aria-hidden="true"></i> নথি মোবাইল অ্যাপ </a><br>
+
+                <a class="btn-link font-md" onclick="clearCache()"><i class="fs1 efile-history3"></i> ব্রাউজার ক্যাশ মুছুন</a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6 col-xs-6">
+            <div class="form-group ">
+                                <icon class="glyphicon glyphicon-info-sign"></icon><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href="/FAQ"> আপনার জিজ্ঞাসা</a><br>
+
+                <!-- <icon class="glyphicon glyphicon-cloud"></icon><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href="/API"> এপিআই</a><br/> -->
+
+                <icon class="glyphicon glyphicon-bullhorn"></icon><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href="/release-note"> আপডেট </a><br>
+
+                <icon class="glyphicon glyphicon-bell"></icon><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href="/notices"> নোটিশ </a><br>
+
+                <icon class="glyphicon glyphicon-book"></icon><a target="__tab" class="btn-link font-md" href="/showUserManualList"> ব্যবহার সহায়িকা (ভার্সনঃ ১৬)</a><br>
+
+                <icon class="glyphicon glyphicon-play-circle"></icon><a class="btn-link font-md NothiVideoTutorial" href="#" data-toggle="modal" data-target="#NothiVideoTutorial"> ই-নথি ভিডিও টিউটোরিয়াল</a><br>
+
+                <div class="dropdown">
+                    <icon class="glyphicon glyphicon-play-circle"></icon><a class="btn-link font-md" style="text-decoration: none;" href="#" id="dropdown_video" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> ই নথি অনলাইন কোর্স <span class="caret"></span></a><br>
+                    <ul class="dropdown-menu">
+                        <li><a href="http://www.muktopaath.gov.bd/#/elPortal/showSignUpPage?role=student&amp;isStudent=true" target="_blank">কোর্সে নিবন্ধন</a></li>
+                        <li><a href="http://www.muktopaath.gov.bd/login/goToHomePage#/elM2Portal/showCourseDetails?courseId=276" target="_blank">কোর্স শুরু করুন</a></li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+<div id="NothiVideoTutorial" class="modal modal-purple" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header"><button data-dismiss="modal">×</button><h4 style="color: white;font-size: 22px !important;margin-top: 0px;">নথির ভিডিও টিউটোরিয়াল</h4></div>
+			<div class="modal-body">
+
+			</div>
+			<div class="modal-footer">
+				<div class="btn-group btn-group-round"><span class="btn red" data-dismiss="modal">বন্ধ করুন</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" href="/css/persistant_header.css">
+<script src="https://www.nothi.gov.bd/wmh.github.io/jquery-scrollbox/jquery.scrollbox.js"></script>
+<style>
+	.floatingHeader {
+		position: absolute;
+		top: 0;
+		visibility: hidden;
+		padding: 12px 5px;
+	}
+</style>
+<div style="font-size:9.5pt!important;height: 270px;overflow: hidden;" id="page-wrap" class="scroll-text hidden">
+	<ul>
+    	<li class="some-other-area persist-area"><h3 class="persist-header">ই-নথি নতুন আপডেট </h3><h3 class="persist-header floatingHeader" style="width: 0px; visibility: visible; top: 0px;">ই-নথি নতুন আপডেট </h3><p></p><p style="margin-top:0in;margin-right:0in;margin-bottom:10.0pt;margin-left:0in;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;text-align:center;"><u><span style="font-size:27px;font-family:Nikosh;color:black;">নথি সিস্টেমের নতুন আপডেটসমূহ</span></u></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১। সিস্টেমে অধিক নিরাপত্তা নিশ্চিতকরনের লক্ষ্যে নতুন তৈরিকৃত ইউজার আইডি থেকে প্রথমবার লগইনে&nbsp;</span><strong><em><span style="font-size:19px;">otp system&nbsp;</span></em></strong><span style="font-size:19px;">যুক্ত করা হয়েছে। নতুন ইউজারের মোবাইল এবং ই-ইমেলে ৬ ডিজিটের একটি পিন কোড প্রেরণ করা হবে। উক্ত পিন কোডটি প্রোফাইলের পাসওয়ার্ড অপশনে প্রদান করে ইউজার তার নিজস্ব পাসওয়ার্ড সেট করতে পারবেন।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">২।&nbsp;</span><span style="font-size:19px;">প্রোফাইল ব্যবস্থাপনাতে ইউজারের কর্মইতিহাস যোগ করা হয়েছে</span><span style="font-size:19px;">&nbsp;</span><span style="font-size:19px;">যেখানে ই-নথিতে অর্ন্তভুক্তির শুরু থেকে যেসকল পদবিতে ইউজার দায়িত্ব পালন করেছেন তার সময়কাল উল্লেখ থাকবে।&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৩</span><span style="font-size:19px;">) শাখা অনারবোর্ড যুক্ত করা হয়েছে। অফিস এডমিনের আইডি থেকে প্রত্যেক শাখার জন্য একটি করে অনারবোর্ড তৈরি করা যাবে যা ঐ শাখার সকল ব্যবহারকারী হোম পেইজের বামদিকের মেন্যুতে দেখতে পাবেন।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৪</span><span style="font-size:19px;">) নথিতে একাধিক অনুচ্ছেদ থাকলে অনুচ্ছেদ ভিউ এসেনডিং ডিসেনডিং (উপর/নিচ) দেখার ব্যবস্থা করা যাবে।&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৫</span><span style="font-size:19px;">) সচিবালয়ের নির্দেশমালা অনুযায়ী নথির ধরণ ও কোড (সচিবালয় নির্দেশমালা ২০১৪ এর ৭৩নং পেইজ) নথির ধরণ তৈরির পেইজে দেখার ব্যবস্থা করা হয়েছে</span><span style="font-size:19px;">।</span><span style="font-size:19px;">&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৬</span><span style="font-size:19px;">) শাখার নাম বড় হলে মেন্যুবারের ডাক/নথি/ড্যাশবোর্ড/রিপোর্ট/দপ্তর মডিউলের এর কিছু অংশ ড্রপ-ডাউন এ ওপেন হবে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৭</span><span style="font-size:19px;">) খসড়া পত্রে প্রাপক ও অনুলিপি বাছাই এর সময় একটা শাখার সকল ইউজারকে একসাথে বাছাই করার অপশন যুক্ত করা হয়েছে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৮</span><span style="font-size:19px;">) গার্ড ফাইলে একাধিক পৃষ্ঠা এক সাথে যুক্ত করার ব্যবস্থা করা হয়েছে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৯</span><span style="font-size:19px;">) দপ্তর বাটন থেকে ইউজার এর সহযোগিতা ছাড়ায় অফিস এডমিন প্রতিকল্প বা ছুটি দেওয়ার ব্যবস্থা করতে পারবেন</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১০</span><span style="font-size:19px;">) প্রোফাইল তথ্য এডিট এর সময় নাম, জন্ম তারিখ ও জাতীয় পরিচয়পত্র নাম্বার ব্লক করা হয়েছে</span><span style="font-size:19px;">।</span><span style="font-size:19px;">&nbsp;</span><span style="font-size:19px;">এগুলো পরিবর্তন করতে চাইলে সাপোর্ট টিম এর সহযোগিতা নিতে হবে।&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১১</span><span style="font-size:19px;">) পদবি রিলিজ এর সময় পেন্ডিং কার্যক্রম স্থানান্তর বন্ধ করা হয়েছে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১২</span><span style="font-size:19px;">) যার ইউজার আইডি দিয়ে ডাক আপলোড করা হবে ডাক রশিদে (প্রাপ্তিস্বীকার পত্রে) তাঁর স্বাক্ষর পড়বে</span><span style="font-size:19px;">।</span></p><p></p></li><li class="some-other-area persist-area"><h3 class="persist-header">ই- নথির মূল্যায়ন নির্ণায়ক</h3><h3 class="persist-header floatingHeader" style="width: 0px; visibility: visible; top: 0px;">ই- নথির মূল্যায়ন নির্ণায়ক</h3><p></p><div dir="auto">প্রিয় ই-নথি ব্যবহারকারী,</div><div dir="auto">তথ্য ও যোগাযোগ প্রযুক্তি বিভাগের তত্ত্বাবধানে ও মন্ত্রিপরিষদ বিভাগের নির্দেশনায় ই- নথির মূল্যায়ন নির্ণায়ক সমূহে পরিবর্তন আনা হয়েছে। এখন থেকে পরিবর্তিত এই মান নির্ণায়কসমূহের আলোকে ই-নথির মাসিক রিপোর্ট স্বয়ংক্রিয়ভাবেই তৈরি হবে।</div><div dir="auto"><br></div><div dir="auto">মূল্যায়ন নির্ণায়কসমূহ নিম্নরূপঃ</div><div dir="auto">১. ডাক থেকে সৃজিত নোট নিষ্পত্তি -২০</div><div dir="auto">২. স্বউদ্যোগে সৃজিত নোট নিষ্পত্তি - ১০</div><div dir="auto">৩. আন্তঃসিস্টেম পত্রজারি (নিজ অফিসে)- ১০</div><div dir="auto">৪. &nbsp;আন্তঃসিস্টেম পত্রজারি (নিজ অফিসের বাইরে)- ৪৫</div><div dir="auto">৫. পত্রজারি (ইমেইল ও অন্যান্য)- ১৫</div><div dir="auto"><br></div><div dir="auto">এই পরিবর্তিত মান অনুযায়ী &nbsp;এপ্রিল,২০২০-এর রিপোর্ট প্রকাশ করা হয়েছে।&nbsp;</div><div dir="auto">ধন্যবাদ।</div><p></p></li></ul>
+</div>
+<script type="text/javascript">
+    $('.NothiVideoTutorial').on('click',function(){
+        $('#NothiVideoTutorial').find('.modal-body').load('/nothiVideoTutorial',function(){
+            $('#NothiVideoTutorial').modal({show:true});
+        });
+    });
+    function UpdateTableHeaders() {
+        $(".persist-area").each(function() {
+            var el = $(this),
+                offset         = el.offset(),
+                scrollTop      = $("#page-wrap").scrollTop(),
+                floatingHeader = $(".floatingHeader", this)
+
+            if (offset.top <= $("#page-wrap").offset().top + 0) {
+                floatingHeader.css({
+                    "visibility": "visible",
+                    "top" : $("#page-wrap").offset().top
+                });
+            } else {
+                floatingHeader.css({
+                    "visibility": "hidden"
+                });
+            };
+        });
+    }
+    // DOM Ready
+    $(function() {
+        var clonedHeaderRow;
+        $(".persist-area").each(function() {
+            clonedHeaderRow = $(".persist-header", this);
+            clonedHeaderRow
+                .before(clonedHeaderRow.clone())
+                .css("width", clonedHeaderRow.width() + 10)
+                .addClass("floatingHeader");
+        });
+
+        $("#page-wrap")
+            .scroll(UpdateTableHeaders)
+            .trigger("scroll");
+    });
+
+    $('#page-wrap').scrollbox({
+        linear: true,
+        step: 1,
+        delay: 0,
+        speed: 20
+    });
+
+    //setTimeout(function(){ showhelpdeskPanel(); }, 1000);
+
+    function videoModal() {
+        var modalId = 'NothiVideoTutorial';
+        var header = 'নথির ব্যবহার সহায়িকা';
+        var content = '<iframe style="width:100%;height:calc(100vh - 204px)" src="https://www.youtube.com/embed/hmUUBt7G8Gs?rel=0&list=PLVCEN663EzMFwATrFC6ULiM64U1FRyeAu" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        doModal(modalId, header, content, '', '');
+        $('#'+modalId).modal('show');
+    }
+</script>
+
+<script src="https://www.nothi.gov.bd/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+<script src="https://www.nothi.gov.bd/cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
+<script>
+
+	function pad(str, max) {
+		str = str.toString();
+		return str.length < max ? pad("0" + str, max) : str;
+	}
+
+	$(function () {
+		$('.forget-form').show()
+		$('.marquee').marquee({
+			speed: 50,
+			gap: 50,
+			delayBeforeStart: 500,
+			direction: 'up',
+			pauseOnHover: true
+		});
+	})
+
+	function showhelpdeskPanel() {
+		$('.helpdeskPanel').toggle(500);
+        $('.icon-changer').toggleClass("fa-chevron-up fa-chevron-down");
+	}
+
+	$(document).on('change', '#username', function () {
+		var loginid = $(this).val();
+		var start = loginid.substr(0, 1);
+		var restof = loginid.substr(1);
+		loginid = start + pad(restof, 11);
+		$(this).val(loginid);
+	});
+	$(document).on('change', '#tab_password [name=username]', function () {
+		var loginid = $(this).val();
+		var start = loginid.substr(0, 1);
+		var restof = loginid.substr(1);
+		loginid = start + pad(restof, 11);
+		$(this).val(loginid);
+	});
+
+	var client = new ClientJS();
+	var fingerprint = client.getFingerprint(); // Calculate Device/Browser
+	if (!client.isChrome()) {
+		$("#GChrome").show();
+		$(".GChrome").remove();
+	} else {
+		$(".GChrome").show();
+	}
+	$("#fingerprint").val(fingerprint);
+
+	function clearCache(){
+//	    window.location.href = 'chrome://settings/clearBrowserData';
+//	    return;
+//        chrome://settings/clearBrowserData
+//        if((client.isChrome())){
+//            url = "chrome.tabs.create({url:'chrome://settings/clearBrowserData'});";
+//            url = '<a href="'+url+'" onclick="'+url+'"> ক্লিক করুন। </a>';
+//        }else{
+            url = '<code>SHIFT</code> + <code>CTRL</code> + <code>DELETE</code> বাটন একসাথে প্রেস করুন এবং ব্রাউজার কর্তৃক পরবর্তী নির্দেশনা অনুসরণ করুন।';
+//        }
+		bootbox.dialog({
+			message: "<h4>প্রিয় ব্যবহারকারী,<br/>ব্রাউজার ক্যাশ মুছে ফেলতে "+url+"</h4>",
+			title: "ব্রাউজার ক্যাশ মুছে ফেলুন",
+			buttons: {
+				danger: {
+					label: "বন্ধ করুন",
+					className: "red",
+					callback: function () {
+
+					}
+				}
+			}
+		});
+    }
+    $(".efile-view1").click(function () {
+        passwordView();
+    });
+    function passwordView() {
+        $("input[name=password]").each(function(key, value) {
+            if ($(value).attr('type') == 'password') {
+                $(value).attr('type', 'text');
+                $(".efile-view1").css('color', 'black');
+            } else {
+                $(value).attr('type', 'password');
+                $(".efile-view1").css('color', '#aaa');
+            }
+        });
+    }
+
+    ///
+    //JUST AN EXAMPLE, PLEASE USE YOUR OWN PICTURE!
+    var imageAddr = "img/secretariat_guidelines.png";
+    var downloadSize = 410451; //bytes
+
+    function ShowProgressMessage(msg) {
+        // if (console) {
+        //     if (typeof msg == "string") {
+        //         console.log(msg);
+        //     } else {
+        //         for (var i = 0; i < msg.length; i++) {
+        //             console.log(msg[i]);
+        //         }
+        //     }
+        // }
+
+        var oProgress = document.getElementById("progress");
+        if (oProgress) {
+            var actualHTML = (typeof msg == "string") ? msg : msg.join("<br />");
+            oProgress.innerHTML = actualHTML;
+             //oProgress.innerHTML = '';
+        }
+    }
+
+    function InitiateSpeedDetection() {
+        //ShowProgressMessage("Loading the image, please wait...");
+        window.setTimeout(MeasureConnectionSpeed, 1);
+    };
+
+    if (window.addEventListener) {
+        window.addEventListener('load', InitiateSpeedDetection, false);
+    } else if (window.attachEvent) {
+        window.attachEvent('onload', InitiateSpeedDetection);
+    }
+
+    function MeasureConnectionSpeed() {
+        var startTime, endTime;
+        var download = new Image();
+        download.onload = function () {
+            endTime = (new Date()).getTime();
+            showResults();
+        }
+
+        download.onerror = function (err, msg) {
+            //ShowProgressMessage("Invalid image, or error downloading");
+        }
+
+        startTime = (new Date()).getTime();
+        var cacheBuster = "?nnn=" + startTime;
+        download.src = imageAddr + cacheBuster;
+
+        function showResults() {
+            var duration = (endTime - startTime) / 1000;
+            var bitsLoaded = downloadSize * 8;
+            var speedBps = (bitsLoaded / duration).toFixed(2);
+            var speedKbps = (speedBps / 1024).toFixed(2);
+            var speedMbps = (speedKbps / 1024).toFixed(2);
+            ShowProgressMessage([
+                enTobn(speedMbps) + " এমবিপিএস"
+            ]);
+        }
+    }
+
+    ///
+</script></div>
+<div class="content" style="padding-top: 10px!important;width: 480px!important;margin-top:0px">
+    <div class="logobd" align="left">
+        <a href="http://bangladesh.gov.bd" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন" target="_blank">
+            <img src="/assets/admin/layout4/img/bd.png" alt="" style="margin-top:10px">
+        </a>
+        <a href="http://www.a2i.gov.bd" title="Aspire to Innovate (a2i)" target="_blank">
+            <img src="/assets/admin/layout4/img/a2i.png" alt="" style="margin-top:5px;height:36px !important;">
+        </a>
+
+        <a href="https://ictd.gov.bd" title="তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ" target="_blank">
+            <img src="/img/ictd_logo.png" alt="" style="margin-top:5px;">
+        </a>
+        <a href="http://doict.gov.bd" title="তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর" target="_blank">
+            <img src="/img/doict_logo.jpg" alt="" style="margin-top:5px;">
+        </a>
+    </div>
+    <br>
+    <div style="clear:both"></div>
+</div>
+<br>
+<div class="content" style="padding-top: 10px!important;width: 480px!important;margin-top:0px">
+    <div class="text-center" style="font-size: 10pt!important;">
+        কারিগরি সহায়তায় <a style="font-size: 10pt!important;" href="http://tappware.com" target="_tab">
+            ট্যাপওয়ার <span class="panel-body"></span>
+        </a>
+    </div>
+</div>
+<!--Modal-->
+
+<style>
+    .modal .modal-floating-btn {
+        margin-top: -25px;
+        color: white !important;
+        background: #2c2a63;
+        float: right;
+        border-radius: 50px !important;
+        padding: 2px;
+        width: 25px;
+        height: 25px;
+        border: none;
+        margin-right: -25px;
+    }
+</style>
+<!-- END LOGIN -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="/assets/global/plugins/respond.min.js"></script>
+<script src="/assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+
+<script src="https://www.nothi.gov.bd/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="https://www.nothi.gov.bd/js/client.min.js" type="text/javascript"></script>
+<script src="https://www.nothi.gov.bd/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-toastr/toastr.min.js" type="text/javascript">
+<script src="https://www.nothi.gov.bd/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<script type="text/javascript">
+
+    // $(document).ready(function(){
+    //     $('#popup-wsis').modal('show');
+    // });
+
+    $(function () {
+		handleForgetPassword();
+	});
+
+
+	var handleForgetPassword = function () {
+		$('.forget-form').validate({
+			errorElement: 'span', //default input error message container
+			errorClass: 'help-block', // default input error message class
+			focusInvalid: false, // do not focus the last invalid input
+			ignore: "",
+			rules: {
+				username: {
+					required: true,
+				}
+			},
+			messages: {
+				username: {
+					required: "লগইন আইডি দেয়া হয়নি"
+				}
+			},
+			invalidHandler: function (event, validator) { //display error alert on form submit
+
+			},
+			highlight: function (element) { // hightlight error inputs
+				$(element)
+					.closest('.form-group').addClass('has-error'); // set error class to the control group
+			},
+			success: function (label) {
+				label.closest('.form-group').removeClass('has-error');
+				label.remove();
+			},
+			errorPlacement: function (error, element) {
+				error.insertAfter(element.closest('.input-icon'));
+			},
+			submitHandler: function (form) {
+				$.ajax({
+					url: '/forgetPassword',
+					data: $('.forget-form').serialize(),
+					method: 'post',
+					cache: false,
+					dataType: 'JSON',
+					success: function (response) {
+						$('.forget-form').find('.form-actions').show();
+						$('.message').hide();
+						toastr.options = {
+							"closeButton": true,
+							"debug": false,
+							"positionClass": "toast-bottom-right"
+						};
+						if (response.status == 'error') {
+							toastr.error(response.msg);
+						} else {
+							toastr.success(response.msg);
+						}
+					}
+				})
+			}
+		});
+
+
+	}
+
+	$('.forget-form input').keypress(function (e) {
+		if (e.which == 13) {
+			if ($('.forget-form').validate().form()) {
+				$('.forget-form').find('.form-actions').hide();
+				$('.forget-form').submit();
+			}
+			return false;
+		}
+	});
+
+	$('.forget-form button').click(function (e) {
+		if ($('.forget-form').validate().form()) {
+			$('.forget-form').find('.form-actions').hide();
+			$('.forget-form').submit();
+		}
+		return false;
+
+	});
+
+	jQuery('#register-btn').click(function () {
+		jQuery('.login-form').hide();
+		jQuery('.register-form').show();
+	});
+
+	jQuery('#register-back-btn').click(function () {
+		jQuery('.login-form').show();
+		jQuery('.register-form').hide();
+	});
+
+</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6Y24C0BCEC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6Y24C0BCEC');
+</script>
+<!-- END JAVASCRIPTS -->
+
+
+
+</div></body><!-- END BODY --></html>
