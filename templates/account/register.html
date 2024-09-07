@@ -124,6 +124,57 @@
         
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+
+    <script>
+    // Ideally this script (javascript code) would be in the HEAD of your page
+    // but if you put it at the bottom of the body (bottom of your template) that should be ok too.
+    // Also you need jQuery loaded but since you are using bootstrap that should
+    // be taken care of.  If not, you will have to deal with that.
+    
+        // function that hides/shows field_four based upon field_three value
+        function check_field_class_year() {
+            if($(this).val() == '7') {
+                // #id_field_four should be actually the id of the HTML element
+                // that surrounds everything you want to hide.  Since you did
+                // not post your HTML I can't finish this part for you.  
+                $('#passing_year').show();
+            } else {
+                $('#passing_year').hide();
+
+            }
+        }
+        function check_field_student_category() {
+            if($(this).val() == '1') {
+                $('#group').show();
+            } else {
+                $('#group').hide();
+
+            }
+            if($(this).val() == '2' || $(this).val() == '3') {
+                // #id_field_four should be actually the id of the HTML element
+                // that surrounds everything you want to hide.  Since you did
+                // not post your HTML I can't finish this part for you.  
+                $('#department').show();
+            } else {
+                $('#department').hide();
+
+            }
+        }
+        // this is executed once when the page loads
+        $(document).ready(function() {
+            // set things up so my function will be called when field_three changes
+            $('#id_class_year').change(check_field_class_year);
+    
+            // set the state based on the initial values
+            check_field_class_year.call($('#id_class_year').get(0));
+
+            $('#id_student_category').change(check_field_student_category);
+    
+            // set the state based on the initial values
+            check_field_student_category.call($('#id_student_category').get(0));
+        });
+    
+    </script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -344,7 +395,11 @@
                 document.getElementById('seconds').innerText = enTobn(pad(Math.floor((distance % (minute)) / second), 2));
 
         }, second)
+
+
+        
 </script>
+
 <div style="text-align: center;display:none;">
     <div class="header-countdown-content">
         <img src="/img/mujib.png" style="width:140px;" alt="" class="img-fluid">
@@ -377,7 +432,7 @@
 
 <div class="logo" style="color:#000;margin-top:0;margin-bottom:0;">
     <img style="width: 100px" src="{% static 'images/gmrwc_logo.png' %}" alt="">
-    <h1>রেজিস্ট্রেশন করুন </h1>
+    <h1 id="reegister">রেজিস্ট্রেশন করুন </h1>
 </div>
 <div class="text-center font-lg" id="SSLMessageForAndroid" hidden="">
 
@@ -502,10 +557,10 @@
     <div class="tabbable-custom nav-justified" style="background: #FFFFFF!important; margin-bottom:0;">
         <ul class="nav nav-tabs nav-justified">
             <li class="active">
-                <a href="#tab_loginname" data-toggle="tab">ইউজার ইমেইল</a>
+                <a href="#tab_loginname" data-toggle="tab">স্টুডেন্ট রেজিস্ট্রেশন</a>
             </li>
             <li>
-                <a href="#tab_userid" data-toggle="tab">ইউজার নেম</a>
+                <a href="#tab_userid" data-toggle="tab">শিক্ষক/কর্মকর্তা রেজিস্ট্রেশন</a>
             </li>
             <li>
                 <a href="#tab_password" data-toggle="tab">পাসওয়ার্ড রিসেট</a>
@@ -513,13 +568,36 @@
         </ul>
 
         <div class="tab-content">
+            
             <!-- >ইউজার আইডি TAB -->
             <div class="tab-pane active" id="tab_loginname">
-                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'login' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <input type="hidden" name="fingerprint" id="fingerprint" value="3779767603">                <div class="row">
-                    {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form id="student_form" method="post" accept-charset="utf-8" class="login-form" autocomplete="off" enctype="multipart/form-data"  >
+                    {% csrf_token %} 
+                    <input type="hidden" id="student"  name="student">                  
+        
+                    <div class="row">
+                    
                     <div class="col-xs-6">
                         <div class="input text">
                             {{form.name}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form.name_bangla}}
                         </div>                    
                     </div>
                     <div class="col-xs-6">
@@ -549,32 +627,41 @@
                     </div>
                     <div class="col-xs-6">
                         <div class="input text">
-                            <h1>সেশনঃ</h1>{{form.session}}
+                            {{form.session}}
                         </div>                    
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-12" style="float: left;">
+
+                    <div id="student_category" class="col-xs-6">
+                        <div class="input text">
+                            <h1>ক্যাটাগরিঃ </h1>{{form.student_category}}
+                        </div>                    
+                    </div>
+                    <div id="group" class="col-xs-6">
+                        <div class="input text">
+                            <h1>গ্রুপঃ </h1>{{form.group}}
+                        </div>                    
+                    </div>
+                    
+                    <div id="department" class="col-xs-6">
                         <div class="input text">
                             <h1>বিভাগঃ </h1>{{form.department}}
                         </div>                    
                     </div>
                     
-                    <div class="col-xs-6">
-                        <div class="input text">
-                            <h1>ক্যাটাগরিঃ </h1>{{form.student_category}}
-                        </div>                    
-                    </div>
                     
-                    <div class="col-xs-6">
+                    <div id="class_year" class="col-xs-6">
                         <div class="input text">
                             <h1>কোন বর্ষঃ </h1>{{form.class_year}}
                         </div>                    
                     </div>
-                    <div class="col-xs-6">
+                    <div id="passing_year" class="col-xs-6">
                         <div class="input text">
                             <h1>পাশের বছরঃ </h1>{{form.passing_year}}
                         </div>                    
                     </div>
-                    
+                    </div>
+                    <div class="col-xs-12" style="float: left;">
                     <div class="col-xs-6">
                         <div class="input text">
                             <h1>ছবিঃ </h1>{{form.image}}
@@ -586,37 +673,136 @@
                             <h1>স্বাক্ষরঃ </h1>{{form.signature}}
                         </div>                    
                     </div>
-                    
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-8 text-left">
                         <div class="display-none" style="font-size: 14px !important;color: gray;">বর্তমান ইন্টারনেট গতি: <span style="font-size: 14px !important;color: gray;" id="progress">১২.৮৩ এমবিপিএস</span></div>
                     </div>
                     <div class="col-xs-4 text-right">
-                        <button class="btn btn-sm blue" type="submit" style="margin-bottom:0px;margin-top:-7px;">প্রবেশ <i class="fs0 efile-login2"></i></button>
+                        <button id="student_btn" class="btn btn-sm blue" type="button" style="margin-bottom:0px;margin-top:-7px;">প্রবেশ <i class="fs0 efile-login2"></i></button>
                     </div>
                 </div>
                 </form>            </div>
             <!-- END >ইউজার আইডি TAB -->
             <!-- ইউজার নেম TAB -->
             <div class="tab-pane" id="tab_userid">
-                <form method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'login' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <div class="row">
-                {% csrf_token %}
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+                {% endif %}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form id="teacher_form" method="post" accept-charset="utf-8" class="login-form" autocomplete="off" action="{% url 'register' %}"><div style="display:none;"><input type="hidden" name="_method" value="POST"></div>                <input type="hidden" name="fingerprint" id="fingerprint" value="3779767603">                <div class="row">
+                    {% csrf_token %}
+                    {% comment %} <div class="col-xs-12nm,.ZZS/.,mb bnaw30-ল্কজনব =-০অকঝগ্যু_যক্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌....................................................................................................................................্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌্‌,///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////ও     এক্স  "> {% endcomment %}
+                    <input type="hidden" id="teacher"  name="teacher">                  
                     <div class="col-xs-6">
                         <div class="input text">
-                            {{form.name}}
+                            {{form_teacher.name}}
                         </div>                    
                     </div>
-                    <div class="col-xs-6 inputWithIcon">
-                        <div class="input password"><input type="password" name="password" class="form-control" autocomplete="off" placeholder="পাসওয়ার্ড" id="password2"></div><span class="efile-view1"></span>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form_teacher.name_bangla}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form_teacher.email}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form_teacher.phone}}
+                        </div>                    
+                    </div>
+
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form_teacher.designation}}
+                        </div>                    
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form_teacher.service_id}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                        {{form_teacher.batch}}
+                        </div>                    
+                    </div>
+
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            {{form_teacher.merit}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-12">
+
+                    <div id="student_category" class="col-xs-6">
+                        <div class="input text">
+                            <h1>অধিষ্ঠিত পদঃ </h1>{{form_teacher.position}}
+                        </div>                    
+                    </div>
+                    <div id="group" class="col-xs-6">
+                        <div class="input text">
+                            <h1>কর্মরত শাখাঃ  </h1>{{form_teacher.branch}}
+                        </div>                    
+                    </div>
+                    
+                    <div id="department" class="col-xs-6">
+                        <div class="input text">
+                            <h1>বিভাগঃ </h1>{{form_teacher.department}}
+                        </div>                    
+                    </div>
+                    
+                    
+                    <div id="class_year" class="col-xs-6">
+                        <div class="input text">
+                            <h1>প্রথম যোগদানের তারিখঃ </h1>{{form_teacher.first_joining_date}}
+                        </div>                    
+                    </div>
+                    <div id="passing_year" class="col-xs-6">
+                        <div class="input text">
+                            <h1> যোগদানের তারিখঃ </h1>{{form_teacher.joining_date}}
+                        </div>                    
+                    </div>
+                    
+                    </div>
+                    <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>ছবিঃ </h1>{{form_teacher.image}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text"> 
+                            <h1>স্বাক্ষরঃ </h1>{{form_teacher.signature}}
+                        </div>                    
+                    </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 text-right">
-                        <button class="btn btn-sm blue" type="submit">প্রবেশ <i class="fs0 efile-login2"></i></button>
+                    <div class="col-xs-8 text-left">
+                        <div class="display-none" style="font-size: 14px !important;color: gray;">বর্তমান ইন্টারনেট গতি: <span style="font-size: 14px !important;color: gray;" id="progress">১২.৮৩ এমবিপিএস</span></div>
+                    </div>
+                    <div class="col-xs-4 text-right">
+                        <button id="teacher_btn" class="btn btn-sm blue" type="button" style="margin-bottom:0px;margin-top:-7px;">প্রবেশ <i class="fs0 efile-login2"></i></button>
                     </div>
                 </div>
-                </form>            </div>
+                </form>            
+            </div>
             <!-- END ইউজার নেম TAB -->
             <!-- পাসওয়ার্ড ভুলে গেছেন TAB -->
             <div class="tab-pane" id="tab_password">
@@ -897,6 +1083,113 @@
 	<ul>
     	<li class="some-other-area persist-area"><h3 class="persist-header">ই-নথি নতুন আপডেট </h3><h3 class="persist-header floatingHeader" style="width: 0px; visibility: visible; top: 0px;">ই-নথি নতুন আপডেট </h3><p></p><p style="margin-top:0in;margin-right:0in;margin-bottom:10.0pt;margin-left:0in;font-size:15px;font-family:&quot;Calibri&quot;,sans-serif;text-align:center;"><u><span style="font-size:27px;font-family:Nikosh;color:black;">নথি সিস্টেমের নতুন আপডেটসমূহ</span></u></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১। সিস্টেমে অধিক নিরাপত্তা নিশ্চিতকরনের লক্ষ্যে নতুন তৈরিকৃত ইউজার আইডি থেকে প্রথমবার লগইনে&nbsp;</span><strong><em><span style="font-size:19px;">otp system&nbsp;</span></em></strong><span style="font-size:19px;">যুক্ত করা হয়েছে। নতুন ইউজারের মোবাইল এবং ই-ইমেলে ৬ ডিজিটের একটি পিন কোড প্রেরণ করা হবে। উক্ত পিন কোডটি প্রোফাইলের পাসওয়ার্ড অপশনে প্রদান করে ইউজার তার নিজস্ব পাসওয়ার্ড সেট করতে পারবেন।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">২।&nbsp;</span><span style="font-size:19px;">প্রোফাইল ব্যবস্থাপনাতে ইউজারের কর্মইতিহাস যোগ করা হয়েছে</span><span style="font-size:19px;">&nbsp;</span><span style="font-size:19px;">যেখানে ই-নথিতে অর্ন্তভুক্তির শুরু থেকে যেসকল পদবিতে ইউজার দায়িত্ব পালন করেছেন তার সময়কাল উল্লেখ থাকবে।&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৩</span><span style="font-size:19px;">) শাখা অনারবোর্ড যুক্ত করা হয়েছে। অফিস এডমিনের আইডি থেকে প্রত্যেক শাখার জন্য একটি করে অনারবোর্ড তৈরি করা যাবে যা ঐ শাখার সকল ব্যবহারকারী হোম পেইজের বামদিকের মেন্যুতে দেখতে পাবেন।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৪</span><span style="font-size:19px;">) নথিতে একাধিক অনুচ্ছেদ থাকলে অনুচ্ছেদ ভিউ এসেনডিং ডিসেনডিং (উপর/নিচ) দেখার ব্যবস্থা করা যাবে।&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৫</span><span style="font-size:19px;">) সচিবালয়ের নির্দেশমালা অনুযায়ী নথির ধরণ ও কোড (সচিবালয় নির্দেশমালা ২০১৪ এর ৭৩নং পেইজ) নথির ধরণ তৈরির পেইজে দেখার ব্যবস্থা করা হয়েছে</span><span style="font-size:19px;">।</span><span style="font-size:19px;">&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৬</span><span style="font-size:19px;">) শাখার নাম বড় হলে মেন্যুবারের ডাক/নথি/ড্যাশবোর্ড/রিপোর্ট/দপ্তর মডিউলের এর কিছু অংশ ড্রপ-ডাউন এ ওপেন হবে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৭</span><span style="font-size:19px;">) খসড়া পত্রে প্রাপক ও অনুলিপি বাছাই এর সময় একটা শাখার সকল ইউজারকে একসাথে বাছাই করার অপশন যুক্ত করা হয়েছে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৮</span><span style="font-size:19px;">) গার্ড ফাইলে একাধিক পৃষ্ঠা এক সাথে যুক্ত করার ব্যবস্থা করা হয়েছে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">৯</span><span style="font-size:19px;">) দপ্তর বাটন থেকে ইউজার এর সহযোগিতা ছাড়ায় অফিস এডমিন প্রতিকল্প বা ছুটি দেওয়ার ব্যবস্থা করতে পারবেন</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১০</span><span style="font-size:19px;">) প্রোফাইল তথ্য এডিট এর সময় নাম, জন্ম তারিখ ও জাতীয় পরিচয়পত্র নাম্বার ব্লক করা হয়েছে</span><span style="font-size:19px;">।</span><span style="font-size:19px;">&nbsp;</span><span style="font-size:19px;">এগুলো পরিবর্তন করতে চাইলে সাপোর্ট টিম এর সহযোগিতা নিতে হবে।&nbsp;</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১১</span><span style="font-size:19px;">) পদবি রিলিজ এর সময় পেন্ডিং কার্যক্রম স্থানান্তর বন্ধ করা হয়েছে</span><span style="font-size:19px;">।</span></p><p style="margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;font-size:15px;"><span style="font-size:19px;">১২</span><span style="font-size:19px;">) যার ইউজার আইডি দিয়ে ডাক আপলোড করা হবে ডাক রশিদে (প্রাপ্তিস্বীকার পত্রে) তাঁর স্বাক্ষর পড়বে</span><span style="font-size:19px;">।</span></p><p></p></li><li class="some-other-area persist-area"><h3 class="persist-header">ই- নথির মূল্যায়ন নির্ণায়ক</h3><h3 class="persist-header floatingHeader" style="width: 0px; visibility: visible; top: 0px;">ই- নথির মূল্যায়ন নির্ণায়ক</h3><p></p><div dir="auto">প্রিয় ই-নথি ব্যবহারকারী,</div><div dir="auto">তথ্য ও যোগাযোগ প্রযুক্তি বিভাগের তত্ত্বাবধানে ও মন্ত্রিপরিষদ বিভাগের নির্দেশনায় ই- নথির মূল্যায়ন নির্ণায়ক সমূহে পরিবর্তন আনা হয়েছে। এখন থেকে পরিবর্তিত এই মান নির্ণায়কসমূহের আলোকে ই-নথির মাসিক রিপোর্ট স্বয়ংক্রিয়ভাবেই তৈরি হবে।</div><div dir="auto"><br></div><div dir="auto">মূল্যায়ন নির্ণায়কসমূহ নিম্নরূপঃ</div><div dir="auto">১. ডাক থেকে সৃজিত নোট নিষ্পত্তি -২০</div><div dir="auto">২. স্বউদ্যোগে সৃজিত নোট নিষ্পত্তি - ১০</div><div dir="auto">৩. আন্তঃসিস্টেম পত্রজারি (নিজ অফিসে)- ১০</div><div dir="auto">৪. &nbsp;আন্তঃসিস্টেম পত্রজারি (নিজ অফিসের বাইরে)- ৪৫</div><div dir="auto">৫. পত্রজারি (ইমেইল ও অন্যান্য)- ১৫</div><div dir="auto"><br></div><div dir="auto">এই পরিবর্তিত মান অনুযায়ী &nbsp;এপ্রিল,২০২০-এর রিপোর্ট প্রকাশ করা হয়েছে।&nbsp;</div><div dir="auto">ধন্যবাদ।</div><p></p></li></ul>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#student_btn').on('click', function () {
+            // Obtain the CSRF token from the hidden input field
+            document.getElementById("student").value='student';
+            var frm = $('#student_form')[0];
+            var form= new FormData(frm);
+            form.append('new_avater',$('#id_image')[0].files[0]);
+            form.append('new_avater1',$('#id_signature')[0].files[0]);
+
+
+            var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+            // Get the data from the form
+           
+
+            // Send AJAX request
+            $.ajax({
+                enctype: 'multipart/form-data',
+                type: 'POST',
+                url: "{% url 'register' %}",  // Adjust the URL as per your project structure
+                data: form,
+                headers: {
+                    'X-CSRFToken': csrfToken
+                },
+                
+                cache:false,
+                processData:false,
+                contentType:false,
+               
+                success: function (response) {
+                    document.getElementById("student").value='';
+
+                    document.getElementById("student_form").reset();
+                    if (response.status === 'success') {
+                        // Clear the form
+                        alert(response.status);
+
+
+                    } else {
+                        alert('Error adding patient');
+                    }
+                },
+                error: function () {
+                    document.getElementById("student").value='';
+                    alert('Error adding patient');
+                }
+            });
+        });
+    
+    
+    
+        $('#teacher_btn').on('click', function () {
+            // Obtain the CSRF token from the hidden input field
+            document.getElementById("teacher").value='teacher';
+            alert(document.getElementById("teacher").value)
+            var frm = $('#teacher_form')[0];
+            var form= new FormData(frm);
+            form.append('new_avater',$('#id_image')[0].files[0]);
+            form.append('new_avater1',$('#id_signature')[0].files[0]);
+
+
+            var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+           
+
+            // Send AJAX request
+            $.ajax({
+                enctype: 'multipart/form-data',
+                type: 'POST',
+                url: "{% url 'register' %}",  // Adjust the URL as per your project structure
+                data: form,
+                headers: {
+                    'X-CSRFToken': csrfToken
+                },
+                
+                cache:false,
+                processData:false,
+                contentType:false,
+               
+                success: function (response) {
+                    document.getElementById("teacher").value='';
+                    document.getElementById("teacher_form").reset();
+                    if (response.status === 'success') {
+                        // Clear the form
+                        alert(response.status);
+
+
+                    } else {
+                        alert('Error adding patient');
+                    }
+                },
+                error: function () {
+                    document.getElementById("teacher").value='';
+
+                    alert('Error adding patient');
+                }
+            });
+        });
+    
+    
+    
+    
+    
+    });
+</script>
 <script type="text/javascript">
     $('.NothiVideoTutorial').on('click',function(){
         $('#NothiVideoTutorial').find('.modal-body').load('/nothiVideoTutorial',function(){
@@ -1175,7 +1468,7 @@
     // $(document).ready(function(){
     //     $('#popup-wsis').modal('show');
     // });
-
+    
     $(function () {
 		handleForgetPassword();
 	});

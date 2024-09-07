@@ -10,6 +10,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 UserModel=get_user_model()
 DESIGNATION_CHOICES = ( 
+    ("0","---পদবী---" ), 
     ("1","অধ্যাপক" ), 
     ("2","সহযোগী অধ্যাপক"), 
     ("3","সহকারী অধ্যাপক"), 
@@ -33,7 +34,7 @@ POSITION_CHOICES = (
 
 ) 
 BCS_BATCH=(
-    ("0", "প্রযোজ্য নয়"),("1", "1"), ("2", "2"), ("3", "3"), ("4", "4"), ("5", "5"), ("6", "6"), ("7", "7"), ("8", "8"), ("9", "9"), ("10", "10"), ("11", "11"), ("12", "12"), ("13", "13"), ("14", "14"), ("15", "15"),
+    ("0", "---বিসিএস ব্যাচ---"),("1", "প্রযোজ্য নয়"), ("2", "2"), ("3", "3"), ("4", "4"), ("5", "5"), ("6", "6"), ("7", "7"), ("8", "8"), ("9", "9"), ("10", "10"), ("11", "11"), ("12", "12"), ("13", "13"), ("14", "14"), ("15", "15"),
      ("16", "16"), ("17", "17"), ("18", "18"), ("19", "19"), ("20", "20"), ("21", "21"), ("22", "22"),
       ("23", "23"), ("24", "24"),  ("25", "25"), ("26", "26"), ("27", "27"), ("28", "28"),("29", "29"), ("30", "30"),
      ("31", "31"), ("32", "32"),("33", "33"), ("34", "34"),  ("35", "35"), ("36", "66"), ("37", "37"), ("38", "38"),("39", "39"), ("40", "40"), 
@@ -44,9 +45,10 @@ BCS_BATCH=(
 class Teacher(models.Model):
     tid=models.IntegerField(default=10)
     name=models.CharField(max_length=100)
+    name_bangla=models.CharField(max_length=100,blank=True, null=True)
     email=models.EmailField()
     phone=models.CharField(max_length=11)
-    designation=models.CharField(max_length=100,choices = DESIGNATION_CHOICES, default = '4')
+    designation=models.CharField(max_length=100,choices = DESIGNATION_CHOICES, default = '0')
     position=models.CharField(max_length=100,choices = POSITION_CHOICES, default = '1')
     service_id=models.CharField(max_length=25)
     batch=models.CharField(max_length=25,choices = BCS_BATCH, default = '0')
@@ -83,6 +85,11 @@ STUDENT_CATEGORY_CHOICES = (
     ("2","অনার্স"), 
     ("3","মাস্টার্স"), 
 ) 
+GROUP_CHOICES = ( 
+    ("1","বিজ্ঞান" ), 
+    ("2","মানবিক"), 
+    ("3","ব্যবসা শিক্ষা"), 
+) 
 CLASS_YEAR_CHOICES = ( 
     ("1","১ম বর্ষ" ), 
     ("2","২য় বর্ষ"), 
@@ -98,11 +105,13 @@ CLASS_YEAR_CHOICES = (
 class Student(models.Model):
     std_id=models.IntegerField(default=10)
     name=models.CharField(max_length=100)
+    name_bangla=models.CharField(max_length=100,blank=True, null=True)
     email=models.EmailField()
     phone=models.CharField(max_length=11)
     class_roll=models.CharField(max_length=11)
     session=models.CharField(max_length=100,choices = SESSION_CHOICES, default = '0')
-    student_category=models.CharField(max_length=100,choices = STUDENT_CATEGORY_CHOICES, default = '1')
+    student_category=models.CharField(max_length=100,choices = STUDENT_CATEGORY_CHOICES)
+    group=models.CharField(max_length=25,choices = GROUP_CHOICES, default ='1')
     department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
     exam_roll=models.CharField(max_length=25,null=True, blank=True,)
     registration=models.CharField(max_length=25,null=True, blank=True,)

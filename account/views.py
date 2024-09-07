@@ -1,23 +1,57 @@
-from django.http import HttpResponse
+import json
+from django.contrib import messages
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login,authenticate,logout
-from .forms import StudentForm
+from .forms import StudentForm,TeacherForm
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 UserModel=get_user_model()
+
+@csrf_exempt
 def Registration(request):
     context ={}
+    
+    if request.method == 'GET':
+        form = StudentForm()
+        form_teacher = TeacherForm()
+        context={
+            'form':form,
 
-    form = StudentForm(request.POST or None, request.FILES or None)
-     
-    # check if form data is valid
-    if form.is_valid():
-        # save the form data to model
-        form.save()
+            'form_teacher':form_teacher,
+
+        }
+        return render(request,'account/register.html',context=context)
+
+    if request.method == 'POST':
+
+        #form_teacher = TeacherForm(request.POST)
+        data = {}
+        if request.POST.get('student'):
+            form = StudentForm(request.POST, request.FILES)
+        if request.POST.get('teacher'):
+            form = TeacherForm(request.POST, request.FILES)
+            print("sumon"+request.POST.get('teacher'))
+
+
+        data['message']="Not Success"
+
+        '''if form_teacher.is_valid():
+            form_teacher.save()
+            messages.success(request, 'Teacher with name  {}  added.'.format(request.POST['name']))
+            return HttpResponseRedirect('register')'''
+        if form.is_valid():
+            data['message']="Successfully Done"
+            form.save()
+            
+            #messages.success(request, 'Student with name  {}  added.'.format(request.POST['name']))
+            return JsonResponse({'status': 'success'},safe=False)
+        print(form.errors)
+        return render(request, 'account/register.html', {'form': form})
+    return render(request, 'account/register.html', {'form': form}) 
  
-    context['form']= form
-    return render(request,'account/register.html',context=context)
-
 def Login(request):
     if request.method == 'GET':
         context = ''
