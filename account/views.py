@@ -26,25 +26,32 @@ def Registration(request):
         return render(request,'account/register.html',context=context)
 
     if request.method == 'POST':
+        email=request.POST.get('email')
 
         #form_teacher = TeacherForm(request.POST)
         data = {}
         if request.POST.get('student'):
             form = StudentForm(request.POST, request.FILES)
+            username=request.POST.get('phone')
+            password='Student@'+request.POST.get('phone')
+
         if request.POST.get('teacher'):
             form = TeacherForm(request.POST, request.FILES)
+            username=request.POST.get('service_id')
+            password='Teacher@'+request.POST.get('service_id')
             print("sumon"+request.POST.get('teacher'))
 
 
         data['message']="Not Success"
-
-        '''if form_teacher.is_valid():
-            form_teacher.save()
-            messages.success(request, 'Teacher with name  {}  added.'.format(request.POST['name']))
-            return HttpResponseRedirect('register')'''
+        
         if form.is_valid():
             data['message']="Successfully Done"
-            form.save()
+            user_form=form.save(commit=False)
+            user = UserModel.objects.create_user(username=username,
+                                 email=email,
+                                 password=password,is_active=False)
+            user_form.user=user
+            user_form.save()
             
             #messages.success(request, 'Student with name  {}  added.'.format(request.POST['name']))
             return JsonResponse({'status': 'success'},safe=False)
