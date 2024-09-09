@@ -16,10 +16,10 @@ class StudentForm(forms.ModelForm):
         exclude=['std_id']
         department=forms.ModelChoiceField(label="",queryset=Department.objects.all(),empty_label="Placeholder",)
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'নাম লিখুন(ইংরেজিতে)'}),
-            'name_bangla': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'নাম লিখুন(বাংলায়)'}),
-            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'ইমেইল'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'ফোন নাম্বার'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'নাম লিখুন(ইংরেজিতে)','onkeypress' : "myFunction(this.id);"}),
+            'name_bangla': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id);"}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'ইমেইল','onkeypress' : "myFunction(this.id);"}),
+            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'ফোন নাম্বার','onkeypress' : "myFunction(this.id);"}),
             'class_roll': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'ক্লাস রোল'}),
             'exam_roll': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'এক্সাম রোল (যদি থাকে)'}),
             'registration': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'রেজিস্ট্রেশন নম্বর(যদি থাকে)'}),
