@@ -116,7 +116,7 @@ class Student(models.Model):
     department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
     exam_roll=models.CharField(max_length=25,null=True, blank=True,)
     registration=models.CharField(max_length=25,null=True, blank=True,)
-    class_year=models.CharField(max_length=100, choices = CLASS_YEAR_CHOICES, default ='1')
+    class_year=models.CharField(max_length=100, choices = CLASS_YEAR_CHOICES)
     date_of_birth=models.DateField(blank=True, null=True)
     passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True) 
