@@ -7,7 +7,7 @@ from django.contrib.auth import login,authenticate,logout
 from .forms import StudentForm,TeacherForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-
+from .models import Student,Teacher
 # Create your views here.
 UserModel=get_user_model()
 
@@ -61,6 +61,7 @@ def Registration(request):
         return render(request, 'account/register.html', {'form': form})
     return render(request, 'account/register.html', {'form': form}) 
 
+@csrf_exempt
 def Login(request):
     if request.method == 'GET':
         context = ''
@@ -87,6 +88,8 @@ def Login(request):
 
 def Profile(request):
     if request.user.is_authenticated:
-        return render(request, 'account/profile.html',)
+        student=Student.objects.filter(user=request.user).first()
+        print(student)
+        return render(request, 'account/profile.html',{'student':student})
     else:
         return redirect('login')
