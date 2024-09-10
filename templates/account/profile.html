@@ -38,11 +38,8 @@
             <div class="col">        
                
       
- <main data-v-6f04a53f="" class="main">
-  <!---->
-  <div data-v-6f04a53f="" class="home"> 
+ 
     
-    {% include 'component/topbar.html' %}
 
 
 <div id="preloader">
@@ -116,33 +113,188 @@
 } 
 
 }</style>
- 
- <div class="page-banner py-3">
-    <div class="container-wrapper">
-        <span class="shape"></span> <span class="shape2"></span>
-        <span class="shape3"></span>
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h3 class="mb-0 text-capitalize">Profile</h3>
+    {% include 'component/topbar.html' %}
+
+<header  class="header sticky" id="header" style="width: 100%; position: relative;">
+<div class="container-wrapper">
+
+<div class="main-header">
+<nav class="navbar navbar-expand-lg p-lg-0"><a href="/" class="navbar-brand logo active router-link-active" aria-current="page"> <img src="{% static 'images/gmrwc_logo.png' %}" alt="Ictparklogo"></a> <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fas fa-bars"></span></button>
+<div id="navbarSupportedContent" class="navbar-collapse collapse" style="">
+<button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fa fa-close"></span></button>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><a id="home" href="/" class="nav-link active router-link-active" aria-current="page"><span class="fas fa-home"> </span></a></li>
+<li class="nav-item"><a id="home" href="/account/dashboard/" class="nav-link dropdown-toggle " aria-current="page">Dashboard</a>
+    </li>
+
+    <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle ">About us</a>
+<div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
+
+            <div class="col-lg-4 pr-0">
+                <h4 class="menu-head"><a href="/" class="">About BCSGEICTA</a></h4>
+                <ul>
+                   
+                    <li class="subMenu"><span class="fas fa-user">
+                </span><a href="/accountabout/mission" class="nav-link" onclick="myFunctionNavbar(this.id)">Mission</a></li>
+                    <li class="fas fa-eye"><a href="/accountabout/vision" class="nav-link">Vision</a></li>
+                            <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="/accountabout/ideology" class="nav-link">Ideology</a></li>
+                </ul>
             </div>
-            <div class="col-lg-6">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-end bg-transparent mb-0">
-                        <li class="breadcrumb-item"><a href="/" class="breadcrumb-item router-link-active">User/Profile</a></li>
-                        <li class="breadcrumb-item text-capitalize"><span></span>
-                        </li>
-                    </ol>
-                </nav>
+            <div class="col-lg-4 pr-0">
+                <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
+
+                        <ul>
+                        <li class="subMenu"><span class="fas fa-user">
+                        </span><a href="https://israbentech.com/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
+                            <li class="fas fa-eye"><a href="https://israbentech.com/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
+                                    <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/about/members" class="nav-link">Members</a></li>
+                        </ul>
+            </div>
+            <div class="col-lg-4 pr-0">
+                <h4 class="menu-head"><a href="/content/committees-forums" class="">Committees &amp; Forums</a></h4>
+                <ul>
+                    <li class="subMenu"><a href="/content/board-sub-committee" class="">Board Sub-Committee</a></li>
+                    <li class="subMenu"><a href="/committees-forums/standing-committees" class="">Standing Committee(s)</a></li>
+                    <li class="subMenu"><a href="/committees-forums/forums" class="">Forum(s) &amp; Focus Group</a></li>
+                    <li class="subMenu"><a href="/committees-forums/other-committees" class="">Other Committees &amp; forums</a>
+                    </li>
+                </ul>
             </div>
         </div>
+
+</li>
+
+      <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle ">Membership</a>
+    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+        <ul>
+            
+            <li class="subMenu"><span class="fa fa-user">
+                </span><a href="/accountmembership/memberlist" class="nav-link" onclick="myFunctionNavbar(this.id)">Memberlist</a></li>
+                <li class="subMenu"><span class="fa fa-user">
+                </span><a href="/accountmembership/register" class="nav-link" onclick="myFunctionNavbar(this.id)">Become a Member</a></li>
+                <li class="subMenu"><span class="fa fa-arrow-right">
+
+            </span><a href="/accountmembership/rules-n-regulations" class="nav-link">
+                Rules and Regulations</a></li>
+            <li class="subMenu"><span class="fa fa-arrow-right">
+
+            </span><a href="/accountmembership/code-of-conduct" class="">Code of Conduct</a></li>
+        </ul>
     </div>
+</li>
+
+
+
+
+<li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Resource</a>
+    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+        <ul>
+                             
+            <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/books" class="nav-link">Books</a></span></li>
+            <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/ppt" class="nav-link">Power Point</a></span></li>
+                    <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/pdf" class="nav-link">PDF Lecture</a></span></li>
+                      <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/others" class="nav-link">Others Resources</a></span></li>
+                        <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://ictparkbd.com/admin/studymaterials/lecture/add/" class="nav-link">Add  Resources</a></span></li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle ">Media
+Center</a>
+<div aria-labelledby="navbarDropdown" class="dropdown-menu">
+<ul>
+    <li class="subMenu"><a href="/accountmedia/news" class="">News</a>
+    </li>
+    <li class="subMenu"><a href="/accountmedia/image-gallery" class="">Photo
+            Gallery</a></li>
+    <li class="subMenu"><a href="/accountmedia/video-gallery" class="">Video
+            Gallery</a></li>
+    <li class="subMenu"><a href="/accountmedia/blog" class=""> Blog Media</a></li>
+    
+</ul>
 </div>
-<header data-v-6f04a53f="" class="header sticky" id="header">
+</li>
+
+
+
+
+
+
+<!-- Right elements -->
+<div style="float:right" class="d-flex align-items-center">
+<!-- Icon -->
+<a class="text-reset me-3" href="#">
+<i class="fas fa-user"></i>
+</a>
+
+<!-- Notifications 
+<div class="dropdown">
+<a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+<i class="fas fa-bell"></i>
+<span class="badge rounded-pill badge-notification bg-danger">1</span>
+</a>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+<li>
+<a class="dropdown-item" href="#">Some news</a>
+</li>
+<li>
+<a class="dropdown-item" href="#">Another news</a>
+</li>
+<li>
+<a class="dropdown-item" href="#">Something else here</a>
+</li>
+</ul>
+</div>-->
+<!-- Avatar -->
+<div class="dropdown">
+
+<li class="nav-item dropdown">
+<a class="nav-link nav-link dropdown-toggle parent-active" href="/account/dashboard/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Md. Tariqul Islam
+<img src="https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg" class="rounded-circle" height="50" width="50" loading="lazy">
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="/account/profile/">প্রোফাইল </a>
+<a class="dropdown-item" href="/account/logout/" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+লগ-আউট
+</a>
+<a class="dropdown-item" href="/account/updateuser/">প্রোফাইল এডিট</a>
+<form id="logout-form" action="/account/logout/" method="post">
+<input type="hidden" name="csrfmiddlewaretoken" value="u1mpaKTTSp35YSbMCUTZ7XtFc4aXTetV2ckdbd16ctbAghrINXFtdeoAbpGRFguz">
+<input type="hidden">
+</form>
+
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="/account/password_change/">পাসওয়ার্ড পরিবর্তন</a>
+<div class="dropdown-divider"></div>
+
+<a class="dropdown-item" href="/blog/">ব্লগ মিডিয়া</a>
+<div class="dropdown-divider"></div>
+
+<a class="dropdown-item" href="/blog/createpost/">পোস্ট লিখুন</a>
+
+</div>
+</li>
+
+</div>
+</div>
+</ul>
+<!-- Right elements -->
+
+
+
+</ul>
+
+</div>
+</nav>
+
+</div>
+</div>
+</header>
+<!--<header data-v-6f04a53f="" class="header sticky" id="header">
 
     <div class="search-box">
         <div class="box">
             <form id="searchform2"><input list="browsers" type="search" placeholder="What are you looking for?"> <span class="mdi mdi-magnify"></span>
-                <!---->
             </form> <button type="button" class="close text-light search-box-close"><i class="mdi mdi-close"></i></button>
         </div>
     </div>
@@ -264,14 +416,11 @@
 
 
                             
-        <!-- Right elements -->
         <div style="float:right" class="d-flex align-items-center">
-            <!-- Icon -->
             <a class="text-reset me-3" href="#">
                 <i class="fas fa-user"></i>
             </a>
 
-            <!-- Notifications 
             <div class="dropdown">
                 <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
                     role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -289,8 +438,7 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </li>
                 </ul>
-            </div>-->
-            <!-- Avatar -->
+            </div>
             <div class="dropdown">
 
                 <li class="nav-item dropdown">
@@ -323,7 +471,6 @@
             </div>
         </div>
 
-        <!-- Right elements -->
 
 
 
@@ -336,7 +483,7 @@
 
       </div>
   </header>           
-
+-->
  <div class="container1">
     <div style="background-color: transparent" class="form-field2 d-flex align-items-center">
         <div style="position: relative;text-align: center" class="logo1">

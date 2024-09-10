@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import login,authenticate,logout
 from .forms import StudentForm,TeacherForm
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 UserModel=get_user_model()
@@ -26,17 +27,18 @@ def Registration(request):
         return render(request,'account/register.html',context=context)
 
     if request.method == 'POST':
-        email=request.POST.get('email')
 
         #form_teacher = TeacherForm(request.POST)
         data = {}
         if request.POST.get('student'):
             form = StudentForm(request.POST, request.FILES)
+            email=request.POST.get('email')
             username=request.POST.get('phone')
             password='Student@'+request.POST.get('phone')
 
         if request.POST.get('teacher'):
             form = TeacherForm(request.POST, request.FILES)
+            email=request.POST.get('email')
             username=request.POST.get('service_id')
             password='Teacher@'+request.POST.get('service_id')
             print("sumon"+request.POST.get('teacher'))
@@ -58,12 +60,12 @@ def Registration(request):
         print(form.errors)
         return render(request, 'account/register.html', {'form': form})
     return render(request, 'account/register.html', {'form': form}) 
- 
+
 def Login(request):
     if request.method == 'GET':
         context = ''
         if request.user.is_authenticated:
-            return HttpResponse("Sumon")
+            return redirect("profile")
         return render(request, 'account/login.html', {'context': context})
     if request.method == 'POST':
         email = request.POST['username']
@@ -71,20 +73,20 @@ def Login(request):
         
         if UserModel.objects.filter(email=email).exists() is False:
             email='Email not exist in user system!! '
-            return render(request, 'accounts/login.html', {'email': email})
+            return render(request, 'account/login.html', {'email': email})
 
         user = authenticate(request, username=email, password=password)
         if user is not None:
             error=login(request, user)
-            print(error)
-            return redirect('login')
+            return redirect('profile')
             # Redirect to a success page.
             ...
         else:
-            
             password='Your Creadentials do not match, Please try again!!'
             return render(request, 'account/login.html', {'password': password})
 
-
 def Profile(request):
-    return render(request, 'account/profile.html',)
+    if request.user.is_authenticated:
+        return render(request, 'account/profile.html',)
+    else:
+        return redirect('login')

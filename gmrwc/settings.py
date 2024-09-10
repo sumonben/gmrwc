@@ -80,8 +80,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'gmrwc.wsgi.application'
-
-
+LOGIN_REDIRECT_URL = '/account/profile/'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 

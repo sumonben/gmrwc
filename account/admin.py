@@ -8,4 +8,4 @@ class StudentAdmin(admin.ModelAdmin):
 @admin.register(Teacher)
 class ProfileAdmin(admin.ModelAdmin):
     model = Teacher
-    list_display=[ 'name','email','phone','designation','department','batch']
+    list_display=[ 't_name','t_email','t_phone','designation','t_department','batch']
