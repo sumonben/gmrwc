@@ -109,7 +109,7 @@ class Student(models.Model):
     name_bangla=models.CharField(max_length=100,blank=True, null=True)
     email=models.EmailField(max_length=50,unique=True)
     phone=models.CharField(max_length=11,unique=True)
-    class_roll=models.CharField(max_length=11)
+    class_roll=models.CharField(max_length=11,null=True, blank=True,)
     session=models.CharField(max_length=100,choices = SESSION_CHOICES, default = '0')
     student_category=models.CharField(max_length=100,choices = STUDENT_CATEGORY_CHOICES)
     group=models.CharField(max_length=25,choices = GROUP_CHOICES, default ='1')
