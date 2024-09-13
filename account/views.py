@@ -88,22 +88,23 @@ def Login(request):
             return redirect("profile")
         return render(request, 'account/login.html', {'context': context})
     if request.method == 'POST':
-        email = request.POST['username']
-        password = request.POST['password']
+        email = request.POST['email']
+        password = request.POST['email_password']
         
         if UserModel.objects.filter(email=email).exists() is False:
-            email='Email not exist in user system!! '
-            return render(request, 'account/login.html', {'email': email})
+            email='email'
+            print(email)
+            return JsonResponse({'email': email},safe=False)
 
         user = authenticate(request, username=email, password=password)
         if user is not None:
             error=login(request, user)
-            return redirect('profile')
+            return JsonResponse({'success': "success"},safe=False)
             # Redirect to a success page.
             ...
         else:
-            password='Your Creadentials do not match, Please try again!!'
-            return render(request, 'account/login.html', {'password': password})
+            password='password'
+            return JsonResponse({'password': password},safe=False)
 
 def Profile(request):
     if request.user.is_authenticated:
@@ -112,3 +113,8 @@ def Profile(request):
         return render(request, 'account/profile.html',{'student':student})
     else:
         return redirect('login')
+
+@login_required
+def Logout(request):
+    logout(request)
+    return redirect("login")

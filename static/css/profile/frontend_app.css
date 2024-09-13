@@ -38870,13 +38870,13 @@ img[lazy=loaded] {
 
 @media (min-width:992px) {
     .header {
-        height: 100px
+        height: 100px;
     }
 }
 
 @media (max-width:992px) {
     .header {
-        min-height: 100px
+        min-height: 100px;
     }
 }
 

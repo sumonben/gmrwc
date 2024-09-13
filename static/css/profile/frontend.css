@@ -38664,9 +38664,9 @@ img[lazy=loaded] {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 65%;
     z-index: 1030;
-    background: #10707f;
+    background: #ffe8a1;
     -webkit-transform: translate(0);
     transform: translate(0);
     -webkit-transition: -webkit-transform .3s cubic-bezier(.17, .67, .54, .44);
@@ -38681,13 +38681,16 @@ img[lazy=loaded] {
 
 @media (min-width:768px) {
     .header {
-        height: 100px
+        height: 100px;
+        width: 100%;
     }
 }
 
 @media (max-width:768px) {
     .header {
-        min-height: 100px
+        min-height: 100px;
+        width: 100%;
+
     }
 }
 
@@ -38808,7 +38811,12 @@ button.close.text-light.search-box-close {
     position: relative;
     padding: 1rem 0
 }
-
+.logo img {
+        height: 65px;
+        margin-top: 0;
+        -webkit-transition: all .8s ease;
+        transition: all .8s ease
+    }
 .logo {
     padding: 0
 }

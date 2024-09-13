@@ -33,7 +33,7 @@
     {% include 'component/accessibilityModal.html' %}
 
 
-    <div class="container home-page" >
+    <div class="container home-page"  >
         <div class="row"  >
             <div class="col">        
                
@@ -112,14 +112,98 @@
     border-radius: 50%;
 } 
 
-}</style>
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 66%;
+    margin-left: 17%;
+    z-index: 1030;
+    background: #ff6200;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.17, .67, .54, .44);
+    transition: -webkit-transform .3s cubic-bezier(.17, .67, .54, .44);
+    transition: transform .3s cubic-bezier(.17, .67, .54, .44);
+    transition: transform .3s cubic-bezier(.17, .67, .54, .44), -webkit-transform .3s cubic-bezier(.17, .67, .54, .44)
+}
+.logo img {
+        height: 95px;
+        margin-top: -70px;
+        -webkit-transition: all .8s ease;
+        transition: all .8s ease
+    }
+.header.sticky {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+    box-shadow: 0 -12px 20px 1px #000
+}
+    .header.sticky .logo img {
+        height: 70px;
+        margin-top: -45px;
+    }
+    #college_name{
+        display: none;
+    }
+    #topbar-left{
+        display: none;
+    }
+.new-line{
+    margin-top: 10%;
+}
+@media(max-width:768px){
+    .header {
+        background: #ff6200;
+        width: 100%;
+        margin-left: 0%;
+    }
+    
+    .new-line{
+    margin-top: 25%;
+}
+    .top-menu{
+        display: none;
+    }
+    .header.sticky .logo img {
+        height: 70px;
+        margin-top: -2px;
+    }
+    .logo img {
+        height: 70px;
+        margin-top: -20px;
+        -webkit-transition: all .8s ease;
+        transition: all .8s ease
+    }
+    #college_name{
+        display: block;
+        text-align: center;
+        color: #ff6200;
+    }
+    .header nav {
+        text-align: right;
+        padding: 0px;
+        bottom: 30px;        
+    }
+    .header.sticky nav {
+        margin-top: 25px;
+        height: 40px;
+    }
+    
+
+}
+
+</style>
+
+<header  class="header" id="header">
     {% include 'component/topbar.html' %}
 
-<header  class="header sticky" id="header" style="width: 100%; position: relative;">
 <div class="container-wrapper">
 
 <div class="main-header">
-<nav class="navbar navbar-expand-lg p-lg-0"><a href="/" class="navbar-brand logo active router-link-active" aria-current="page"> <img src="{% static 'images/gmrwc_logo.png' %}" alt="Ictparklogo"></a> <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fas fa-bars"></span></button>
+    <a href="/" class="navbar-brand logo active router-link-active" aria-current="page"> <img src="{% static 'images/gmrwc_logo.png' %}" alt="Ictparklogo"></a>
+<nav class="navbar navbar-expand-lg p-lg-0" style="margin-left: 0px;"> 
+   <p id="college_name">সরকারি মুজিবুর রহমান মহিলা কলেজ</p><button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fas fa-bars"></span></button>
 <div id="navbarSupportedContent" class="navbar-collapse collapse" style="">
 <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fa fa-close"></span></button>
 <ul class="navbar-nav ml-auto">
@@ -250,12 +334,12 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 <div class="dropdown">
 
 <li class="nav-item dropdown">
-<a class="nav-link nav-link dropdown-toggle parent-active" href="/account/dashboard/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Md. Tariqul Islam
-<img src="https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg" class="rounded-circle" height="50" width="50" loading="lazy">
+<a class="nav-link nav-link dropdown-toggle parent-active" href="/account/dashboard/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p valign="top" style="font-size: 20px; color: #ff6200;">Md. Tariqul Islam<img src="https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg" class="rounded-circle" height="50" width="50" loading="lazy">
+</p>
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="/account/profile/">প্রোফাইল </a>
-<a class="dropdown-item" href="/account/logout/" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+<a class="dropdown-item" href="{% url 'profile'%}">প্রোফাইল </a>
+<a class="dropdown-item" href="{% url 'logout' %}">
 লগ-আউট
 </a>
 <a class="dropdown-item" href="/account/updateuser/">প্রোফাইল এডিট</a>
@@ -485,6 +569,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
       </div>
   </header>           
 -->
+  <div class="new-line"></div>
  <div class="container1">
     <div style="background-color: transparent" class="form-field2 d-flex align-items-center">
         <div style="position: relative;text-align: center" class="logo1">
@@ -598,7 +683,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
         <div class="row">
             <div class="col-sm-3">
                 <p class="mb-0">
-                </p><h4>ই-মেইল</h4>
+                </p><h4 id="email">ই-মেইল</h4>
                 <p></p>
             </div>
             <div class="col-sm-9">
@@ -1203,14 +1288,30 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 
             <!-- #endregion --> 
             <script>
-              // When the user scrolls down 50px from the top of the document, resize the header's font size
-              window.onscroll = function() {
-                  scrollFunction()
+                
+
+        window.onscroll = function() {
+            show=document.getElementById("email");
+            if ($(window).scrollTop() >= 50){
+                document.getElementById("header").className = "header sticky";
+                //alert("sumon");
+
+            }
+            else{
+                document.getElementById("header").className = "header";
+ 
+            }
+          /*  if (document.body.scrollTop >100 || document.documentElement.scrollTop > 100) {
+                    document.getElementById("header").className = "header sticky";
+                      
+                  } else {
+                    document.getElementById("header").className = "header";
+
+                  } */                 //scrollFunction();
               };
           
               function scrollFunction() {
-                  if (document.body.scrollTop >50 || document.documentElement.scrollTop > 50) {
-                    document.getElementById("header").className = "header sticky";
+                  if (document.body.scrollTop ===0 || document.documentElement.scrollTop ===0) {
                       
                   } else {
                     document.getElementById("header").className = "header";
