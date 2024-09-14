@@ -108,9 +108,18 @@ def Login(request):
 
 def Profile(request):
     if request.user.is_authenticated:
-        student=Student.objects.filter(user=request.user).first()
-        print(student)
-        return render(request, 'account/profile.html',{'student':student})
+        print(request.user.email)
+        email=request.user.email
+        if request.user.last_name in 'student':
+            student=Student.objects.filter(email=email).first()
+            print(student)
+            return render(request, 'account/profile.html',{'student':student})
+        if request.user.last_name in 'teacher':
+            teacher=Teacher.objects.filter(user=request.user).first()
+            print(teacher)
+            return render(request, 'account/profile.html',{'teacher':teacher})
+        return render(request, 'account/profile.html')
+
     else:
         return redirect('login')
 
