@@ -338,7 +338,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 <div class="dropdown">
 
 <li class="nav-item dropdown">
-<a class="nav-link nav-link dropdown-toggle parent-active" href="/account/dashboard/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p valign="top" style="font-size: 20px; color: blue;">{{student.name_bangla}}<img src="{%if student.image %}{{ student.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" class="rounded-circle" height="50" width="50" loading="lazy">
+<a class="nav-link nav-link dropdown-toggle parent-active" href="/account/dashboard/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p valign="top" style="font-size: 20px; color: blue;">{{teacher.t_name_bangla}}<img src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" class="rounded-circle" height="50" width="50" loading="lazy">
 </p>
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -382,19 +382,22 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 
   <div class="new-line"></div>
  <div class="container1">
+    <h3 align="center" style="color:#ff6200">{%if teacher.position in "1" %}অধ্যক্ষ{% elif teacher.position in "2" %}উপাধ্যক্ষ {% elif teacher.position in "4" %}বিভাগীয় প্রধান  {% else  %} **** {% endif %}</h3>
+
 
     <div style="background-color: transparent" class="form-field2 d-flex align-items-center">
         <div style="position: relative;text-align: center" class="logo1">
 
-<img id="profile" src="{%if student.image %}{{ student.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" class="rounded-circle" style="width: 150px;height: 150px">
+<img id="profile" src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" class="rounded-circle" style="width: 150px;height: 150px">
            <!---- <button class="fas fa-camera" data-toggle="modal" data-target="#exampleModal"></button>-->
 
 
 
 
-            <a href="{% url 'profile' %}"><h5 class="my-3">{{student.name_bangla}}</h5></a>
-            <h5 class="my-3">{{student.name}}</h5>
-            <p class="text-muted mb-1">{%if student.group %} {%if student.group in "1" %}বিজ্ঞান{% elif student.group in "2" %}মানবিক {% else  %}ব্যবসা শিক্ষা {% endif %}{% else %}{{student.department}} {% endif %}({{student.session}})</p>
+            <a href="{% url 'profile' %}"><h5 class="my-3">{{teacher.t_name_bangla}}</h5></a>
+            <h5 class="my-3">{{teacher.t_name}}</h5>
+            <p class="text-muted mb-1">{{teacher.designation}}({{teacher.service_id}})</p>
+            <p class="text-muted mb-1">{{teacher.t_department}}</p>
             <p class="text-muted mb-4">সরকারি মুজিবুর রহমান মহিলা কলেজ  বগুড়া</p>
             <div class="d-flex justify-content-center mb-2">
                 <a href="/account/updateuser/" class="btn btn-primary">প্রোফাইল তথ্য পরিবর্তন</a>
@@ -487,8 +490,8 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
             </div>
             <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                </p><h4>{{student.name_bangla}}</h4>
-                <p><h4>{{student.name}}</h4></p>
+                </p><h4>{{teacher.t_name_bangla}}</h4>
+                <p><h4>{{teacher.t_name}}</h4></p>
             </div>
         </div>
 
@@ -500,7 +503,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
             </div>
             <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                </p><h4>{{student.email}}</h4>
+                </p><h4>{{teacher.t_email}}</h4>
                 <p></p>
             </div>
         </div>
@@ -513,7 +516,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
             </div>
             <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                </p><h4>{{student.phone}}</h4>
+                </p><h4>{{teacher.t_phone}}</h4>
                 <p></p>
             </div>
         </div>
@@ -521,12 +524,12 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
         <div class="row">
             <div class="col-sm-3">
                 <p class="mb-0">
-                </p><h4>সেশন</h4>
+                </p><h4>পদবি </h4>
                 <p></p>
             </div>
             <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                </p><h4>{{student.session}}</h4>
+                </p><h4>{{teacher.designation}}({{teacher.service_id}})</h4>
                 <p></p>
             </div>
         </div>
@@ -540,7 +543,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
             <div class="col-sm-9">
                 <p class="text-muted mb-0">
                 </p><h4>
-                    {%if student.group %} {%if student.group in "1" %}বিজ্ঞান{% elif student.group in "2" %}মানবিক {% else  %}ব্যবসা শিক্ষা {% endif %}{% else %}{{student.department}} {% endif %}</h4>
+                    {{teacher.t_department}}</h4>
                 <p></p>
             </div>
         </div>
@@ -548,15 +551,29 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
         <div class="row">
             <div class="col-sm-3">
                 <p class="mb-0">
-                </p><h4>রোল</h4>
+                </p><h4>যোগদানের তারিখ</h4>
                 <p></p>
             </div>
             <div class="col-sm-9">
                 <p class="text-muted mb-0">
-                </p><h4>{{student.registration}}</h4>
+                </p><h4>{{teacher.joining_date}}</h4>
                 <p></p>
             </div>
         </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4>প্রথম যোগদানের তারিখ</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.first_joining_date}}</h4>
+                <p></p>
+            </div>
+        </div>
+        
 
     </div>
     

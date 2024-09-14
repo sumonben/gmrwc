@@ -117,7 +117,7 @@ def Profile(request):
         if request.user.last_name in 'teacher':
             teacher=Teacher.objects.filter(user=request.user).first()
             print(teacher)
-            return render(request, 'account/profile.html',{'teacher':teacher})
+            return render(request, 'account/teacherprofile.html',{'teacher':teacher})
         return render(request, 'account/profile.html')
 
     else:

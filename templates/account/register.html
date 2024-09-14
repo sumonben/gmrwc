@@ -1355,7 +1355,7 @@ body {
                
                 success: function (response) {
                     document.getElementById("id_name").classList.add("form-control");               
-
+                    document.getElementById("error").style.display="block";
                     //document.getElementById("student_form").reset();
                     if (response.status === 'success') {
                         // Clear the form
@@ -1484,6 +1484,7 @@ body {
                
                 success: function (response) {
                     document.getElementById("id_t_name").classList.add("form-control");               
+                    document.getElementById("error").style.display="block";
 
                     //document.getElementById("student_form").reset();
                     if (response.status === 'success') {
