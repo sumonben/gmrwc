@@ -1,6 +1,8 @@
 import json
+import os
+from tkinter import Image
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
 from django.shortcuts import redirect, render
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login,authenticate,logout
@@ -8,6 +10,14 @@ from .forms import StudentForm,TeacherForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import Student,Teacher
+from io import BytesIO
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter, landscape
+from reportlab.lib.pagesizes import A4
+from django.templatetags.static import static
+from xhtml2pdf import pisa
+from django.template.loader import get_template
 # Create your views here.
 UserModel=get_user_model()
 
@@ -111,7 +121,7 @@ def Profile(request):
         print(request.user.email)
         email=request.user.email
         if request.user.last_name in 'student':
-            student=Student.objects.filter(email=email).first()
+            student=Student.objects.filter(user=request.user).first()
             print(student)
             return render(request, 'account/profile.html',{'student':student})
         if request.user.last_name in 'teacher':
@@ -127,3 +137,70 @@ def Profile(request):
 def Logout(request):
     logout(request)
     return redirect("login")
+
+
+ 
+ 
+def generate_pdf(request):
+    if request.user.is_authenticated:
+        student=Student.objects.filter(user=request.user).first()
+        return render(request, 'account/certificate.html',{'student':student})
+    return render(request, 'account/login.html')
+        
+
+        
+
+    
+    
+    
+    
+    
+    
+    ''''student=Student.objects.filter(user=request.user).first()
+    fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gmrwc_logo.jpg')
+    response = render_to_pdf("account/certificate.html",{'student':student,'image':fn})
+    if response.status_code == 404:
+        raise HttpResponseNotFound("Statement form not found.")
+
+    filename = "Statement_form.pdf"
+    content = f"inline; filename={filename}"
+    content = f"attachment; filename={filename}"
+    response["Content-Disposition"] = content
+    return response
+
+def render_to_pdf(template_src, context_dict={}):
+    template = get_template(template_src)
+    html  = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode('utf-8')), result)
+    if pdf.err:
+        return HttpResponse("Invalid PDF", status_code=400, content_type='text/plain')
+    return HttpResponse(result.getvalue(), content_type='application/pdf')
+
+def generate_pdf_file(request):
+    
+    student=Student.objects.filter(user=request.user).first()
+
+    buffer = BytesIO()
+    p = canvas.Canvas(buffer,pagesize=A4)
+    
+    fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gmrwc_logo.jpg')
+    # Create a PDF document
+    print(fn)
+    p.drawImage(fn, 50, 760, width=60, height=60)    
+    p.drawString(120,800, "Govt Mujibur Rahman Women's College")
+    p.line(0,750,1000,750)
+    p.drawString(100, 750, "Book Catalog")
+    student=Student.objects.filter(user=request.user).first()
+
+    y = 700
+    p.drawString(100, y, f"নাম(বাংলা): {student.name_bangla}")
+    p.drawString(100, y - 20, f"Name: {student.name}")
+    p.drawString(100, y - 40, f"গ্রুপ: {student.group}")
+    y -= 60
+ 
+    p.showPage()
+    p.save()
+ 
+    buffer.seek(0)
+    return buffer'''

@@ -10,5 +10,7 @@ urlpatterns = [
     path('/register',views.Registration, name='register'),
     path('/profile',views.Profile, name='profile'),
     path('/logout', views.Logout, name='logout'),
+    path('/pdf', views.generate_pdf, name='pdf'),
+
 
 ]

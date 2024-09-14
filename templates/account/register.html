@@ -204,7 +204,7 @@
     
         // function that hides/shows field_four based upon field_three value
         function check_field_class_year() {
-            if($(this).val() == '7') {
+            if($(this).val() == 'পাশকৃত') {
                 // #id_field_four should be actually the id of the HTML element
                 // that surrounds everything you want to hide.  Since you did
                 // not post your HTML I can't finish this part for you.  
@@ -215,13 +215,13 @@
             }
         }
         function check_field_student_category() {
-            if($(this).val() == '1') {
+            if($(this).val() == 'এইচএসসি') {
                 $('#group').show();
             } else {
                 $('#group').hide();
 
             }
-            if($(this).val() == '2' || $(this).val() == '3') {
+            if($(this).val() == 'অনার্স' || $(this).val() == 'মাস্টার্স') {
                 // #id_field_four should be actually the id of the HTML element
                 // that surrounds everything you want to hide.  Since you did
                 // not post your HTML I can't finish this part for you.  

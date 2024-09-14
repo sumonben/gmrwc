@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'xhtml2pdf',
+    'reportlab',
     'account',
     'frontpage',
     'department',

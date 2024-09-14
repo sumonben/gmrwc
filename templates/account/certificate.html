@@ -1,0 +1,34 @@
+{% extends 'basepage/govtlayout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+</style>
+<div class="container home-page" id="column"  style="height: 1000px;">
+    <div class="row"  >
+        <div class="col" >
+            <div class="top-left">Bottom Left 
+        <h1>কেমন আছো?jugyulggrewiufgewiuferiueriupgtydfiohvdsiofgerhog<br><br<br>br><brhjbgyug
+             jkbhiu
+             kjhiu><br>iou98<br>kuytu<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></h1>
+        <button id="print" class="btn-default" onclick="goToPrint()" >Get PDF</button>
+    </div>
+        <img height="700px" src="{% static 'images/gmrwc_logo.png' %}" alt="" style="opacity: 0.1; left: 0; right: 0; position: relative; margin-left: 11%; margin-right: 11%; margin-top: 30%;">
+        
+        
+        </div>
+    </div>
+</div>
+    <script>
+        function goToPrint(){
+            document.getElementById("print").style.display="none";
+            window.print();
+        }
+    </script>
+    
+{% endblock %}
