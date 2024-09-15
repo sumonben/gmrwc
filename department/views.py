@@ -5,6 +5,8 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from frontpage.models import Carousel,Page,NavItem,NavElement,Post,ServiceBox
 from .models import Department
+from account.models import Teacher,Student
+
 
 # Create your views here.
 def DepartmentPage(request, type,heading, id):
@@ -14,7 +16,10 @@ def DepartmentPage(request, type,heading, id):
     page=Page.objects.filter(id=id).distinct().first()
     notices=Post.objects.all().order_by('-id')
     departments=Department.objects.filter(name=heading).first()
-    print(departments.id)
+    teachers=Teacher.objects.filter(t_department=departments)
+    department_head=Teacher.objects.filter(position="বিভাগীয় প্রধান").order_by("-joining_date").first()
+
+    print(department_head.t_name)
     '''books=Book.objects.all().select_related('author').order_by('-id')[:7]
     categories=Category.objects.all()
     tags=Tag.objects.all()
@@ -51,6 +56,8 @@ def DepartmentPage(request, type,heading, id):
         'type':type,
         'heading':heading,
         'id':id,
+        'teachers':teachers,
+        'department_head':department_head,
 
 
      }

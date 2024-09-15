@@ -12,11 +12,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Student,Teacher
 from io import BytesIO
 from django.http import FileResponse
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter, landscape
-from reportlab.lib.pagesizes import A4
-from django.templatetags.static import static
-from xhtml2pdf import pisa
 from django.template.loader import get_template
 # Create your views here.
 UserModel=get_user_model()
