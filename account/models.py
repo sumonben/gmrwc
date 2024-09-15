@@ -1,5 +1,7 @@
 import datetime
+from django.template.defaultfilters import escape
 from django.db import models
+from django.urls import include, re_path, reverse
 from .manager import UserManager
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
@@ -7,6 +9,7 @@ from department.models import Department,Branch
 from django.contrib.auth import get_user_model
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.html import format_html
 # Create your models here.
 UserModel=get_user_model()
 DESIGNATION_CHOICES = ( 
@@ -123,6 +126,11 @@ class Student(models.Model):
     image=models.ImageField(upload_to='media/',blank=True,null=True) 
     signature=models.ImageField(upload_to='media/',blank=True,null=True)
     user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
+    def user_link(self):
+      return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.id-29,)) , escape(self.user)))
+
+    user_link.allow_tags = True
+    user_link.short_description = "User"
    
 '''class CustomUser(AbstractUser):
     username=None

@@ -120,7 +120,7 @@ $.simpleTicker($("#demo"),{
         <!--  -->
         <h4 style="color: ">{{service_box.title}}</h4>
         <!-- <h4 style="color: ">আমাদের সম্পর্কে</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/18346db0_f357_4fdd_a8bb_c73c47c0db13/8b2ed27a82020bfb7accc7cf7b2dcae9.png" alt="আমাদের সম্পর্কে" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
+         <img src="{% if service_box.image %}{{service_box.image.url}}{% else %}{%static 'images/gmrwc_logo.png' %}{% endif %}" alt="আমাদের সম্পর্কে" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
 "link": "\/site\/officer_list\/\u09ae\u09cb\u0983-\u09b8\u09be\u0987\u09ab\u09c1\u09b2-\u0987\u09b8\u09b2\u09be\u09ae",
 "caption": {
     "bn": "\u099c\u09c7\u09b2\u09be \u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u0995",
@@ -156,233 +156,48 @@ $.simpleTicker($("#demo"),{
    </div>
    {% endfor%}
 
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">ভূমি-সেবা</h4>
-        <!-- <h4 style="color: ">ভূমি-সেবা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/9192d1e4_c3f7_42c7_bf24_07f7e240f026/dbec1ea3119ecb80890e358fa617b015.png" alt="ভূমি-সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "http:\/\/xn--d5by7bap7cc3ici3m.xn--54b7fta0cc\/index.php",
-"caption": {
-    "bn": "\u0989\u09a4\u09cd\u09a4\u09b0\u09be\u09a7\u09bf\u0995\u09be\u09b0 \u0995\u09cd\u09af\u09be\u09b2\u0995\u09c1\u09b2\u09c7\u099f\u09b0 ",
-    "en": "Legacy calculator"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://xn--d5by7bap7cc3ici3m.xn--54b7fta0cc/index.php" title="উত্তরাধিকার ক্যালকুলেটর "> 
-                    উত্তরাধিকার ক্যালকুলেটর 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.land.gov.bd/pages/mutation" title="ই-মিউটেশন ">
-                    ই-মিউটেশন 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/policy/" title="আইন ও নীতিমালা ">
-                    আইন ও নীতিমালা 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.land.gov.bd/pages/asking/" title="সচরাচর জিজ্ঞাসা ">
-                    সচরাচর জিজ্ঞাসা 
-                </a>
-            </li>
-         </ul></div>
-   </div>
-    </div>
+     
+</div>
 
         <div class="row service-row">
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">কর্মসম্পাদন ব্যবস্থাপনা</h4>
-        <!-- <h4 style="color: ">কর্মসম্পাদন ব্যবস্থাপনা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/c46c974e_4382_4a8b_b5d7_660c1dfb6112/cd6fe5525072466df0bd4d806e70eb7f.png" alt="কর্মসম্পাদন ব্যবস্থাপনা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "\/site\/page\/iuPl-\u09ac\u09be\u09b0\u09cd\u09b7\u09bf\u0995-\u0995\u09b0\u09cd\u09ae\u09b8\u09ae\u09cd\u09aa\u09be\u09a6\u09a8-\u099a\u09c1\u0995\u09cd\u09a4\u09bf-APA-20212022",
-"caption": {
-    "bn": "\u09ac\u09be\u09b0\u09cd\u09b7\u09bf\u0995 \u0995\u09b0\u09cd\u09ae\u09b8\u09ae\u09cd\u09aa\u09be\u09a6\u09a8 \u099a\u09c1\u0995\u09cd\u09a4\u09bf \u09e8\u09e6\u09e8\u09e9-\u09e8\u09e6\u09e8\u09ea",
-    "en": "Annual Performance Agreement 2023-2024"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/iuPl-%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%BE%E0%A6%A6%E0%A6%A8-%E0%A6%9A%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF-APA-20212022" title="বার্ষিক কর্মসম্পাদন চুক্তি ২০২৩-২০২৪"> 
-                    বার্ষিক কর্মসম্পাদন চুক্তি ২০২৩-২০২৪
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.cabinet.gov.bd/site/page/bdec54ed-c190-4f2b-929a-f5775d0b255a/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%AA%E0%A6%A8/%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0/%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE" title="প্রজ্ঞাপন/পরিপত্র/নীতিমালা">
-                    প্রজ্ঞাপন/পরিপত্র/নীতিমালা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%BE%E0%A6%A6%E0%A6%A8-%E0%A6%9A%E0%A7%81%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0-%E0%A7%A7%E0%A6%AE-%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A7%88%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%85%E0%A6%B0%E0%A7%8D%E0%A6%9C%E0%A6%A8-%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%A4-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8-1" title="এপিএ  এর ত্রৈমাসিক অর্জন প্রতিবেদন">
-                    এপিএ  এর ত্রৈমাসিক অর্জন প্রতিবেদন
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="//apams.cabinet.gov.bd/apa/view-complete/34466" title="এপিএমএস">
-                    এপিএমএস
-                </a>
-            </li>
-         </ul></div>
-   </div>
-
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">সেবা প্রদান প্রতিশ্রুতি (সিটিজেন চার্টার)</h4>
-        <!-- <h4 style="color: ">সেবা প্রদান প্রতিশ্রুতি (সিটিজেন চার্টার)</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//63b/a84/9fb/63ba849fba861735044927.png" alt="সেবা প্রদান প্রতিশ্রুতি (সিটিজেন চার্টার)" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A8-%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0" title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেন চার্টার)"> 
-                    সেবা প্রদান প্রতিশ্রুতি (সিটিজেন চার্টার)
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%BE%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%BF-%E0%A6%AB%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%B2-%E0%A6%AA%E0%A7%9F%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F-%E0%A6%93-%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%AB%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%B2-%E0%A6%AA%E0%A7%9F%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE" title="ফোকাল পয়েন্ট ও বিকল্প ফোকাল পয়েন্ট  কর্মকর্তা ">
-                    ফোকাল পয়েন্ট ও বিকল্প ফোকাল পয়েন্ট  কর্মকর্তা 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%BE%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B6%E0%A7%8D%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A6%BF--%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A8-%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0--%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%9F%E0%A6%BF" title="পরিবীক্ষণ কমিটি ও ত্রৈমাসিক মুল্যায়ন প্রতিবেদন ">
-                    পরিবীক্ষণ কমিটি ও ত্রৈমাসিক মুল্যায়ন প্রতিবেদন 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="//cabinet.gov.bd/site/page/10117079-8a4a-4743-99b6-1dd9c1230a07/%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BF-%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A6%BE---%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%AA%E0%A6%A8" title=" আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন">
-                     আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন
-                </a>
-            </li>
-         </ul></div>
-   </div>
-                </div>
-
-        <div class="row service-row">
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">তথ্য অধিকার</h4>
-        <!-- <h4 style="color: ">তথ্য অধিকার</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/0968d15c_75b1_414f_9003_f4f4f66c1d6b/651975d17728cd4a76509ddc40eb5dd5.png" alt="তথ্য অধিকার" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "site\/info_officer\/jPrc-\u09a4\u09a5\u09cd\u09af-\u09aa\u09cd\u09b0\u09a6\u09be\u09a8\u0995\u09be\u09b0\u09c0-\u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be\u0997\u09a3",
-"caption": {
-    "bn": "\u09a4\u09a5\u09cd\u09af \u09aa\u09cd\u09b0\u09a6\u09be\u09a8\u0995\u09be\u09b0\u09c0 \u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be, \u09ac\u09bf\u0995\u09b2\u09cd\u09aa \u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be \u0993 \u0986\u09aa\u09bf\u09b2 \u0995\u09b0\u09cd\u09a4\u09c3\u09aa\u0995\u09cd\u09b7 ",
-    "en": "Designated Officers"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/info_officer/jPrc-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A6%E0%A6%BE%E0%A6%A8%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%97%E0%A6%A3" title="তথ্য প্রদানকারী কর্মকর্তা, বিকল্প কর্মকর্তা ও আপিল কর্তৃপক্ষ "> 
-                    তথ্য প্রদানকারী কর্মকর্তা, বিকল্প কর্মকর্তা ও আপিল কর্তৃপক্ষ 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.infocom.gov.bd/site/view/law/%20" title="তথ্য আইন ও বিধিমালা">
-                    তথ্য আইন ও বিধিমালা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://bangladesh.gov.bd/site/view/policy" title="কর্মকর্তা ও আবেদনকারীর নির্দেশিকা">
-                    কর্মকর্তা ও আবেদনকারীর নির্দেশিকা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://forms.mygov.bd/site/view/form-office/6621/%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%95%E0%A6%AE%E0%A6%BF%E0%A6%B6%E0%A6%A8" title="তথ্যের আবেদন ও আপিল ফর্ম">
-                    তথ্যের আবেদন ও আপিল ফর্ম
-                </a>
-            </li>
-         </ul></div>
-   </div>
-
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: FFFFFF">শুদ্ধাচার কৌশল</h4>
-        <!-- <h4 style="color: FFFFFF">শুদ্ধাচার কৌশল</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//63b/a84/1e4/63ba841e47106349217172.png" alt="শুদ্ধাচার কৌশল" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "\/site\/page\/\u099c\u09be\u09a4\u09c0\u09df-\u09b6\u09c1\u09a6\u09cd\u09a7\u09be\u099a\u09be\u09b0-\u0995\u09b0\u09cd\u09ae\u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be-\u09e8\u09e6\u09e8\u09e8-\u09e8\u09e9",
-"caption": {
-    "bn": "\u09b6\u09c1\u09a6\u09cd\u09a7\u09be\u099a\u09be\u09b0 \u0995\u09b0\u09cd\u09ae\u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be",
-    "en": "National Correctional Action Plan-2022-23"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%9C%E0%A6%BE%E0%A6%A4%E0%A7%80%E0%A7%9F-%E0%A6%B6%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%A8%E0%A6%BE-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%A8-%E0%A7%A8%E0%A7%A9" title="শুদ্ধাচার কর্মপরিকল্পনা"> 
-                    শুদ্ধাচার কর্মপরিকল্পনা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%A8%E0%A6%BE-%E0%A6%93-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AC%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%A3-%E0%A6%95%E0%A6%BE%E0%A6%A0%E0%A6%BE%E0%A6%AE%E0%A7%8B" title="ত্রৈমাসিক বাস্তবায়ন অগ্রগতি">
-                    ত্রৈমাসিক বাস্তবায়ন অগ্রগতি
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%B6%E0%A7%81%E0%A6%A6%E0%A7%8D%E0%A6%A7%E0%A6%BE%E0%A6%9A%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%A4-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%AA%E0%A6%A8-%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A6%A3%E0%A7%80" title="প্রজ্ঞাপন/নীতিমালা/কার্যবিবরণী">
-                    প্রজ্ঞাপন/নীতিমালা/কার্যবিবরণী
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA-%E0%A6%AB%E0%A7%8B%E0%A6%95%E0%A6%BE%E0%A6%B2-%E0%A6%AA%E0%A7%9F%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE" title="ফোকাল পয়েন্ট ও বিকল্প ফোকাল পয়েন্ট কর্মকর্তাবৃন্দ">
-                    ফোকাল পয়েন্ট ও বিকল্প ফোকাল পয়েন্ট কর্মকর্তাবৃন্দ
-                </a>
-            </li>
-         </ul></div>
-   </div>
-                </div>
-
-        <div class="row service-row">
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">কৃষি, মৎস্য ও প্রাণি-সেবা</h4>
-        <!-- <h4 style="color: ">কৃষি, মৎস্য ও প্রাণি-সেবা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/38a5d4e5_1aee_11e7_8120_286ed488c766/a018fbeb0bf7da92da1c47fe5039904a.png" alt="কৃষি, মৎস্য ও প্রাণি-সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "http:\/\/www.bangladesh.gov.bd\/site\/view\/eservices\/\u0995\u09c3\u09b7\u09bf",
-"caption": {
-    "bn": "\u0995\u09c3\u09b7\u09bf \u09b8\u09c7\u09ac\u09be",
-    "en": "Agricultural Services "
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/eservices/%E0%A6%95%E0%A7%83%E0%A6%B7%E0%A6%BF" title="কৃষি সেবা"> 
-                    কৃষি সেবা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/eservices/%E0%A6%AE%E0%A7%8E%E0%A6%B8%E0%A7%8D%E0%A6%AF%20%E0%A6%93%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A6%BF" title="মৎস্য ও প্রাণি-সেবা ">
-                    মৎস্য ও প্রাণি-সেবা 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/mservices/%E0%A6%AE%E0%A7%8E%E0%A6%B8%E0%A7%8D%E0%A6%AF%20%E0%A6%93%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A3%E0%A6%BF" title="মোবাইলে মৎস্য ও প্রাণি-সেবা ">
-                    মোবাইলে মৎস্য ও প্রাণি-সেবা 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/mservices/%E0%A6%95%E0%A7%83%E0%A6%B7%E0%A6%BF" title="মোবাইলে কৃষি সেবা ">
-                    মোবাইলে কৃষি সেবা 
-                </a>
-            </li>
-         </ul></div>
-   </div>
+            <div class="col-md-6">
+                <div class="service-box box">
+                  <!--  -->
+                  <h4 style="color: ">জরুরি সেবা</h4>
+                  <!-- <h4 style="color: ">জরুরি সেবা</h4> -->
+                   <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/0924ac1a_ae30_4802_9246_8770aeae69a0/b602b76bbda63674b6d8013adb998260.png" alt="জরুরি সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
+          "link": "site\/page\/acHu-\u09ab\u09cb\u09a8\u09c7-\u09b8\u0995\u09b2-\u09a4\u09a5\u09cd\u09af-\u099c\u09be\u09a8\u09c1\u09a8",
+          "caption": {
+              "en": "Find all the information on phone",
+              "bn": "\u09ab\u09cb\u09a8\u09c7 \u09b8\u0995\u09b2 \u09a4\u09a5\u09cd\u09af \u099c\u09be\u09a8\u09c1\u09a8 "
+          }
+          } --><li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/acHu-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A6%95%E0%A6%B2-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%A8" title="ফোনে সকল তথ্য জানুন "> 
+                              ফোনে সকল তথ্য জানুন 
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/2tbG-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A6%BF-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A7%9F%E0%A6%A4%E0%A6%BE" title="ফোনে পুলিশি সহায়তা ">
+                              ফোনে পুলিশি সহায়তা 
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/Pufl-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%93-%E0%A6%B6%E0%A6%BF%E0%A6%B6%E0%A7%81-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B2-%E0%A6%9F%E0%A7%8B%E0%A6%B2%E0%A6%AB%E0%A7%8D%E0%A6%B0%E0%A6%BF-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8" title="ফোনে নারী ও শিশু সহায়তা ">
+                              ফোনে নারী ও শিশু সহায়তা 
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/kGm8-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A7%87-%E0%A6%A1%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%BE" title="ফোনে ডাক্তারের সেবা ">
+                              ফোনে ডাক্তারের সেবা 
+                          </a>
+                      </li>
+                   </ul></div>
+             </div>
+          
 
        <div class="col-md-6">
       <div class="service-box box">
@@ -424,237 +239,92 @@ $.simpleTicker($("#demo"),{
                 </div>
 
         <div class="row service-row">
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">পর্যটন-সেবা</h4>
-        <!-- <h4 style="color: ">পর্যটন-সেবা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/38a5d60f_1aee_11e7_8120_286ed488c766/a8350a89114723088e44469f9895a234.png" alt="পর্যটন-সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "\/site\/view\/tourist_spot",
-"caption": {
-    "bn": "\u09a6\u09b0\u09cd\u09b6\u09a8\u09c0\u09af\u09bc \u09b8\u09cd\u09a5\u09be\u09a8\u09b8\u09ae\u09c2\u09b9",
-    "en": "Tourist Spots"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/view/tourist_spot" title="দর্শনীয় স্থানসমূহ"> 
-                    দর্শনীয় স্থানসমূহ
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/6FBE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%E0%A6%B0-%E0%A6%90%E0%A6%A4%E0%A6%BF%E0%A6%B9%E0%A7%8D%E0%A6%AF" title="জেলার ঐতিহ্য">
-                    জেলার ঐতিহ্য
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/VLUh-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%9F%E0%A6%A8-%E0%A6%B8%E0%A7%87%E0%A6%B2" title="পর্যটন সেল">
-                    পর্যটন সেল
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/u9tj-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%BE%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A6%BE-%E0%A6%8F%E0%A6%AC%E0%A6%82-%E0%A6%B9%E0%A7%8B%E0%A6%9F%E0%A7%87%E0%A6%B2-%E0%A6%93-%E0%A6%86%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A6%A8" title="যোগাযোগ এবং হোটেল ও আবাসন">
-                    যোগাযোগ এবং হোটেল ও আবাসন
-                </a>
-            </li>
-         </ul></div>
-   </div>
+            <div class="col-md-6">
+                <div class="service-box box">
+                  <!--  -->
+                  <h4 style="color: ">স্বাস্থ্য-সেবা</h4>
+                  <!-- <h4 style="color: ">স্বাস্থ্য-সেবা</h4> -->
+                   <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/3e95084a_1aee_11e7_8120_286ed488c766/db079bc69d1ea34a0d7236bb0d589742.png" alt="স্বাস্থ্য-সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
+          "link": "\/site\/page\/xS3I-\u09b9\u09be\u09b8\u09aa\u09be\u09a4\u09be\u09b2-\u0993-\u0995\u09cd\u09b2\u09bf\u09a8\u09bf\u0995",
+          "caption": {
+              "bn": "\u09a1\u09be\u0995\u09cd\u09a4\u09be\u09b0\u09c7\u09b0 \u09b8\u09be\u09a5\u09c7 \u0995\u09a5\u09be \u09ac\u09b2\u09c1\u09a8",
+              "en": "Talk to the doctor"
+          }
+          } --><li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/xS3I-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2-%E0%A6%93-%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95" title="ডাক্তারের সাথে কথা বলুন"> 
+                              ডাক্তারের সাথে কথা বলুন
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/s9WU-%E0%A6%A1%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE" title="ডাক্তারের তালিকা">
+                              ডাক্তারের তালিকা
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/xS3I-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2-%E0%A6%93-%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95" title=" হাসপাতাল ও ক্লিনিক ">
+                               হাসপাতাল ও ক্লিনিক 
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="http://www.bangladesh.gov.bd/site/view/eservices/%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A7%9F%E0%A6%95" title="স্বাস্থ্য-সেবা">
+                              স্বাস্থ্য-সেবা
+                          </a>
+                      </li>
+                   </ul></div>
+             </div>
+                 
 
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">স্বাস্থ্য-সেবা</h4>
-        <!-- <h4 style="color: ">স্বাস্থ্য-সেবা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/3e95084a_1aee_11e7_8120_286ed488c766/db079bc69d1ea34a0d7236bb0d589742.png" alt="স্বাস্থ্য-সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "\/site\/page\/xS3I-\u09b9\u09be\u09b8\u09aa\u09be\u09a4\u09be\u09b2-\u0993-\u0995\u09cd\u09b2\u09bf\u09a8\u09bf\u0995",
-"caption": {
-    "bn": "\u09a1\u09be\u0995\u09cd\u09a4\u09be\u09b0\u09c7\u09b0 \u09b8\u09be\u09a5\u09c7 \u0995\u09a5\u09be \u09ac\u09b2\u09c1\u09a8",
-    "en": "Talk to the doctor"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/xS3I-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2-%E0%A6%93-%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95" title="ডাক্তারের সাথে কথা বলুন"> 
-                    ডাক্তারের সাথে কথা বলুন
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/s9WU-%E0%A6%A1%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A7%87%E0%A6%B0-%E0%A6%A4%E0%A6%BE%E0%A6%B2%E0%A6%BF%E0%A6%95%E0%A6%BE" title="ডাক্তারের তালিকা">
-                    ডাক্তারের তালিকা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/xS3I-%E0%A6%B9%E0%A6%BE%E0%A6%B8%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE%E0%A6%B2-%E0%A6%93-%E0%A6%95%E0%A7%8D%E0%A6%B2%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%95" title=" হাসপাতাল ও ক্লিনিক ">
-                     হাসপাতাল ও ক্লিনিক 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/eservices/%E0%A6%B8%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B8%E0%A7%8D%E0%A6%A5%E0%A7%8D%E0%A6%AF%20%E0%A6%AC%E0%A6%BF%E0%A6%B7%E0%A7%9F%E0%A6%95" title="স্বাস্থ্য-সেবা">
-                    স্বাস্থ্য-সেবা
-                </a>
-            </li>
-         </ul></div>
-   </div>
-                </div>
-
-        <div class="row service-row">
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">জরুরি সেবা</h4>
-        <!-- <h4 style="color: ">জরুরি সেবা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/0924ac1a_ae30_4802_9246_8770aeae69a0/b602b76bbda63674b6d8013adb998260.png" alt="জরুরি সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "site\/page\/acHu-\u09ab\u09cb\u09a8\u09c7-\u09b8\u0995\u09b2-\u09a4\u09a5\u09cd\u09af-\u099c\u09be\u09a8\u09c1\u09a8",
-"caption": {
-    "en": "Find all the information on phone",
-    "bn": "\u09ab\u09cb\u09a8\u09c7 \u09b8\u0995\u09b2 \u09a4\u09a5\u09cd\u09af \u099c\u09be\u09a8\u09c1\u09a8 "
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/acHu-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A6%95%E0%A6%B2-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF-%E0%A6%9C%E0%A6%BE%E0%A6%A8%E0%A7%81%E0%A6%A8" title="ফোনে সকল তথ্য জানুন "> 
-                    ফোনে সকল তথ্য জানুন 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/2tbG-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A7%87-%E0%A6%AA%E0%A7%81%E0%A6%B2%E0%A6%BF%E0%A6%B6%E0%A6%BF-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A7%9F%E0%A6%A4%E0%A6%BE" title="ফোনে পুলিশি সহায়তা ">
-                    ফোনে পুলিশি সহায়তা 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/Pufl-%E0%A6%A8%E0%A6%BE%E0%A6%B0%E0%A7%80-%E0%A6%93-%E0%A6%B6%E0%A6%BF%E0%A6%B6%E0%A7%81-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A6%A8-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%B0%E0%A7%8B%E0%A6%A7%E0%A7%87-%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%A8%E0%A6%BE%E0%A6%B2-%E0%A6%9F%E0%A7%8B%E0%A6%B2%E0%A6%AB%E0%A7%8D%E0%A6%B0%E0%A6%BF-%E0%A6%B9%E0%A7%87%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%A8" title="ফোনে নারী ও শিশু সহায়তা ">
-                    ফোনে নারী ও শিশু সহায়তা 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/kGm8-%E0%A6%AB%E0%A7%8B%E0%A6%A8%E0%A7%87-%E0%A6%A1%E0%A6%BE%E0%A6%95%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%B0%E0%A6%BF-%E0%A6%B8%E0%A7%87%E0%A6%AC%E0%A6%BE" title="ফোনে ডাক্তারের সেবা ">
-                    ফোনে ডাক্তারের সেবা 
-                </a>
-            </li>
-         </ul></div>
-   </div>
-
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">শিক্ষা-সেবা</h4>
-        <!-- <h4 style="color: ">শিক্ষা-সেবা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/38a5d576_1aee_11e7_8120_286ed488c766/43af635d85642100396de8c15e8d7cec.png" alt="শিক্ষা-সেবা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "http:\/\/www.educationboardresults.gov.bd\/",
-"caption": {
-    "bn": "\u09aa\u09b0\u09c0\u0995\u09cd\u09b7\u09be\u09b0 \u09ab\u09b2\u09be\u09ab\u09b2 ",
-    "en": "Examinations Results"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.educationboardresults.gov.bd/" title="পরীক্ষার ফলাফল "> 
-                    পরীক্ষার ফলাফল 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.bangladesh.gov.bd/site/view/eservices/%E0%A6%AD%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%B0%20%E0%A6%86%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8" title="বিশ্ববিদ্যালয়সমূহ">
-                    বিশ্ববিদ্যালয়সমূহ
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://application.emis.gov.bd/emis" title=" MPO আবেদন">
-                     MPO আবেদন
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://bangladesh.gov.bd/site/page/9b530194-c516-4108-9d17-2482f749bd7e" title="শিক্ষাবোর্ডসমূহ">
-                    শিক্ষাবোর্ডসমূহ
-                </a>
-            </li>
-         </ul></div>
-   </div>
-                </div>
+             <div class="col-md-6">
+                <div class="service-box box">
+                  <!--  -->
+                  <h4 style="color: ">অভিযোগ প্রতিকার ব্যবস্থা</h4>
+                  <!-- <h4 style="color: ">অভিযোগ প্রতিকার ব্যবস্থা</h4> -->
+                   <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/6ea215b5_ed5a_4f02_8d1e_242b69929105/22ac738855abdbc09d366845ba752be3.png" alt="অভিযোগ প্রতিকার ব্যবস্থা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
+          "link": "site\/onik\/G49j-\u0985\u09ad\u09bf\u09af\u09cb\u0997-\u09a8\u09bf\u09b7\u09cd\u09aa\u09a4\u09cd\u09a4\u09bf\u0995\u09be\u09b0\u09bf-\u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be\u0997\u09a3",
+          "caption": {
+              "bn": "\u0985\u09a8\u09bf\u0995 \u0993 \u0986\u09aa\u09bf\u09b2 \u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be\u0997\u09a3 ",
+              "en": "ONIK & Appellate Officer"
+          }
+          } --><li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/onik/G49j-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%97%E0%A6%A3" title="অনিক ও আপিল কর্মকর্তাগণ "> 
+                              অনিক ও আপিল কর্মকর্তাগণ 
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="http://www.grs.gov.bd" title="অনলাইনে অভিযোগ দাখিল">
+                              অনলাইনে অভিযোগ দাখিল
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="/bn/site/page/HLIX-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8" title="মাসিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন ">
+                            মূল্যায়ন প্রতিবেদন 
+                          </a>
+                      </li>
+                      <li>
+                          <i class="text-green fa fa-caret-right"></i>
+                          <a href="//cabinet.gov.bd/site/page/226895bd-5035-455d-a940-8b8058f009f0/%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BF-%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%AA%E0%A6%A8--" title="আইন/বিধি/পরিপত্র/নীতিমালা ">
+                              আইন/বিধি/পরিপত্র/নীতিমালা 
+                          </a>
+                      </li>
+                   </ul></div>
+             </div>
+                   </div>
 
         <div class="row service-row">
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">অভিযোগ প্রতিকার ব্যবস্থা</h4>
-        <!-- <h4 style="color: ">অভিযোগ প্রতিকার ব্যবস্থা</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/files/bogra.gov.bd/front_service_box/6ea215b5_ed5a_4f02_8d1e_242b69929105/22ac738855abdbc09d366845ba752be3.png" alt="অভিযোগ প্রতিকার ব্যবস্থা" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "site\/onik\/G49j-\u0985\u09ad\u09bf\u09af\u09cb\u0997-\u09a8\u09bf\u09b7\u09cd\u09aa\u09a4\u09cd\u09a4\u09bf\u0995\u09be\u09b0\u09bf-\u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be\u0997\u09a3",
-"caption": {
-    "bn": "\u0985\u09a8\u09bf\u0995 \u0993 \u0986\u09aa\u09bf\u09b2 \u0995\u09b0\u09cd\u09ae\u0995\u09b0\u09cd\u09a4\u09be\u0997\u09a3 ",
-    "en": "ONIK & Appellate Officer"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/onik/G49j-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%A8%E0%A6%BF%E0%A6%B7%E0%A7%8D%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%BF-%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%AE%E0%A6%95%E0%A6%B0%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%97%E0%A6%A3" title="অনিক ও আপিল কর্মকর্তাগণ "> 
-                    অনিক ও আপিল কর্মকর্তাগণ 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="http://www.grs.gov.bd" title="অনলাইনে অভিযোগ দাখিল">
-                    অনলাইনে অভিযোগ দাখিল
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/HLIX-%E0%A6%85%E0%A6%AD%E0%A6%BF%E0%A6%AF%E0%A7%8B%E0%A6%97-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B0-%E0%A6%B8%E0%A6%82%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A4-%E0%A6%AE%E0%A6%BE%E0%A6%B8%E0%A6%BF%E0%A6%95-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A4%E0%A6%BF%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8" title="মাসিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন ">
-                    মাসিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন 
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="//cabinet.gov.bd/site/page/226895bd-5035-455d-a940-8b8058f009f0/%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A6%AC%E0%A6%BF%E0%A6%A7%E0%A6%BF-%E0%A6%A8%E0%A7%80%E0%A6%A4%E0%A6%BF%E0%A6%AE%E0%A6%BE%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%A6%E0%A7%87%E0%A6%B6%E0%A6%BF%E0%A6%95%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%9C%E0%A7%8D%E0%A6%9E%E0%A6%BE%E0%A6%AA%E0%A6%A8--" title="আইন/বিধি/পরিপত্র/নীতিমালা ">
-                    আইন/বিধি/পরিপত্র/নীতিমালা 
-                </a>
-            </li>
-         </ul></div>
-   </div>
+       
 
-       <div class="col-md-6">
-      <div class="service-box box">
-        <!--  -->
-        <h4 style="color: ">স্বপ্রণোদিত তথ্য প্রকাশ</h4>
-        <!-- <h4 style="color: ">স্বপ্রণোদিত তথ্য প্রকাশ</h4> -->
-         <img src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//61f/79c/76d/61f79c76d4d7c801014901.png" alt="স্বপ্রণোদিত তথ্য প্রকাশ" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
-"link": "\/site\/page\/\u099c\u09c7\u09b2\u09be-\u09aa\u09b0\u09cd\u09af\u09be\u09df\u09c7\u09b0-\u09ac\u09be\u09b0\u09cd\u09b7\u09bf\u0995-\u0989\u09a6\u09cd\u09ad\u09be\u09ac\u09a8-\u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be-\u09e8\u09e6\u09e8\u09e8",
-"caption": {
-    "bn": "\u099c\u09c7\u09b2\u09be \u09aa\u09b0\u09cd\u09af\u09be\u09df\u09c7\u09b0 \u09ac\u09be\u09b0\u09cd\u09b7\u09bf\u0995 \u0989\u09a6\u09cd\u09ad\u09be\u09ac\u09a8 \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be \u09e8\u09e6\u09e8\u09e8-\u09e8\u09e6\u09e8\u09e9",
-    "en": "District Level Annual Innovation Plan 2022-2023"
-}
-} --><li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95-%E0%A6%89%E0%A6%A6%E0%A7%8D%E0%A6%AD%E0%A6%BE%E0%A6%AC%E0%A6%A8-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%A8%E0%A6%BE-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%A8" title="জেলা পর্যায়ের বার্ষিক উদ্ভাবন পরিকল্পনা ২০২২-২০২৩"> 
-                    জেলা পর্যায়ের বার্ষিক উদ্ভাবন পরিকল্পনা ২০২২-২০২৩
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%AE%E0%A7%8B%E0%A6%AC%E0%A6%BE%E0%A6%87%E0%A6%B2-%E0%A6%95%E0%A7%8B%E0%A6%B0%E0%A7%8D%E0%A6%9F-%E0%A6%B8%E0%A6%AE%E0%A7%8D%E0%A6%AA%E0%A6%B0%E0%A7%8D%E0%A6%95%E0%A6%BF%E0%A6%A4-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF" title="মোবাইল কোর্ট সম্পর্কিত তথ্য">
-                    মোবাইল কোর্ট সম্পর্কিত তথ্য
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%86%E0%A6%AC%E0%A7%87%E0%A6%A6%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%A4%E0%A7%87-%E0%A6%93-%E0%A6%AE%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0%E0%A6%A3%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87-%E0%A6%B8%E0%A6%B0%E0%A6%AC%E0%A6%B0%E0%A6%BE%E0%A6%B9%E0%A6%95%E0%A7%83%E0%A6%A4-%E0%A6%A4%E0%A6%A5%E0%A7%8D%E0%A6%AF%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%AC%E0%A6%B0%E0%A6%A3" title="সরবরাহকৃত তথ্যের বিবরণ">
-                    সরবরাহকৃত তথ্যের বিবরণ
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%BF%E0%A6%95-%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A7%9F-%E0%A6%AA%E0%A6%B0%E0%A6%BF%E0%A6%95%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A6%A8%E0%A6%BE" title="বার্ষিক ক্রয় পরিকল্পনা">
-                    বার্ষিক ক্রয় পরিকল্পনা
-                </a>
-            </li>
-         </ul></div>
-   </div>
+    </div>
+
+        <div class="row service-row">
+       
+       
                 
    <div class="block">
 

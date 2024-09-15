@@ -107,6 +107,8 @@ class NavElement(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.head
+    def Related_pages(self):
+        return " | ".join([p.heading for p in self.page.all()])
 
 class NavItem(models.Model):
     serial=models.IntegerField(default=10)
@@ -117,6 +119,8 @@ class NavItem(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.name
+    def Related_Element(self):
+        return " | ".join([p.head for p in self.navelement.all()])
 
 
 class ServiceBox(models.Model):
@@ -124,5 +128,7 @@ class ServiceBox(models.Model):
     title=models.CharField(max_length=100,unique=True)
     element=models.ManyToManyField(Page, null=True, blank=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True)
+    class Meta:
+        ordering = ['serial']
     def __str__(self):
         return self.title

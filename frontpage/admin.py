@@ -66,7 +66,8 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(NavElement)
 class NavElementAdmin(admin.ModelAdmin):
     filter_horizontal = ['page',]
-    list_display=[   'serial','head',]
+    list_display=[   'serial','head', 'Related_pages']
+    list_display_links = ['head','serial']
     search_fields=[  'head',]
     def formfield_for_manytomany(self, db_field, request=None, **kwargs):
         if db_field.name == 'your_sortedm2m_field_name':
@@ -75,7 +76,7 @@ class NavElementAdmin(admin.ModelAdmin):
 @admin.register(NavItem)
 class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ['navelement',]
-    list_display=[   'serial','name',]
+    list_display=[   'serial','name','Related_Element']
     search_fields=[  'name',]
 
 @admin.register(ServiceBox)
