@@ -87,6 +87,22 @@ class Page(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.heading
+    def parent_nav_link(self):
+        navelement=NavElement.objects.filter(page=self.id).first()
+        navitem=None
+        if navelement:
+            navitem=NavItem.objects.filter(navelement=navelement.id).first()
+        '''if navelement:
+            str=format_html('<a href="%s">%s</a>'   % (reverse("admin:frontpage_navelement_change", args=(navelement.id)) , escape(navelement.head)))
+        else:
+            str=None'''
+        if navitem:
+            str=('<a href="%s">%s</a>'   % (reverse("admin:frontpage_navitem_change", args=([navitem.id])) , escape(navitem.name)))
+            str2="-->"+('<a href="%s">%s</a>'   % (reverse("admin:frontpage_navelement_change", args=([navelement.id])) , escape(navelement.head)))
+            strf=str+str2
+            return format_html(strf)
+        else:
+            return navitem
 class Post(models.Model):
     serial=models.IntegerField(default=10)
     heading=models.CharField(max_length=100,blank=True,null=True)
@@ -123,7 +139,7 @@ class NavItem(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.name
-    def Related_Element_link(self):
+    def Child_Element_link(self):
         str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))for p in self.navelement.all())
         return format_html(str)
         #return format_html('<a href="%s">%s</a>' % (reverse("admin:frontpage_navelement_change", args=([self.id])) , escape([ self.navelement.all().first()])))

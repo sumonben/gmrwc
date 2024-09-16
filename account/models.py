@@ -67,7 +67,8 @@ class Teacher(models.Model):
     message=RichTextField(blank=True,null=True)
     bio=RichTextField(blank=True,null=True)
     user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
-    
+    def __unicode__(self):
+        return self.name_bangla
 
 
 def year_choices():
@@ -131,7 +132,8 @@ class Student(models.Model):
 
     user_link.allow_tags = True
     user_link.short_description = "User"
-   
+    def __unicode__(self):
+        return self.name_bangla
 '''class CustomUser(AbstractUser):
     username=None
     first_name=None

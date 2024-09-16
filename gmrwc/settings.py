@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'department',
     'ckeditor',
     'sortedm2m_filter_horizontal_widget',
+    'import_export',
 ]
 
 MIDDLEWARE = [

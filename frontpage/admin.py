@@ -45,10 +45,12 @@ class UserAdmin(admin.ModelAdmin):
     
 @admin.register(Page)
 class UserAdmin(admin.ModelAdmin):
-    list_display=[   'serial','heading','title','body','link','template']
+    list_display=[   'serial','heading','parent_nav_link','link','template']
     filter_fields=[  'title']
     list_filter=[  'category']
-    
+    filter_horizontal = ['category','tag']
+    list_display_links = ['serial','heading']
+
 
 @admin.register(Post)
 class UserAdmin(admin.ModelAdmin):
@@ -76,8 +78,10 @@ class NavElementAdmin(admin.ModelAdmin):
 @admin.register(NavItem)
 class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ['navelement',]
-    list_display=[   'serial','name','Related_Element_link']
+    list_display=[ 'serial','name','Child_Element_link']
     search_fields=[  'name',]
+    list_display_links = ['serial','name']
+
 
 @admin.register(ServiceBox)
 class UserAdmin(admin.ModelAdmin):
