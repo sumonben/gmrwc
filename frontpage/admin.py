@@ -76,7 +76,7 @@ class NavElementAdmin(admin.ModelAdmin):
 @admin.register(NavItem)
 class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ['navelement',]
-    list_display=[   'serial','name','Related_Element']
+    list_display=[   'serial','name','Related_Element','Related_Element_link']
     search_fields=[  'name',]
 
 @admin.register(ServiceBox)

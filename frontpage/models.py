@@ -1,6 +1,9 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.template.defaultfilters import escape
+from django.urls import include, re_path, reverse
+from django.utils.html import format_html
 
 TYPE_CHOICES=( ("1","static" ), 
     ("2","dynamic"),("3","link"),("4","department"))
@@ -121,6 +124,9 @@ class NavItem(models.Model):
         return self.name
     def Related_Element(self):
         return " | ".join([p.head for p in self.navelement.all()])
+    def Related_Element_link(self):
+        return format_html('<a href="%s">%s</a>' % (reverse("admin:frontpage_navelement_change", args=([self.id])) , escape([ self.navelement.all().first()])))
+
 
 
 class ServiceBox(models.Model):
