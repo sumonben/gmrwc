@@ -4,7 +4,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import escape
 from django.urls import include, re_path, reverse
 from django.utils.html import format_html
-
+from django.utils.safestring import mark_safe
 TYPE_CHOICES=( ("1","static" ), 
     ("2","dynamic"),("3","link"),("4","department"))
 DESIGNATION_CHOICES = ( 
@@ -111,8 +111,9 @@ class NavElement(models.Model):
     def __str__(self):
         return self.head
     def Related_pages(self):
-        return " | ".join([p.heading for p in self.page.all()])
-
+        str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([p.id])) , escape(p.heading))for p in self.page.all())
+        return format_html(str)
+    
 class NavItem(models.Model):
     serial=models.IntegerField(default=10)
     name=models.CharField(max_length=100,unique=True)
@@ -122,10 +123,10 @@ class NavItem(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.name
-    def Related_Element(self):
-        return " | ".join([p.head for p in self.navelement.all()])
     def Related_Element_link(self):
-        return format_html('<a href="%s">%s</a>' % (reverse("admin:frontpage_navelement_change", args=([self.id])) , escape([ self.navelement.all().first()])))
+        str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))for p in self.navelement.all())
+        return format_html(str)
+        #return format_html('<a href="%s">%s</a>' % (reverse("admin:frontpage_navelement_change", args=([self.id])) , escape([ self.navelement.all().first()])))
 
 
 

@@ -67,7 +67,7 @@ class Teacher(models.Model):
     message=RichTextField(blank=True,null=True)
     bio=RichTextField(blank=True,null=True)
     user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
-
+    
 
 
 def year_choices():
@@ -127,7 +127,7 @@ class Student(models.Model):
     signature=models.ImageField(upload_to='media/',blank=True,null=True)
     user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
     def user_link(self):
-      return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.id-29,)) , escape(self.user)))
+      return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.id-29,)) , escape(self.user)))+format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.id-29,)) , escape(self.user)))
 
     user_link.allow_tags = True
     user_link.short_description = "User"
