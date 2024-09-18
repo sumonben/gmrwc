@@ -72,7 +72,7 @@ def showPage(request, type,heading, id):
      #   return render(request,'postview/showpost.html',context=context)
     
     if(page.type=='1'):
-        return render(request,'account/login.html',context=context)
+        return render(request,'postview/showpage.html',context=context)
     elif(page.type=='2'):
         return render(request,page.template.directory+'/'+page.template.name,context=context)
     else:

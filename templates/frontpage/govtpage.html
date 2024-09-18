@@ -128,30 +128,15 @@ $.simpleTicker($("#demo"),{
 }
 } -->
  <ul>
-<li>
+            {% for page in service_box.element.all %}
+            <li>
                 <i class="text-green fa fa-caret-right"></i>
                 <a href="/bn/site/officer_list/%E0%A6%AE%E0%A7%8B%E0%A6%83-%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%AB%E0%A7%81%E0%A6%B2-%E0%A6%87%E0%A6%B8%E0%A6%B2%E0%A6%BE%E0%A6%AE" title="জেলা প্রশাসক"> 
-                    জেলা প্রশাসক
+                {{page.heading}}                
                 </a>
             </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/view/dc_officers" title="কর্মকর্তাদের তালিকা">
-                    কর্মকর্তাদের তালিকা
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/page/%E0%A6%AC%E0%A6%97%E0%A7%81%E0%A7%9C%E0%A6%BE-%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE-%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%B6%E0%A6%BE%E0%A6%B8%E0%A6%95%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B2%E0%A7%9F%E0%A7%87%E0%A6%B0-%E0%A6%B8%E0%A6%BF%E0%A6%9F%E0%A6%BF%E0%A6%9C%E0%A7%87%E0%A6%A8-%E0%A6%9A%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%B0" title="সিটিজেন চার্টার">
-                    সিটিজেন চার্টার
-                </a>
-            </li>
-            <li>
-                <i class="text-green fa fa-caret-right"></i>
-                <a href="/bn/site/view/district_branding_home" title="জেলা-ব্রান্ডিং">
-                    জেলা-ব্রান্ডিং
-                </a>
-            </li>
+            {% endfor %}
+            
          </ul></div>
    </div>
    {% endfor%}

@@ -5,6 +5,9 @@ from django.template.defaultfilters import escape
 from django.urls import include, re_path, reverse
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.db import transaction
+from django.db.models import F, Max
+
 TYPE_CHOICES=( ("1","static" ), 
     ("2","dynamic"),("3","link"),("4","department"))
 DESIGNATION_CHOICES = ( 
@@ -139,8 +142,39 @@ class NavItem(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.name
+    '''def save(self):
+        with transaction.atomic():
+            count = NavItem.objects.count()
+
+            objects = NavItem.objects.all()
+            if count > 100:
+                objects[0].delete()
+                if count > 1:
+                    objects.update(id=F('id') - 1)
+
+            if not self.id and count > 0:
+                objects = objects.refresh_from_db()  # Update QuerySet
+                self.id = objects.annotate(max_count=Max('id')).max_count + 1
+            elif not self.id and count == 0:
+                self.id = 1
+
+            self.save()'''
+            
     def Child_Element_link(self):
-        str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))for p in self.navelement.all())
+        nav=self.navelement.all()
+        str=""
+        for p in self.navelement.all():
+            str=str+format_html('<a href="%s">%s</a></div><br>----------> ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))
+            for page in p.page.all():
+                str=str+format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([page.id])) , escape(page.heading))
+            str=str+"<br><br>"
+
+           # for page in p.page.all():
+                #str=str.join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([page.id])) , escape(page.heading)))
+  
+        #str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))for p in self.navelement.all())
+   
+        #str=format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))+format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([page.id])) , escape(page.heading))for page in p.page.all() for p in self.navelement.all()) 
         return format_html(str)
         #return format_html('<a href="%s">%s</a>' % (reverse("admin:frontpage_navelement_change", args=([self.id])) , escape([ self.navelement.all().first()])))
 
@@ -155,3 +189,6 @@ class ServiceBox(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.title
+    def Related_pages(self):
+        str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([p.id])) , escape(p.heading))for p in self.element.all())
+        return format_html(str)

@@ -86,5 +86,6 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(ServiceBox)
 class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ['element',]
-    list_display=[   'serial','title',]
+    list_display=[   'serial','title','Related_pages']
     search_fields=[  'title',]
+    list_display_links = ['serial','title']
