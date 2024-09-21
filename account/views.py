@@ -112,7 +112,7 @@ def Login(request):
             return JsonResponse({'password': password},safe=False)
 
 def Profile(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_active :
         print(request.user.email)
         email=request.user.email
         if request.user.last_name in 'student':
@@ -124,6 +124,7 @@ def Profile(request):
             print(teacher)
             return render(request, 'account/teacherprofile.html',{'teacher':teacher})
         return render(request, 'account/profile.html')
+    
 
     else:
         return redirect('login')

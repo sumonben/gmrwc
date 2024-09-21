@@ -14,8 +14,13 @@
                                                                     <!-- 1  -->
                                     <!-- Menu Color Admin Custom End -->
                 {%for navitem in navitems %}
+                {% if navitem.serial > 6 %}
+                <li class="mzr-drop menu-link  col{{navitem.serial}}  focusin-drop focusClassDrop" style="background:">
+                {% else %}
                 <li class="mzr-drop menu-link  c{{navitem.serial}}  focusin-drop focusClassDrop" style="background:">
-                    <a href="#" title="{{navitem.name}}" style="color: ">{{navitem.name}}</a>
+                {% endif %}
+
+                    <a href="#" title="{{navitem.name}}" style="pointer-events: none;cursor: default;" aria-disabled="true">{{navitem.name}}</a>
                     <div class="sub-menu mzr-content " >
                         <div class="five-col">
                                                                                                 

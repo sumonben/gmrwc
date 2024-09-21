@@ -55,9 +55,10 @@
                    <div id="flash">
 
    {%include 'component/notice.html'%}
-
-   {{page.body}}
    
+   {% autoescape off %}
+   {{page.body}}
+   {% endautoescape %}   
 
 
                    </div>

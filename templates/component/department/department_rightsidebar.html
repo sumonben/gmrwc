@@ -34,13 +34,13 @@
 
   
                                <h1 class="title" style="text-align: center;"><u>বিভাগীয় প্রধান</u></h1>
-                               <h3 class="title" style="text-align: center;">{{department_head.t_name_bangla}}</h3>
+                               <h3 class="title" style="text-align: center;">{%if department_head %}{{department_head.t_name_bangla}}{% endif %}</h3>
             
             
     <div class="content">
                     <p><img src="{%if department_head.image%}{{department_head.image.url}}{% else %} {% static 'images/gmrwc_logo.png'%} {% endif%}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
 
-<h4 style="text-align: center;">{{department_head.t_name}}</h4>
+<h4 style="text-align: center;">{%if department_head %}{{department_head.t_name}}{% endif %}</h4>
     </div>  
     
     

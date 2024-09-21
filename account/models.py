@@ -67,8 +67,11 @@ class Teacher(models.Model):
     message=RichTextField(blank=True,null=True)
     bio=RichTextField(blank=True,null=True)
     user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
+    is_active=models.BooleanField(default=False)
+    class Meta:
+        ordering = ['tid']
     def __unicode__(self):
-        return self.name_bangla
+        return self.t_name_bangla
 
 
 def year_choices():
@@ -127,9 +130,13 @@ class Student(models.Model):
     image=models.ImageField(upload_to='media/',blank=True,null=True) 
     signature=models.ImageField(upload_to='media/',blank=True,null=True)
     user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
-    def user_link(self):
-      return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.id-29,)) , escape(self.user)))+format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.id-29,)) , escape(self.user)))
+    is_active=models.BooleanField(default=False)
 
+    def user_link(self):
+        if self.user is not None:
+            return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.user.id,)) , escape(self.user.username)))
+        else:
+            return None
     user_link.allow_tags = True
     user_link.short_description = "User"
     def __unicode__(self):

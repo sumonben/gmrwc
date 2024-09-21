@@ -1659,7 +1659,128 @@ table.table.table-bordered, tr, td, th {
             line-height: 20px
         }
         </style>
-    
+
+        <!--Social Media like comment Share part-->
+        <style>
+            .social_btn{
+              color: #fff !important;
+              padding: 5px;
+              font-size: 12px;
+              width: 24px;
+              height: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              transition: all 0.6s ease;
+              margin: 0 2px 0 2px;
+            }
+            .social_btn:hover{
+              transform: translateY(-4px);
+              text-decoration: none !important;
+            }
+            /* Social Icon */
+            .bread_social{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .facebook{
+              background: #303F9E;
+            }
+            .twitter{
+              background: #3675AE;
+            }
+            .viber{
+              background: #9D1BC0;
+            }
+            .twitter {
+              background: #3675AE;
+            }
+            .whatsapp {
+              background: #6FBE3C;
+            }
+            .linkedin {
+              background: #3874B2;
+            }
+            .link {
+              background: #4FB2E2;
+            }
+            .messenger {
+              background: #BF3DC8;
+            }
+            
+            .share-popup {  
+              display: none;
+                position: absolute;
+              bottom: 3px;
+              left: 16px;
+              background-color: white;
+              /* border: 1px solid var(--globalColor); */
+              border-radius: 5px;
+              padding: 7px;
+              box-shadow: 0 0px 25px rgb(0 0 0 / 0.4);
+              z-index: 100000000000000000000000000;
+            }
+            
+            .share-icon:hover+#share-popup,
+            .share-popup.active {
+              /* display: block; */
+              display: flex;
+              position: absolute;
+              z-index: 100000000000000000000000000;
+            }
+            
+            @media (max-width: 767px) {
+              .bread_social{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+              }
+              .webform{
+                display: flex;
+                flex-direction: column;
+              }
+              .webform iframe{
+                margin: 5px;
+              }
+              .webform .body{
+                width: 100%;
+              }
+            }
+            
+         
+               .card-horizontal {
+                   display: flex;
+                   flex: 1 1 auto;
+               }
+               @media only screen and (min-width:320px) and (max-width:959px){
+                   .card-horizontal {
+                       display: block;
+                       flex: 1 1 auto;
+                   }
+               }
+               
+            
+            /* @media (min-width: 1920px) {
+              .share-popup {  
+                bottom: 3px;
+              }
+              .social_btn{
+                color: #fff !important;
+                padding: 5px;
+                font-size: 20px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+              }
+            } */
+            </style>
+
+
   </head>
   
   <body class="theme-theme-default">
@@ -2297,6 +2418,37 @@ table.table.table-bordered, tr, td, th {
           document.getElementById("start-np").focus();
         }
     </script>
+    <script>
+        function shareOnClick(value) {
+            var fullURL = window.location.href;
+            if(value === 'facebook'){
+                var url = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(fullURL) + "&amp;src=sdkpreparse";
+            }else if(value === 'twitter'){
+                var url = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(fullURL);
+            }else if(value === 'whatsapp'){
+                var url = "https://wa.me/?text=" + encodeURIComponent(fullURL);
+            }else if(value === 'linkedin'){
+                var url = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(fullURL);
+            }else if(value === 'messenger'){
+                var url = "https://m.me/share/?url=" + encodeURIComponent(fullURL);
+            }else if(value === 'viber'){
+                var url = "viber://forward?text=" + encodeURIComponent(fullURL);
+            }
+            window.open(url, "_blank");
+        }
+        
+        function copyToClipboard() {
+            var link = window.location.href;
+            var textarea = document.createElement("textarea");
+            textarea.value = link;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("Link copied to clipboard!");
+        }
+        </script>
+        
     <!-- Pixel Code for //inusight.com/ -->
     <script defer src="//inusight.com/pixel/zpSefT317My3oFwG"></script>
     <!-- END Pixel Code -->

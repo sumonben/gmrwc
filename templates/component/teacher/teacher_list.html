@@ -1,0 +1,111 @@
+{% load static %}
+<script>
+    function printDiv(printableArea) {
+        
+        var printContents = document.getElementById("printableArea").innerHTML;
+        var originalContents = document.body.innerHTML;
+   
+        document.body.innerHTML = printContents;
+   
+        window.print();
+   
+        document.body.innerHTML = originalContents;
+   }
+</script>
+<div class="officerlist list">
+   
+<h3 class="title">
+{{heading}}    <div style="float:right;" id="print_btn_div"><img src="{% static 'images/print_btn.png' %} " style="cursor: pointer;" onclick="printDiv(printableArea);" width="24" title="প্রিন্ট" alt="print_btn"></div>
+</h3>
+
+<div class="row">
+<div class="col-md-2">
+    <b>অনুসন্ধান করুন</b>
+        </div>
+
+</div>
+
+<div class="row toolbar">
+
+            <div class="col search">
+
+<div class="input-group mb-2 mr-sm-2">
+
+    <input type="text" class="form-control" name="q" value="" id="q"><div class="input-group-append">
+
+          <div class="input-group-text"><i class="fa fa-search" onclick="listSearchClick(this)"></i></div>
+
+      </div>
+
+</div>
+
+</div>            
+
+    <div class="col texonomy-dropdown">
+
+<select name="section" id="section" class="form-control" onchange="onChangeAppendQs(this)"><option value=""></option><option value="3108">আইসিটি শাখা</option><option value="3109">এলএ</option><option value="3114">ট্রেজারী</option><option value="3110">এসএ</option><option value="3121">রেকর্ডরুম</option><option value="3119">ব্যবসা ও বাণিজ্য</option><option value="3124">লাইব্রেরী শাখা</option><option value="3128">স্থানীয় সরকার</option><option value="3116">ত্রাণ ও পুনর্বাসন</option><option value="3127">সাধারণ</option><option value="3117">নেজারত</option><option value="3112">জেএম</option><option value="3122">রেভিনিউ মুন্সীখানা (আরএম)</option><option value="3120">ভিপি সেল</option><option value="3113">জেনারেল সার্টিফিকেট</option><option value="3125">শিক্ষা ও কল্যাণ</option><option value="3126">সংস্থাপন</option></select></div>    
+
+</div>
+<br><div class="table-responsive chbappy1" cellpadding="10px" id="printableArea">
+    <table class="table table-bordered" style="text-align: center;"><thead><tr><th scope="col">#</th>
+                        <th scope="">ছবি</th>
+                        <th scope="">শিরোনাম</th>
+                        <th scope="">পদবি</th>
+                        <th scope="">ই-মেইল</th>
+                        <th scope="">মোবাইল নং</th>
+                        <th scope="">ব্যাচ (বিসিএস)</th>
+                      </tr></thead><tbody>
+                        <tr>
+                    
+                     {% for teacher in teachers%}
+                        <tr><th>৩</th>
+                                                        <td class="">
+                        <img src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" width="100" height="100" alt=""></td>
+
+                                                                                  <td class="text">            
+                                                    <a href="">{{teacher.t_name_bangla}}</a>
+                                                  </td>
+
+                                                  
+                                                  {% if teacher.position in 'উপাধ্যক্ষ' or teacher.position in 'অধ্যক্ষ' %}
+                                                  <td class="col-1" style="font-size: 14px">{{teacher.position}}</td>
+                                                  {% else %}
+                                                  <td class="col-1" style="font-size: 14px">{{teacher.designation}}</td>
+                                                  {% endif %}
+                                                    
+
+                                                                                  
+                                                       
+
+                                                        <td class="" style="word-wrap: break-word;min-width: 160px;max-width: 160px;">
+                        <a href="mailto:{{teacher.t_email}}">{{teacher.t_email}}</a>
+                    </td>
+
+                                                        <td class="">
+                        <a href="tel:{{teacher.t_phone}} ">
+                            <!-- ০১৭৩৩৩৩৫৪০৪ -->
+                            {{teacher.t_phone}}                        </a>
+                    </td>
+
+                        
+
+                                                        <td class="">
+                            <!-- 31 -->
+                            {{teacher.batch}}                     
+                        </td>
+
+                        </tr>
+                        {% endfor %}
+
+                    </tbody></table></div>
+
+<div class="content-type-footer">
+<div class="left pagination">
+    <ul class="pagination"><li class="disabled"><span>Previous</span></li>
+
+                <li><a href="?page=2" rel="next">Next</a>
+        </li>
+        </ul></div>
+</div>
+
+</div>

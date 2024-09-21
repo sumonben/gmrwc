@@ -85,7 +85,15 @@ class Page(models.Model):
     date=models.DateField(blank=True, null=True)
     category=models.ManyToManyField(Category,blank=True,null=True,)
     tag=models.ManyToManyField(Tag,blank=True,null=True,)
-    published=models.BooleanField(default=False)
+    '''rightsidebar_show=models.BooleanField(default=True)
+    notice_show=models.BooleanField(default=True)
+    carousel_show=models.BooleanField(default=True)
+    plaiheader_show=models.BooleanField(default=True)
+    topbar_show=models.BooleanField(default=True)
+    published=models.BooleanField(default=False)'''
+    
+
+
     class Meta:
         ordering = ['serial']
     def __str__(self):
