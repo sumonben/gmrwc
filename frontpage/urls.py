@@ -7,6 +7,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     
     path('', views.frontpage_view.as_view(), name='home'),
-    path('showpage/<str:type>/<str:heading>/<str:id>', views.showPage, name="showpage"),
+    path('showpage/<str:navitem_name>/<str:navelement_head>/<str:heading>/<str:id>', views.showPage, name="showpage"),
 
 ]

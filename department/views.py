@@ -9,7 +9,7 @@ from account.models import Teacher,Student
 
 
 # Create your views here.
-def DepartmentPage(request, type,heading, id):
+def DepartmentPage(request, navitem_name,navelement_head,heading, id):
 
     print("Sumon"+heading)
     carousels = Carousel.objects.all().order_by('cid')
@@ -21,7 +21,7 @@ def DepartmentPage(request, type,heading, id):
     viec_principal=Teacher.objects.filter(position='উপাধ্যক্ষ', release_date=None).first()
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
-        'type':type,
+        'navitem_name':navitem_name,
         'heading':heading,
         'id':id,
         'principal':principal,

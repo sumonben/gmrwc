@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     
-    path('/<str:type>/<str:heading>/<str:id>',views.DepartmentPage, name='department'),
+    path('/<str:navitem_name>/<str:navelement_head>/<str:heading>/<str:id>',views.DepartmentPage, name='department'),
 
 
 ]

@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-horizontal">
                     <div class="img-square-wrapper">
-                                                <img class="" src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" alt="Card image cap"></div>
+                                                <img class="" width="250px" height="200px" src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" alt="Card image cap"></div>
                     <div class="card-body">
                         <h4 class="card-title" style="text-align: center;">
                                                         {{teacher.t_name_bangla}}
@@ -14,32 +14,32 @@
                         </p>
                         <hr><div class="card-text">
 
-                            <p>
+                            <p style="text-align: center;">
                                 <b>মোবাইল নং</b> : 
                                 <!-- ০১৭১৩২০২৪৫৫, ০১৭৩৩৩৩৫৪০১ (অফিসিয়াল) -->
                                 {{teacher.t_phone}}
                                 (অফিসিয়াল)
                             </p>
 
-                                <p>
+                                <p style="text-align: center;">
                                     <b>ফোন (অফিস)</b> : 
                                     <!-- ০২৫৮৯৯০০০২০ (অফিস) ০২৫৮৯৯০০০২১ (বাংলো) -->
                                                                         ০51-65375 (অফিস) 
                                 </p>
 
-                                <p>
+                                <p style="text-align: center;">
                                     <b>ই-মেইল</b> : 
                                     {{teacher.t_email}}
                                 </p>
 
-                                                            <p>
+                                                            <p style="text-align: center;">
                                     <b>ব্যাচ (বিসিএস) </b> : 
                                     <!-- 24 -->
                                     {{teacher.batch}}
 
                                 </p>
 
-                                                            <p><b>বর্তমান কর্মস্থলে যোগদানের তারিখ</b> : 
+                                                            <p style="text-align: center;"><b>বর্তমান কর্মস্থলে যোগদানের তারিখ</b> : 
                                     <!-- 09-12-2024 -->
                                                                                                                                                                                                                                                                                                 <span class="day">১২</span>
                                     <span >
@@ -54,3 +54,4 @@
         </div>
     </div>
 </div>
+

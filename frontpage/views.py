@@ -29,7 +29,7 @@ class frontpage_view(ListCreateAPIView):
         return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'viec_principal':viec_principal})
 
 
-def showPage(request, type,heading, id):
+def showPage(request, navitem_name,navelement_head,heading, id):
     teacher=None
     carousels = Carousel.objects.all().order_by('cid')
     navitems=NavItem.objects.all().order_by('serial')  
@@ -42,9 +42,10 @@ def showPage(request, type,heading, id):
 
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
-        'type':type,
+        'navitem_name':navitem_name,
         'heading':heading,
         'id':id,
+        'navelement_head':navelement_head,
         'principal':principal,
         'viec_principal':vice_principal,
         'academic_council':academic_council,

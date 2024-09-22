@@ -52,7 +52,7 @@
                         {% for page in navelement.page.all %}
 
                                 <li style="background:">
-                                    <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name page.heading page.id  %}{% else %}{% url 'showpage' navitem.name page.heading page.id  %}{% endif %}"
+                                    <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name navelement.head page.heading page.id  %}{% else %}{% url 'showpage' navitem.name navelement.head page.heading page.id  %}{% endif %}"
                                     style="color: ">{{page.heading}}</a>
                                     
                                     <!-- Start Forth Level -->
@@ -122,7 +122,7 @@
                                 
                                 {% for page in navelement.page.all %}
 
-                                <li><a title="{{page.heading}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name page.heading page.id  %}{% else %}{% url 'showpage' navitem.name page.heading page.id  %}{% endif %}">{{page.heading}}</a></li>
+                                <li><a title="{{page.heading}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name navelement.head page.heading page.id  %}{% else %}{% url 'showpage' navitem.name navelement.head page.heading page.id  %}{% endif %}">{{page.heading}}</a></li>
                                 
                                 {% endfor %}
                             </ul>

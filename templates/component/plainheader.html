@@ -1,34 +1,37 @@
 {% load static %}
 
-<div class="plain-header">
-    <div id="logo">
-        <a title="" href="/">
-            <img  alt="Bangladesh Govertment logo" src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/img/logo.png" style=" width:50px; ">
-        </a>
-    </div>
-    <div class="" id="plainhead">
-        <span id="palin-header-text">
-            <a title="বগুড়াঘদফগদ জেলা" href="/"> বগুড়া জেলাঝফহফ</a>
-        </span>
-        <span id=""></span>
-    </div>
-</div>
-    
+
+ <style>
+    @media(max-width: 786px){
+        #header-site-info{
+            background-color: blueviolet;
+            position: fixed;
+            width: 100%;
+            height: 120px;
+            
+            margin-left: -20px;
+        }
+        #slogan{
+            display: none;
+        }
+        #logo{
+            margin-left: 300px;
+        }
+        #site-name-wrapper{
+            margin-left: -30px;
+        }
+    }
+ </style>   
 <div class="header-site-info" id="header-site-info">
     <div class="header-site-info" >
-        <div id="logo">
-            <a title="
-                
-            " href="/">
-                <img alt="GMRWC logo" src="{% static 'images/gmrwc_logo.png' %}">
-            </a>
+        <div id="logo"  >
+                <img   alt="GMRWC logo" src="{% static 'images/gmrwc_logo.png' %}">
         </div>
         <div class="clearfix" id="site-name-wrapper">
-            <span id="site-name" style="text-align: center;">
-                <a title="বগুড়া জেলা " href="/" >সরকারি মুজিবুর রহমান মহিলা কলেজ</a>
-                
+            <span id="site-name" style="text-align: center; margin-bottom: -20px;">
+                <a style="text-align: center; margin: 0px;"title="বগুড়া জেলা " href="/" >সরকারি মুজিবুর রহমান মহিলা কলেজ</a>                
             </span>
-            <span id="site-name" style="text-align: center; margin-top: 0px;">
+            <span id="site-name" style="text-align: center;margin-bottom: -15px;">
                 <a title="বগুড়া জেলা " href="/" >বগুড়া সদর, বগুড়া</a>
                 
             </span>
