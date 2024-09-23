@@ -1,7 +1,21 @@
 {% load static %}
-<div class="row" style="margin-bottom: 15px;">
+<style>
+    @keyframes spin {
+        to {
+          transform: rotateY(.5turn);
+        }
+      }
+      
+      @media (prefers-reduced-motion: no-preference) {
+        
+        body{
+          animation: spin 3s ease ;
+        }
+      }
+</style>
+<div id="menu-bar" class="row" style="margin-bottom: 15px;">
     <div class="col-md-12">
-        <div class="menu d-none d-md-block cmn-mrg-btm">
+        <div  class="menu d-none d-md-block cmn-mrg-btm">
             <ul class="menu-container meganizr mzr-slide mzr-responsive">
                 <li class="col0 home"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
                                                 
@@ -150,3 +164,5 @@
         </div>
     </div>
     </div>
+    
+    
