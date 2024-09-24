@@ -103,7 +103,7 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     '''
     
     
-    if(page.type=='1'):
+    if(page.type=='1' or navitem_name=='অনলাইন ক্লাসসমুহ'):
         return render(request,'postview/showpage.html',context=context)
     elif(page.type=='2'):
         return render(request,page.template.directory+'/'+page.template.name,context=context)
