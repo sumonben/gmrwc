@@ -58,7 +58,7 @@
                         <tr>
                     
                      {% for teacher in teachers%}
-                        <tr><th>৩</th>
+                        <tr><th>{{ forloop.counter }}</th>
                                                         <td class="">
                         <img src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" width="100" height="100" alt=""></td>
 

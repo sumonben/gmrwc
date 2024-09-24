@@ -56,6 +56,8 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     list_display=[   'serial','heading','title','body']
     filter_fields=[  'title',]
+    filter_horizontal = ['category','tag']
+
 @admin.register(Notice)
 class UserAdmin(admin.ModelAdmin):
     formfield_overrides = {

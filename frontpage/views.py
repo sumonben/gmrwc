@@ -50,7 +50,41 @@ def showPage(request, navitem_name,navelement_head,heading, id):
         'viec_principal':vice_principal,
         'academic_council':academic_council,
         }
+    if navelement_head=="এইচএসসি" and heading=="ভর্তি বিজ্ঞপ্তি" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
     
+    if navelement_head=="এইচএসসি" and heading=="ভর্তি আবেদন" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ভর্তি আবেদন")
+        context['post']=post
+    if navelement_head=="এইচএসসি" and heading=="পরীক্ষার ফর্ম পূরণ " :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="পরীক্ষার ফর্ম পূরণ ")
+        context['post']=post
+    if navelement_head=="এইচএসসি" and heading=="ফলাফল (অভ্যন্তরীণ)" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ফলাফল (অভ্যন্তরীণ)")
+        context['post']=post
+    if navelement_head=="এইচএসসি" and heading==" ফলাফল (বোর্ড)" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name=" ফলাফল (বোর্ড)")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="ভর্তি বিজ্ঞপ্তি" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="পরীক্ষার নোটিশ" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="পরীক্ষার নোটিশ")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="ভর্তি আবেদন" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="ভর্তি আবেদন")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="পরীক্ষার ফর্ম পূরণ" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="পরীক্ষার ফর্ম পূরণ")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="ভর্তি বিজ্ঞপ্তি" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+        
     if heading =='অধ্যক্ষ':
         context['teacher'] = principal
 
