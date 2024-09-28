@@ -168,7 +168,7 @@ $.simpleTicker($("#demo"),{
             {% for page in service_box.element.all %}
             <li>
                 <i class="text-green fa fa-caret-right"></i>
-                <a href="{% url 'showpage' 'Servie-Box' service_box.title page.heading page.id  %}" title="জেলা প্রশাসক"> 
+                <a href="{% url 'showpage_servicebox_item' service_box.id service_box.title page.heading page.id  %}" title="জেলা প্রশাসক"> 
                 {{page.heading}}                
                 </a>
             </li>
@@ -383,9 +383,10 @@ $.simpleTicker($("#demo"),{
             
         {% include 'component/rightsidebar.html'%}
      </div>      
-      
+    
+     
 
-
+     
  
     
      

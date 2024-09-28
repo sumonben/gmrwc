@@ -12,42 +12,39 @@
         document.body.innerHTML = originalContents;
    }
 </script>
+<style>
+    
+ 
+    .dt-input {
+        width: 98%;
+    }
+    .dt-input .fa-search {
+        position: absolute;
+        top: 10px;
+        left: auto;
+        right: 10px;
+    }
+</style>
 <div class="officerlist list">
    
 <h3 class="title">
-    {{navitem_name}}--> {{navelement_head}}-->{{heading}}   <div style="float:right;" id="print_btn_div"><img src="{% static 'images/print_btn.png' %} " style="cursor: pointer;" onclick="printDiv(printableArea);" width="24" title="প্রিন্ট" alt="print_btn"></div>
+    
+    {% if navitem_name %}
+    {{navitem_name}} --> {{navelement_head}} --> {{heading}} 
+    {% endif %}
+    
+    {% if servicebox_title %}
+    {{servicebox_title}} -->{{heading}}
+    {% endif %}
+        
+        
+       <div style="float:right;" id="print_btn_div"><img src="{% static 'images/print_btn.png' %} " style="cursor: pointer;" onclick="printDiv(printableArea);" width="24" title="প্রিন্ট" alt="print_btn"></div>
 </h3>
 
-<div class="row">
-<div class="col-md-2">
-    <b>অনুসন্ধান করুন</b>
-        </div>
 
-</div>
 
-<div class="row toolbar">
-
-            <div class="col search">
-
-<div class="input-group mb-2 mr-sm-2">
-
-    <input type="text" class="form-control" name="q" value="" id="q"><div class="input-group-append">
-
-          <div class="input-group-text"><i class="fa fa-search" onclick="listSearchClick(this)"></i></div>
-
-      </div>
-
-</div>
-
-</div>            
-
-    <div class="col texonomy-dropdown">
-
-<select name="section" id="section" class="form-control" onchange="onChangeAppendQs(this)"><option value=""></option><option value="3108">আইসিটি শাখা</option><option value="3109">এলএ</option><option value="3114">ট্রেজারী</option><option value="3110">এসএ</option><option value="3121">রেকর্ডরুম</option><option value="3119">ব্যবসা ও বাণিজ্য</option><option value="3124">লাইব্রেরী শাখা</option><option value="3128">স্থানীয় সরকার</option><option value="3116">ত্রাণ ও পুনর্বাসন</option><option value="3127">সাধারণ</option><option value="3117">নেজারত</option><option value="3112">জেএম</option><option value="3122">রেভিনিউ মুন্সীখানা (আরএম)</option><option value="3120">ভিপি সেল</option><option value="3113">জেনারেল সার্টিফিকেট</option><option value="3125">শিক্ষা ও কল্যাণ</option><option value="3126">সংস্থাপন</option></select></div>    
-
-</div>
-<br><div class="table-responsive chbappy1" cellpadding="10px" id="printableArea">
-    <table class="table table-bordered"><thead><tr><th scope="col">#</th>
+<br><div class="table-responsive chbappy1" cellpadding="10px" cellspacing="10px" id="printableArea">
+    <table id="dataTable" class="table table-bordered"><thead><tr><th scope="col">#</th>
         <th scope="">শিরোনাম</th>
         <th scope="">প্রকাশের তারিখ</th>
         <th scope="">ডাউনলোড</th>

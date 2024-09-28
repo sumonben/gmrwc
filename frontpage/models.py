@@ -108,8 +108,8 @@ class Page(models.Model):
         else:
             str=None'''
         if navitem:
-            str=('<a href="%s">%s</a>'   % (reverse("admin:frontpage_navitem_change", args=([navitem.id])) , escape(navitem.name)))
-            str2="-->"+('<a href="%s">%s</a>'   % (reverse("admin:frontpage_navelement_change", args=([navelement.id])) , escape(navelement.head)))
+            str=('<a href="%s" target="_blank">%s</a>'   % (reverse("admin:frontpage_navitem_change", args=([navitem.id])) , escape(navitem.name)))
+            str2="-->"+('<a href="%s" target="_blank">%s</a>'   % (reverse("admin:frontpage_navelement_change", args=([navelement.id])) , escape(navelement.head)))
             strf=str+str2
             return format_html(strf)
         else:
@@ -138,7 +138,7 @@ class NavElement(models.Model):
     def __str__(self):
         return self.head
     def Related_pages(self):
-        str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([p.id])) , escape(p.heading))for p in self.page.all())
+        str="".join(format_html('<a href="%s" target="_blank">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([p.id])) , escape(p.heading))for p in self.page.all())
         return format_html(str)
     
 class NavItem(models.Model):
@@ -172,9 +172,9 @@ class NavItem(models.Model):
         nav=self.navelement.all()
         str=""
         for p in self.navelement.all():
-            str=str+format_html('<a href="%s">%s</a></div><br>----------> ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))
+            str=str+format_html('<a href="%s" target="_blank">%s</a></div><br>----------> ' )  % (reverse("admin:frontpage_navelement_change", args=([p.id])) , escape(p.head))
             for page in p.page.all():
-                str=str+format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([page.id])) , escape(page.heading))
+                str=str+format_html('<a href="%s" target="_blank">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([page.id])) , escape(page.heading))
             str=str+"<br><br>"
 
            # for page in p.page.all():
@@ -198,5 +198,5 @@ class ServiceBox(models.Model):
     def __str__(self):
         return self.title
     def Related_pages(self):
-        str="".join(format_html('<a href="%s">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([p.id])) , escape(p.heading))for p in self.element.all())
+        str="".join(format_html('<a href="%s" target="_blank">%s</a> || ' )  % (reverse("admin:frontpage_page_change", args=([p.id])) , escape(p.heading))for p in self.element.all())
         return format_html(str)

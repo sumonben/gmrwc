@@ -47,50 +47,16 @@
 <!--Main Content Start   -->
 
 <div class="row">
-                                        <div class="col-md-12">
+        <div class="col-md-12">
                    <div id="left">
-                      <!-- Share Content top option start -->
-                      <div class="d-flex justify-content-between hide-for-print mb-3 mt-5">
-                            <div>
-                                <p class="share-title">কনটেন্টটি শেয়ার করতে ক্লিক করুন</p>
-                                <div class="blocks">
-    <div class="d-flex gap-1">
-        <a class="social_btn facebook fb-xfbml-parse-ignore" href="javascript:void(0)" onclick="shareOnClick('facebook')"><i class="fab fa-facebook-f"></i></a> 
-        <a class="twitter-share-button twitter social_btn" href="javascript:void(0)" onclick="shareOnClick('twitter')"><i class="fab fa-twitter"></i></a>
-        <a class="whatsapp social_btn" href="javascript:void(0)" onclick="shareOnClick('whatsapp')"><i class="fab fa-whatsapp"></i></a>
-        <a class="linkedin social_btn" href="javascript:void(0)" onclick="shareOnClick('linkedin')"> <i class="fab fa-linkedin" aria-hidden="true"></i></a>
-        <a class="link social_btn" onclick="copyToClipboard()"><i class="fa fa-link"></i></a>
-        <a class="viber social_btn" href="javascript:void(0)" onclick="shareOnClick('viber')"><i class="fab fa-viber"></i></a>
-        <a class="messenger social_btn ms-share" href="javascript:void(0)" onclick="shareOnClick('messenger')"><i class="fab fa-facebook-messenger"></i></a>
-    </div>
-</div>
 
+                    <!-- Share Content top option start -->
+                                            
+                    {%include 'component/socialmedia.html'%}
 
-          <!-- <div class="addthis_inline_share_toolbox"></div> -->
-                            </div>
+                    <!-- Share Content top option end -->
 
-                            <div class="share-content-box">
-                                <div class="mr-2 d-flex align-items-center">
-                                    <!-- <p class="share-youtube-title">National Portal Bangladesh</p>
-                                    <div class="g-ytsubscribe" data-channelid="UCdf7GabtLtI8a6Gu2clXdHw" data-layout="default" data-count="default"></div>
-                                    <p class="share-text-style">পোর্টাল সাবস্ক্রাইব করুন</p>-->  
-                                     <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FNationalPortal%2F&amp;tabs&amp;width=340&amp;height=70&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=true&amp;show_facepile=true&amp;appId" width="340" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                                                                         <a href="https://www.facebook.com/NationalPortal/" class="share-text-style" style="box-shadow: 0 0 0px 1px #80808033;
-                                        padding: 12px 10px 9px;margin-left: 4px;font-size: 16px;text-align: left;border-radius: 1px;" target="_blink">
-                                        ফেইসবুক পেইজ ভিজিট ও <br>লাইক দিন</a>
-                                </div>
-                                <!-- <div>
-                                    <a href="#" onclick="loadOpinionPoll(this)"><img src="http://file.portal.gov.bd/media/central/chart.png" alt="Polling" style="width:28px;height:24px;"></a>
-                                    <p class="share-text-style">পোলিং</p>
-                                </div>
-                                <div>
-                                    <a href="#" onclick="loadCommentSection(this, 2)"><img src="http://file.portal.gov.bd/media/central/comment.png" alt="Polling" style="width:28px;height:24px;"></a>
-                                    <p class="share-text-style">মতামত দিন</p>
-                                </div> -->
-                            </div>
-                        </div>
-                      <!-- Share Content top option end -->
-                       <div class="officerlist details">
+                        <div class="officerlist details">
 
     
 
@@ -118,12 +84,9 @@
 
                             </div>
                             <div class="share-content-box">
-                                <div class="mr-2">
-                                    <!-- <p class="share-youtube-title">National Portal Bangladesh</p>
-                                    <div class="g-ytsubscribe" data-channelid="UCdf7GabtLtI8a6Gu2clXdHw" data-layout="default" data-count="default"></div>
-                                    <p class="share-text-style">পোর্টাল সাবস্ক্রাইব করুন</p> -->  
+                                
+ 
                                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FNationalPortal%2F&amp;tabs&amp;width=340&amp;height=70&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=true&amp;show_facepile=true&amp;appId" width="340" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                                </div>
                                 <div>
                                     <a href="#" onclick="loadOpinionPoll(this)"><img src="http://file.portal.gov.bd/media/central/chart.png" alt="Polling" style="width:28px;height:24px;"></a>
                                     <p class="share-text-style">পোলিং</p>
@@ -138,4 +101,5 @@
                    </div>
                </div>
                     </div>
+         {% include 'component/onlineclass.html' %}
     {% endblock %}

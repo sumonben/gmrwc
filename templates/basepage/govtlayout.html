@@ -1778,6 +1778,7 @@ table.table.table-bordered, tr, td, th {
                 border-radius: 50%;
               }
             } */
+            
             </style>
 
 
@@ -1785,11 +1786,48 @@ table.table.table-bordered, tr, td, th {
   
   <body class="theme-theme-default">
 
+    {%block content%}
 
-    {%block content%} {%endblock%}
+        
+
+    {%endblock%}
     
-
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
   
+    <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+    
+    <script>
+    $(document).ready( function () {
+
+        table=$('#dataTable').dataTable({
+            "sSearch": {
+                "sAddClass": 'form-control',
+            },
+            dom: '',
+            "oLanguage": {
+
+                "sSearch": "অনুসন্ধান করুনঃ ",
+                "sInfo": "<b>(দেখছেন _START_  থেকে _END_  মোট _TOTAL_ টির মধ্যে)<b>",
+                "sLengthMenu": "এন্ট্রি সংখ্যাঃ  _MENU_ ",
+                "sZeroRecords":    "সার্চ করে কোন ডাটা পাওয়া যায়নি",
+                "sEmptyTable":     "টেবিলে কোন তথ্য নেই",
+                "sInfoEmpty":      "কোন তথ্য নেই",
+                "sLoadingRecords": "লোড হচ্ছে...",
+                "sInfoFiltered":   "(মোট  _MAX_ টি এন্ট্রির মধ্যে)",
+            
+                "sPaginate": {
+                    "first":      "প্রথম গুলো",
+                    "sLast":       "শেষের গুলো",
+                    "sNext":       "পরবর্তী",
+                    "sPrevious":   "পূর্ববর্তী"
+                },
+
+            }
+        });
+        
+    } );
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script> -->

@@ -63,11 +63,14 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     if navelement_head=="এইচএসসি" and heading=="ফলাফল (অভ্যন্তরীণ)" :
         post=Post.objects.filter(category__name="এইচএসসি",tag__name="ফলাফল (অভ্যন্তরীণ)")
         context['post']=post
-    if navelement_head=="এইচএসসি" and heading==" ফলাফল (বোর্ড)" :
-        post=Post.objects.filter(category__name="এইচএসসি",tag__name=" ফলাফল (বোর্ড)")
+    if navelement_head=="এইচএসসি" and heading=="ফলাফল (বোর্ড)" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ফলাফল (বোর্ড)")
         context['post']=post
     if navelement_head=="অনার্স" and heading=="ভর্তি বিজ্ঞপ্তি" :
         post=Post.objects.filter(category__name="অনার্স",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+    if navelement_head=="অনার্স" and heading=="ভর্তি আবেদন" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="ভর্তি আবেদন")
         context['post']=post
     if navelement_head=="অনার্স" and heading=="পরীক্ষার নোটিশ" :
         post=Post.objects.filter(category__name="অনার্স",tag__name="পরীক্ষার নোটিশ")
@@ -81,9 +84,32 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     if navelement_head=="অনার্স" and heading=="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)" :
         post=Post.objects.filter(category__name="অনার্স",tag__name="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)")
         context['post']=post
-    if navelement_head=="অনার্স" and heading=="ভর্তি বিজ্ঞপ্তি" :
-        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ভর্তি বিজ্ঞপ্তি")
+        print(post)
+    if navelement_head=="মাস্টার্স" and heading=="ভর্তি বিজ্ঞপ্তি" :
+        post=Post.objects.filter(category__name="মাস্টার্স",tag__name="ভর্তি বিজ্ঞপ্তি")
         context['post']=post
+    if navelement_head=="মাস্টার্স" and heading=="ভর্তি আবেদন" :
+        post=Post.objects.filter(category__name="মাস্টার্স",tag__name="ভর্তি আবেদন")
+        context['post']=post
+    if navelement_head=="মাস্টার্স" and heading=="পরীক্ষার নোটিশ" :
+        post=Post.objects.filter(category__name="মাস্টার্স",tag__name="পরীক্ষার নোটিশ")
+        context['post']=post
+    if navelement_head=="মাস্টার্স" and heading=="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)" :
+        post=Post.objects.filter(category__name="মাস্টার্স",tag__name="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)")
+        context['post']=post
+    if navelement_head=="ডিগ্রি (পাশ)" and heading=="ভর্তি বিজ্ঞপ্তি" :
+        post=Post.objects.filter(category__name="ডিগ্রি (পাশ)",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+    if navelement_head=="ডিগ্রি (পাশ)" and heading=="ভর্তি আবেদন" :
+        post=Post.objects.filter(category__name="ডিগ্রি (পাশ)",tag__name="ভর্তি আবেদন")
+        context['post']=post
+    if navelement_head=="ডিগ্রি (পাশ)" and heading=="পরীক্ষার নোটিশ" :
+        post=Post.objects.filter(category__name="ডিগ্রি (পাশ)",tag__name="পরীক্ষার নোটিশ")
+        context['post']=post
+    if navelement_head=="ডিগ্রি (পাশ)" and heading=="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)" :
+        post=Post.objects.filter(category__name="ডিগ্রি (পাশ)",tag__name="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)")
+        context['post']=post
+    
         
     if heading =='অধ্যক্ষ':
         context['teacher'] = principal
@@ -97,7 +123,6 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     
     if heading =='শিক্ষকবৃন্দ':
         context['teachers'] = teachers
-    print("Sumon",teacher)
     
 
     
@@ -144,3 +169,100 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     else:
         return redirect(page.link)
 
+def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
+    teacher=None
+    carousels = Carousel.objects.all().order_by('cid')
+    navitems=NavItem.objects.all().order_by('serial')  
+    page=Page.objects.filter(id=id).distinct().first()
+    notices=Post.objects.all().order_by('-id')
+    principal=Teacher.objects.filter(position='অধ্যক্ষ', release_date=None,is_active=True).first()   
+    vice_principal=Teacher.objects.filter(position='উপাধ্যক্ষ', release_date=None,is_active=True).first()
+    teachers=Teacher.objects.filter( release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(Q(position='বিভাগীয় প্রধান')|Q(position='অধ্যক্ষ')|Q(position='উপাধ্যক্ষ'), release_date=None,is_active=True)
+    print(servicebox_title,heading)
+    context = {
+        'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
+        'servicebox_title':servicebox_title,
+        'heading':heading,
+        'id':id,
+        'principal':principal,
+        'viec_principal':vice_principal,
+        'academic_council':academic_council,
+        }
+    if heading =='অধ্যক্ষ':
+        context['teacher'] = principal
+
+    
+    if heading =='উপাধ্যক্ষ':
+        context['teacher'] = vice_principal
+
+    if heading =='একাডেমিক কাউন্সিল':
+        context['teachers'] = academic_council
+    
+    if heading =='শিক্ষকবৃন্দ':
+        context['teachers'] = teachers
+        
+    if servicebox_title=="ভর্তি নির্দেশিকা" and heading=="এইচএসসি ভর্তি" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+        print(post)
+
+    
+    if servicebox_title=="ভর্তি নির্দেশিকা" and heading=="অনার্স ভর্তি" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+    if servicebox_title=="ভর্তি নির্দেশিকা" and heading=="মাস্টার্স ভর্তি" :
+        post=Post.objects.filter(category__name="মাস্টার্স",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+    if servicebox_title=="ভর্তি নির্দেশিকা" and heading=="ডিগ্রি (পাশ) ভর্তি" :
+        post=Post.objects.filter(category__name="ডিগ্রি (পাশ)",tag__name="ভর্তি বিজ্ঞপ্তি")
+        context['post']=post
+    if servicebox_title=="পরীক্ষাসমূহ" and heading=="বোর্ড পরীক্ষা (এইচএসচসি) " :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ফলাফল (বোর্ড)")
+        context['post']=post
+    if servicebox_title=="পরীক্ষাসমূহ" and heading=="অভ্যন্তরীণ পরীক্ষা( এইচএসসি)" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="অভ্যন্তরীণ পরীক্ষা")
+        context['post']=post
+    if servicebox_title=="পরীক্ষাসমূহ" and heading=="ডিগ্রি ও অন্যান্য পরীক্ষা" :
+        post=Post.objects.filter(category__name="ডিগ্রি (পাশ)",tag__name="ডিগ্রি (পাশ) পরীক্ষা")
+        context['post']=post
+    if servicebox_title=="পরীক্ষাসমূহ" and heading=="পরীক্ষাসমূহ (জাতীয় বিশ্ববিদ্যালয়ের অধীন)" :
+        post=Post.objects.filter(category__name="জাতীয় বিশ্ববিদ্যালয়",tag__name="জাতীয় বিশ্ববিদ্যালয় পরীক্ষা")
+        context['post']=post
+    if servicebox_title=="পরীক্ষাসমূহ" and heading=="পরীক্ষাসমূহ (জাতীয় বিশ্ববিদ্যালয়ের অধীন)" :
+        post=Post.objects.filter(category__name="জাতীয় বিশ্ববিদ্যালয়",tag__name="জাতীয় বিশ্ববিদ্যালয় পরীক্ষা")
+        context['post']=post
+    
+    if servicebox_title=="ফলাফলসমূহ" and heading=="বোর্ড পরীক্ষার ফলাফল" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ফলাফল (বোর্ড)")
+        context['post']=post
+    if servicebox_title=="ফলাফলসমূহ" and heading=="অভ্যন্তরীণ ফলাফল( এইচএসসি)" :
+        post=Post.objects.filter(category__name="এইচএসসি",tag__name="ফলাফল (অভ্যন্তরীণ)")
+        context['post']=post
+    if servicebox_title=="ফলাফলসমূহ" and heading=="জাতীয় বিশ্ববিদ্যালয়ের ফলাফল" :
+        post=Post.objects.filter(category__name="জাতীয় বিশ্ববিদ্যালয়",tag__name="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)")
+        context['post']=post
+    if servicebox_title=="ফলাফলসমূহ" and heading=="অভ্যন্তরীণ ফলাফল( অনার্স)" :
+        post=Post.objects.filter(category__name="জাতীয় বিশ্ববিদ্যালয়",tag__name="ফলাফল (জাতীয় বিশ্ববিদ্যালয়)")
+        context['post']=post
+    
+    if servicebox_title=="অনার্স" and heading=="পরীক্ষার নোটিশ" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="পরীক্ষার নোটিশ")
+        context['post']=post
+    if servicebox_title=="অনার্স" and heading=="ভর্তি আবেদন" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="ভর্তি আবেদন")
+        context['post']=post
+    if servicebox_title=="অনার্স" and heading=="পরীক্ষার ফর্ম পূরণ" :
+        post=Post.objects.filter(category__name="অনার্স",tag__name="পরীক্ষার ফর্ম পূরণ")
+        context['post']=post
+    if servicebox_title=="অনলাইন ক্লাসসমূহ":
+        navitem=NavItem.objects.filter(name='অনলাইন ক্লাসসমুহ').first()
+        context['navitem']=navitem
+
+
+    if(page.type=='1'):
+        return render(request,'postview/showpage.html',context=context)
+    elif(page.type=='2'):
+        return render(request,page.template.directory+'/'+page.template.name,context=context)
+    else:
+        return redirect(page.link)
