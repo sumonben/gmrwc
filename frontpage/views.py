@@ -19,18 +19,18 @@ class frontpage_view(ListCreateAPIView):
         institute=Institute.objects.first()
         pages = Page.objects.all().order_by('serial')
         navitems=NavItem.objects.all().order_by('serial')
-        notices=Post.objects.all().order_by('-id')
+        notices=Post.objects.all().order_by('-id')[:7]
         service_boxes=ServiceBox.objects.all().order_by('serial')
+        principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
+        vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
         
-        principal=Teacher.objects.filter(position=1, release_date=None).first()
-        viec_principal=Teacher.objects.filter(position=2, release_date=None).first()
         #chapters = Chapter.objects.all
         #news = News.objects.all
         #chapters="sumon"
         #for chapter in singlepost:
         # print(chapter.name)
         #serializer = frontpageSerializer(carousel,many=True)
-        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'viec_principal':viec_principal,'institute':institute})
+        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'viec_principal':vice_principal,'institute':institute})
 
 def languageChange(request):
     print('1',request.POST.get('lang_toggle', False))
@@ -55,11 +55,11 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     navitem=NavItem.objects.filter(name=navitem_name).first()
     navelement=NavElement.objects.filter(head=navelement_head).first() 
     page=Page.objects.filter(id=id).distinct().first()
-    notices=Post.objects.all().order_by('-id')
-    principal=Teacher.objects.filter(position=1, release_date=None,is_active=True).first()   
-    vice_principal=Teacher.objects.filter(position=2, release_date=None,is_active=True).first()
+    notices=Post.objects.all().order_by('-id')[:7]
+    principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
+    vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter( release_date=None,is_active=True)
-    academic_council=Teacher.objects.filter(Q(position=4)|Q(position=1)|Q(position=2), release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
 
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
@@ -199,11 +199,11 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
     institute=Institute.objects.first()
     navitems=NavItem.objects.all().order_by('serial')  
     page=Page.objects.filter(id=id).distinct().first()
-    notices=Post.objects.all().order_by('-id')
-    principal=Teacher.objects.filter(position=1, release_date=None,is_active=True).first()   
-    vice_principal=Teacher.objects.filter(position=2, release_date=None,is_active=True).first()
+    notices=Post.objects.all().order_by('-id')[:7]
+    principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
+    vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter( release_date=None,is_active=True)
-    academic_council=Teacher.objects.filter(Q(position=4)|Q(position=1)|Q(position=2), release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
     print(servicebox_title,heading)
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
@@ -292,3 +292,27 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
         return render(request,page.template.directory+'/'+page.template.name,context=context)
     else:
         return redirect(page.link)
+
+
+def tableAllShow(request, tableall ):
+    carousels = Carousel.objects.all().order_by('cid')
+    institute=Institute.objects.first()
+    navitems=NavItem.objects.all().order_by('serial')
+    notices=Post.objects.all().order_by('-id')[:7]
+    principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
+    vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
+    teachers=Teacher.objects.filter( release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
+    post=Post.objects.all().order_by('-id')
+    context = {
+        'carousels': carousels,'navitems':navitems,'notices':notices,
+        'principal':principal,
+        'institute':institute,
+        'viec_principal':vice_principal,
+        'academic_council':academic_council,
+        'post':post,
+        'teachers':teachers,
+
+        }
+    
+    return render(request,'postview/notice_all_show.html',context=context)

@@ -10,6 +10,7 @@ urlpatterns = [
     path('language_change/', views.languageChange, name='language_change'),
     path('showpage/<str:navitem_name>/<str:navelement_head>/<str:heading>/<str:id>', views.showPage, name="showpage"),
     path('showpage_service_box_item/<int:servicebox_id>/<str:servicebox_title>/<str:heading>/<str:id>', views.showServiceBoxItem, name="showpage_servicebox_item"),
+    path('tableshow/<str:tableall>', views.tableAllShow, name="tableshow"),
 
 
 ]

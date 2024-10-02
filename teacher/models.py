@@ -32,7 +32,7 @@ class Position(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.id
+        return self.title
 class BcsBatch(models.Model):
     serial=models.IntegerField(default=10)
     title=models.CharField(max_length=100,unique=True)
@@ -70,6 +70,10 @@ class Teacher(models.Model):
     is_active=models.BooleanField(default=False)
     class Meta:
         ordering = ['tid']
+        
+    def __str__(self):
+        return self.t_name
+    
     def __unicode__(self):
         return self.t_name_bangla
 

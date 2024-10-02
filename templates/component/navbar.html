@@ -79,7 +79,13 @@
 
                             <li style="background:">
                                 <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name navelement.head page.heading page.id  %}{% else %}{% url 'showpage' navitem.name navelement.head page.heading page.id  %}{% endif %}"
-                                style="color: ">{{page.heading}}</a>
+                                style="color: ">
+                                {% if request.session.lang == 'english' %}
+                                        {{ page.heading_en }}
+                                        {% else %}
+                                        {{ page.heading }}
+                                        {% endif %}
+                                </a>
                                 
                                 <!-- Start Forth Level -->
                                     <ul class="mzr-links">

@@ -6,7 +6,7 @@ from import_export.admin import ExportActionMixin
 class ProfileAdmin(ExportActionMixin,admin.ModelAdmin):
     model = Teacher
     list_display=[ 't_name','t_email','t_phone','designation','t_department','batch']
-    filter_horizontal=['branch',]
+    filter_horizontal=['position','branch',]
     list_filter=[  't_department','first_joining_date','designation','is_active']
 @admin.register(Designation)
 class TeacherDesignationAdmin(ExportActionMixin,admin.ModelAdmin):

@@ -24,7 +24,7 @@
                 
                             </ul>
             <div class="clearfix">
-                <a href="http://www.bogra.gov.bd/bn/site/view/notices" title="সকল " class="btn right">All </a>
+                <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn right">All </a>
             </div>
         </div>
         {% else %}
@@ -36,14 +36,18 @@
                 <li class="clearfix">
                     <a href="" title="গণবিজ্ঞপ্তি">
                         <i class="text-green fa fa-arrow-circle-right"></i>
-                        <span>{{notice.title}}</span>
+                        {% if request.session.lang == 'english' and post.title_en %}
+                                        <span>{{notice.title_en}}</span>
+                                        {% else %}
+                                        <span>{{notice.title}}</span>
+                                        {% endif %}
                     </a>
                 </li>
                 {% endfor %}
                 
                             </ul>
             <div class="clearfix">
-                <a href="http://www.bogra.gov.bd/bn/site/view/notices" title="সকল " class="btn right">সকল </a>
+                <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn right">সকল </a>
             </div>
         </div>
         {% endif %}
