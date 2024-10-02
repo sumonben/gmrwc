@@ -1,4 +1,53 @@
 <style>
+    .toggleContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: fit-content;
+        border: 3px solid #343434;
+        border-radius: 20px;
+        background: #343434;
+        font-weight: bold;
+        color: #343434;
+        cursor: default;
+      }
+      .toggleContainer::before {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0%;
+        border-radius:20px;
+        background: white;
+        transition: all 0.3s;
+      }
+      .toggleCheckbox:checked + .toggleContainer::before {
+         left: 50%;
+      }
+      .toggleContainer div {
+        padding: 6px;
+        text-align: center;
+        z-index: 1;
+      }
+      .toggleCheckbox {
+        display: none;
+      }
+      .toggleCheckbox:checked + .toggleContainer div:first-child{
+        color: white;
+        transition: color 0.3s;
+      }
+      .toggleCheckbox:checked + .toggleContainer div:last-child{
+        color: #343434;
+        transition: color 0.3s;
+      }
+      .toggleCheckbox + .toggleContainer div:first-child{
+        color: #343434;
+        transition: color 0.3s;
+      }
+      .toggleCheckbox + .toggleContainer div:last-child{
+        color: white;
+        transition: color 0.3s;
+      }
     .top-menu{
         border-radius: 0 0 20% 20%;
     }
@@ -13,7 +62,12 @@
 
 <div class="top-menu">
     <div class="row mb-2 mb-md-0">
-        <div id="topbar-left" class="col-8 col-md-3 bd-gov-site" style="margin-top: 5px;"><a href="http://www.bangladesh.gov.bd/" target="_blank" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন">বাংলাদেশ জাতীয় তথ্য বাতায়ন</a></div>
+        <div id="topbar-left" class="col-8 col-md-3 bd-gov-site" style="margin-top: 5px;"><a href="http://www.bangladesh.gov.bd/" target="_blank" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন">
+          {% if request.session.lang == 'english' and post.title_en %}
+          Bangladesh National Portal          
+          {% else %}
+          বাংলাদেশ জাতীয় তথ্য বাতায়ন          
+          {% endif %}</a></div>
         <div id="sitesDropdown" class="d-none d-md-block col-md-4 middle-form" >
             <div class="form-item">
                 <select title="বিভাগ নির্বাচন করতে এখানে ক্লিক করুন" class="chzn-select doptors mt-2 mt-md-0" id="doptor">
@@ -65,12 +119,22 @@
         <div class="col-5 col-md-3" >
             <!-- <button id="lang-btn" class="btn btn-primary btn-sm float-right">English</button> -->
             <div >
+                
                 <a  class="search-btn" href="{% url 'login' %}">Login </a>&nbsp
                 <a  class="search-btn" href="{% url 'register' %}">Registration </a>
 
             </div>
               
         </div>
+        <form id="language_form" action="" method="post">
+            {% csrf_token %}
+            <input type="checkbox" id="toggle" name="lang_toggle" class="toggleCheckbox" onchange="LanguageSelect(this.value)" />
+            <label for="toggle" class='toggleContainer'>
+            <div id="bangla" onclick="BanglaSelect(this.id)">বাংলা</div>   
+            <div id="english" onclick="EnglishSelect(this.id)">English</div>
+            </label>
+        </form>
+        
         
     </div>
     

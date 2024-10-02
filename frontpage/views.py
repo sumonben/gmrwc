@@ -1,10 +1,13 @@
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox
+from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Institute
 from department.models import Department
-from account.models import Teacher,Student
+from teacher.models import Teacher
+from student.models import Student
+
 from django.db.models import Q
 
 # Create your views here.
@@ -13,40 +16,61 @@ class frontpage_view(ListCreateAPIView):
     template_name = 'frontpage/govtpage.html'
     def get(self, request):
         carousels = Carousel.objects.all().order_by('cid')
+        institute=Institute.objects.first()
         pages = Page.objects.all().order_by('serial')
         navitems=NavItem.objects.all().order_by('serial')
         notices=Post.objects.all().order_by('-id')
         service_boxes=ServiceBox.objects.all().order_by('serial')
         
-        principal=Teacher.objects.filter(position='অধ্যক্ষ', release_date=None).first()
-        viec_principal=Teacher.objects.filter(position='উপাধ্যক্ষ', release_date=None).first()
+        principal=Teacher.objects.filter(position=1, release_date=None).first()
+        viec_principal=Teacher.objects.filter(position=2, release_date=None).first()
         #chapters = Chapter.objects.all
         #news = News.objects.all
         #chapters="sumon"
         #for chapter in singlepost:
         # print(chapter.name)
         #serializer = frontpageSerializer(carousel,many=True)
-        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'viec_principal':viec_principal})
+        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'viec_principal':viec_principal,'institute':institute})
+
+def languageChange(request):
+    print('1',request.POST.get('lang_toggle', False))
+    if 'lang' not in request.session:
+        request.session['lang']='bangla'
+        print('2',request.session['lang'])
+        del request.session['lang']
+    if request.POST.get('lang_toggle', False) == 'english':
+        request.session['lang']='english'
+        print('3',request.session['lang'])
+    else:
+        request.session['lang']='bangla'
+
+    return JsonResponse({'success': "success"},safe=False)
 
 
 def showPage(request, navitem_name,navelement_head,heading, id):
     teacher=None
     carousels = Carousel.objects.all().order_by('cid')
-    navitems=NavItem.objects.all().order_by('serial')  
+    institute=Institute.objects.first()
+    navitems=NavItem.objects.all().order_by('serial')
+    navitem=NavItem.objects.filter(name=navitem_name).first()
+    navelement=NavElement.objects.filter(head=navelement_head).first() 
     page=Page.objects.filter(id=id).distinct().first()
     notices=Post.objects.all().order_by('-id')
-    principal=Teacher.objects.filter(position='অধ্যক্ষ', release_date=None,is_active=True).first()   
-    vice_principal=Teacher.objects.filter(position='উপাধ্যক্ষ', release_date=None,is_active=True).first()
+    principal=Teacher.objects.filter(position=1, release_date=None,is_active=True).first()   
+    vice_principal=Teacher.objects.filter(position=2, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter( release_date=None,is_active=True)
-    academic_council=Teacher.objects.filter(Q(position='বিভাগীয় প্রধান')|Q(position='অধ্যক্ষ')|Q(position='উপাধ্যক্ষ'), release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(Q(position=4)|Q(position=1)|Q(position=2), release_date=None,is_active=True)
 
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'navitem_name':navitem_name,
+        'navitem':navitem,
         'heading':heading,
         'id':id,
         'navelement_head':navelement_head,
+        'navelement':navelement,
         'principal':principal,
+        'institute':institute,
         'viec_principal':vice_principal,
         'academic_council':academic_council,
         }
@@ -172,13 +196,14 @@ def showPage(request, navitem_name,navelement_head,heading, id):
 def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
     teacher=None
     carousels = Carousel.objects.all().order_by('cid')
+    institute=Institute.objects.first()
     navitems=NavItem.objects.all().order_by('serial')  
     page=Page.objects.filter(id=id).distinct().first()
     notices=Post.objects.all().order_by('-id')
-    principal=Teacher.objects.filter(position='অধ্যক্ষ', release_date=None,is_active=True).first()   
-    vice_principal=Teacher.objects.filter(position='উপাধ্যক্ষ', release_date=None,is_active=True).first()
+    principal=Teacher.objects.filter(position=1, release_date=None,is_active=True).first()   
+    vice_principal=Teacher.objects.filter(position=2, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter( release_date=None,is_active=True)
-    academic_council=Teacher.objects.filter(Q(position='বিভাগীয় প্রধান')|Q(position='অধ্যক্ষ')|Q(position='উপাধ্যক্ষ'), release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(Q(position=4)|Q(position=1)|Q(position=2), release_date=None,is_active=True)
     print(servicebox_title,heading)
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
@@ -186,6 +211,7 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
         'heading':heading,
         'id':id,
         'principal':principal,
+        'institute':institute,
         'viec_principal':vice_principal,
         'academic_council':academic_council,
         }

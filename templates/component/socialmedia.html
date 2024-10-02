@@ -2,7 +2,13 @@
                       <!-- Share Content top option start -->
                       <div class="d-flex justify-content-between hide-for-print mb-3 mt-5">
                         <div>
+                            {% if request.session.lang == 'english' %}
+                            <p class="share-title">Click To Thare This Content</p>
+
+                            {% else %}
                             <p class="share-title">কনটেন্টটি শেয়ার করতে ক্লিক করুন</p>
+
+                            {% endif %}
                             <div class="blocks">
 <div class="d-flex gap-1">
     <a class="social_btn facebook fb-xfbml-parse-ignore" href="javascript:void(0)" onclick="shareOnClick('facebook')"><i class="fab fa-facebook-f"></i></a> 
@@ -28,11 +34,20 @@
                                 <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FNationalPortal%2F&amp;tabs&amp;width=340&amp;height=70&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=true&amp;show_facepile=true&amp;appId" width="340" height="70" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                                                                      <a href="https://www.facebook.com/NationalPortal/" class="share-text-style" style="box-shadow: 0 0 0px 1px #80808033;
                                     padding: 12px 10px 9px;margin-left: 4px;font-size: 16px;text-align: left;border-radius: 1px;" target="_blink">
-                                    ফেইসবুক পেইজ ভিজিট ও <br>লাইক দিন</a> &nbsp;
+                                    {% if request.session.lang == 'english' %}
+                                    Visit Facebook Page &  <br>Like It
+                                    {% else %}
+                                    ফেইসবুক পেইজ ভিজিট ও <br>লাইক দিন
+                                    {% endif %}
+                                                </a> &nbsp;
                                 <div class="right">
                                     <p class="share-youtube-title">Govt. Mujibur Rahman women's College</p>
                                     <div class="g-ytsubscribe" data-channelid="UCRKo0tns0XlC9l58HVtrG4w" data-layout="default" data-count="default"></div>
+                                    {% if request.session.lang == 'english' %}
+                                    <p class="share-text-style">Subscribe Our Website</p> 
+                                    {% else %}
                                     <p class="share-text-style">পোর্টাল সাবস্ক্রাইব করুন</p> 
+                                    {% endif %}
                                 </div>  
                                  
                             </div>

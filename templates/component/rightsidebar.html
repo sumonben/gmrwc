@@ -13,8 +13,15 @@
     <div class="block">
 
   
+         
+         {% if request.session.lang == 'english' %}
+         <h3 class="title" style="text-align:center;">National Anthem</h3>
 
-        <h3 class="title" style="text-align:center;">জাতীয় সংগীত</h3>
+            {% else %}
+            <h3 class="title" style="text-align:center;">জাতীয় সংগীত</h3>
+ 
+         {% endif %}
+            
 
 <div class="content">
     <audio controls  style="width: 210px;">
@@ -32,16 +39,29 @@
 
   
 
-  
-                               <h1 class="title" style="text-align: center;"><u>কলেজ প্রতিষ্ঠাতা</u></h1>
-                               <h3 class="title" style="text-align: center;">মোঃ মজিবর রহমান ভান্ডারী</h3>
-            
-            
+    {% if request.session.lang == 'english' %}
+    <h1 class="title" style="text-align: center;"><u>College Founder</u></h1>
+    <h3 class="title" style="text-align: center;">Md. Mujibur Rahman Vandari</h3>
     <div class="content">
-                    <p><img src="{%static 'images/founder.jpg'%}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
+        <p><img src="{%static 'images/founder.jpg'%}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
+
+<h4 style="text-align: center;">Md. Mujibur Rahman Vandari</h4>
+</div>  
+
+
+       {% else %}
+       <h1 class="title" style="text-align: center;"><u>কলেজ প্রতিষ্ঠাতা</u></h1>
+       <h3 class="title" style="text-align: center;">মোঃ মজিবর রহমান ভান্ডারী</h3>
+       <div class="content">
+        <p><img src="{%static 'images/founder.jpg'%}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
 
 <h4 style="text-align: center;">মোঃ মজিবর রহমান ভান্ডারী</h4>
-    </div>  
+</div>  
+
+    {% endif %}
+    
+                               
+            
     
     
 
@@ -117,7 +137,14 @@
                 
         <div class="block service-list">
 <a href="http://webmail.mopa.gov.bd/" target="_blank">
-    <h5 class="bk-org title eservice-title ces_title">একাডেমিক ক্যালেন্ডার </h5>
+    {% if request.session.lang == 'english' %}
+        <h5 class="bk-org title eservice-title ces_title">Academic Calender </h5>
+
+    {% else %}
+        <h5 class="bk-org title eservice-title ces_title">একাডেমিক ক্যালেন্ডার </h5>
+ 
+    {% endif %}
+         
 </a>
 <div class="content">
 
@@ -129,7 +156,14 @@
                 
         <div class="block service-list">
 <a href="//bangladesh.gov.bd/site/view/all_eservices_in_bangladesh/">
-    <h5 class="bk-org title eservice-title ces_title">শুন্য পদের তালিকা</h5>
+    {% if request.session.lang == 'english' %}
+    <h5 class="bk-org title eservice-title ces_title">Vacant Posts </h5>
+
+{% else %}
+    <h5 class="bk-org title eservice-title ces_title">শূণ্যপদের তালিকা </h5>
+
+{% endif %}
+
 </a>
 <div class="content">
 
@@ -140,26 +174,56 @@
         
                 
         <div class="block service-list">
-<h5 class="bk-org title eservice-title ces_title">সিটিজেন চার্টার</h5>
-<ul>
-    <li>
-        <a href="http://eporcha.gov.bd/khatian-search-panel" title="নকলের জন্য আবেদন" target="_blank">
-            <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> নকলের জন্য আবেদন
-        </a>
-    </li>
-    <li>
-        <a href="//www.mygov.bd/" title="ই-সেবার আবেদন" target="_blank">
-            <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> ই-সেবার আবেদন
-        </a>
-    </li>
-</ul>
+            {% if request.session.lang == 'english' %}
+            <h5 class="bk-org title eservice-title ces_title">Links for Teacher's </h5>
+    
+        {% else %}
+            <h5 class="bk-org title eservice-title ces_title">শিক্ষকদের জন্য</h5>
+     
+        {% endif %}
+
+        {% if request.session.lang == 'english' %}
+        <ul>
+            <li>
+                <a href="https://emis.gov.bd/emis" title="নকলের জন্য আবেদন" target="_blank">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> EMIS Link
+                </a>
+            </li>
+            <li>
+                <a href="https://ibas.finance.gov.bd/login?returnUrl=%2Fnd%2F" title="ই-সেবার আবেদন" target="_blank">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> EFT (Online Salary) Link
+                </a>
+            </li>
+        </ul>    
+        {% else %}
+        <ul>
+            <li>
+                <a href="https://emis.gov.bd/emis" title="নকলের জন্য আবেদন" target="_blank">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> ইএমআইএস(EMIS) লিংক
+                </a>
+            </li>
+            <li>
+                <a href="https://ibas.finance.gov.bd/login?returnUrl=%2Fnd%2F" title="ই-সেবার আবেদন" target="_blank">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> বেতন বিল সাবমিট(ইএফটি)
+                </a>
+            </li>
+        </ul>     
+        {% endif %}
+        
 </div>        
             
         
                 
        
 <div class="block service-list">
+    {% if request.session.lang == 'english' %}
+    <h5 class="bk-org title eservice-title ces_title">Important Links</h5>
+
+{% else %}
 <h5 class="bk-org title eservice-title ces_title">গুরত্বপূর্ণ লিংকসমূহ</h5>
+
+{% endif %}
+
 <div class="service-list-scroll">
     <ul>
                                 <li>
@@ -211,7 +275,14 @@
         
                 
         <div class="block service-list">
-<h5 class="title social-bg">সামাজিক যোগাযোগ মাধ্যম</h5>
+            {% if request.session.lang == 'english' %}
+            <h5 class="title social-bg">Social Media</h5>
+        
+        {% else %}
+        <h5 class="title social-bg">সামাজিক যোগাযোগ মাধ্যম</h5>
+        
+        {% endif %}
+          
 <div class="content">
             <a title="youtube" href="//www.youtube.com/channel/UCTcTpn0miTlITwieVIxRLow" target="_blank"
         class="share-buttons">
@@ -234,7 +305,14 @@
                 
         <div class="block service-list">
 <a href="http://www.bogra.gov.bd/bn/site/view/innovation_content">
-    <h5 class="bk-org title eservice-title ces_title">ইনোভেশন কর্নার </h5>
+    {% if request.session.lang == 'english' %}
+    <h5 class="bk-org title eservice-title ces_title">Innovation Corner</h5>
+
+{% else %}
+<h5 class="bk-org title eservice-title ces_title">ইনোভেশন কর্নার </h5>
+
+{% endif %}
+
 </a>
 <div class="content">
 </div>
@@ -242,18 +320,19 @@
             
         
                 
-        <div class="block service-list">
-<a href="http://www.bogra.gov.bd/bn/site/view/SpsData">
-    <h5 class="bk-org title eservice-title ces_title">সেবা সহজিকরণ</h5>
-</a>
-<div class="content">
-</div>
-</div>        
+       
             
         
                 
         <div class="block service-list">
+            {% if request.session.lang == 'english' %}
+            <h5 class="bk-org title eservice-title ces_title">Event Calender</h5>
+
+{% else %}
 <h5 class="bk-org title eservice-title ces_title">ইভেন্ট ক্যালেন্ডার</h5>
+
+{% endif %}
+
 
 <!-- Version 1.11.4 -->
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
@@ -267,9 +346,17 @@
     <div class="clearfix"></div>
     <div id="datepicker"></div>
     <div style="margin-top: 10px;">
+        {% if request.session.lang == 'english' %}
         <a href="bn/site/view/calendar_event" class="btn btn-secondary" style="display:block; text-align:center; text-decoration:underline;color: #fff;font-weight: bold;">
-            সকল ইভেন্ট
-        </a>
+            All Event
+        </a>    
+    {% else %}
+    <a href="bn/site/view/calendar_event" class="btn btn-secondary" style="display:block; text-align:center; text-decoration:underline;color: #fff;font-weight: bold;">
+        সকল ইভেন্ট
+    </a>    
+    {% endif %}
+    
+        
     </div>
     
 </div>
@@ -286,7 +373,14 @@
                
         <div class="block">
 <a href="http://npftr.portal.gov.bd/new-domain" target="_blank">
-    <h5 class="title">সরকারি অফিস সংযুক্তির ফরম</h5>
+    {% if request.session.lang == 'english' %}
+    <h5 class="bk-org title eservice-title ces_title">Govt. Office Attachment Form</h5>
+
+{% else %}
+<h5 class="title">সরকারি অফিস সংযুক্তির ফরম</h5>
+
+{% endif %}
+
 </a>
 </div>
     
@@ -294,7 +388,14 @@
         
                
         <div class="block" aria-selected="true" tabindex="0">
+            {% if request.session.lang == 'english' %}
+            <h5 class="title">Emergency Hotlines</h5>
+
+{% else %}
 <h5 class="title">জরুরি হটলাইন</h5>
+
+{% endif %}
+
 <!--<div class="content">
    <img alt="জরুরি হটলাইন" src="//file.portal.gov.bd/media/central/uploaded-files/National-Helpline.jpg" style="height:100%; width:100%">
 </div>-->

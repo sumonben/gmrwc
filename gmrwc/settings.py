@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'sortedm2m_filter_horizontal_widget',
     'import_export',
+    'teacher',
+    'student',
 ]
 
 MIDDLEWARE = [

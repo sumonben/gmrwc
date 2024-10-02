@@ -4,7 +4,8 @@ import datetime
 from django import forms
  
 # import GeeksModel from models.py
-from .models import Student,Teacher
+from teacher.models import Teacher
+from student.models import Student
 from department.models import Department
  
 # create a ModelForm
@@ -52,7 +53,7 @@ class TeacherForm(forms.ModelForm):
             'first_joining_date': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'form-control', 'placeholder': 'Select a date','type': 'date','onchange' : "myFunctionTeacher(this.id);"}),
             'joining_date': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'form-control', 'placeholder': 'Select a date','type': 'date','onchange' : "myFunctionTeacher(this.id);"}),
             'release_date': forms.DateInput(format=('%y-%m-%Y'),attrs={'class': 'form-control', 'placeholder': 'Select a date','type': 'date'}),
-            'position': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;'}),
+            'position': forms.SelectMultiple(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;'}),
             'branch': forms.SelectMultiple(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;'}),
             'class_year': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;'}),
       }

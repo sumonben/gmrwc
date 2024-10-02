@@ -382,7 +382,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
 
   <div class="new-line"></div>
  <div class="container1">
-    <h3 align="center" style="color:#ff6200">{% if teacher.position %}{{ teacher.position}}{% else  %} **** {% endif %}</h3>
+    <h3 align="center" style="color:#ff6200">{% if teacher.position %}{{ teacher.position.title}}{% else  %} **** {% endif %}</h3>
 
 
     <div style="background-color: transparent" class="form-field2 d-flex align-items-center">

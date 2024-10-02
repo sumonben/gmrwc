@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.forms import TextInput, Textarea
 from django.db import models
-from .models import Carousel,Category,Tag,NavItem,NavElement,Page,ServiceBox,Notice,Post,Template
+from .models import Carousel,Category,Tag,NavItem,NavElement,Page,ServiceBox,Notice,Post,Template,Institute
 # Register your models here.
 from sortedm2m_filter_horizontal_widget.forms import SortedFilteredSelectMultiple
 
@@ -83,6 +83,12 @@ class UserAdmin(admin.ModelAdmin):
     list_display=[ 'serial','name','Child_Element_link']
     search_fields=[  'name',]
     list_display_links = ['serial','name']
+    
+@admin.register(Institute)
+class InstituteAdmin(admin.ModelAdmin):
+    list_display=[   'serial','title','eiin_no']
+    search_fields=[  'title','eiin_no']
+    list_display_links = ['serial','title']
 
 
 @admin.register(ServiceBox)

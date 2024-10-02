@@ -12,6 +12,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.html import format_html
 # Create your models here.
 UserModel=get_user_model()
+
+def year_choices():
+    return [(r,r) for r in range(2009, datetime.date.today().year+1)]
 DESIGNATION_CHOICES = ( 
     ("0","---পদবী---" ), 
     ("অধ্যাপক","অধ্যাপক" ), 
@@ -45,37 +48,7 @@ BCS_BATCH=(
 )
 
 
-class Teacher(models.Model):
-    tid=models.IntegerField(default=10)
-    t_name=models.CharField(max_length=100)
-    t_name_bangla=models.CharField(max_length=100,blank=True, null=True)
-    t_email=models.EmailField(max_length=50,unique=True)
-    t_phone=models.CharField(max_length=11,unique=True)
-    designation=models.CharField(max_length=100,choices = DESIGNATION_CHOICES, default = '0')
-    position=models.CharField(max_length=100,choices = POSITION_CHOICES, default = '1')
-    service_id=models.CharField(max_length=25)
-    batch=models.CharField(max_length=25,choices = BCS_BATCH, default = '0')
-    merit=models.CharField(max_length=25,blank=True, null=True)
-    t_department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
-    branch=models.ManyToManyField(Branch, null=True, blank=True,)
-    t_date_of_birth=models.DateField(blank=True, null=True)
-    first_joining_date=models.DateField(blank=True, null=True)
-    joining_date=models.DateField(blank=True, null=True)
-    release_date=models.DateField(blank=True, null=True)
-    image=models.ImageField(upload_to='media/',blank=True,null=True) 
-    signature=models.ImageField(upload_to='media/',blank=True,null=True)
-    message=RichTextField(blank=True,null=True)
-    bio=RichTextField(blank=True,null=True)
-    user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
-    is_active=models.BooleanField(default=False)
-    class Meta:
-        ordering = ['tid']
-    def __unicode__(self):
-        return self.t_name_bangla
 
-
-def year_choices():
-    return [(r,r) for r in range(2020, datetime.date.today().year+1)]
 SESSION_CHOICES = ( 
     ("0","ভর্তি সেশন" ), 
     ("2022-23","2022-23" ), 
@@ -111,36 +84,7 @@ CLASS_YEAR_CHOICES = (
    
 
 )
-class Student(models.Model):
-    std_id=models.IntegerField(default=10)
-    name=models.CharField(max_length=100)
-    name_bangla=models.CharField(max_length=100,blank=True, null=True)
-    email=models.EmailField(max_length=50,unique=True)
-    phone=models.CharField(max_length=11,unique=True)
-    class_roll=models.CharField(max_length=11,null=True, blank=True,)
-    session=models.CharField(max_length=100,choices = SESSION_CHOICES, default = '0')
-    student_category=models.CharField(max_length=100,choices = STUDENT_CATEGORY_CHOICES)
-    group=models.CharField(max_length=25,choices = GROUP_CHOICES, default ='1')
-    department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
-    exam_roll=models.CharField(max_length=25,null=True, blank=True,)
-    registration=models.CharField(max_length=25,null=True, blank=True,)
-    class_year=models.CharField(max_length=100, choices = CLASS_YEAR_CHOICES)
-    date_of_birth=models.DateField(blank=True, null=True)
-    passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
-    image=models.ImageField(upload_to='media/',blank=True,null=True) 
-    signature=models.ImageField(upload_to='media/',blank=True,null=True)
-    user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
-    is_active=models.BooleanField(default=False)
 
-    def user_link(self):
-        if self.user is not None:
-            return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.user.id,)) , escape(self.user.username)))
-        else:
-            return None
-    user_link.allow_tags = True
-    user_link.short_description = "User"
-    def __unicode__(self):
-        return self.name_bangla
 '''class CustomUser(AbstractUser):
     username=None
     first_name=None

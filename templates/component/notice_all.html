@@ -30,7 +30,11 @@
 <h3 class="title">
     
     {% if navitem_name %}
-    {{navitem_name}} --> {{navelement_head}} --> {{heading}} 
+    {% if request.session.lang == 'english' %}
+    {{navitem.name_en}} --> {{navelement.head_en}} --> {{page.heading_en}} 
+    {% else %}
+    {{navitem.name}} --> {{navelement.head}} --> {{heading}} 
+    {% endif %}
     {% endif %}
     
     {% if servicebox_title %}
@@ -45,18 +49,30 @@
 
 <br><div class="table-responsive chbappy1" cellpadding="10px" cellspacing="10px" id="printableArea">
     <table id="dataTable" class="table table-bordered"><thead><tr><th scope="col">#</th>
+        {% if request.session.lang == 'english' %}
+        <th scope="">Title</th>
+        <th scope="">Date Published</th>
+        <th scope="">Download</th>
+        <th scope="">Links</th>
+        {% else %}
         <th scope="">শিরোনাম</th>
         <th scope="">প্রকাশের তারিখ</th>
         <th scope="">ডাউনলোড</th>
         <th scope="">লিংক</th>
-
+        {% endif %}
+        
+        
       </tr></thead>
       <tbody>
         {% for post in post %}
         <tr>
             <th>{{ forloop.counter }}</th>
-                                                                  <td class="text">            
-                                    <a href="">{{ post.title }}</a>
+                                    <td class="text"> 
+                                        {% if request.session.lang == 'english' and post.title_en %}
+                                        <a href="">{{ post.title_en }}</a>
+                                        {% else %}
+                                        <a href="">{{ post.title }}</a>
+                                        {% endif %}      
                                   </td>
 
                                         <td>{{post.date}}</td>
@@ -77,13 +93,6 @@
      {% endfor %}
     </tbody></table></div>
 
-<div class="content-type-footer">
-<div class="left pagination">
-    <ul class="pagination"><li class="disabled"><span>Previous</span></li>
 
-                <li><a href="?page=2" rel="next">Next</a>
-        </li>
-        </ul></div>
-</div>
 
 </div>

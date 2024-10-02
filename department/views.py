@@ -3,46 +3,49 @@ from django.shortcuts import redirect, render
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
-from frontpage.models import Carousel,Page,NavItem,NavElement,Post,ServiceBox
+from frontpage.models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Institute
 from .models import Department
-from account.models import Teacher,Student
-
+from teacher.models import Teacher,Position
+from student.models import Student
 
 # Create your views here.
 def DepartmentPage(request, navitem_name,navelement_head,heading, id):
 
     print("Sumon"+heading)
     carousels = Carousel.objects.all().order_by('cid')
+    institute=Institute.objects.first()
     navitems=NavItem.objects.all().order_by('serial')  
     page=Page.objects.filter(id=id).distinct().first()
     print(page.category.all())
     notices=Post.objects.all().order_by('-id')
-    principal=Teacher.objects.filter(position='অধ্যক্ষ', release_date=None).first()
-    viec_principal=Teacher.objects.filter(position='উপাধ্যক্ষ', release_date=None).first()
+    principal=Teacher.objects.filter(position=1, release_date=None).first()
+    viec_principal=Teacher.objects.filter(position=2, release_date=None).first()
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'navitem_name':navitem_name,
         'heading':heading,
         'id':id,
+        'institute':institute,
         'principal':principal,
         'viec_principal':viec_principal,
         }
     
     if heading in 'বিভাগীয় প্রধান':
-        department_head=Teacher.objects.filter(position='বিভাগীয় প্রধান', release_date=None)
-
-    print("department_head")
-
+        department_head=Teacher.objects.filter(position=2, release_date=None)
+    position=Position.objects.filter(title=heading).first()
     department=Department.objects.filter(name=heading).first()
     teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True)
     students=Student.objects.filter(department=department,is_active=True)
-    department_head=Teacher.objects.filter(t_department=department, position='বিভাগীয় প্রধান', release_date=None,is_active=True).first()
+    department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
+    print("Hello: ",department_head)
+
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'type':type,
         'heading':heading,
         'id':id,
         'principal':principal,
+        
         'viec_principal':viec_principal,
         'department_head':department_head,
         }

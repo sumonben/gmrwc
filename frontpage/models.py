@@ -41,16 +41,35 @@ BCS_BATCH=(
     ("41", "41"), ("42", "42"),("43", "43"), ("44", "44"),  ("45", "45"), ("46", "46"), ("47", "47"), ("48", "48"),("49", "49"), ("50", "50"),
 )
 # Create your models here.
+
+class Institute(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=100,unique=True)
+    title_en=models.CharField(max_length=100,unique=True)
+    address=models.CharField(max_length=100,unique=True)
+    address_en=models.CharField(max_length=100,unique=True)
+    slogan=models.CharField(max_length=100,unique=True)
+    slogan_en=models.CharField(max_length=100,unique=True)
+    eiin_no=models.CharField(max_length=25,unique=True)
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.title
+
+
 class Carousel(models.Model):
     cid=models.IntegerField()
     cname=models.CharField(max_length=200)
+    cname_en=models.CharField(max_length=200,blank=True,null=True)
     ctext=RichTextField(blank=True,null=True)
+    ctext_en=RichTextField(blank=True,null=True)
     cimage=models.ImageField(upload_to='media/',blank=True,null=True)
-
 
 class Notice(models.Model):
     title=models.CharField(max_length=1000)
+    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     body=models.TextField(blank=True, null=True)
+    body_en=models.TextField(blank=True, null=True)
     date=models.DateField(blank=True, null=True)
     file=models.FileField(upload_to='media/',blank=True,null=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True)
@@ -59,13 +78,13 @@ class Notice(models.Model):
 
 class Category(models.Model):
     name=models.CharField(max_length=100,unique=True)
-    
+    name_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     def __str__(self):
         return self.name
 
 class Tag(models.Model):
     name=models.CharField(max_length=100,unique=True)
-    
+    name_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     def __str__(self):
         return self.name
 class Template(models.Model):
@@ -77,8 +96,11 @@ class Template(models.Model):
 class Page(models.Model):
     serial=models.IntegerField(default=10)
     heading=models.CharField(max_length=100,blank=True,null=True)
+    heading_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     title=models.CharField(max_length=500,blank=True,null=True)
+    title_en=models.CharField(max_length=500,unique=True,blank=True,null=True)
     body=RichTextUploadingField(blank=True,null=True)
+    body_en=RichTextUploadingField(blank=True,null=True)
     type=models.CharField(max_length=25,choices = TYPE_CHOICES, default = '1')
     template=models.ForeignKey(Template,blank=True,null=True,on_delete=models.CASCADE)
     link=models.CharField(max_length=500,blank=True,null=True)
@@ -117,8 +139,11 @@ class Page(models.Model):
 class Post(models.Model):
     serial=models.IntegerField(default=10)
     heading=models.CharField(max_length=100,blank=True,null=True)
+    heading_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     title=models.CharField(max_length=500)
+    title_en=models.CharField(max_length=500,unique=True,blank=True,null=True)
     body=RichTextField(blank=True,null=True)
+    body_en=RichTextField(blank=True,null=True)
     file=models.FileField(upload_to='media/',blank=True,null=True)
     date=models.DateField(blank=True, null=True)
     category=models.ManyToManyField(Category,blank=True,null=True,)
@@ -132,6 +157,7 @@ class Post(models.Model):
 class NavElement(models.Model):
     serial=models.IntegerField(default=10)
     head=models.CharField(max_length=100,unique=True)
+    head_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     page=models.ManyToManyField(Page, null=True, blank=True)
     class Meta:
         ordering = ['serial']
@@ -144,6 +170,7 @@ class NavElement(models.Model):
 class NavItem(models.Model):
     serial=models.IntegerField(default=10)
     name=models.CharField(max_length=100,unique=True)
+    name_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     navelement=models.ManyToManyField(NavElement, null=True,blank=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True)
     class Meta:
@@ -191,6 +218,7 @@ class NavItem(models.Model):
 class ServiceBox(models.Model):
     serial=models.IntegerField(default=10)
     title=models.CharField(max_length=100,unique=True)
+    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
     element=models.ManyToManyField(Page, null=True, blank=True)
     image=models.ImageField(upload_to='media/',blank=True,null=True)
     class Meta:

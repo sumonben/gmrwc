@@ -9,7 +9,8 @@ from django.contrib.auth import login,authenticate,logout
 from .forms import StudentForm,TeacherForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from .models import Student,Teacher
+from teacher.models import Teacher
+from student.models import Student
 from io import BytesIO
 from django.http import FileResponse
 from django.template.loader import get_template

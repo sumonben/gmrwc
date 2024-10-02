@@ -1798,8 +1798,108 @@ table.table.table-bordered, tr, td, th {
     <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
     
     <script>
+    function LanguageSelect( val ){
+        var frm = $('#language_form')[0];
+        var form= new FormData(frm);
+        var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+        // Get the data from the form
+       
+
+        // Send AJAX request
+        $.ajax({
+            enctype: 'multipart/form-data',
+            type: 'POST',
+            url: "{% url 'language_change' %}",  // Adjust the URL as per your project structure
+            data: form,
+            headers: {
+                'X-CSRFToken': csrfToken
+            },
+            
+            cache:false,
+            processData:false,
+            contentType:false,
+           
+           
+            success: function (response) {
+                if (response.success === 'success') {
+                    location.reload();
+                }
+                   
+            },
+            error: function (xhr, status, error) {
+               
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+        });
+    }
+    function BanglaSelect( id ){
+
+        document.getElementById('toggle').value=id;
+
+    }
+    function EnglishSelect( id ){
+
+        document.getElementById('toggle').value=id;
+    }
     $(document).ready( function () {
 
+        var language =  "{{request.session.lang}}";
+
+        if(language=='english'){
+            document.getElementById('toggle').checked="true";
+            document.getElementById('english').style.color="#343434";
+            document.getElementById('english').style.transition="color 0.3s";
+            document.getElementById('bangla').style.color="white";
+            document.getElementById('bangla').style.transition="color 0.3s";
+
+
+
+
+        
+    }
+    else{
+       // document.getElementById('toggle').checked="false";
+
+    }
+
+       // alert(username );
+        
+       if("{{request.session.lang}}" == 'english'){
+        table=$('#dataTable').dataTable({
+            "sSearch": {
+                "sAddClass": 'form-control',
+            },
+            dom: '',
+            "oLanguage": {
+                "decimal":"",
+                "emptyTable":     "No data available in table",
+                "info":           "Showing _START_ to _END_ of _TOTAL_ entries",
+                "infoEmpty":      "Showing 0 to 0 of 0 entries",
+                "infoFiltered":   "(filtered from _MAX_ total entries)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "Show _MENU_ entries",
+                "loadingRecords": "Loading...",
+                "processing":     "",
+                "search":         "Search:",
+                "zeroRecords":    "No matching records found",
+                "paginate": {
+                    "first":      "First",
+                    "last":       "Last",
+                    "next":       "Next",
+                    "previous":   "Previous"
+                },
+                "aria": {
+                    "orderable":  "Order by this column",
+                    "orderableReverse": "Reverse order this column"
+                }
+
+            }
+        });
+       }
+       else{     
         table=$('#dataTable').dataTable({
             "sSearch": {
                 "sAddClass": 'form-control',
@@ -1825,6 +1925,8 @@ table.table.table-bordered, tr, td, th {
 
             }
         });
+    }
+
         
     } );
     </script>

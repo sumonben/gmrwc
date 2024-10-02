@@ -149,6 +149,38 @@ $.simpleTicker($("#demo"),{
 });
 </script> -->
 <div class="row service-row">
+    
+    {% if request.session.lang == 'english' %}
+    {% for service_box in service_boxes%}
+    <hr><hr>
+
+       <div class="col-md-6" >
+      <div class="service-box box">
+        <!--  -->
+        <h4 style="color: ">{{service_box.title_en}}</h4>
+        <!-- <h4 style="color: ">আমাদের সম্পর্কে</h4> -->
+         <img src="{% if service_box.image %}{{service_box.image.url}}{% else %}{%static 'images/gmrwc_logo.png' %}{% endif %}" alt="আমাদের সম্পর্কে" width="110" style="max-width:700px;"><ul class="caption fade-caption" style="margin:0"><!-- {
+"link": "\/site\/officer_list\/\u09ae\u09cb\u0983-\u09b8\u09be\u0987\u09ab\u09c1\u09b2-\u0987\u09b8\u09b2\u09be\u09ae",
+"caption": {
+    "bn": "\u099c\u09c7\u09b2\u09be \u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u0995",
+    "en": "Deputy Commissioner"
+}
+} -->
+ <ul>
+            {% for page in service_box.element.all %}
+            <li>
+                <i class="text-green fa fa-caret-right"></i>
+                <a href="{% url 'showpage_servicebox_item' service_box.id service_box.title page.heading page.id  %}" title="জেলা প্রশাসক"> 
+                {{page.heading_en}}                
+                </a>
+            </li>
+            {% endfor %}
+            
+         </ul></div>
+   </div>
+   {% endfor%}
+        
+    {% else %}
     {% for service_box in service_boxes%}
     <hr><hr>
 
@@ -178,9 +210,14 @@ $.simpleTicker($("#demo"),{
    </div>
    {% endfor%}
 
+{% endif %}
      
 </div>
 
+
+{% if request.session.lang != 'english' %}
+    
+    
         <div class="row service-row">
             <div class="col-md-6">
                 <div class="service-box box">
@@ -337,7 +374,9 @@ $.simpleTicker($("#demo"),{
                       </li>
                    </ul></div>
              </div>
-                   </div>
+    </div>
+
+    {% endif %}
 
         <div class="row service-row">
        

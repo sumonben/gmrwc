@@ -53,14 +53,27 @@
                 <img id="logo-image"  alt="GMRWC logo" src="{% static 'images/gmrwc_logo.png' %}">
         </div>
         <div class="clearfix" id="site-name-wrapper">
+            
+            {% if request.session.lang == 'english' %}
             <span id="site-name" style="text-align: center;">
-                <a style="text-align: center;"title="বগুড়া জেলা " href="/" >সরকারি মুজিবুর রহমান মহিলা কলেজ</a>                
+                <a style="text-align: center;"title="বগুড়া জেলা " href="/" >{{institute.title_en}}</a>                
             </span>
             <span id="site-name" style="text-align: center;">
-                <a title="বগুড়া জেলা " href="/" >বগুড়া সদর, বগুড়া</a>
+                <a title="বগুড়া জেলা " href="/" >{{institute.address_en}}</a>
                 
             </span>
-            <span id="slogan" style="text-align: center;">স্থাপিতঃ ১৯৬৩</span>
+            <span id="slogan" style="text-align: center;">{{institute.slogan_en}}</span>
+             {% else %}  
+                
+            <span id="site-name" style="text-align: center;">
+                <a style="text-align: center;"title="বগুড়া জেলা " href="/" >{{institute.title}}</a>                
+            </span>
+            <span id="site-name" style="text-align: center;">
+                <a title="বগুড়া জেলা " href="/" >{{institute.address}}</a>
+                
+            </span>
+            <span id="slogan" style="text-align: center;">{{institute.slogan}}</span>
+            {% endif %}
         </div>
     </div>
     </div>
