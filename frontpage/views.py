@@ -8,7 +8,7 @@ from department.models import Department
 from teacher.models import Teacher
 from student.models import Student
 
-from django.db.models import Q
+from django.db.models import Q,Count
 
 # Create your views here.
 class frontpage_view(ListCreateAPIView):
@@ -58,9 +58,8 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     notices=Post.objects.all().order_by('-id')[:7]
     principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
-    teachers=Teacher.objects.filter( release_date=None,is_active=True)
-    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
-
+    teachers=Teacher.objects.filter(release_date=None,is_active=True).annotate(count=Count('t_department')).order_by().order_by('designation__serial','position__serial')
+    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True).order_by('designation__serial','position__serial')
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'navitem_name':navitem_name,

@@ -155,7 +155,7 @@
         
                 
         <div class="block service-list">
-<a href="//bangladesh.gov.bd/site/view/all_eservices_in_bangladesh/">
+<a href="{% url 'teacherlist' 'content_name' 'head' 'type' 'vacantpost' %}">
     {% if request.session.lang == 'english' %}
     <h5 class="bk-org title eservice-title ces_title">Vacant Posts </h5>
 
