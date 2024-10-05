@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'import_export',
     'teacher',
     'student',
+    'attrs',
 ]
 
 MIDDLEWARE = [

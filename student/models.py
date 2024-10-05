@@ -89,3 +89,46 @@ class Student(models.Model):
     user_link.short_description = "User"
     def __unicode__(self):
         return self.name_bangla
+
+
+class Division(models.Model):
+    name=models.CharField(max_length=25,unique=True)
+    name_en=models.CharField(max_length=15,unique=True)
+    link=models.CharField(max_length=15,null=True,blank=True)
+    class Meta:
+        ordering = ['name']
+    def __str__(self):
+        return self.name
+
+class District(models.Model):
+    name=models.CharField(max_length=25,unique=True)
+    name_en=models.CharField(max_length=25,unique=True)
+    lattitude=models.CharField(max_length=15,blank=True,null=True)
+    longitude=models.CharField(max_length=15, blank=True,null=True)
+    division=models.ForeignKey(Division, on_delete=models.CASCADE,blank=True,null=True)
+    link=models.CharField(max_length=15,null=True,blank=True)
+    class Meta:
+        ordering = ['division']
+    def __str__(self):
+        return self.name
+
+class Upazilla(models.Model):
+    name=models.CharField(max_length=25)
+    name_en=models.CharField(max_length=25)
+    district=models.ForeignKey(District, on_delete=models.CASCADE,blank=True,null=True)
+    link=models.CharField(max_length=15,null=True,blank=True)
+    class Meta:
+        ordering = ['district']
+    def __str__(self):
+        return self.name
+
+class Union(models.Model):
+    name=models.CharField(max_length=25)
+    name_en=models.CharField(max_length=25)
+    upazilla=models.ForeignKey(Upazilla, on_delete=models.CASCADE,blank=True,null=True)
+    link=models.CharField(max_length=15,null=True,blank=True)
+
+    class Meta:
+        ordering = ['upazilla']
+    def __str__(self):
+        return self.name
