@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.forms import Field
-from .models import Student, StudentCategory,Class,Session,Group,Division,District,Upazilla,Union
+from .models import Student, StudentCategory,Class,Session,Group,Division,District,Upazilla,Union,GuardianInfo,Transaction,Adress,SubjectChoice,SscEquvalent
 from import_export.admin import ExportActionMixin,ImportExportMixin
 from import_export.widgets import ManyToManyWidget
 from import_export.resources import ModelResource
@@ -22,6 +22,25 @@ class StudentAdmin(ExportActionMixin,admin.ModelAdmin):
     list_display=[ 'name','email','phone','student_category','department','session','user_link']
     list_display_links = ['name','email']
     list_filter=['department','student_category','session','group','class_year','is_active']
+
+@admin.register(GuardianInfo)
+class GuardianInfoAdmin(ExportActionMixin,admin.ModelAdmin):
+    list_display= ['father_name', 'mother_name','guardian_phone']
+    list_display_links = ['father_name', 'mother_name','guardian_phone']
+    list_filter=['guardian_phone',]
+@admin.register(SscEquvalent)
+class SscEquvalentAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass
+
+@admin.register(SubjectChoice)
+class SubjectChoiceAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass
+@admin.register(Adress)
+class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass
+@admin.register(Transaction)
+class TransactionAdmin(ExportActionMixin,admin.ModelAdmin):
+    pass
 
 
 @admin.register(StudentCategory)

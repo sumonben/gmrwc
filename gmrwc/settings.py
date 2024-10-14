@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'import_export',
     'teacher',
     'student',
+    'admission',
+    'rangefilter',
+    'django_admin_listfilter_dropdown',
     'attrs',
 ]
 

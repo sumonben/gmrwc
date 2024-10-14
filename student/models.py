@@ -57,40 +57,6 @@ class StudentCategory(models.Model):
         ordering = ['serial']
     def __str__(self):
         return self.title
-
-
-class Student(models.Model):
-    std_id=models.IntegerField(default=10)
-    name=models.CharField(max_length=100)
-    name_bangla=models.CharField(max_length=100,blank=True, null=True)
-    email=models.EmailField(max_length=50,unique=True)
-    phone=models.CharField(max_length=11,unique=True)
-    class_roll=models.CharField(max_length=11,null=True, blank=True,)
-    session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.CASCADE)
-    student_category=models.ForeignKey(StudentCategory,blank=True,null=True,on_delete=models.CASCADE)
-    group=models.ForeignKey(Group,blank=True,null=True,on_delete=models.CASCADE)
-    department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.CASCADE)
-    exam_roll=models.CharField(max_length=25,null=True, blank=True,)
-    registration=models.CharField(max_length=25,null=True, blank=True,)
-    class_year=models.ForeignKey(Class,blank=True,null=True,on_delete=models.CASCADE)
-    date_of_birth=models.DateField(blank=True, null=True)
-    passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
-    image=models.ImageField(upload_to='media/',blank=True,null=True) 
-    signature=models.ImageField(upload_to='media/',blank=True,null=True)
-    user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
-    is_active=models.BooleanField(default=False)
-
-    def user_link(self):
-        if self.user is not None:
-            return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.user.id,)) , escape(self.user.username)))
-        else:
-            return None
-    user_link.allow_tags = True
-    user_link.short_description = "User"
-    def __unicode__(self):
-        return self.name_bangla
-
-
 class Division(models.Model):
     name=models.CharField(max_length=25,unique=True)
     name_en=models.CharField(max_length=15,unique=True)
@@ -132,3 +98,131 @@ class Union(models.Model):
         ordering = ['upazilla']
     def __str__(self):
         return self.name
+
+class GuardianInfo(models.Model):
+    serial=models.IntegerField(default=10)
+    father_name=models.CharField(max_length=100,blank=True,null=True)
+    father_name_en=models.CharField(max_length=100,blank=True,null=True)
+    profession_of_father=models.CharField(max_length=25,blank=True,null=True)
+    father_nid=models.CharField(max_length=25,blank=True,null=True)
+    mother_name=models.CharField(max_length=100,blank=True,null=True)
+    mother_name_en=models.CharField(max_length=100,blank=True,null=True)
+    profession_of_mother=models.CharField(max_length=25,blank=True,null=True)
+    mother_nid=models.CharField(max_length=100,blank=True,null=True)
+    guardian_phone=models.CharField(max_length=11,blank=True,null=True)
+    anual_income=models.CharField(max_length=11,blank=True,null=True)
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.father_name
+    
+class Adress(models.Model):
+    serial=models.IntegerField(default=10)
+    village_or_house=models.CharField(max_length=50,blank=True,null=True)
+    house_or_street_no=models.CharField(max_length=25,blank=True,null=True)
+    post_office=models.CharField(max_length=25,blank=True,null=True)
+    division=models.ForeignKey(Division,blank=True,null=True,on_delete=models.SET_NULL)
+    district=models.ForeignKey(District,blank=True,null=True,on_delete=models.SET_NULL)
+    upazilla=models.ForeignKey(Upazilla,blank=True,null=True,on_delete=models.SET_NULL)
+
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.village_or_house+', '+self.post_office+', '+self.upazilla+', '+self.district
+
+
+class Student(models.Model):
+    std_id=models.IntegerField(default=10)
+    name=models.CharField(max_length=100)
+    name_bangla=models.CharField(max_length=100,blank=True, null=True)
+    email=models.EmailField(max_length=50,unique=True)
+    phone=models.CharField(max_length=11,unique=True)
+    class_roll=models.CharField(max_length=11,null=True, blank=True,)
+    session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
+    student_category=models.ForeignKey(StudentCategory,blank=True,null=True,on_delete=models.SET_NULL)
+    group=models.ForeignKey(Group,blank=True,null=True,on_delete=models.SET_NULL)
+    section=models.CharField(max_length=25,null=True, blank=True,)
+    department=models.ForeignKey(Department, null=True, blank=True, on_delete=models.SET_NULL)
+    exam_roll=models.CharField(max_length=25,null=True, blank=True,)
+    registration=models.CharField(max_length=25,null=True, blank=True,)
+    class_year=models.ForeignKey(Class,blank=True,null=True,on_delete=models.SET_NULL)
+    date_of_birth=models.DateField(blank=True, null=True)
+    gender=models.CharField(max_length=15,null=True, blank=True,)
+    passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
+    nationality=models.CharField(max_length=15,null=True, blank=True,)
+    birth_registration=models.CharField(max_length=25,null=True, blank=True,)
+    religion=models.CharField(max_length=15,null=True, blank=True,)
+    blood_group=models.CharField(max_length=10,null=True, blank=True,)
+    marital_status=models.CharField(max_length=25,null=True, blank=True,)
+    guardian_info=models.ForeignKey(GuardianInfo,on_delete=models.SET_NULL,null=True, blank=True,)
+    present_adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL)
+    permanent_adress=models.ForeignKey(Adress,null=True, blank=True,related_name="Permanent",on_delete=models.SET_NULL)
+    image=models.ImageField(upload_to='media/',blank=True,null=True) 
+    signature=models.ImageField(upload_to='media/',blank=True,null=True)
+    user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.SET_NULL)
+    is_active=models.BooleanField(default=False)
+
+    def user_link(self):
+        if self.user is not None:
+            return format_html('<a href="%s">%s</a>' % (reverse("admin:auth_user_change", args=(self.user.id,)) , escape(self.user.username)))
+        else:
+            return None
+    user_link.allow_tags = True
+    user_link.short_description = "User"
+    def __unicode__(self):
+        return self.name_bangla
+    
+    
+class SscEquvalent(models.Model):
+    serial=models.IntegerField(default=10)
+    student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
+    ssc_or_equvalent=models.CharField(max_length=25,blank=True,null=True)
+    board=models.CharField(max_length=25,blank=True,null=True)
+    group=models.CharField(max_length=25,blank=True,null=True)
+    session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
+    exam_roll=models.CharField(max_length=25,blank=True,null=True)
+    regitration_no=models.CharField(max_length=25,blank=True,null=True)
+    group=models.CharField(max_length=25,blank=True,null=True)
+    cgpa_with_4th=models.CharField(max_length=25,blank=True,null=True)
+    cgpa_without_4th=models.CharField(max_length=25,blank=True,null=True)
+    passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
+    
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.student
+
+class SubjectChoice(models.Model):
+    serial=models.IntegerField(default=10)
+    student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
+    compulsory_subject=models.ManyToManyField(Department,related_name='compulsory_subject',blank=True,null=True)
+    optional_subject=models.ManyToManyField(Department,related_name='optional_subject',blank=True,null=True)
+    fourth_subject=models.ForeignKey(Department,blank=True,null=True,on_delete=models.SET_NULL)
+
+    
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.student
+
+
+
+class Transaction(models.Model):
+    serial=models.IntegerField(default=10)
+    student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
+    transactionID=models.CharField(max_length=25,blank=True,null=True)
+    purpose=models.CharField(max_length=25,blank=True,null=True)
+    method=models.CharField(max_length=100,blank=True,null=True)
+    amount=models.CharField(max_length=25,blank=True,null=True)
+    date=models.DateField(blank=True, null=True)
+    refunded=models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ['serial']
+        unique_together = (('student', 'transactionID'),)
+    def __str__(self):
+        return self.student
+
+
+
+    

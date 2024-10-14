@@ -7,6 +7,7 @@ from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Institute
 from department.models import Department
 from teacher.models import Teacher
 from student.models import Student
+from .forms import StudentForm
 
 from django.db.models import Q,Count
 
@@ -315,3 +316,7 @@ def tableAllShow(request, tableall ):
         }
     
     return render(request,'postview/notice_all_show.html',context=context)
+
+def testHtml(request ):
+    form=StudentForm()
+    return render(request, 'admission/filter_horizontal.html',{'form':form})
