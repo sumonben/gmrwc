@@ -4,8 +4,11 @@ from . import views
 import static
 from django.conf import settings
 from django.conf.urls.static import static
+from django import views as django_views
+
 urlpatterns = [
     path('/student', views.testHtml, name="student"),
+    path('/jsi18n', django_views.i18n.JavaScriptCatalog.as_view(), name='jsi18n'),
 
 
 

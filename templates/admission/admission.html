@@ -22,13 +22,15 @@
     <link href="{% static 'css/admission/SpryValidationPassword.css'%}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
 
-    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% url 'jsi18n' %}" > </script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
-
+    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/SelectBox.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/SelectFilter2.js' %}"></script>
+
+
+    
     <style>
         body {
             margin-left: 0px;
@@ -272,8 +274,8 @@
                             
                           </div>
                           <div class="step d-none">
-                            {{form}}
                               <h4>Are you experiencing a high fever, dry cough, tiredness and loss of taste or smell?</h4>
+                              {{subject_form}}
                               <div class="form-check ps-0 q-box">
                                   <div class="q-box__question">
                                       <input class="form-check-input question__input" id="q_2_yes" name="q_2" type="radio" value="Yes"> 
