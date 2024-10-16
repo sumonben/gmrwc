@@ -9,7 +9,7 @@
  * which prevent them from being displayed by default.
  */ 
 .textfieldUSER{
-	width: 100%;
+	width: 300px;
 	border: 1px solid #8EA8C4;
 	background-color: #EAF4FF;
 	padding-top: 4px;
@@ -18,6 +18,17 @@
 	padding-bottom: 4px;
 	border-radius: 4px;;
 }
+.textfieldUSERinfo{
+	width: 400px;
+	border: 1px solid #8EA8C4;
+	background-color: #EAF4FF;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 4px;
+	border-radius: 4px;;
+}
+
  
  
 .textfieldRequiredMsg, 

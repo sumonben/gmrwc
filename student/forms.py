@@ -31,6 +31,14 @@ DEGREE_CHOICE=[
         ('Technical', 'Technical'),
 
 ]
+RELIGION_CHOICES=[
+        ('Islam', 'Islam'),
+        ('Hinduism', 'Hinduism'),
+        ('Christanity', 'Christanity'),
+        ('Buddhism', 'Buddhism'),
+
+
+]
 
 class StudentForm(forms.ModelForm):
     CHOICES = [
@@ -46,40 +54,41 @@ class StudentForm(forms.ModelForm):
         BlOOD_CHOICE=[('AB+', 'AB+'),('A+', 'A+'),('B+', 'B+'),('O+', 'O+'),('AB-', 'AB-'),('A-', 'A-'),('B-', 'B-'),('O-', 'O-'),]
         model = Student
         fields = "__all__"
-        exclude=['std_id']
+        exclude=['std_id','class_roll','exam_roll','registration','passing_year','student_category','department','section','class_year','guardian_info','present_adress','permanent_adress','user','is_active']
         department=forms.ModelChoiceField(label="",queryset=Department.objects.all(),empty_label="Placeholder",)
 
         
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'Name in English','onkeypress' : "myFunction(this.id);"}),
-            'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id);"}),
-            'email': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'Email','onkeypress' : "myFunction(this.id);"}),
-            'phone': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  '11 digits ','onkeypress' : "myFunction(this.id);"}),
-            'class_roll': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'ক্লাস রোল'}),
-            'exam_roll': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'এক্সাম রোল (যদি থাকে)'}),
-            'registration': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'রেজিস্ট্রেশন নম্বর(যদি থাকে)'}),
-            'session': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;','onchange' : "myFunction(this.id);"}),
-            'date_of_birth': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'form-control', 'placeholder': 'Select a date','type': 'date'}),
-            'passing_year': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;'}),
-            'student_category': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
-            'group': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;'}),
-            'birth_registration': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'Birth registration Number'}),
-            'nationality': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'nationality'}),
-            'blood_group': forms.Select(choices=BlOOD_CHOICE,attrs={'class': 'textfieldUSER', 'placeholder':  'Your blood group'}),
-            'marital_status': forms.Select(choices=MARITAL_CHOICES,attrs={'class': 'textfieldUSER',}),
+            'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)"}),
+            'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)"}),
+            'email': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Email','onkeypress' : "myFunction(this.id)"}),
+            'phone': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  '11 digits ','onkeypress' : "myFunction(this.id)"}),
+            'session': forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : "myFunction(this.id)"}),
+            'date_of_birth': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'textfieldUSERinfo', 'placeholder': 'Select a date','type': 'date'}),
+            'group': forms.Select(attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;'}),
+            'birth_registration': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Birth registration Number'}),
+            'nationality': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'nationality'}),
+            'blood_group': forms.Select(choices=BlOOD_CHOICE,attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Your blood group'}),
+            'marital_status': forms.Select(choices=MARITAL_CHOICES,attrs={'class': 'textfieldUSERinfo',}),
+            'religion': forms.Select(choices=RELIGION_CHOICES,attrs={'class': 'textfieldUSERinfo',}),
 
-            'department': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;'}),
-            'class_year': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;','onchange' : "myFunction(this.id);"}),
+
       }
     
 class SubjectChoiceForm(forms.ModelForm):
-    compulsory_subject=forms.ModelMultipleChoiceField(Department.objects.all(),initial=Department.objects.filter(serial__in=[ 1, 2,3]), widget=FilteredSelectMultiple('Compulsory Subject',False, attrs={'row':'2'}))
+    compulsory_subject=forms.ModelMultipleChoiceField(Department.objects.all(),initial=Department.objects.filter(serial__in=[ 1, 2,3]), widget=FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'}))
     #optional_subject=forms.ModelMultipleChoiceField(Department.objects.all(), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'row':'1','class': 'textfieldUSER',}))
-    
+    #group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
+
     class Meta:
         model = SubjectChoice
         fields = "__all__"
         exclude=['serial','student','optional_subject']
+        widgets={
+                        'fourth_subject': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'style':'margin-bottom:20px'}),
+                        'compulsory_subject': forms.SelectMultiple(attrs={'class': 'textfieldUSERinfo','style':'margin-top:20px','onkeypress' : "myFunction(this.id);"}),
+
+        }
         
 class AdressForm(forms.ModelForm):
     division= forms.ModelChoiceField(queryset=Division.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSER'})),
@@ -106,8 +115,8 @@ class AdressForm(forms.ModelForm):
     
 class SscEquvalentForm(forms.ModelForm):
     
-    group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSER'}))
-    session=forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSER'}))
+    group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
+    session=forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
 
     class Meta:
         model = SscEquvalent
@@ -116,13 +125,13 @@ class SscEquvalentForm(forms.ModelForm):
 
         
         widgets = {
-            'ssc_or_equvalent': forms.Select(choices=DEGREE_CHOICE,attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id);"}),
-            'board': forms.Select(choices=BOARD_CHOICE,attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id)"}),
-            'group': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id)"}),
-            'session': forms.Select(attrs={'class': 'textfieldUSER','onkeypress' : "myFunction(this.id)"}),
-            'exam_roll': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'SSC/Equivalent Roll'}),
-            'regitration_no': forms.TextInput(attrs={'class': 'textfieldUSER', 'placeholder':  'SSC//Equivalent Registration'}),
-            'cgpa_with_4th': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'CGPA with 4th Subject'}),
-            'cgpa_without_4th': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'CGPA without 4th Subject','style': 'width: 100%;'}),
-            'passing_year': forms.Select(choices=year_choices,attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
+            'ssc_or_equvalent': forms.Select(choices=DEGREE_CHOICE,attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);"}),
+            'board': forms.Select(choices=BOARD_CHOICE,attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id)"}),
+            'group': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);"}),
+            'session': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);"}),
+            'exam_roll': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'SSC/Equivalent Roll'}),
+            'regitration_no': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'SSC/Equivalent Registration'}),
+            'cgpa_with_4th': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder': 'CGPA with 4th Subject'}),
+            'cgpa_without_4th': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder': 'CGPA without 4th Subject'}),
+            'passing_year': forms.Select(choices=year_choices,attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
             }
