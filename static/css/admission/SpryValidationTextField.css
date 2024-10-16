@@ -9,7 +9,7 @@
  * which prevent them from being displayed by default.
  */ 
 .textfieldUSER{
-	width: 250px;
+	width: 100%;
 	border: 1px solid #8EA8C4;
 	background-color: #EAF4FF;
 	padding-top: 4px;

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
-    <title>Bangladesh Public Service Commission</title>
+    <title>Govt. Mujibur rahman Women's Collge</title>
     <meta http-equiv="cache-control" content="no-cache">
     <meta name="publisher" content="Govt. Mujibur rahman Women's Collge">
     <meta name="copyright" content="Govt. Mujibur rahman Women's Collge">
@@ -12,7 +12,7 @@
     <meta name="keywords" content="gmrwc, college, women's, mohila college,Bogura, Govt. Mujibur rahman Women's Collge, Mujibur rahman Women's Collge, Mujibur rahman Collge, Admission, HSC, NU, National University, bcs advertisement, Admit Card, Applicant's Copy">
     <link href="{% static 'css/admission/bootstrap.min.css'%}" rel="stylesheet">
     <link href="{% static 'css/admission/style.css' %}" rel="stylesheet">
-    
+
     <link href="{% static 'css/admission/admission.css'%}" rel="stylesheet" type="text/css">
     <!--<script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
     <script src="../SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
@@ -21,7 +21,6 @@
     <link href="{% static 'css/admission/SpryValidationTextField.css'%}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/admission/SpryValidationPassword.css'%}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
-
     <script type="text/javascript" src="{% url 'jsi18n' %}" > </script>
     <script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
@@ -29,7 +28,18 @@
     <script type="text/javascript" src="{% static 'admin/js/SelectBox.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/SelectFilter2.js' %}"></script>
 
-
+    <style type="text/css" media="screen">
+      @font-face {
+        font-family: "kalpurushregular";
+        src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+        src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+          url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+          url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+          url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
     
     <style>
         body {
@@ -136,36 +146,74 @@
               <div id="qbox-container">
                       <div id="steps-container">
                           <div class="step d-block">
+                            <div><h1 style="text-align: center;"><u>Personal Information</u></h1></div>
                             <table width="900" border="0" align="center" valign="middle" cellspacing="0" cellpadding="0">
+
                               <tbody>
                               <tr>
                                 <td align="left">
                                   <fieldset>
-                                    <legend class="black12">Personal Information</legend>
-                                  <table width="100%" border="0" cellspacing="0" cellpadding="3">
-                                    <tbody><tr>
+                                  <table width="100%" border="1" cellspacing="0" cellpadding="2">
+                                    <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Personal Information</th></thead>
+                                    <tbody>
+                                      
+                                      <tr>
+                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">{{form.name.label}}</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                          <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                            <label>
+                                              {{form.name}}                                        
+                                            </label>
+                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">{{form.name_bangla.label}}</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                        <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{form.name_bangla}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                        <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">{{form.email.label}}</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                          <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                            <label>
+                                              {{form.email}}                                        
+                                            </label>
+                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">{{form.phone.label}}</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                        <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{form.phone}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                        <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                    </tr>
+                                    <tr>
                                       <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                      <td width="25%" align="left" valign="middle" class="black12">User ID</td>
-                                      <td width="5%" align="left" valign="middle" class="black12">:</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">{{form.date_of_birth.label}}</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
                                       <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                        {{form}}
                                         <label>
-                                          <input name="username" type="text" class="textfieldUSER" id="username" autocomplete="off">
+                                          {{form.date_of_birth}}                                        
                                         </label>
                                         <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
                                       <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td align="left" valign="middle">&nbsp;</td>
-                                      <td align="left" valign="middle" class="black12">Password</td>
-                                      <td align="left" valign="middle" class="black12">:</td>
-                                      <td align="left" valign="middle"><span id="sprypassword1">
-                                        <label>
-                                          <input name="password" type="password" class="textfieldPASS" id="password" autocomplete="off">
-                                          </label>
-                                        <span class="passwordRequiredMsg">Password is required!</span></span></td>
-                                      <td align="left" valign="middle">&nbsp;</td>
-                                    </tr>
+                                  </tr>       
+                                  
+                                        
                                     
       
                                   </tbody></table>
@@ -173,32 +221,114 @@
                               </td>
                               <td align="left">
                                 <fieldset>
-                                  <legend class="black12">Guardian Information</legend>
-                                <table width="100%" border="0" cellspacing="0" cellpadding="3">
-                                  <tbody><tr>
+                                <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Basic Information(Academic)</th></thead>
+
+                                  <tbody>
+                                    <tr>
+                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">{{form.nationality.label}}</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{form.nationality}}                                        
+                                        </label>
+                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                  </tr>
+                                    <tr>
+                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">{{form.birth_registration.label}}</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{form.birth_registration}}                                        
+                                        </label>
+                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                  </tr>
+                                     
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">{{form.gender.label}}</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                        <td width="25%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{form.gender}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                        
+                                    </tr>
+                                  
+                                  <!--<tr>
+                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">{{form.exam_roll.label}}</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{form.exam_roll}}                                        
+                                        </label>
+                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                  </tr>
+                                  <tr>
                                     <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="25%" align="left" valign="middle" class="black12">User ID</td>
-                                    <td width="5%" align="left" valign="middle" class="black12">:</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">{{form.registration.label}}</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
                                     <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
                                       <label>
-                                        <input name="username" type="text" class="textfieldUSER" id="username" autocomplete="off">
+                                        {{form.registration}}                                        
                                       </label>
                                       <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
                                     <td width="5%" align="left" valign="middle">&nbsp;</td>
                                   </tr>
                                   <tr>
-                                    <td align="left" valign="middle">&nbsp;</td>
-                                    <td align="left" valign="middle" class="black12">Password</td>
-                                    <td align="left" valign="middle" class="black12">:</td>
-                                    <td align="left" valign="middle"><span id="sprypassword1">
+                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">{{form.session.label}}</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
                                       <label>
-                                        <input name="password" type="password" class="textfieldPASS" id="password" autocomplete="off">
-                                        </label>
-                                      <span class="passwordRequiredMsg">Password is required!</span></span></td>
-                                    <td align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                  
-                                </tbody></table>
+                                        {{form.session}}                                        
+                                      </label>
+                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                </tr>
+                                
+                                  <tr>
+                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">{{form.group.label}}</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                      <label>
+                                        {{form.group}}                                        
+                                      </label>
+                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                  </tr>--> 
+                                  <tr>
+                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">{{form.marital_status.label}}</td>
+                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                      <label>
+                                        {{form.marital_status}}                                        
+                                      </label>
+                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                <tr>
+                                  <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                  <td width="10%" align="left" valign="middle" class="black12">{{form.blood_group.label}}</td>
+                                  <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                  <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                    <label>
+                                      {{form.blood_group}}                                        
+                                    </label>
+                                    <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                  <td width="5%" align="left" valign="middle">&nbsp;</td>
+                              </tr>
+                              
+                                                               
+                              </tbody></table>
                               </fieldset>
                             </td>
                                 </tr>
@@ -209,64 +339,141 @@
                               <tr>
                                 <td align="left">
                                   <fieldset>
-                                    <legend class="black12">Personal Information</legend>
-                                  <table width="100%" border="0" cellspacing="0" cellpadding="3">
-                                    <tbody><tr>
-                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                      <td width="25%" align="left" valign="middle" class="black12">User ID</td>
-                                      <td width="5%" align="left" valign="middle" class="black12">:</td>
-                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label>
-                                          <input name="username" type="text" class="textfieldUSER" id="username" autocomplete="off">
-                                        </label>
-                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                      <td align="left" valign="middle">&nbsp;</td>
-                                      <td align="left" valign="middle" class="black12">Password</td>
-                                      <td align="left" valign="middle" class="black12">:</td>
-                                      <td align="left" valign="middle"><span id="sprypassword1">
-                                        <label>
-                                          <input name="password" type="password" class="textfieldPASS" id="password" autocomplete="off">
+                                    <table width="100%" border="1" cellspacing="" cellpadding="5">
+                                      <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Permanent Adress</th></thead>
+                                      <tbody>
+                                        
+                                        <tr>
+                                            <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                            <td width="10%" align="left" valign="middle" class="black12">{{adress_form.village_or_house.label}}</td>
+                                            <td width="0%" align="left" valign="middle" class="black12">:</td>
+                                            <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                              <label>
+                                                {{adress_form.village_or_house}}                                        
+                                              </label>
+                                              <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                            <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">{{adress_form.house_or_street_no.label}}</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                          <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                            <label>
+                                              {{adress_form.house_or_street_no}}                                        
+                                            </label>
+                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                            <td width="10%" align="left" valign="middle" class="black12">{{adress_form.division.label}}</td>
+                                            <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                            <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                              <label>
+                                                {{adress_form.division}}                                        
+                                              </label>
+                                              <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                            <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">{{adress_form.district.label}}</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                          <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                            <label>
+                                              {{adress_form.district}}                                        
+                                            </label>
+                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">{{adress_form.upazilla.label}}</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                        <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{adress_form.upazilla}}                                        
                                           </label>
-                                        <span class="passwordRequiredMsg">Password is required!</span></span></td>
-                                      <td align="left" valign="middle">&nbsp;</td>
-                                    </tr>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                        <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                    </tr>       
                                     
-                                  </tbody></table>
-                                </fieldset>
+                                          
+                                      
+        
+                                    </tbody></table>
+                                  </fieldset>
                               </td>
                               <td align="left">
                                 <fieldset>
-                                  <legend class="black12">Guardian Information</legend>
-                                <table width="100%" border="0" cellspacing="0" cellpadding="3">
-                                  <tbody><tr>
-                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="25%" align="left" valign="middle" class="black12">User ID</td>
-                                    <td width="5%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        <input name="username" type="text" class="textfieldUSER" id="username" autocomplete="off">
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td align="left" valign="middle">&nbsp;</td>
-                                    <td align="left" valign="middle" class="black12">Password</td>
-                                    <td align="left" valign="middle" class="black12">:</td>
-                                    <td align="left" valign="middle"><span id="sprypassword1">
-                                      <label>
-                                        <input name="password" type="password" class="textfieldPASS" id="password" autocomplete="off">
+                                  <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                                    <thead style="height: 25px; background-color: #245b80; color: #fff;">
+                                      <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Present Adress</th>
+                                    </thead>
+                                    <tbody>
+                                      <tr><td colspan="5" align="right"><small>same as Permanent Adress</small> <input type="checkbox" id="present_adress"> </td></tr>
+                                      <tr>
+                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">{{adress_form.village_or_house.label}}</td>
+                                          <td width="0%" align="left" valign="middle" class="black12">:</td>
+                                          <td width="70%" align="left" valign="middle"><span id="sprytextfield1">
+                                            <label>
+                                              {{adress_form.village_or_house}}                                        
+                                            </label>
+                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">{{adress_form.house_or_street_no.label}}</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                        <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{adress_form.house_or_street_no}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                        <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                          <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">{{adress_form.division.label}}</td>
+                                          <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                          <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                            <label>
+                                              {{adress_form.division}}                                        
+                                            </label>
+                                            <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                          <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      </tr>
+                                      <tr>
+                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">{{adress_form.district.label}}</td>
+                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                        <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                          <label>
+                                            {{adress_form.district}}                                        
+                                          </label>
+                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                        <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">{{adress_form.upazilla.label}}</td>
+                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
+                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{adress_form.upazilla}}                                        
                                         </label>
-                                      <span class="passwordRequiredMsg">Password is required!</span></span></td>
-                                    <td align="left" valign="middle">&nbsp;</td>
-                                  </tr>
+                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                  </tr>       
                                   
-                                </tbody></table>
-                               
-                              </fieldset>
+                                        
+                                    
+      
+                                  </tbody></table>
+                                </fieldset>
                             </td>
                                 </tr>
                                 
@@ -274,8 +481,39 @@
                             
                           </div>
                           <div class="step d-none">
+
+                            <fieldset>
+                              <div><h1 style="text-align: center;"><u>Academic Information</u></h1></div>
+
+                              <table width="100%" border="1" cellspacing="0" cellpadding="3">
+                                <thead style="height: 25px; background-color: #245b80; color: #fff;">
+                                  <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff; padding: 15px; margin-bottom: 15px;">SSC or Equivalent Information</th>
+                                </thead>
+                                <tbody>
+                                  {% for field in ssc_equivalent_form %}
+                                    {{ field.errors }}
+                                
+                                  <tr>
+                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                      <td width="25%" align="left" valign="middle" class="black12">{{ field.label_tag }}</td>
+                                      <td width="5%" align="left" valign="middle" class="black12">:</td>
+                                      <td width="65%" align="left" valign="middle"><span id="sprytextfield1">
+                                        <label>
+                                          {{ field }}
+                                        </label>
+                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
+                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
+                                  </tr>
+                                  {% endfor %}
+  
+                              
+                                    
+                                
+  
+                              </tbody></table>
+                            </fieldset>
+                            
                               <h4>Are you experiencing a high fever, dry cough, tiredness and loss of taste or smell?</h4>
-                              {{subject_form}}
                               <div class="form-check ps-0 q-box">
                                   <div class="q-box__question">
                                       <input class="form-check-input question__input" id="q_2_yes" name="q_2" type="radio" value="Yes"> 
@@ -288,6 +526,7 @@
                               </div>
                           </div>
                           <div class="step d-none">
+                            {{subject_form}}
                               <h4>Are you having diarrhoea, stomach pain, conjunctivitis, vomiting and headache?</h4>
                               <div class="form-check ps-0 q-box">
                                   <div class="q-box__question">

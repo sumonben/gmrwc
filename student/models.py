@@ -25,7 +25,7 @@ class Session(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.title
+        return self.title_en
     
     
 class Class(models.Model):
@@ -46,7 +46,7 @@ class Group(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.title
+        return self.title_en
     
 class StudentCategory(models.Model):
     serial=models.IntegerField(default=10)
@@ -64,7 +64,7 @@ class Division(models.Model):
     class Meta:
         ordering = ['name']
     def __str__(self):
-        return self.name
+        return self.name_en
 
 class District(models.Model):
     name=models.CharField(max_length=25,unique=True)
@@ -76,7 +76,7 @@ class District(models.Model):
     class Meta:
         ordering = ['division']
     def __str__(self):
-        return self.name
+        return self.name_en
 
 class Upazilla(models.Model):
     name=models.CharField(max_length=25)
@@ -86,7 +86,7 @@ class Upazilla(models.Model):
     class Meta:
         ordering = ['district']
     def __str__(self):
-        return self.name
+        return self.name_en
 
 class Union(models.Model):
     name=models.CharField(max_length=25)
@@ -97,7 +97,7 @@ class Union(models.Model):
     class Meta:
         ordering = ['upazilla']
     def __str__(self):
-        return self.name
+        return self.name_en
 
 class GuardianInfo(models.Model):
     serial=models.IntegerField(default=10)
@@ -182,7 +182,6 @@ class SscEquvalent(models.Model):
     session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
     exam_roll=models.CharField(max_length=25,blank=True,null=True)
     regitration_no=models.CharField(max_length=25,blank=True,null=True)
-    group=models.CharField(max_length=25,blank=True,null=True)
     cgpa_with_4th=models.CharField(max_length=25,blank=True,null=True)
     cgpa_without_4th=models.CharField(max_length=25,blank=True,null=True)
     passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
