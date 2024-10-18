@@ -74,7 +74,7 @@ class District(models.Model):
     division=models.ForeignKey(Division, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
     class Meta:
-        ordering = ['division']
+        ordering = ['name_en']
     def __str__(self):
         return self.name_en
 
@@ -84,7 +84,7 @@ class Upazilla(models.Model):
     district=models.ForeignKey(District, on_delete=models.CASCADE,blank=True,null=True)
     link=models.CharField(max_length=15,null=True,blank=True)
     class Meta:
-        ordering = ['district']
+        ordering = ['name_en']
     def __str__(self):
         return self.name_en
 
@@ -95,7 +95,7 @@ class Union(models.Model):
     link=models.CharField(max_length=15,null=True,blank=True)
 
     class Meta:
-        ordering = ['upazilla']
+        ordering = ['name_en']
     def __str__(self):
         return self.name_en
 
@@ -178,7 +178,7 @@ class SscEquvalent(models.Model):
     student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
     ssc_or_equvalent=models.CharField(max_length=25,blank=True,null=True)
     board=models.CharField(max_length=25,blank=True,null=True)
-    group=models.CharField(max_length=25,blank=True,null=True)
+    group=models.ForeignKey(Group,blank=True,null=True,on_delete=models.SET_NULL)
     session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
     exam_roll=models.CharField(max_length=25,blank=True,null=True)
     regitration_no=models.CharField(max_length=25,blank=True,null=True)

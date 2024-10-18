@@ -18,6 +18,16 @@
 	padding-bottom: 4px;
 	border-radius: 4px;;
 }
+.textfieldUSERInvalid{
+	width: 300px;
+	border: 1px solid #f52f0c;
+	background-color: #ffdddd;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 4px;
+	border-radius: 4px;;
+}
 .textfieldUSERinfo{
 	width: 400px;
 	border: 1px solid #8EA8C4;
@@ -28,6 +38,17 @@
 	padding-bottom: 4px;
 	border-radius: 4px;;
 }
+.textfieldUSERinfoInvalid{
+	width: 400px;
+	border: 1px solid #f52f0c;
+	background-color: #ffdddd;
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-left: 4px;
+	padding-bottom: 4px;
+	border-radius: 4px;;
+}
+
 
  
  

@@ -1,4 +1,5 @@
 
+
 const progress = (value) => {
    document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
 }
@@ -15,7 +16,7 @@ const progress = (value) => {
    form.onsubmit = () => { return false }
 
    let current_step = 0;
-   let stepCount = 6
+   let stepCount = 4
    step[current_step].classList.add('d-block');
    if(current_step == 0){
       prevBtn.classList.add('d-none');
@@ -27,7 +28,10 @@ const progress = (value) => {
    nextBtn.addEventListener('click', () => {
       current_step++;
       let previous_step = current_step - 1;
-      if(( current_step > 0) && (current_step <= stepCount)){
+      let flag=validateForm();
+      //alert(go);
+
+      if(( current_step > 0) && (current_step <= stepCount) && flag){
         prevBtn.classList.remove('d-none');
         prevBtn.classList.add('d-inline-block');
         step[current_step].classList.remove('d-none');
@@ -46,7 +50,54 @@ const progress = (value) => {
         }
       }
     progress((100 / stepCount) * current_step);
+   
+function validateForm() {
+   // This function deals with validation of the form fields
+   var x, y, i, valid = true;
+   x = document.getElementsByClassName("step d-block");
+   //alert(current_step);
+
+   y = x[0].getElementsByTagName("input");
+   z= x[0].getElementsByTagName("select");
+   for (i = 0; i < y.length; i++) {
+     // If a field is empty...
+      //alert(y[i]+y[i].required);
+//alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
+
+     if (y[i].value == '' && y[i].hasAttribute('required') ) {
+
+      
+         y[i].className='textfieldUSERinfoInvalid';
+
+       valid = false;
+     }
+   }
+   
+   for (i = 0; i < z.length; i++) {
+      // If a field is empty...
+
+      if (z[i].value == '' && z[i].hasAttribute('required') ) {
+         //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
+
+        if(z[i].className=='textfieldUSER')
+          z[i].className='textfieldUSERInvalid';
+       else
+         z[i].className='textfieldUSERinfoInvalid';
+ 
+        valid = false;
+      }
+    }
+   //alert("valid:"+valid);
+   if(!valid){
+      current_step--;
+   }
+    return valid; // return the valid status
+}
+
+
+
     });
+    
 
 
    prevBtn.addEventListener('click', () => {
@@ -78,6 +129,14 @@ const progress = (value) => {
 
 
 submitBtn.addEventListener('click', () => {
+   for(var i=0; i < form.elements.length; i++){
+      if(form.elements[i].value === '' && form.elements[i].hasAttribute('required')){
+         form.elements[i].className='textfieldUSERinfoInvalid';
+        alert('There are some required fields!');
+        return false;
+      }
+    }
+    form.submit();
     preloader.classList.add('d-block');
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
