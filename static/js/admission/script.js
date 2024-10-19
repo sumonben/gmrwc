@@ -11,7 +11,7 @@ const progress = (value) => {
    let preloader = document.getElementById('preloader-wrapper');
    let bodyElement = document.querySelector('body');
    let succcessDiv = document.getElementById('success');
- 
+   let addChoiceBtn=document.getElementsByName('id_fourth_subject');
    form.onsubmit = () => { return false }
 
    let current_step = 0;
@@ -26,7 +26,7 @@ const progress = (value) => {
 
    nextBtn.addEventListener('click', () => {
          
-          document.getElementById('toast-container').style.visibility ='hidden';
+          //document.getElementById('toast-container').style.visibility ='hidden';
       current_step++;
       let previous_step = current_step - 1;
       let flag=validateForm();
@@ -59,13 +59,23 @@ const progress = (value) => {
             current_step--;
             return false;
           }
-          var selectobject = document.getElementsByName('fourth_subject');
-          alert(selectobject[0][0].value);
 
-              for (var i=0; i<selectobject[0].length; i++) {
-                  
-                  selectobject[0].remove(i);
+          let select_item = document.getElementsByName('fourth_subject');
+          let options = select_item[0].getElementsByTagName('option');
+          for (var i=options.length; i--;) {
+              select_item[0].options[i].style.display="block";
+            //select_item[0].removeChild(options[i]);
+         
+      }
+          for (var i=options.length; i--;) {
+                if(select_item[0].options[i].value in select[0])
+                  select_item[0].options[i].style.display="none";
+                //select_item[0].removeChild(options[i]);
+              else{
+
+              }
           }
+          
 
       }
       var x, y, i, valid = true;
@@ -174,5 +184,17 @@ submitBtn.addEventListener('click', () => {
           succcessDiv.classList.add('d-block');
       })
       
+});
+
+function fourthSubject(id){
+  alert("FourthSubject");
+
+}
+function subjectChoice(id){
+  alert("subjectChoice");
+
+}
+addChoiceBtn.addEventListener('change', () => {
+    alert("subjectChoice");
 });
 

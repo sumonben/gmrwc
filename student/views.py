@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from .forms import StudentForm,SubjectChoiceForm,AdressForm,SscEquvalentForm,GuardianForm,PresentAdressForm
+from department.models import Group,Subject
+from django.db.models import Q,Count
 
 # Create your views here.
 def testHtml(request ):
+    group=Group.objects.filter(title_en="Science").first()
     form = StudentForm()
-    subject_form = SubjectChoiceForm()
+    subject_form = SubjectChoiceForm(group=group)
     adress_form = AdressForm()
     present_adress_form = PresentAdressForm()
 

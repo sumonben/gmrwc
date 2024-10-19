@@ -5,9 +5,11 @@ from ckeditor_uploader.fields import RichTextUploadingField
 TYPE_CHOICE={
     ('Compulsory','Compulsory'),
     ('Optional','Optional'),
+    ('Fourth','Fourth'),
     ('Major','Major'),
     ('Non-Major','Non-Major'),
 }
+
 class Department(models.Model):
     serial=models.IntegerField(default=10)
     name=models.CharField(max_length=100,unique=True)
@@ -37,15 +39,47 @@ class Branch(models.Model):
     
     def __str__(self):
         return self.name
+
+class Session(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=100,unique=True)
+    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
+
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.title_en
     
-'''class Subject(models.Model):
+    
+class Class(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=100,unique=True)
+    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
+
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.title
+    
+class Group(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=100,unique=True)
+    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
+
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        return self.title_en
+
+  
+class Subject(models.Model):
     serial=models.IntegerField(default=10)
     name=models.CharField(max_length=100,unique=True)
     name_en=models.CharField(max_length=100,null=True,blank=True)
     code=models.CharField(max_length=20, null=True,blank=True)
     group=models.ManyToManyField(Group, blank=True,null=True)
     department=models.ManyToManyField(Department, blank=True,null=True)
-    type=models.Choices(choices=TYPE_CHOICE,blank=True,null=True)
+    type=models.CharField(choices=TYPE_CHOICE,max_length=25,blank=True,null=True)
     is_available=models.BooleanField(default=True)
 
 
@@ -53,4 +87,4 @@ class Branch(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.name_en'''
+        return self.name_en

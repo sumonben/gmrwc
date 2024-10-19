@@ -5,11 +5,11 @@ from django.db import models
 from django.urls import include, re_path, reverse
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
-from department.models import Department,Branch
 from django.contrib.auth import get_user_model
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.html import format_html
+from department.models import Department,Class,Session,Subject,Group
 # Create your models here.
 UserModel=get_user_model()
 
@@ -17,36 +17,7 @@ UserModel=get_user_model()
 def year_choices():
     return [(r,r) for r in range(2009, datetime.date.today().year+1)]
 
-class Session(models.Model):
-    serial=models.IntegerField(default=10)
-    title=models.CharField(max_length=100,unique=True)
-    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
 
-    class Meta:
-        ordering = ['serial']
-    def __str__(self):
-        return self.title_en
-    
-    
-class Class(models.Model):
-    serial=models.IntegerField(default=10)
-    title=models.CharField(max_length=100,unique=True)
-    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
-
-    class Meta:
-        ordering = ['serial']
-    def __str__(self):
-        return self.title
-    
-class Group(models.Model):
-    serial=models.IntegerField(default=10)
-    title=models.CharField(max_length=100,unique=True)
-    title_en=models.CharField(max_length=100,unique=True,blank=True,null=True)
-
-    class Meta:
-        ordering = ['serial']
-    def __str__(self):
-        return self.title_en
     
 class StudentCategory(models.Model):
     serial=models.IntegerField(default=10)
@@ -194,9 +165,9 @@ class SscEquvalent(models.Model):
 class SubjectChoice(models.Model):
     serial=models.IntegerField(default=10)
     student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
-    compulsory_subject=models.ManyToManyField(Department,related_name='compulsory_subject',blank=True,null=True)
-    optional_subject=models.ManyToManyField(Department,related_name='optional_subject',blank=True,null=True)
-    fourth_subject=models.ForeignKey(Department,blank=True,null=True,on_delete=models.SET_NULL)
+    compulsory_subject=models.ManyToManyField(Subject,related_name='compulsory_subject',blank=True,null=True)
+    optional_subject=models.ManyToManyField(Subject,related_name='optional_subject',blank=True,null=True)
+    fourth_subject=models.ForeignKey(Subject,blank=True,null=True,on_delete=models.SET_NULL)
 
     
     class Meta:

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.forms import Field
-from student.models import Student, StudentCategory,Class,Session,Group,Division,District,Upazilla,Union
+from student.models import Student, StudentCategory,Division,District,Upazilla,Union
 from import_export.admin import ExportActionMixin,ImportExportMixin
 from import_export.widgets import ManyToManyWidget
 from import_export.resources import ModelResource

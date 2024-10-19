@@ -50,19 +50,7 @@ class StudentCategoryAdmin(ExportActionMixin,admin.ModelAdmin):
     save_as = True
     resource_class = StudentResource
     
-@admin.register(Class)
-class StudentClassAdmin(ExportActionMixin,admin.ModelAdmin):
-    list_display=[ 'serial','title','title_en']
-    list_display_links = ['serial','title']
 
-@admin.register(Session)
-class StudentSessionAdmin(ExportActionMixin,admin.ModelAdmin):
-    list_display=[ 'serial','title','title_en']
-    list_display_links = ['serial','title']
-@admin.register(Group)
-class StudentGroupAdmin(ExportActionMixin,admin.ModelAdmin):
-    list_display=[ 'serial','title','title_en']
-    list_display_links = ['serial','title']
 @admin.register(Division)
 class DivisionAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','link']

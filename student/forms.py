@@ -3,9 +3,11 @@ from django import forms
 from django.contrib.admin.widgets import FilteredSelectMultiple
 # import GeeksModel from models.py
 from teacher.models import Teacher
-from .models import Student,SubjectChoice,Upazilla,District,Division,Adress,SscEquvalent,Group,Session,GuardianInfo
+from department.models import Department,Subject,Session,Group,Class
+from .models import Student,SubjectChoice,Upazilla,District,Division,Adress,SscEquvalent,GuardianInfo
 from department.models import Department
- 
+from django.db.models import Q,Count
+
 # create a ModelForm
 
 def year_choices():
@@ -47,7 +49,7 @@ class StudentForm(forms.ModelForm):
 
     ]
     gender= forms.ChoiceField(widget=forms.RadioSelect(),choices=CHOICES, )
-    session=forms.ModelChoiceField(required=True,queryset=Session.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : "myFunction(this.id)",}))
+    session=forms.ModelChoiceField(queryset=Session.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : "myFunction(this.id)",}))
 
 
     class Meta:
@@ -60,12 +62,12 @@ class StudentForm(forms.ModelForm):
 
         
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',  'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)",}),
-            'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)"}),
-            'email': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Email','onkeypress' : "myFunction(this.id)"}),
-            'phone': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  '11 digits ','onkeypress' : "myFunction(this.id)"}),
+            'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',  'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
+            'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
+            'email': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Email','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
+            'phone': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  '11 digits ','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
             'date_of_birth': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'textfieldUSERinfo', 'placeholder': 'Select a date','type': 'date'}),
-            'group': forms.Select(attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;'}),
+            'group': forms.Select(attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;','onchange' : "studentGroup(this.id)"}),
             'birth_registration': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Birth registration Number'}),
             'nationality': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'nationality'}),
             'blood_group': forms.Select(choices=BlOOD_CHOICE,attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Your blood group'}),
@@ -114,8 +116,9 @@ class GuardianForm(forms.ModelForm):
       }
   
 class SubjectChoiceForm(forms.ModelForm):
-    compulsory_subject=forms.ModelMultipleChoiceField(Department.objects.all(),initial=Department.objects.filter(serial__in=[ 1, 2,3]), widget=FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'}))
-    #optional_subject=forms.ModelMultipleChoiceField(Department.objects.all(), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'row':'1','class': 'textfieldUSER',}))
+    #compulsory_subject=forms.ModelMultipleChoiceField(queryset=Subject.objects.all(),initial=Subject.objects.filter(serial__in=[ 1, 2,3]), widget=FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'}))
+    
+    #optional_subject=forms.ModelMultipleChoiceField(Subject.objects.all(), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'row':'1','class': 'textfieldUSER',}))
     #group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
 
     class Meta:
@@ -123,10 +126,20 @@ class SubjectChoiceForm(forms.ModelForm):
         fields = "__all__"
         exclude=['serial','student','optional_subject']
         widgets={
-                        'fourth_subject': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'style':'margin-bottom:20px'}),
-                        'compulsory_subject': forms.SelectMultiple(attrs={'class': 'textfieldUSERinfo','style':'margin-top:20px','onkeypress' : "myFunction(this.id);"}),
+                        'fourth_subject': forms.Select(attrs={'class': 'textfieldUSERinfo','onclick' : "fourthSubject(this.id);",'style':'margin-bottom:20px'}),
+                        'compulsory_subject': forms.SelectMultiple(attrs={'class': 'textfieldUSERinfo','style':'margin-top:20px'}),
 
         }
+    def __init__(self, group,*args,**kwargs):
+        #self.site_id = kwargs.pop('group')
+        super(SubjectChoiceForm,self).__init__(*args,**kwargs)
+        if group.title_en=="Science":
+            self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo',}))
+
+            #self.fields['compulsory_subject'].initial=Subject.objects.filter(serial__in=[ 1, 2,3])
+            #self.fields['compulsory_subject'].widget = FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'})
+
+            
         
 class AdressForm(forms.ModelForm):
     division= forms.ModelChoiceField(queryset=Division.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSER'})),
