@@ -21,6 +21,8 @@
     <link href="{% static 'css/admission/SpryValidationTextField.css'%}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/admission/SpryValidationPassword.css'%}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
+    <link rel="stylesheet" type="text/css" href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-toastr/toastr.min.css">
+
     <script type="text/javascript" src="{% url 'jsi18n' %}" > </script>
     <script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
@@ -66,7 +68,37 @@
         .main-top{
             background-image: url("{% static 'images/main_02.png'%}");
 
-        }    
+        } 
+        
+      
+      
+        #toast-container {
+          opacity: 1;
+          visibility: hidden;
+          
+        }
+        #toast-container.toast-top-center{
+          animation: fadeInAnimation ease 8s;
+          animation-iteration-count: 1;
+          animation-fill-mode: forwards;
+        }
+        #toast-container:hover{
+        animation-play-state: paused; 
+        }
+        @keyframes fadeInAnimation {
+          0% {
+              opacity: 1;
+          }
+        
+          50% {
+              opacity: 1;
+          }
+          100% {
+              opacity: 0;
+              visibility: hidden;
+          }
+        }
+          
         
     </style>
     </head>
@@ -89,7 +121,8 @@
                     <tbody><tr>
                       <td width="10%" height="95" align="center" valign="middle"><img src="{% static 'images/gmrwc_logo.png'%}" width="75" height="75"></td>
                       <td width="65%" height="95" align="left" valign="middle">
-                      <span class="GrayBlue14b">Government of the People's Republic of Bangladesh</span><br>
+                                              
+                        <span class="GrayBlue14b">Government of the People's Republic of Bangladesh</span><br>
                       <span class="GrayBlue20bold">Govt. Mujibur Rahman Women's College, Bogura</span>
                       </td>
                       <td width="25%" height="95" align="left" valign="middle"><span class="XamName">HSC Admission 2025<sup></sup> <br>Session:2025-26</span><br>
@@ -484,25 +517,23 @@
                           </div>
                           
                           <div class="step d-none">
-                              <div class="mt-1">
-                                  <div class="closing-text">
-                                      <h4><input type="checkbox" id="commitment" required>
-                                        I hereby declare that the information provided is true and correct. I also understand that any willful
-dishonesty may render for refusal of this application or immediate lawful action </h4>
-                                      <p>We will assess your information and will let you know soon if any inconvenieces.</p>
-                                      <p>Click on the submit button to continue.</p>
-                                  </div>
+                            <div class="mt-1">
+                              <div class="closing-text">
+                                  <h4>That's about it! Stay healthy!</h4>
+                                  <p>We will assess your information and will let you know soon if you need to get tested for COVID-19.</p>
+                                  <p>Click on the submit button to continue.</p>
                               </div>
                           </div>
-                          <div id="success">
-                              <div class="mt-5">
-                                  <h4>Success! We'll get back to you ASAP!</h4>
-                                  <p>Meanwhile, clean your hands often, use soap and water, or an alcohol-based hand rub, maintain a safe distance from anyone who is coughing or sneezing and always wear a mask when physical distancing is not possible.</p>
-                                  <a class="back-link" href="">Go back from the beginning ➜</a>
-                              </div>
-                          </div>
-                          
                       </div>
+                      <div id="success">
+                          <div class="mt-5">
+                              <h4>Success! We'll get back to you ASAP!</h4>
+                              <p>Meanwhile, clean your hands often, use soap and water, or an alcohol-based hand rub, maintain a safe distance from anyone who is coughing or sneezing and always wear a mask when physical distancing is not possible.</p>
+                              <a class="back-link" href="">Go back from the beginning ➜</a>
+                          </div>
+                      </div>
+                      
+                  </div>
                       <div id="q-box__buttons" >
                         <button id="prev-btn" type="button" class="d-inline-block">Previous</button> 
                         <button id="next-btn" type="button" class="d-inline-block">Next</button> 
@@ -516,12 +547,13 @@ dishonesty may render for refusal of this application or immediate lawful action
 
           </div>
       </div>
-  </div><!-- PRELOADER -->
-  <div id="preloader-wrapper">
-      <div id="preloader"></div>
-      <div class="preloader-section section-left"></div>
-      <div class="preloader-section section-right"></div>
   </div>
+  <!-- PRELOADER -->
+  <div id="preloader-wrapper">
+    <div id="preloader"></div>
+    <div class="preloader-section section-left"></div>
+    <div class="preloader-section section-right"></div>
+</div>
   
                       
                   </td>
@@ -566,6 +598,11 @@ dishonesty may render for refusal of this application or immediate lawful action
         </td>
       </tr>
     </tbody></table>
+    <div id="toast-container" class="toast-top-center" aria-level="polite" role="alert">
+      <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
+          <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div></div>
+  </div>
+
     <script src="{% static 'js/admission/script.js '%}"></script>
     <script type="text/javascript">
     var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");

@@ -1,4 +1,5 @@
 
+
 const progress = (value) => {
    document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
 }
@@ -25,11 +26,14 @@ const progress = (value) => {
 
 
    nextBtn.addEventListener('click', () => {
-         
-          document.getElementById('toast-container').style.visibility ='hidden';
+      //document.getElementById('toast-container').style.opacity =1;
+      //document.getElementById('toast-container').style.visibility ='hidden';
+
       current_step++;
       let previous_step = current_step - 1;
       let flag=validateForm();
+      //alert(go);
+
       if(( current_step > 0) && (current_step <= stepCount) && flag){
         prevBtn.classList.remove('d-none');
         prevBtn.classList.add('d-inline-block');
@@ -49,83 +53,69 @@ const progress = (value) => {
         }
       }
     progress((100 / stepCount) * current_step);
-    function validateForm() {
-      // This function deals with validation of the form fields
+   
+function validateForm() {
+   // This function deals with validation of the form fields
+   var x, y, i, valid = true;
+   x = document.getElementsByClassName("step d-block");
+   //alert(current_step);
 
-      if(current_step==4 ){
-        var select=document.getElementsByName('compulsory_subject');
-          var compulsory_subject=select[0];
-          if(compulsory_subject.length<4){
-            current_step--;
-            return false;
-          }
-          var selectobject = document.getElementsByName('fourth_subject');
-          alert(selectobject[0][0].value);
+   y = x[0].getElementsByTagName("input");
+   z= x[0].getElementsByTagName("select");
+   for (i = 0; i < y.length; i++) {
+     // If a field is empty...
+      //alert(y[i]+y[i].required);
+//alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
 
-              for (var i=0; i<selectobject[0].length; i++) {
-                  
-                  selectobject[0].remove(i);
-          }
+     if (y[i].value == '' && y[i].hasAttribute('required') ) {
 
-      }
-      var x, y, i, valid = true;
-      x = document.getElementsByClassName("step d-block");
-      //alert(current_step);
-   
-      y = x[0].getElementsByTagName("input");
-      z= x[0].getElementsByTagName("select");
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-         //alert(y[i]+y[i].required);
-   //alert(y[i].getAttribute('id')+": "+y[i].hasAttribute('required'));
-   
-        if (y[i].value == '' && y[i].hasAttribute('required') ) {
-   
-         
-            y[i].className='textfieldUSERinfoInvalid';
-   
-          valid = false;
-   
-        }
-      }
       
-      for (i = 0; i < z.length; i++) {
-         // If a field is empty...
-   
-         if (z[i].value == '' && z[i].hasAttribute('required') ) {
-            //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
-   
-           if(z[i].className=='textfieldUSER')
-             z[i].className='textfieldUSERInvalid';
-          else
-            z[i].className='textfieldUSERinfoInvalid';
-    
-           valid = false;
-   
-         }
-       }
-      //alert("valid:"+valid);
-      if(!valid){
-         current_step--;
-         var x = document.getElementById("toast-container");
-                      x.style.visibility ="visible";
-                   x.className = "toast-top-center";
-   
-                   setTimeout(function(){ 
-                       x.className = x.className.replace("toast-top-center", "");
-                       
-                    }, 8000);
-                    
-   
-      }
-       return valid; // return the valid status
+         y[i].className='textfieldUSERinfoInvalid';
+
+       valid = false;
+
+     }
    }
    
-   
-   
-       });
-       
-   
+   for (i = 0; i < z.length; i++) {
+      // If a field is empty...
+
+      if (z[i].value == '' && z[i].hasAttribute('required') ) {
+         //alert(z[i].getAttribute('id')+": "+z[i].hasAttribute('required'));
+
+        if(z[i].className=='textfieldUSER')
+          z[i].className='textfieldUSERInvalid';
+       else
+         z[i].className='textfieldUSERinfoInvalid';
+ 
+        valid = false;
+
+      }
+    }
+   //alert("valid:"+valid);
+   if(!valid){
+      current_step--;
+      var x = document.getElementById("toast-container");
+                   x.style.visibility ="visible";
+  // Add the "show" class to DIV
+                x.className = "toast-top-center";
+
+  // After 3 seconds, remove the show class from DIV
+                setTimeout(function(){ 
+                    x.className = x.className.replace("toast-top-center", "");
+                    
+                 }, 8000);
+                 
+
+   }
+    return valid; // return the valid status
+}
+
+
+
+    });
+    
+
 
    prevBtn.addEventListener('click', () => {
      if(current_step > 0){
@@ -156,14 +146,22 @@ const progress = (value) => {
 
 
 submitBtn.addEventListener('click', () => {
+   for(var i=0; i < form.elements.length; i++){
+      if(form.elements[i].value === '' && form.elements[i].hasAttribute('required')){
+         form.elements[i].className='textfieldUSERinfoInvalid';
+        alert('There are some required fields!');
+        return false;
+      }
+    }
+    form.submit();
     preloader.classList.add('d-block');
 
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
-    timer(3000)
-      .then(() => {
+    timer(3000).then(() => {
            bodyElement.classList.add('loaded');
       }).then(() =>{
+         alert("working ");
           step[stepCount].classList.remove('d-block');
           step[stepCount].classList.add('d-none');
           prevBtn.classList.remove('d-inline-block');

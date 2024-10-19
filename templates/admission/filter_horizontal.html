@@ -142,7 +142,7 @@
           <!-- FORMS -->
           <div >
     <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
-         
+         {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
                           <div class="step d-block">
@@ -630,7 +630,7 @@
         </td>
       </tr>
     </tbody></table>
-    <script src="{% static 'js/admission/script.js '%}"></script>
+    <script src="{% static 'js/admission/script1.js '%}"></script>
     <script type="text/javascript">
     var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
     var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1");
