@@ -1,3 +1,29 @@
+window.onload = (event) => {
+let compulsory_subject_initialized=document.getElementsByClassName('selector-available');
+let filter_compusory=document.getElementById('id_compulsory_subject_filter_selected');
+let remove_compusory=document.getElementById('id_compulsory_subject_remove_all_link');
+
+let selector_chooser=document.getElementsByClassName('selector-chooser');
+
+
+compulsory_subject_initialized[0].style.display='none';
+selector_chooser[0].style.display='none';
+
+filter_compusory.style.display='none';
+remove_compusory.style.display='none';
+
+z= compulsory_subject_initialized.getElementsByTagName("option");
+for (i = 0; i < z.length; i++) {
+
+  z[i].setAttribute('disabled','true','readonly','true');
+
+}
+
+alert(compulsory_subject_initialized.length);
+};
+
+
+
 
 const progress = (value) => {
    document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
@@ -12,6 +38,7 @@ const progress = (value) => {
    let bodyElement = document.querySelector('body');
    let succcessDiv = document.getElementById('success');
    let addChoiceBtn=document.getElementsByName('id_fourth_subject');
+   
    form.onsubmit = () => { return false }
 
    let current_step = 0;
@@ -25,7 +52,8 @@ const progress = (value) => {
 
 
    nextBtn.addEventListener('click', () => {
-         
+    var x, y, i, valid = true;
+
           //document.getElementById('toast-container').style.visibility ='hidden';
       current_step++;
       let previous_step = current_step - 1;
@@ -51,39 +79,28 @@ const progress = (value) => {
     progress((100 / stepCount) * current_step);
     function validateForm() {
       // This function deals with validation of the form fields
-
       if(current_step==4 ){
-        var select=document.getElementsByName('compulsory_subject');
-          var compulsory_subject=select[0];
-          if(compulsory_subject.length<4){
-            current_step--;
-            return false;
-          }
 
-          let select_item = document.getElementsByName('fourth_subject');
-          let options = select_item[0].getElementsByTagName('option');
-          for (var i=options.length; i--;) {
-              select_item[0].options[i].style.display="block";
-            //select_item[0].removeChild(options[i]);
-         
-      }
-          for (var i=options.length; i--;) {
-                if(select_item[0].options[i].value in select[0])
-                  select_item[0].options[i].style.display="none";
-                //select_item[0].removeChild(options[i]);
-              else{
+        if(document.getElementById('id_fourth_subject').value==''){
+          valid= false;
+        }
+       /* var select=document.getElementsByName('compulsory_subject');
+          var compulsory_subject=select[1];
+          if(compulsory_subject.length<6){
+            valid= false;
+          }*/
 
-              }
-          }
+        
           
 
       }
-      var x, y, i, valid = true;
+      
       x = document.getElementsByClassName("step d-block");
       //alert(current_step);
    
       y = x[0].getElementsByTagName("input");
       z= x[0].getElementsByTagName("select");
+
       for (i = 0; i < y.length; i++) {
         // If a field is empty...
          //alert(y[i]+y[i].required);
@@ -91,9 +108,9 @@ const progress = (value) => {
    
         if (y[i].value == '' && y[i].hasAttribute('required') ) {
    
-         
+
             y[i].className='textfieldUSERinfoInvalid';
-   
+          
           valid = false;
    
         }
@@ -109,18 +126,19 @@ const progress = (value) => {
              z[i].className='textfieldUSERInvalid';
           else
             z[i].className='textfieldUSERinfoInvalid';
-    
+            
            valid = false;
    
          }
        }
       //alert("valid:"+valid);
       if(!valid){
+        alert(current_step);
          current_step--;
          var x = document.getElementById("toast-container");
                       x.style.visibility ="visible";
                    x.className = "toast-top-center";
-   
+                   
                    setTimeout(function(){ 
                        x.className = x.className.replace("toast-top-center", "");
                        
@@ -187,7 +205,22 @@ submitBtn.addEventListener('click', () => {
 });
 
 function fourthSubject(id){
-  alert("FourthSubject");
+  alert(current_step);
+  
+  if(current_step==3){
+    var compulsory_subject=document.getElementById('id_optional_subject_from');
+    var selected_item = document.getElementById('id_fourth_subject');
+      if(compulsory_subject.length==1){
+        selected_item.value=compulsory_subject[0].value;
+        return false;
+      }
+
+      
+      
+     
+      
+
+  }
 
 }
 function subjectChoice(id){

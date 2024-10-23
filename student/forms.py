@@ -15,13 +15,14 @@ def year_choices():
 BOARD_CHOICE=[
         ('Dhaka', 'Dhaka'),
         ('Rajshahi', 'Rajshahi'),
-        ('Cattogram', 'Cattogram'),
+        ('Chattogram', 'Chattogram'),
         ('Khulna', 'Khulna'),
-        ('Borishal', 'Borishal'),
+        ('Barisal', 'Barisal'),
         ('Dinajpur', 'Dinajpur'),
         ('Jassore', 'Jassore'),
-        ('Maymansing', 'Maymansing'),
-        ('Kumilla', 'Kumilla'),
+        ('Mymensing', 'Mymensing'),
+        ('Sylhet', 'Sylhet'),
+        ('Cumilla', 'Cumilla'),
         ('Madrasah', 'Madrasah'),
         ('Technical', 'Technical'),
         ('Vocationnal', 'Vocationnal'),
@@ -124,7 +125,7 @@ class SubjectChoiceForm(forms.ModelForm):
     class Meta:
         model = SubjectChoice
         fields = "__all__"
-        exclude=['serial','student','optional_subject']
+        exclude=['serial','student',]
         widgets={
                         'fourth_subject': forms.Select(attrs={'class': 'textfieldUSERinfo','onclick' : "fourthSubject(this.id);",'style':'margin-bottom:20px'}),
                         'compulsory_subject': forms.SelectMultiple(attrs={'class': 'textfieldUSERinfo','style':'margin-top:20px'}),
@@ -134,7 +135,9 @@ class SubjectChoiceForm(forms.ModelForm):
         #self.site_id = kwargs.pop('group')
         super(SubjectChoiceForm,self).__init__(*args,**kwargs)
         if group.title_en=="Science":
-            self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo',}))
+            self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
+            self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(group=group, type='Fourth'), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'class':'textfieldUSERinfo',}))
+
 
             #self.fields['compulsory_subject'].initial=Subject.objects.filter(serial__in=[ 1, 2,3])
             #self.fields['compulsory_subject'].widget = FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'})

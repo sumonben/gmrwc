@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'admission',
     'rangefilter',
     'django_admin_listfilter_dropdown',
-    'attrs',
 ]
 
 MIDDLEWARE = [
