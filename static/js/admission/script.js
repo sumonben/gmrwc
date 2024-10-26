@@ -133,14 +133,13 @@ const progress = (value) => {
        }
       //alert("valid:"+valid);
       if(!valid){
-        alert(current_step);
          current_step--;
          var x = document.getElementById("toast-container");
                       x.style.visibility ="visible";
                    x.className = "toast-top-center";
                    
                    setTimeout(function(){ 
-                       x.className = x.className.replace("toast-top-center", "");
+                       x.className = "";
                        
                     }, 8000);
                     
@@ -183,9 +182,57 @@ const progress = (value) => {
    });
 
 
-submitBtn.addEventListener('click', () => {
-    preloader.classList.add('d-block');
+/*submitBtn.addEventListener('click', () => {
+    //preloader.classList.add('d-block');
 
+     ///////////////////Submit student form Ajax code///////////////////
+
+     var frm = $('#form-wrapper')[0];
+     var form= new FormData(frm);
+
+     var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+     // Get the data from the form
+    
+
+     // Send AJAX request
+     $.ajax({
+         enctype: 'multipart/form-data',
+         type: 'POST',
+         url: "{% url 'admission_form_submit' %}",  // Adjust the URL as per your project structure
+         data: form1,
+         headers: {
+             'X-CSRFToken': csrfToken
+         },
+         
+         cache:false,
+         processData:false,
+         contentType:false,
+        
+         success: function (response) {
+             
+             //document.getElementById("student_form").reset();
+             if (response.status === 'success') {
+                 // Clear the form
+                
+                alert(response.status);
+
+
+             } else {
+              alert("Success message not found");
+                     
+                 }
+                 
+         },
+         error: function (xhr, status, error) {
+            
+             var err = eval("(" + xhr.responseText + ")");
+             alert(err.Message);
+         }
+     });
+
+
+    //////////////////////////////////////////////////////////////////
     const timer = ms => new Promise(res => setTimeout(res, ms));
 
     timer(3000)
@@ -202,7 +249,7 @@ submitBtn.addEventListener('click', () => {
           succcessDiv.classList.add('d-block');
       })
       
-});
+});*/
 
 function fourthSubject(id){
   alert(current_step);

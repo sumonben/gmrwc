@@ -134,13 +134,21 @@ class SubjectChoiceForm(forms.ModelForm):
     def __init__(self, group,*args,**kwargs):
         #self.site_id = kwargs.pop('group')
         super(SubjectChoiceForm,self).__init__(*args,**kwargs)
-        if group.title_en=="Science":
-            self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
-            self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(group=group, type='Fourth'), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'class':'textfieldUSERinfo',}))
+        if group:
+            if group.title_en=="Science":
+                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(group=group, type='Fourth'), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'class':'textfieldUSERinfo',}))
+            if group.title_en=="Humanities":
+                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,8]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(group=group, type='Optional'), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['fourth_subject']=forms.ModelChoiceField(queryset=Subject.objects.filter(group=group, type='Optional'), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
+            if group.title_en=="Business Studies":
+                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,13,14]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(code=None), widget=forms.Select( attrs={'disabled':'true',}))
+                self.fields['fourth_subject']=forms.ModelChoiceField(queryset=Subject.objects.filter(serial__in=[9,]),initial=Subject.objects.filter(serial__in=[ 9,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
 
-
-            #self.fields['compulsory_subject'].initial=Subject.objects.filter(serial__in=[ 1, 2,3])
-            #self.fields['compulsory_subject'].widget = FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'})
+                #self.fields['compulsory_subject'].initial=Subject.objects.filter(serial__in=[ 1, 2,3])
+                #self.fields['compulsory_subject'].widget = FilteredSelectMultiple('Subject',False, attrs={'class':'textfieldUSERinfo'})
 
             
         
