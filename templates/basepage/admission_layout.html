@@ -1,5 +1,8 @@
 {% load static  %}
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    {% block head %}
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
     <title>Govt. Mujibur rahman Women's Collge</title>
@@ -22,13 +25,8 @@
     <link href="{% static 'css/admission/SpryValidationPassword.css'%}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
     <link rel="stylesheet" type="text/css" href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-toastr/toastr.min.css">
-
-    <script type="text/javascript" src="{% url 'jsi18n' %}" > </script>
-    <script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/jquery.init.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/SelectBox.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/SelectFilter2.js' %}"></script>
+    
+    
 
     <style type="text/css" media="screen">
       @font-face {
@@ -101,6 +99,8 @@
           
         
     </style>
+    {% endblock %}
+
     </head>
     
     <body>
@@ -162,12 +162,14 @@
 
 
     
-        {%block content%}
+        {% block content %}
 
         
 
-        {%endblock%}    
+        {% endblock %}    
+        {% block javascript %} 
 
+         {% endblock javascript %}
 
 
 
@@ -213,6 +215,7 @@
 <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
     <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div></div>
 </div>
+
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
 var sprypassword1 = new Spry.Widget.ValidationPassword("sprypassword1");
