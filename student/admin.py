@@ -74,6 +74,6 @@ class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     
 @admin.register(StudentAdmission)
 class SStudentAdmissionAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display=[ 'id','ssc_roll','name','board','passing_year','quota','group',]
+    list_display=[ 'id','ssc_roll','name','board','passing_year','quota','group','status']
     list_display_links = ['ssc_roll','name',]
     list_filter=['board','passing_year','quota','group',]

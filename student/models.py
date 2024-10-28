@@ -202,6 +202,8 @@ class StudentAdmission(models.Model):
     board=models.CharField(max_length=25,blank=True,null=True)
     group=models.CharField(max_length=25,blank=True,null=True)
     quota=models.CharField(max_length=25,blank=True,null=True)
+    status=models.CharField(max_length=100,default="Not Admitted")
+
     class Meta:
         ordering = ['id']
     def __str__(self):

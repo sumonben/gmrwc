@@ -135,11 +135,13 @@ const progress = (value) => {
       if(!valid){
          current_step--;
          var x = document.getElementById("toast-container");
-                      x.style.visibility ="visible";
                    x.className = "toast-top-center";
-                   
+                   x.style.visibility ="visible";
+
                    setTimeout(function(){ 
-                       x.className = "";
+                       x.className = x.className.replace("toast-top-center","");
+                       x.style.visibility ="hidden";
+
                        
                     }, 8000);
                     
