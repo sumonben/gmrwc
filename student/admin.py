@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.forms import Field
-from .models import Student, StudentCategory,Class,Session,Group,Division,District,Upazilla,Union,GuardianInfo,Transaction,Adress,SubjectChoice,SscEquvalent
+from .models import Student,StudentAdmission,StudentCategory,Class,Session,Group,Division,District,Upazilla,Union,GuardianInfo,Transaction,Adress,SubjectChoice,SscEquvalent
 from import_export.admin import ExportActionMixin,ImportExportMixin
 from import_export.widgets import ManyToManyWidget
 from import_export.resources import ModelResource
@@ -72,3 +72,8 @@ class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'name','name_en','upazilla','link']
     list_display_links = ['name','name_en']
     
+@admin.register(StudentAdmission)
+class SStudentAdmissionAdmin(ImportExportMixin,admin.ModelAdmin):
+    list_display=[ 'id','ssc_roll','name','board','passing_year','quota','group',]
+    list_display_links = ['ssc_roll','name',]
+    list_filter=['board','passing_year','quota','group',]

@@ -194,5 +194,21 @@ class Transaction(models.Model):
         return self.student
 
 
-
+class StudentAdmission(models.Model):
+    serial=models.IntegerField(default=10)
+    ssc_roll=models.CharField(max_length=25,blank=True,null=True)
+    name=models.CharField(max_length=125,blank=True,null=True)
+    passing_year=models.CharField( max_length=25, blank=True,null=True)
+    board=models.CharField(max_length=25,blank=True,null=True)
+    group=models.CharField(max_length=25,blank=True,null=True)
+    quota=models.CharField(max_length=25,blank=True,null=True)
+    class Meta:
+        ordering = ['id']
+    def __str__(self):
+        return self.ssc_roll
+    def save(self, *args, **kwargs):
+           super().save(*args, **kwargs)
+           if self.serial == None:
+                self.serial = self.id
+                super().save()
     

@@ -144,7 +144,7 @@ class SubjectChoiceForm(forms.ModelForm):
                 self.fields['fourth_subject']=forms.ModelChoiceField(queryset=Subject.objects.filter(group=group, type='Optional'), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
             if group.title_en=="Business Studies":
                 self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,13,14]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
-                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(code=None), widget=forms.Select( attrs={'disabled':'true',}))
+                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(code=None), widget=forms.Select( attrs={'disabled':'true','hidden':'hidden',}))
                 self.fields['fourth_subject']=forms.ModelChoiceField(queryset=Subject.objects.filter(serial__in=[9,]),initial=Subject.objects.filter(serial__in=[ 9,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
 
                 #self.fields['compulsory_subject'].initial=Subject.objects.filter(serial__in=[ 1, 2,3])
