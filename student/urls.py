@@ -8,6 +8,9 @@ from django import views as django_views
 
 urlpatterns = [
     path('/student', views.testHtml, name="student"),
+    path('/certificate/<int:id>/<str:type>', views.certificateGenerate, name="certificate"),
+    path('/get-certificate', views.getCertificate, name="get-certificate"),
+
     path('/jsi18n', django_views.i18n.JavaScriptCatalog.as_view(), name='jsi18n'),
 
 

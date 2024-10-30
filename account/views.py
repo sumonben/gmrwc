@@ -94,6 +94,7 @@ def Login(request):
             return redirect("profile")
         return render(request, 'account/login.html', {'context': context})
     if request.method == 'POST':
+        print("Got Login")
         email = request.POST['email']
         password = request.POST['email_password']
         
