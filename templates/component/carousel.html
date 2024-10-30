@@ -14,6 +14,7 @@
         
     }
 </style>
+
 <div id="banner-slider" >
 <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
@@ -25,10 +26,10 @@
                                       </a>
                                   </div>
 
-                                  {% cache 5000 carousels %}
+                                
                                       <!-- Expensive or dynamic content here -->
       {% for carousel in carousels %}      
-      <div class="carousel-item  w-100 active">
+      <div class="carousel-item  w-100">
           <a title="" href="/bn/site/top_banner/G5fC-বগুড়া-জেলা-ব্র্যান্ডিং">
           <!-- <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/files/www.bogra.gov.bd/top_banner/c988406c_3ca2_4f44_90bc_cedc47530830/14572f4000cd37952441124eadfa0c18.png" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং"> -->
           <img style="height: 242px;" src="{{ carousel.cimage.url }}" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং">
@@ -37,7 +38,7 @@
      {% endfor %}        
                                   <!-- //file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b46/6f2/618b466f2634c119530378.jpg -->
 
-                                  {% endcache %}                                        
+                                                               
 
             
       <div class="carousel-item  w-100 ">

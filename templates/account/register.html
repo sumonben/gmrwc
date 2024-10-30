@@ -204,7 +204,7 @@
     
         // function that hides/shows field_four based upon field_three value
         function check_field_class_year() {
-            if($(this).val() == 'পাশকৃত') {
+            if($(this).val() == 5) {
                 // #id_field_four should be actually the id of the HTML element
                 // that surrounds everything you want to hide.  Since you did
                 // not post your HTML I can't finish this part for you.  
@@ -215,13 +215,14 @@
             }
         }
         function check_field_student_category() {
-            if($(this).val() == 'এইচএসসি') {
+            if($(this).val() == 3 || $(this).val() == 4) {
+
                 $('#group').show();
             } else {
                 $('#group').hide();
 
             }
-            if($(this).val() == 'অনার্স' || $(this).val() == 'মাস্টার্স') {
+            if($(this).val() == 1 || $(this).val() == 2) {
                 // #id_field_four should be actually the id of the HTML element
                 // that surrounds everything you want to hide.  Since you did
                 // not post your HTML I can't finish this part for you.  
@@ -235,7 +236,7 @@
         $(document).ready(function() {
             // set things up so my function will be called when field_three changes
             $('#id_class_year').change(check_field_class_year);
-    
+               
             // set the state based on the initial values
             check_field_class_year.call($('#id_class_year').get(0));
 
@@ -243,6 +244,7 @@
     
             // set the state based on the initial values
             check_field_student_category.call($('#id_student_category').get(0));
+
         });
 
       function  myFunction( id ){
