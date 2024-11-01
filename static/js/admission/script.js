@@ -53,6 +53,12 @@ const progress = (value) => {
 
    nextBtn.addEventListener('click', () => {
     var x, y, i, valid = true;
+    var options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+    for(i=0;i<options.length ;i++){
+    options[i].selected = 'selected';
+    }
+    //document.getElementById('id_compulsory_subject_to').disabled='disabled';
+
 
           //document.getElementById('toast-container').style.visibility ='hidden';
       current_step++;
@@ -80,6 +86,7 @@ const progress = (value) => {
     function validateForm() {
       // This function deals with validation of the form fields
       if(current_step==4 ){
+        
 
         if(document.getElementById('id_fourth_subject').value==''){
           valid= false;

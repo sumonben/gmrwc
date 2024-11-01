@@ -49,8 +49,11 @@ class StudentForm(forms.ModelForm):
         ('Female', 'Female'),
 
     ]
-    gender= forms.ChoiceField(widget=forms.RadioSelect(),choices=CHOICES, )
-    session=forms.ModelChoiceField(queryset=Session.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : "myFunction(this.id)",}))
+    gender= forms.CharField(
+        widget=forms.RadioSelect(choices=CHOICES,),
+         
+    )
+    session=forms.ModelChoiceField(queryset=Session.objects.all(),initial=Session.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
 
 
     class Meta:
@@ -65,8 +68,8 @@ class StudentForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',  'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
             'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
-            'email': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Email','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
-            'phone': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  '11 digits ','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
+            'email': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Email','onkeypress' : "myFunction(this.id)",'value':'sumo@gmail.com'}),
+            'phone': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  '11 digits ','onkeypress' : "myFunction(this.id)",'value':'01712534564'}),
             'date_of_birth': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'textfieldUSERinfo', 'placeholder': 'Select a date','type': 'date'}),
             'group': forms.Select(attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;','onchange' : "studentGroup(this.id)"}),
             'birth_registration': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'Birth registration Number'}),
@@ -128,23 +131,33 @@ class SubjectChoiceForm(forms.ModelForm):
         exclude=['serial','student',]
         widgets={
                         'fourth_subject': forms.Select(attrs={'class': 'textfieldUSERinfo','onclick' : "fourthSubject(this.id);",'style':'margin-bottom:20px'}),
-                        'compulsory_subject': forms.SelectMultiple(attrs={'class': 'textfieldUSERinfo','style':'margin-top:20px'}),
 
         }
-    def __init__(self, group,*args,**kwargs):
-        #self.site_id = kwargs.pop('group')
+    class Media:
+            css = {
+                'all': ('/static/admin/css/widgets.css',),
+            }
+            js = ('/admin/jsi18n',)
+        
+    def clean_compulsory_subject(self):
+            compulsory_subject = self.cleaned_data['compulsory_subject']
+            return compulsory_subject
+        
+    def __init__(self,*args,**kwargs):
+        
+        group = kwargs.pop('group')
         super(SubjectChoiceForm,self).__init__(*args,**kwargs)
         if group:
             if group.title_en=="Science":
-                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,4,5,]), widget=FilteredSelectMultiple('Comulsory Subject',True, attrs={'class':'textfieldUSERinfo',}))
                 self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(group=group, type='Fourth'), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'class':'textfieldUSERinfo',}))
             if group.title_en=="Humanities":
-                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,8]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,8]), widget=FilteredSelectMultiple('Comulsory Subject',True, attrs={'class':'textfieldUSERinfo',}))
                 self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(group=group, type='Optional'), widget=FilteredSelectMultiple('Optional Subject',False, attrs={'class':'textfieldUSERinfo',}))
                 self.fields['fourth_subject']=forms.ModelChoiceField(queryset=Subject.objects.filter(group=group, type='Optional'), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
             if group.title_en=="Business Studies":
-                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,13,14]), widget=FilteredSelectMultiple('Comulsory Subject',False, attrs={'class':'textfieldUSERinfo',}))
-                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(code=None), widget=forms.Select( attrs={'disabled':'true','hidden':'hidden',}))
+                self.fields['compulsory_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(Q(group=group)|Q(group=None)),initial=Subject.objects.filter(serial__in=[ 1, 2,3,13,14]), widget=FilteredSelectMultiple('Comulsory Subject',True, attrs={'class':'textfieldUSERinfo',}))
+                self.fields['optional_subject']=forms.ModelMultipleChoiceField(queryset=Subject.objects.filter(serial__in=[9,]),)
                 self.fields['fourth_subject']=forms.ModelChoiceField(queryset=Subject.objects.filter(serial__in=[9,]),initial=Subject.objects.filter(serial__in=[ 9,]), widget=forms.Select( attrs={'class':'textfieldUSERinfo',}))
 
                 #self.fields['compulsory_subject'].initial=Subject.objects.filter(serial__in=[ 1, 2,3])
@@ -198,8 +211,8 @@ class PresentAdressForm(forms.ModelForm):
     
 class SscEquvalentForm(forms.ModelForm):
     
-    group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
-    session=forms.ModelChoiceField(queryset=Session.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
+    #ssc_group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
+    #ssc_session=forms.ModelChoiceField(queryset=Session.objects.all(),widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
 
     class Meta:
         model = SscEquvalent
@@ -209,12 +222,12 @@ class SscEquvalentForm(forms.ModelForm):
         
         widgets = {
             'ssc_or_equvalent': forms.Select(choices=DEGREE_CHOICE,attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);"}),
-            'board': forms.Select(choices=BOARD_CHOICE,attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id)"}),
-            'group': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'required':'true'}),
-            'session': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'required':'true'}),
-            'exam_roll': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'SSC/Equivalent Roll'}),
-            'regitration_no': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'SSC/Equivalent Registration'}),
-            'cgpa_with_4th': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder': 'CGPA with 4th Subject'}),
-            'cgpa_without_4th': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder': 'CGPA without 4th Subject'}),
-            'passing_year': forms.Select(choices=year_choices,attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
+            'ssc_board': forms.Select(choices=BOARD_CHOICE,attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id)"}),
+            'ssc_group': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'required':'true'}),
+            'ssc_session': forms.Select(attrs={'class': 'textfieldUSERinfo','onkeypress' : "myFunction(this.id);",'required':'true'}),
+            'ssc_exam_roll': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'SSC/Equivalent Roll'}),
+            'ssc_regitration_no': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'SSC/Equivalent Registration'}),
+            'ssc_cgpa_with_4th': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder': 'CGPA with 4th Subject'}),
+            'ssc_cgpa_without_4th': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder': 'CGPA without 4th Subject'}),
+            'ssc_passing_year': forms.Select(choices=year_choices,attrs={'class': 'textfieldUSERinfo', 'style': 'margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
             }

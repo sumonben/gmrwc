@@ -30,11 +30,13 @@ class GuardianInfoAdmin(ExportActionMixin,admin.ModelAdmin):
     list_filter=['guardian_phone',]
 @admin.register(SscEquvalent)
 class SscEquvalentAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
-
+    list_display= ['id', 'ssc_or_equvalent','ssc_board']
+    list_display_links = ['id', 'ssc_or_equvalent','ssc_board']
+    list_filter=['id', 'ssc_or_equvalent','ssc_board']
 @admin.register(SubjectChoice)
 class SubjectChoiceAdmin(ExportActionMixin,admin.ModelAdmin):
-    pass
+        filter_horizontal = ['compulsory_subject','optional_subject']
+
 @admin.register(Adress)
 class AdressAdmin(ExportActionMixin,admin.ModelAdmin):
     pass
@@ -73,7 +75,7 @@ class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display_links = ['name','name_en']
     
 @admin.register(StudentAdmission)
-class SStudentAdmissionAdmin(ImportExportMixin,admin.ModelAdmin):
+class StudentAdmissionAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[ 'id','ssc_roll','name','board','passing_year','quota','group','status']
     list_display_links = ['ssc_roll','name',]
     list_filter=['board','passing_year','quota','group',]

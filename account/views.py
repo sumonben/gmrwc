@@ -10,7 +10,7 @@ from .forms import StudentForm,TeacherForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from teacher.models import Teacher
-from student.models import Student
+from student.models import Student,SubjectChoice,SscEquvalent,GuardianInfo
 from io import BytesIO
 from django.http import FileResponse
 from django.template.loader import get_template
@@ -142,7 +142,12 @@ def Logout(request):
 def generate_pdf(request):
     if request.user.is_authenticated:
         student=Student.objects.filter(user=request.user).first()
-        return render(request, 'account/certificate.html',{'student':student})
+        subject_choice=SubjectChoice.objects.filter(student=student).first()
+        
+        ssc_equivalent=SscEquvalent.objects.filter(student=student).first()
+        print(ssc_equivalent.ssc_session)
+
+        return render(request, 'account/certificate.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
     return render(request, 'account/login.html')
         
 

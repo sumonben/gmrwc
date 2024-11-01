@@ -290,14 +290,12 @@
             <a href="{% url 'certificate' student.id 'testimonial' %}" class="nav-link"><span class="fas fa-arrow-right"></span>&nbsp;Testimonial</a>
             <div class="dropdown-divider"></div>
             {% endif %}
-           <!-- {% if student.class_year.title_en in 'XI 1st Year 2nd Year' %} -->              
 
             <a href="{% url 'certificate' student.id 'study testimony'%}" class="nav-link"><span class="fas fa-arrow-right"></span>&nbsp;Study Testimony</a></li>
             <div class="dropdown-divider"></div>
             <a href="{% url 'certificate' student.id 'tc' %}" class="nav-link"><span class="fas fa-arrow-right"></span>&nbsp;Transfer Certificate</a>
             <div class="dropdown-divider"></div>
             
-            <!--{% endif %}-->
 
             <a href="{% url 'certificate' student.id 'tc' %}" class="nav-link"><span class="fas fa-arrow-right"></span>&nbsp;Others</a></li>
             <div class="dropdown-divider"></div>
@@ -621,7 +619,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                                     </tr>
                                     <tr>
                                         <td colspan="2" align="left" valign="middle">&nbsp;Registration No. :</td>
-                                        <td colspan="3" align="left" valign="middle" class="black12"><input type="text" class="textfieldUSERinfo" id="id_registration_no" name="id_registration_no" value="{{student.registration_no}}"></td>
+                                        <td colspan="3" align="left" valign="middle" class="black12"><input type="text" class="textfieldUSERinfo" id="id_registration_no" name="id_registration_no" value="{{student.registration}}"></td>
                                         
                                     </tr>
                                     <tr>

@@ -85,7 +85,10 @@ class GuardianInfo(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.father_name
+        if self.father_name:
+            return self.father_name
+        else:
+            return '1'
     
 class Adress(models.Model):
     serial=models.IntegerField(default=10)
@@ -99,9 +102,10 @@ class Adress(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.village_or_house+', '+self.post_office+', '+self.upazilla+', '+self.district
-
-
+        if self.village_or_house:
+            return self.village_or_house
+        else:
+            return '1'
 class Student(models.Model):
     std_id=models.IntegerField(default=10)
     name=models.CharField(max_length=100)
@@ -130,7 +134,7 @@ class Student(models.Model):
     permanent_adress=models.ForeignKey(Adress,null=True, blank=True,related_name="Permanent",on_delete=models.SET_NULL)
     image=models.ImageField(upload_to='media/',blank=True,null=True) 
     signature=models.ImageField(upload_to='media/',blank=True,null=True)
-    user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.SET_NULL)
+    user=models.OneToOneField(UserModel,blank=True,null=True,on_delete=models.CASCADE)
     is_active=models.BooleanField(default=False)
 
     def user_link(self):
@@ -140,6 +144,10 @@ class Student(models.Model):
             return None
     user_link.allow_tags = True
     user_link.short_description = "User"
+    
+    def __str__(self):
+        return self.name +':'+ self.phone
+    
     def __unicode__(self):
         return self.name_bangla
     
@@ -148,20 +156,22 @@ class SscEquvalent(models.Model):
     serial=models.IntegerField(default=10)
     student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
     ssc_or_equvalent=models.CharField(max_length=25,blank=True,null=True)
-    board=models.CharField(max_length=25,blank=True,null=True)
-    group=models.ForeignKey(Group,blank=True,null=True,on_delete=models.SET_NULL)
-    session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
-    exam_roll=models.CharField(max_length=25,blank=True,null=True)
-    regitration_no=models.CharField(max_length=25,blank=True,null=True)
-    cgpa_with_4th=models.CharField(max_length=25,blank=True,null=True)
-    cgpa_without_4th=models.CharField(max_length=25,blank=True,null=True)
-    passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
+    ssc_board=models.CharField(max_length=25,blank=True,null=True)
+    ssc_group=models.ForeignKey(Group,blank=True,null=True,on_delete=models.SET_NULL)
+    ssc_session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
+    ssc_exam_roll=models.CharField(max_length=25,blank=True,null=True)
+    ssc_regitration_no=models.CharField(max_length=25,blank=True,null=True)
+    ssc_cgpa_with_4th=models.CharField(max_length=25,blank=True,null=True)
+    ssc_cgpa_without_4th=models.CharField(max_length=25,blank=True,null=True)
+    ssc_passing_year=models.IntegerField( choices=year_choices, blank=True,null=True)
     
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.student
-
+        if self.student:
+            return self.student.name+': '+self.student.phone
+        return '1'
+    
 class SubjectChoice(models.Model):
     serial=models.IntegerField(default=10)
     student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
@@ -173,8 +183,10 @@ class SubjectChoice(models.Model):
     class Meta:
         ordering = ['serial']
     def __str__(self):
-        return self.student
-
+        if self.student is not None:
+            return self.student.name+': '+self.student.phone
+        return '1'
+    
 
 
 class Transaction(models.Model):
@@ -191,7 +203,10 @@ class Transaction(models.Model):
         ordering = ['serial']
         unique_together = (('student', 'transactionID'),)
     def __str__(self):
-        return self.student
+        if self.student:
+            return self.student
+        else:
+            return '1'
 
 
 class StudentAdmission(models.Model):

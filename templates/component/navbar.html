@@ -62,7 +62,7 @@
                                                 <!-- Sub-Menu Color Admin Custom End -->
                     {% for navelement in navitem.navelement.all %}
                     <div class="one-col">
-                                                        <h6 style="background:; color: ; font-size: 16px!important;">{{navelement.head_en}}</h6>
+                                                        <h6 style=" font-size: 16px!important;">{{navelement.head_en}}</h6>
                                                     
                         <ul class="mzr-links">
                             
@@ -77,9 +77,9 @@
                                                                 <!-- Third Menu Color Admin Custom End -->
                     {% for page in navelement.page.all %}
 
-                            <li style="background:">
+                            <li >
                                 <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name navelement.head page.heading page.id  %}{% else %}{% url 'showpage' navitem.name navelement.head page.heading page.id  %}{% endif %}"
-                                style="color: ">
+                                >
                                 {% if request.session.lang == 'english' %}
                                         {{ page.heading_en }}
                                         {% else %}
@@ -124,7 +124,7 @@
             <!-- Menu Color Admin Custom Start -->
                 <!--  -->
                 <!--  -->
-            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="https://grc.studentpay.net/online-admission" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
+            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
 
             {% else %}
                 {%for navitem in navitems %}
@@ -165,9 +165,9 @@
                                                                     <!-- Third Menu Color Admin Custom End -->
                         {% for page in navelement.page.all %}
 
-                                <li style="background:">
+                                <li >
                                     <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name navelement.head page.heading page.id  %}{% else %}{% url 'showpage' navitem.name navelement.head page.heading page.id  %}{% endif %}"
-                                    style="color: ">{{page.heading}}</a>
+                                    >{{page.heading}}</a>
                                     
                                     <!-- Start Forth Level -->
                                         <ul class="mzr-links">
@@ -206,7 +206,7 @@
                 <!-- Menu Color Admin Custom Start -->
                     <!--  -->
                     <!--  -->
-                    <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="https://grc.studentpay.net/online-admission" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
+                    <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
             {% endif %}                                     
                                                                     <!-- 1  -->
 <li class="col1 mzr-drop focusin-drop focusClassDrop"><a href="#" class="submenu sub-menu focus-content" title="সাবমেনুর জন্য ক্লিক করুন" id="accessible-megamenu-1727362910601-2" aria-haspopup="true" aria-owns="accessible-megamenu-1727362910601-3" aria-controls="accessible-megamenu-1727362910601-3" aria-expanded="false">আমাদের সম্পর্কিত</a>
