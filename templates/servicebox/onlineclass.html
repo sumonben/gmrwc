@@ -1,0 +1,76 @@
+{% extends 'basepage/govtlayout.html' %}
+
+{% block content %} 
+
+ {% load static %}
+ <!-- accessibility Modal -->
+ {% include 'component/accessibilityModal.html' %}
+<!-- end accessibility Modal -->
+
+
+ <!-- Main Body  -->
+
+ <div class="container home-page" >
+    <div class="row"  >
+        <div class="col">
+            
+<!--Top Menu -->               
+{% include 'component/topbar.html' %}
+<!--Top Menu -->               
+            
+
+ <!-- Carousel Strat  -->
+
+ {% include 'component/carousel.html' %}
+ <!--Carousel End   -->
+
+
+  <!-- Plainheader Strat  -->
+
+{% include 'component/plainheader.html' %}
+
+  <!--Plainheader End   -->
+           
+  <!-- Navbar Strat  -->
+     
+{% include 'component/navbar.html' %}  
+
+
+   <!--Navbar End   -->
+
+   
+
+
+<!--Main Content Start   -->
+
+<div id="skip-main-content-start-here" style="opacity:0;font-size:1px;">Main Comtent Skiped</div>
+          
+    
+     
+{% include 'component/socialmedia.html' %}
+                  <div class="d-flex justify-content-end">
+                       <button class="mb-2 btn btn-outline-warning  btn-sm outline-none shadow-none text-right d-none" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i></button>
+                  </div>
+                   <div id="flash">
+
+
+
+   {%include 'component/onlineclass.html'%}
+
+
+
+           <!--/////////////////////////////ডান সাইডের বার   ///////////////////        -->      
+             
+
+        <!--/////////////////////////////ডান সাইডের বার   ///////////////////        -->      
+
+    
+    
+      </div>
+    <!--Main Content End   -->
+
+    <!--Footer Start   -->
+
+       <!--Footer End   -->
+   
+    {% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'basepage/govtlayout.html' %}
+
+{% block content %} 
+
+ {% load static %}
+
+                      
+ <!-- accessibility Modal -->
+ {% include 'component/accessibilityModal.html' %}
+<!-- end accessibility Modal -->
+
+
+ <!-- Main Body  -->
+
+ <div class="container home-page" >
+    <div class="row"  >
+        <div class="col">
+            
+<!--Top Menu -->               
+{% include 'component/topbar.html' %}
+<!--Top Menu -->               
+            
+
+ <!-- Carousel Strat  -->
+
+ {% include 'component/carousel.html' %}
+ <!--Carousel End   -->
+
+
+  <!-- Plainheader Strat  -->
+
+{% include 'component/plainheader.html' %}
+
+  <!--Plainheader End   -->
+           
+  <!-- Navbar Strat  -->
+     
+{% include 'component/navbar.html' %}  
+
+
+
+   <!--Navbar End   -->
+
+   
+
+
+<!--Main Content Start   -->
+
+<div class="row">
+        <div class="col-md-12">
+                   <div id="left">
+
+                    <!-- Share Content top option start -->
+                                            
+                    {%include 'component/socialmedia.html'%}
+
+                    <!-- Share Content top option end -->
+
+                        <div class="officerlist details">
+
+    
+
+{% include 'component/notice_all.html' %}
+
+</div>
+
+
+
+                        <!-- Share Content bottom option start -->
+
+                       <!-- Share Content bottom option end -->
+                   </div>
+               </div>
+            </div>
+         {% include 'component/onlineclass.html' %}
+    {% endblock %}

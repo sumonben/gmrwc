@@ -1,0 +1,89 @@
+{% extends 'basepage/govtlayout.html' %}
+
+{% block content %} 
+
+ {% load static %}
+ <!-- accessibility Modal -->
+ {% include 'component/accessibilityModal.html' %}
+<!-- end accessibility Modal -->
+
+
+ <!-- Main Body  -->
+
+ <div class="container home-page" >
+    <div class="row"  >
+        <div class="col">
+            
+<!--Top Menu -->               
+{% include 'component/topbar.html' %}
+<!--Top Menu -->               
+            
+
+ <!-- Carousel Strat  -->
+
+ {% include 'component/carousel.html' %}
+ <!--Carousel End   -->
+
+
+  <!-- Plainheader Strat  -->
+
+{% include 'component/plainheader.html' %}
+
+  <!--Plainheader End   -->
+           
+  <!-- Navbar Strat  -->
+     
+{% include 'component/navbar.html' %}  
+
+
+   <!--Navbar End   -->
+
+   
+
+
+<!--Main Content Start   -->
+
+<div id="skip-main-content-start-here" style="opacity:0;font-size:1px;">Main Comtent Skiped</div>
+          
+    
+     <div class="row" >
+     <div class="col-md-9">
+               <div id="left">
+                  <div class="d-flex justify-content-end">
+                       <button class="mb-2 btn btn-outline-warning  btn-sm outline-none shadow-none text-right d-none" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i></button>
+                  </div>
+                   <div id="flash">
+
+   {%include 'component/notice.html'%}
+   
+   {% autoescape off %}
+   
+   {{page.body}}
+   
+   {% endautoescape %}   
+
+
+                   </div>
+                </div>
+            </div>
+
+<!-- jQuery.simpleTicker.js start --><!-- <link href="//www.jqueryscript.net/demo/HTML-List-Based-Scroller-Ticker-Plugin-jQuery-simpleTicker/jquery.simpleTicker.css" rel="stylesheet"> --><!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --><!-- <script src="//www.jqueryscript.net/demo/HTML-List-Based-Scroller-Ticker-Plugin-jQuery-simpleTicker/jquery.simpleTicker.js"></script> --><!-- jQuery.simpleTicker.js end -->
+
+<!-- <script>-->
+
+           <!--/////////////////////////////ডান সাইডের বার   ///////////////////        -->      
+             
+         {% include 'component/rightsidebar.html' %} 
+
+        <!--/////////////////////////////ডান সাইডের বার   ///////////////////        -->      
+
+    
+    
+      </div>
+    <!--Main Content End   -->
+
+    <!--Footer Start   -->
+
+       <!--Footer End   -->
+
+    {% endblock %}

@@ -1,0 +1,2569 @@
+<html lang="en">
+    {% load static %}
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="{%static 'css/profile/payment.css'%}">
+    
+<link rel="stylesheet" href="{%static 'css/profile/profile.css'%}">
+<link href="{% static 'css/profile/frontend.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/css/youtube-video-gallery.css">
+    
+    <link rel="stylesheet" href="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/css/meganizr.css">
+    
+    <!-- Biggapon  CSS Start -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" integrity="sha512-X/RSQYxFb/tvuz6aNRTfKXDnQzmnzoawgEQ4X8nZNftzs8KFFH23p/BA6D2k0QCM4R0sY1DEy9MIY9b3fwi+bg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Biggapon  CSS End -->
+    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/css/responsive.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//file.portal.gov.bd/media/central/mCustomScrollbar/jquery.mCustomScrollbar.css" />
+    <link href="//cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+    <script>
+        var lang = "bn";
+    </script>
+    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/Plugin-jQuery-simpleTicker/jquery.simpleTicker.js"></script>
+    <script async type="text/javascript" src="//file.portal.gov.bd/media/central/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="//code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery-cascading-dropdown@1.2.9/dist/jquery.cascadingdropdown.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/simple-ticker.js" crossorigin="anonymous"></script>
+    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/responsiveslides.min.js" crossorigin="anonymous"></script>
+    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/jquery.youtubevideogallery.js" crossorigin="anonymous"></script>
+    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/app.js" crossorigin="anonymous"></script>
+    
+    <!-- Online Polling -->
+    <script src="//polling.portal.gov.bd/js/npop.script.js" defer></script>
+    <!-- Comment Management Tools -->
+    <script src="//polling.portal.gov.bd/js/npc.script.js" defer></script>
+
+    <!-- userway accessibility start -->
+    <!-- <script type="text/javascript">
+        var _userway_config = {
+        account: "xyS2BuGIbM"
+        };
+    </script>
+    <script type="text/javascript" src="//cdn.userway.org/widget.js"></script> -->
+    <!-- userway accessibility end -->
+    
+    <!-- custom accessibility start -->
+    <link rel="stylesheet" href="//file.portal.gov.bd/media/central/accessibility/css/asb.css">
+    <script src="//file.portal.gov.bd/media/central/accessibility/js/asb.js" type="text/javascript"></script>
+    <!-- accessibility active issues -->
+     
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  
+    
+    <!-- end accessibility active issues -->
+    <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/js/all.min.js"></script> -->
+    <!-- custom accessibility end -->
+    
+    <!-- Biggapon Js Start -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+          $(".npsylhet_ad").owlCarousel({
+            items: 1,
+            autoPlay: true,
+            autoplayTimeout: 4000,
+            loop: true
+        });
+        });
+    </script>
+    <!-- Biggapon Js End -->  
+    <style type="text/css">
+        .ui-widget {
+            font-size: 12px;
+        }
+        
+        .ui-datepicker {
+            width: 97%;
+        }
+        
+        td {
+            padding: 3px !important;
+        }
+        
+        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+            text-align: center;
+        }
+        
+        .css-class-to-highlight {
+            background: orange !important;
+        }
+    </style>
+    <style>
+    @media print{
+        .right{
+            display: none!important;    
+        }
+    }
+    </style>
+
+   <!--  <title>www.bogra.gov.bd</title> -->
+   <title>  মহিলা কলেজ,বগুড়া</title>
+   <!-- <link rel="icon" href="//cdn.sylhet.gov.bd/media/central/themes/default/img/favicon.ico" type="image/x-icon"> -->
+   
+            <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
+     
+
+    <style type="text/css" media="screen">
+        @font-face {
+          font-family: "kalpurushregular";
+          src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+          src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+            url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+            url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+            url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+          font-weight: normal;
+          font-style: normal;
+        }
+        
+        .text-green{color:limegreen}
+
+body {
+  font-family: kalpurushregular;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  background-color: #fff;
+  font-size: 16px;
+  color: #000;
+}
+
+video {
+    width: 100%
+}
+
+#left-content ul {
+  list-style: disc;
+}
+
+ul,
+ol {
+  margin-bottom: 20px;
+}
+
+li {
+  line-height: 18px;
+  margin-bottom: 12px;
+}
+
+h5 {
+  font-size: 17px;
+  line-height: 24px;
+}
+
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+   
+  vertical-align: baseline;
+}
+
+a,
+a:visited {
+  color: #333;
+  text-decoration: none;
+  outline: 0;
+}
+
+#logo img {
+    display: block;
+    width: 70px;
+    height: auto;
+}
+
+.right {
+  float: right;
+}
+
+.btn-nb {
+    background-image: linear-gradient(to bottom, #666, #a6a6a6);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) #a2a2a2;
+    padding: 0 5px;
+    color: #ffffff;
+    background-color: #a6a6a6;
+}
+
+.btn-right {
+    float: right;
+    /* padding: 0 5px; */
+    color: #ffffff;
+    margin: 15px -35px 0px 0px;
+}
+
+.blue {
+    color: blue;
+}
+.white {
+    color: white!important;
+}
+
+#contents .block {
+  overflow: hidden;
+  width: 100%;
+}
+
+.block {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.right-side-bar .block img {
+  margin: 0 5px 0 0;
+}
+
+.right-side-bar {
+    padding-top: 0px;
+}
+
+.ul-none{
+    list-style: none;
+}
+
+/* .right-side-bar .block ul li {
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right,#683091 0%, #8bc643 100%);
+    border-image-slice: 1;
+    background-position: left;    
+    font-size: 120%;
+    height: auto;
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding-left: 32px;
+    padding-top: 0px;
+    padding-bottom: 8px;
+} */
+
+.service-row {
+  margin-bottom: 20px;
+  /* margin-top: 20px; */
+}
+
+.block .title {
+  padding: 5px;
+  font-size: 1.2em;
+  background-color: #609513;
+  color: #fff;
+  line-height: 24px;
+}
+
+.block table td {
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1px solid #d8d8d8;
+}
+
+.block h5 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: inherit;
+}
+
+.job-block {
+  margin-bottom: 10px;
+}
+
+.job-block .apply-online {
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.job-block .apply-online a {
+  color: #683091;
+  text-decoration: none;
+}
+
+sup {
+  font-size: xx-small;
+  vertical-align: super;
+}
+
+.service-list > h5 {
+  padding: 5px;
+  font-size: 1.2em;
+  overflow: hidden;
+}
+.service-list > ul {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.service-list .title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-position-x: 0px;
+  background-position-y: 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 0;
+  padding-left: 45px !important;
+  border: 1px solid #ccc;
+  color: #683091;
+  line-height: 30px
+}
+
+.service-list ul li {
+  background-position: left;
+
+  font-size: 120%;
+  height: auto;
+  list-style-type: none;
+  margin-bottom: 5px;
+  padding-left: 2px;
+  padding-top: 0px;
+  padding-bottom: 8px;
+  line-height: 18px;
+}
+
+.service-list ul li a {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.service-list > h5 {
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+.social img {
+  margin: 0 5px 0 0;
+  width: 30px;
+}
+
+.footer-wrapper {
+  background-color: #ebebeb;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+#footer-menu {
+  padding: 10px 20px 0px 10px;
+}
+
+#footer p{
+        float: none;
+    }
+
+.footer-menu .last-update {
+  font-size: 0.9em;
+}
+
+.footer-menu .last-update .date {
+  font-style: italic;
+}
+
+.footer-credit {
+  float: right;
+  font-size: 0.8em;
+  text-align: right;
+  padding: 0px 20px 0px 10px;
+}
+.list .title {
+    padding: 15px 0;
+    font-size: 24px;
+}
+.list .pagination li {
+    margin-right: 10px;    
+}
+
+.list .pagination .disabled {
+    color: #ccc
+}
+.list table td {
+    padding: 10px;
+}
+.details {
+    padding: 20px 0;
+}
+
+.control-file img {
+    height: 15px;
+    width: 15px;
+}
+table.content-type-list td[scope='row'] {
+    white-space: nowrap;
+}
+
+.box {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+
+.list > li {
+    padding: 5px 0;
+    margin: 0;
+}
+
+
+.ticker {
+  /* margin: 0 auto;
+  padding: 10px;
+  width: 600px;
+  text-align: left;
+  border: #ccc 1px solid;
+  position: relative;
+  overflow: hidden;
+  background-color:#ffffff; */
+}
+
+.ticker ul {
+  width: 100%;
+  position: relative;
+}
+
+.ticker ul li {
+  width: 100%;
+  display: none;
+}
+
+.details-page .label {font-weight:bold}
+
+/*for video gallary*/
+.close a{float: right;color: #fff}
+.close {float: none}
+
+/* details page */
+
+.details-page .title .value {font-size:20px;margin-bottom:10px;border-bottom:1px solid lightgray;}
+
+@media print{
+    #top {
+    display: none !important;
+}
+}
+
+@media only screen and (min-width:320px) and (max-width:959px){
+    .footer-credit {
+            margin: 10px 0px 0 0px !important;
+            float: left!important;
+            width: 99%;
+            text-align: left!important;
+        }
+    .footer-wrapper {
+      float: left;
+      height: auto;
+      width: 100%;
+      overflow: hidden;
+      padding: 0px 0px 20px 0px;
+    }
+    .service-box{
+        margin-bottom: 20px;
+    }
+    .service-row{
+        margin-bottom: 0px;
+    }
+    .footer-artwork {
+		height: 15px;
+		margin: 0 auto;
+		background-color: #666;
+	}
+	.service-list .title {
+	    padding-left: 60px !important;
+	    line-height: 35px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+	}
+}
+@media only screen and (min-width: 960px) {
+    .footer-artwork {      
+      height: 84px;
+      margin: 0 auto;
+      clear: both;
+    }
+    .footer-wrapper {
+        width: 100%;
+    }
+    #footer p br { 
+       display: none;
+    }
+}
+
+.html_text a { color: blue !important; }
+
+.content table tbody tr img {
+    height: 300px !important;
+}
+
+.card-horizontal img {
+    max-width: 100%!important;
+    height: 300px!important;
+    /* height: 300px ; */
+}
+/* Ch Bappy UY Systems Code Start */
+
+.block table{
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.block.job-block table {
+    margin-left: 0;
+}
+div#notice-board {
+    margin-top: 20px!important;
+}
+@media (max-width: 991px) {
+    #site-name a, #slogan {
+        margin-left: 30px!important;
+    } 
+    
+    #banner-slider {
+        display: block !important;
+    }
+    
+    #banner-slider img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+    #logo{
+        display: block!important;
+    }
+    .container.details-page .row {
+        display: block !important;
+    }
+    
+    .right-side-bar.col-3 {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .img-square-wrapper img {
+        margin-top: 0px!important;
+    }
+    
+    .block table{
+        margin-left: 0px;
+    }
+    
+        
+}
+@media (max-width: 767px) {
+    .img-square-wrapper img {
+        width: 100%;
+        margin-top: 50px;
+        
+    }
+    #header-site-info {
+        display: block !important;
+    }
+    #logo img{
+        width: 50px!important;
+    }
+    .plain-header{
+        display: none!important;
+    }
+    
+   #logo{
+        margin-top: 20px!important;  
+        margin-left: -14px!important;
+    }
+    
+    #site-name, #slogan {
+        margin-top: 14px !important;
+        
+    }
+    #site-name a, #slogan {
+        font-size: 25px !important;
+    }
+    .block table{
+        margin-left: 0px;
+    }
+    
+            
+}
+@media (max-width: 575px) {
+    
+    
+    #ad-slider .ad-slide-item {
+        width: 95%!important;
+    }
+    .right-side-bar .block img{
+        width: 95%;
+        height: auto;
+    }
+    
+    #site-name-wrapper #site-name {
+        display: block !important;
+        margin: 14px 25px 0px !important;
+    } 
+    .service-box img{
+        width: 25% !important;
+    }
+    .block table{
+        margin-left: 0px;
+    }
+    #site-name a, #slogan {
+        font-size: 16px !important;
+    }
+    
+    .block .content table iframe {
+        width: 95% !important;
+    }
+    
+    .block .content iframe {
+        width: 98%!important;
+    }
+    
+}
+@media (max-width: 320px) {
+    iframe {
+        display: none;
+        width: 100%;
+    }
+    .card-horizontal {
+        display: block!important;
+    }
+    
+    .img-square-wrapper img {
+        margin-top: 10px!important;
+    }
+    .content table tbody tr img {
+        display: block;
+        height: 100px !important;
+    }
+    
+    iframe {
+    
+        display: block!important;
+        width: 100%;
+    
+    }
+    .table-responsive.officer-table .info_officer_img {
+        display: none !important;
+    }
+    .block table{
+        margin-left: 0px;
+    }
+    
+    .content table {
+        width: 289px !important;
+        /* display: none; */
+    }
+    
+          
+    
+}
+
+.value img {
+   /*  display: block; */
+    /* width: 100%!important; */
+    max-width: 1040px;
+}
+.image .value {
+   text-align: center;
+
+}
+.content table {
+    width: 100% !important;
+}
+
+ .menu a{
+    padding: 11px 7px!important;
+} 
+
+.html_text.body table, tr, td {
+    border: 1px solid #333!important;
+}
+
+table.table.table-bordered, tr, td, th {
+    border: 1px solid #000!important;
+}
+
+.label {
+    display: inline;
+    padding: 0px!important;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+}
+
+
+/* .print_btn{
+        display: none!important;
+    } */
+@media print {
+    .print_btn{
+        display: none!important;
+    }
+    #top{
+        display: none!important;
+    }
+    .footer-artwork, #footer-wrapper, #footer-menu  {
+      display: none!important;
+    }
+    #footer-menu, #footer-credit{
+        display: none;
+        }
+        #footer-credit p{
+        display: none;
+        }
+        .top-menu{
+            display: none!important;
+        }
+}
+        
+        /*.right-side-bar .block ul li {
+            background: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/img/bg_block_list.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }*/
+        
+        @media only screen and (min-width: 960px) {
+        	body{
+        		background: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/img/bg_main.gif") repeat-y scroll center top rgba(0, 0, 0, 0);
+        	}
+        	.container {
+        	    position: relative;
+                width: 960px;
+                margin: 0 auto;
+                padding: 0;
+        	}
+        	.footer-artwork {
+        	    background: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/img/footer_top_bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        	}
+        }
+        
+        
+        
+        /*==================================
+         Content share css design
+        ===================================*/
+        .share-text-style{
+            font-family: 'Hind Siliguri';
+            color: #662D91!important;
+            font-size: 12px;
+        }
+        .share-title{
+            font-family: 'Hind Siliguri';
+            color: #662D91;
+            font-size: 17px;
+            margin-right: 4px;
+            text-align: right;
+        }
+        .share-youtube-title{
+            font-family: 'Hind Siliguri';
+            color: #2E2E2E;
+            font-size: 9px;
+            letter-spacing: 0px;
+        }
+        .share-content-box{
+            display: flex;
+            justify-content: end;
+            gap: 16px;
+            text-align: center;
+            align-items: end;
+        }
+        .at4-jumboshare .at4-count-container {
+            min-width: 30px!important;
+            padding-right: 0px!important;
+        }
+        .at4-jumboshare .at4-count{
+            padding-left: 0px!important;
+            padding-right: 0px!important;
+            font-size: 0!important;
+            line-height: 0!important;
+        }
+        .at4-jumboshare .at4-share-container {
+            padding-left: 10px!important;
+        }
+        .at4-jumboshare table, .at4-jumboshare table tr, .at4-jumboshare td, .at4-jumboshare table th{
+            border:none !important;  
+        }
+        .at-svc-compact{
+            display:none !important;
+        }
+        
+        @media only screen and (max-width: 770px) {
+            .share-content-box {
+                gap: 5px;
+            }
+            .share-content-box img{
+                width: 15px!important;
+                height: 13px!important;
+            }
+            .share-content-box > div{
+                margin-right: 0px!important;
+            }
+            .share-text-style{
+                font-size: 9px;   
+            }
+            .at-mobile .at-resp-share-element .at-share-btn {
+                padding: 0px!important;
+                margin-right: 0px!important;
+            }
+            .share-title {
+                font-size: 10px;
+            }
+            .at4-jumboshare .at4-share-container {
+                padding-left: 3px!important;
+            }
+        }
+        
+        #accessibilityBar{
+            top:364px!important;;
+        }
+    </style>
+    <style>
+        .top-menu {
+            background-color: #683091;
+            box-shadow: 0 1px 5px #999999;
+            border-bottom: 4px solid #8bc643;
+            color: #ffffff;
+            padding: 5px 0;
+        }
+    
+        .navbar {
+            height: 40px;
+        }
+    
+    
+        .bd-gov-site {
+            display: flex;
+            align-items: center;
+        }
+    
+        .top-menu .bd-gov-site a {
+            color: white;
+            font-size: 1.1em;
+            padding-left: 10px; line-height:31px;
+        }
+    
+        .middle-form {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    
+        .form-item {
+            padding: 0 3px;
+        }
+    
+        .search-form input {
+            font-size: 14px;
+            border-radius: 2px;
+            border: none;
+        }
+    
+        .top-menu select,
+        .top-menu input {
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 2px;
+            font-size: 13px;
+            color: #000;
+        }
+    
+        .top-menu .search-btn {
+            border: 1px solid #34740e;
+            border-radius: 3px;
+            font-size: 12px;
+            background-color: #4ba614;
+            background-image: linear-gradient(to bottom, #4ba614, #008c00);
+            padding: 2px 10px;
+        }
+        
+        #lang-switcher {
+            padding: 0 9px; 
+            height:30px; 
+            width:90px; 
+            margin-left: -45px;
+        }
+        
+        #doptor_navigation_go {
+            display: none;
+        }
+        
+        .another_portal{ background:#fafafa;}
+        #mob_navigation {
+            /* background-image: url(http://cdn.sylhet.gov.bd/media/central/themes/default/img/portal_navigation.png); */
+            background-repeat: no-repeat !important; padding:8px 5px 5px 5px; display:block;
+        }
+    
+        .another_portal a:visited,.another_portal a:focus{ text-decoration:none !important}
+        .portal_cont{ padding:5px; display:none;}
+        #lang-btn{ margin-right:10px}
+        
+        @media (max-width: 767.98px) {
+            .top-menu .bd-gov-site a {
+                font-size: 0.9em;
+            }
+            .middle-form {
+                display: flex !important;
+            }
+            .select2-container{
+                margin: 3px 0px !important;    
+            }
+            #lang-switcher {
+                margin-left: 3px!important;
+                margin-top: 5px!important;
+            }
+        }
+        @media print{
+        #top {
+        display: none !important;
+    }
+    }
+    </style>
+    <style>
+        /*Addthis print hide css*/
+        @media print {
+            .hide-for-print, #accessibilityBar, #onlinePollBlock, #onlineCommentBlock { display: none !important; }
+        }
+    </style>
+    <style>
+        #header-site-info {
+            left: 20px;
+            margin-bottom: 0;
+            padding: 10px;
+            position: absolute;
+            top: 80px;
+            z-index: 100;
+            width: 90%;
+        }
+    
+        .plain-header {
+            display: none;
+        }
+    
+        #palin-header-text {}
+    
+        #logo {
+            display: block;
+            margin: 0 0 10px 15px;
+            float: left;
+            width: 12%;
+        }
+    
+        #site-name-wrapper {
+            position: relative;
+            float: left;
+            padding: 10px 0;
+            line-height: 2;
+            margin-left: -15px;
+        }
+    
+        #site-name {
+            font-size: 2vw;
+            font-weight: bold;
+            text-shadow: -1px -1px 10px #333, 1px -1px 10px #333, -1px 1px 10px #333, 1px 1px 10px #333;
+        }
+    
+        #site-name a,
+        #slogan {
+            color: #ffffff;
+        }
+    
+        #site-name,
+        #slogan {
+            display: block;
+        }
+    
+    
+        #banner-slider {display: none;}
+    
+        #header-site-info {}
+    
+        @media screen and (max-width: 978px) {
+    
+            #banner-slider {
+    
+                display: none;
+            }
+    
+    
+            #header-site-info {
+                position: static;
+                display: none;
+            }
+    
+    
+            .plain-header {
+                display: block;
+                margin-top: 13px;
+            }
+        }
+    
+        #palin-header-text {
+            position: relative;
+            top: 13px;
+            left: 19px;
+        }
+    
+        @media screen and (max-width: 1199px) {
+    
+    
+    
+            #site-name-wrapper {
+                margin-top: 5px;
+                margin-left: 5px;
+            }
+    
+        }
+    
+        @media screen and (max-width: 767px) {
+    
+            #header-site-info {
+    
+                margin-left: 5px;
+    
+            }
+    
+    
+    
+        }
+    
+        @media screen and (max-width: 414px) {
+    
+            #palin-header-text {
+    
+                top: 11px;
+                left: 30px;
+            }
+    
+        }
+    </style>        
+    <style>
+        .mzr-responsive li.col0 {
+            display: block!important;
+        }
+        .meganizr .drop-five-columns {
+            width: 700px;
+        }
+        /*==================================
+        Menubar Broken Design css fix
+        ===================================*/
+        .meganizr .mzr-content{ width: 172px;}
+        li.c1 .mzr-content{ width: 680px;}
+        li.c2 .mzr-content{ width: 680px;}
+        li.c3 .mzr-content{ width: 680px;}
+        li.c4 .mzr-content{ width: 680px;margin-left: -110px!important;}
+        li.c5 .mzr-content{ width: 680px;margin-left: -120px!important;}
+        li.c6 .mzr-content{ width: 510px;margin-left: -140px!important;}
+        li.c7 .mzr-content{ width: 340px;margin-left: -120px!important;}
+        li.c8 .mzr-content{ width: 340px;margin-left: -120px!important;}
+        
+        
+        .meganizr .five-col {
+            width: 700px;
+        }
+        .menu .sub-menu .mzr-links a{
+            padding: 5px 0px!important;    
+        }
+        /* .menu .home {
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu .home a {
+            
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+        } */
+    
+        /* .menu .sub-menu {
+            position: absolute;
+            z-index: 600;
+            padding: 10px 0;
+            left: 0px;
+            opacity: 0;
+            overflow: hidden;
+            display: none;
+            background-color: #ffffff;
+            border: 1px solid #dedede;
+            width: 100%;
+        } */
+    
+        .menu .mzr-drop:hover .sub-menu {
+            display: flex;
+            opacity: 1;
+        }
+    
+        /* .menu .sub-menu>div {
+            width: 150px;
+            margin: 10px;
+            font-size: 14px;
+            line-height: 21px;
+        } */
+    
+        .menu .sub-menu>div h6 {
+            font-weight: bold;
+            margin-bottom: 4px;
+            /* padding: 3px 7px; */
+        }
+    
+        .menu .sub-menu .mzr-links a {
+            display: block;
+            padding: 5px 7px;
+            line-height: 20px;
+            border-bottom: 1px dotted #e1e1e1;
+            font-size: 15px;
+        }
+    
+        .menu .sub-menu .mzr-links a:hover {
+            color: #333;
+            background-color: #eee;
+        }
+    
+        .menu ul.menu-container {
+            background-color: #fafafa;
+            border-bottom: 1px dotted #cccccc;
+            font-size: 12px;
+            position: relative;
+            display: flex;
+        }
+    
+        .menu li {
+            list-style: none;
+        }
+    
+        .menu li.menu-link {
+            border-right: 1px dotted #ccc;
+        }
+    
+        .menu a {
+            position: relative;
+            z-index: 550;
+            display: block;
+            padding: 11px 15px 11px 15px;
+            font-size: 16px!important;
+            text-shadow: 0px 1px 1px white;
+            transition: color 0.15s ease-in, background-image 0.2s linear 0.15s;
+            margin: 0;
+            cursor: pointer;
+        }
+    
+        .row .menu a:hover {
+            color: #000;
+            /* background-color: #000000; */
+            text-decoration: none;
+        }
+    
+        .menu .c1:hover >a {
+            background-color: #ff6600;
+            color: #fff;
+        }
+    
+        .menu .c1>a,
+        .menu .c1 h6 {
+            color: #ff6600;
+        }
+    
+        .menu .c1 .sub-menu {
+            border-top: #ff6600 solid 8px;
+        }
+    
+        .menu .c2:hover >a {
+            background-color: #c40a2a;
+             color: #fff;
+        }
+    
+        .menu .c2>a,
+        .menu .c2 h6 {
+            color: #c40a2a;
+        }
+    
+        .menu .c2 .sub-menu {
+            border-top: #c40a2a solid 8px;
+        }
+    
+        .menu .c3 .sub-menu {
+            border-top: #84154d solid 8px;
+        }
+    
+        .menu .c3:hover >a {
+            background-color: #84154d;
+             color: #fff;
+        }
+    
+        .menu .c3>a,
+        .menu .c3 h6 {
+            color: #84154d;
+        }
+    
+        .menu .c3 .sub-menu {
+            border-top: #84154d solid 8px;
+        }
+    
+        .menu .c4 .sub-menu {
+            border-top: #098346 solid 8px;
+        }
+    
+        .menu .c4:hover >a {
+            background-color: #098346;
+            color: #fff;
+        }
+    
+        .menu .c4>a,
+        .menu .c4 h6 {
+            color: #098346;
+        }
+    
+        .menu .c5 .sub-menu {
+            border-top: #1399be solid 8px;
+        }
+    
+        .menu .c5 .sub-menu {
+            border-top: #1399be solid 8px;
+        }
+    
+        .menu .c5:hover >a {
+            background-color: #1399be;
+             color: #fff;
+        }
+    
+        .menu .c5>a,
+        .menu .c5 h6 {
+            color: #1399be;
+        }
+    
+        .menu .c5 .sub-menu {
+            border-top: #1399be solid 8px;
+        }
+    
+        .menu .c6 .sub-menu {
+            border-top: #8768de solid 8px;
+        }
+    
+        .menu .c6 .sub-menu {
+            border-top: #8768de solid 8px;
+        }
+    
+        .menu .c6:hover >a {
+            background-color: #8768de;
+             color: #fff;
+        }
+    
+        .menu .c6>a,
+        .menu .c6 h6 {
+            color: #8768de;
+        }
+    
+        .menu .c6 .sub-menu {
+            border-top: #8768de solid 8px;
+        }
+    
+        .mob_menu {
+            background: #fafafa;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+    
+        .mob_menu a.show-menu {
+            background-repeat: no-repeat !important;
+            padding-left: 5px;
+            background-color: #fafafa;
+            line-height: 40px;
+            display: block;
+            background-position: -3px 0;
+        }
+    
+        .mob_menu a.show-menu:focus,
+        .mob_menu a.show-menu:visited {
+            text-decoration: none !important
+        }
+        
+        .menu ul.menu-container {
+            
+            display: inline-block!important;
+        }
+        
+        .meganizr .one-col, .meganizr .two-col, .meganizr .three-col, .meganizr .four-col, .meganizr .five-col, .meganizr .six-col {
+            float: left;
+            margin: 5px!important;
+        }
+        
+        
+        @media print{
+            .menu .sub-menu{
+                display: none !important;    
+            }    
+        }
+        
+        
+    ul.mzr-links li > ul{
+        margin-left: 15px;
+    }
+    
+    ul.mzr-links li > ul li a{
+        font-size: 14px !important;
+        display:block;
+        padding: 0 10px;
+    }
+    
+    
+    
+        
+        /*--------------------- add new css------------------------- */
+        .menu .sub-menu .mzr-links a:focus-within {
+             text-decoration: none !important;
+        }
+        .menu .focusin-drop:focus-within .sub-menu {
+            display: flex;
+            opacity: 1;
+        }
+        .focusin-drop:focus-within .mzr-content {
+            border-top: none !important;
+        }
+        .meganizr > li.focusin-drop:focus-within > a {
+            z-index: 650;
+        }
+        .meganizr > li.focusin-drop:focus-within > a:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        
+        .meganizr > li.focusin-drop:focus-within > a:after,
+        .meganizr > li.focusin-drop > a.mzr-click:after {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+    
+        }
+        
+    
+        .meganizr > li.focusin-drop:focus-within > a,
+        .meganizr > li.focusin-drop > a.mzr-click { z-index: 650;}
+        
+        @media only screen and (min-width:980px ){
+    
+            .mzr-slide > li.focusin-drop:focus-within > div,
+            .mzr-slide > li.focusin-drop:focus-within > ul,
+            .mzr-slide > li > ul li.focusin-drop:focus-within > ul {
+                top: 37px;
+                opacity: 1;
+                overflow: visible;
+                visibility: visible;
+                display: block;
+            }
+        
+        }
+        
+        @media only screen and (max-width: 959px) {
+    
+            .mzr-responsive.mzr-slide > li.focusin-drop:focus-within > div,
+            .mzr-responsive.mzr-slide > li.focusin-drop:focus-within > ul,
+            .mzr-responsive.mzr-slide > li > ul li.focusin-drop:focus-within > ul,
+            .mzr-responsive.mzr-fade > li.focusin-drop:focus-within > div,
+            .mzr-responsive.mzr-fade > li.focusin-drop:focus-within > ul,
+            .mzr-responsive.mzr-fade > li > ul li.focusin-drop:focus-within > ul { top: auto;	}
+    
+        }
+        
+        /* -------------------end new css--------------- */
+    </style>
+    <style>
+        .section-title {
+            background-color: #efefef;
+            border: 1px solid #cccccc;
+            margin: 20px 0;
+            padding: 7px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        .section-title h5 {
+            float: left;
+            margin: -3px 5px 0 0;
+            font-weight: bold;
+        }
+    
+        .section-title #news-ticker {
+            overflow: hidden;
+            position: relative;
+            height: 0px;
+        }
+    
+        .section-title #news-ticker ul {
+            position: absolute;
+            margin: 0px;
+            padding: 0px;
+            width: 95%;
+        }
+    
+        .news-container {
+            flex: 1;
+        }
+    
+        .news-container li {
+            list-style: none;
+        }
+    
+        .ticker {
+          margin: 0 auto;
+          padding: 0px 10px;
+          width: 100%;
+          text-align: left;
+          border: #efefef 1px solid;
+          position: relative;
+          overflow: hidden;
+          background-color:#efefef;
+          color:#fff;
+        }
+    
+        .ticker ul {
+          width: 100%;
+          position: relative;
+        }
+    
+        .ticker ul li {
+          width: 100%;
+          display: none;
+        }
+    
+        .section-title #news-ticker ul {
+            width: 100%!important;
+        }
+    </style>
+    <style>
+        .service-box {
+          background-color: #f5f5f5;
+          border: 1px solid #ccc;
+          cursor: pointer;
+          padding: 10px;
+          position: relative;
+          overflow: hidden;
+          color: #000;
+          box-shadow: 1px 1px 1px 1px #ccc;
+        }
+        
+        .service-box h4 {
+          font-size: 21px;
+          line-height: 30px;
+          margin-bottom: 4px;
+        }
+        
+        .service-box img {
+          position: relative;
+          left: 0;
+          max-width: 700px;
+          transition: all 300ms ease-out;
+          float: left;
+        }
+        
+        .service-box .caption {
+          position: relative;
+          color: #000;
+          z-index: 1;
+          transition: all 300ms ease-out;
+          left: 0;
+          padding: 0;
+          float: left;
+        }
+        
+        .service-box .fade-caption {
+          max-width: 65%;
+        }
+        
+        .service-box .caption li {
+          margin: 2px 0 0 10px;
+          list-style:none;
+        }
+        
+        .service-box .caption li i.fa {
+          margin-right: 5px;
+        
+        }
+        
+        .service-box .caption li a {
+            font-size: 15px;
+            text-decoration: none;
+        }
+        
+        .service-box .caption li a:hover {
+            text-decoration: underline;
+        }
+        
+        </style>
+        <style>
+            #ad-slider .ad-slide-item {
+                width: 100%;
+                display: none;
+            }
+        
+            #ad-slider .ad-slide-item:first-child {
+                display: block;
+            }
+        </style>
+        <style>
+            @media print{
+                .right{
+                    display: none!important;    
+                }
+            }
+        </style>                        
+        
+          <style>
+            @media print {
+                #footer-menu, #footer-credit{
+                display: none!important;
+                }
+                #footer-credit p{
+                display: none!important;
+                }
+                #footer{
+                     display: none!important;
+                }
+            }
+        </style>
+        <style>
+            .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+                background-color: #444;
+                width: 10px;
+            }
+        </style>
+            
+    <style>
+        .list > li {
+            padding: 5px 0;
+        }
+        .list > li > a{
+            display: block    
+        }
+        .list > li > a > i, .list > li > a > span{
+            float: left
+        }
+        .list > li > a > i{
+            width: 15px; margin-right: 7px
+        }
+        .list > li > a > span{
+            width: calc(100% - 22px);
+            line-height: 20px
+        }
+        </style>
+
+        <!--Social Media like comment Share part-->
+        <style>
+            .social_btn{
+              color: #fff !important;
+              padding: 5px;
+              font-size: 12px;
+              width: 24px;
+              height: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              transition: all 0.6s ease;
+              margin: 0 2px 0 2px;
+            }
+            .social_btn:hover{
+              transform: translateY(-4px);
+              text-decoration: none !important;
+            }
+            /* Social Icon */
+            .bread_social{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .facebook{
+              background: #303F9E;
+            }
+            .twitter{
+              background: #3675AE;
+            }
+            .viber{
+              background: #9D1BC0;
+            }
+            .twitter {
+              background: #3675AE;
+            }
+            .whatsapp {
+              background: #6FBE3C;
+            }
+            .linkedin {
+              background: #3874B2;
+            }
+            .link {
+              background: #4FB2E2;
+            }
+            .messenger {
+              background: #BF3DC8;
+            }
+            
+            .share-popup {  
+              display: none;
+                position: absolute;
+              bottom: 3px;
+              left: 16px;
+              background-color: white;
+              /* border: 1px solid var(--globalColor); */
+              border-radius: 5px;
+              padding: 7px;
+              box-shadow: 0 0px 25px rgb(0 0 0 / 0.4);
+              z-index: 100000000000000000000000000;
+            }
+            
+            .share-icon:hover+#share-popup,
+            .share-popup.active {
+              /* display: block; */
+              display: flex;
+              position: absolute;
+              z-index: 100000000000000000000000000;
+            }
+            
+            @media (max-width: 767px) {
+              .bread_social{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+              }
+              .webform{
+                display: flex;
+                flex-direction: column;
+              }
+              .webform iframe{
+                margin: 5px;
+              }
+              .webform .body{
+                width: 100%;
+              }
+            }
+            
+         
+               .card-horizontal {
+                   display: flex;
+                   flex: 1 1 auto;
+               }
+               @media only screen and (min-width:320px) and (max-width:959px){
+                   .card-horizontal {
+                       display: block;
+                       flex: 1 1 auto;
+                   }
+               }
+               
+            
+            /* @media (min-width: 1920px) {
+              .share-popup {  
+                bottom: 3px;
+              }
+              .social_btn{
+                color: #fff !important;
+                padding: 5px;
+                font-size: 20px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+              }
+            } */
+            
+            </style>
+
+
+  </head>
+  
+  <body class="theme-theme-default">
+
+    {%block content%}
+
+        
+
+    {%endblock%}
+    
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
+  
+    <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+    
+    <script>
+   
+    $(document).ready( function () {
+
+        var language =  "{{request.session.lang}}";
+
+        if(language=='english'){
+            document.getElementById('toggle').checked="true";
+            document.getElementById('english').style.color="#343434";
+            document.getElementById('english').style.transition="color 0.3s";
+            document.getElementById('bangla').style.color="white";
+            document.getElementById('bangla').style.transition="color 0.3s";
+
+
+
+
+        
+    }
+    else{
+       // document.getElementById('toggle').checked="false";
+
+    }
+
+       // alert(username );
+        
+       if("{{request.session.lang}}" == 'english'){
+        table=$('#dataTable').dataTable({
+            "sSearch": {
+                "sAddClass": 'form-control',
+            },
+            dom: '',
+            "oLanguage": {
+                "decimal":"",
+                "emptyTable":     "No data available in table",
+                "info":           "Showing _START_ to _END_ of _TOTAL_ entries",
+                "infoEmpty":      "Showing 0 to 0 of 0 entries",
+                "infoFiltered":   "(filtered from _MAX_ total entries)",
+                "infoPostFix":    "",
+                "thousands":      ",",
+                "lengthMenu":     "Show _MENU_ entries",
+                "loadingRecords": "Loading...",
+                "processing":     "",
+                "search":         "Search:",
+                "zeroRecords":    "No matching records found",
+                "paginate": {
+                    "first":      "First",
+                    "last":       "Last",
+                    "next":       "Next",
+                    "previous":   "Previous"
+                },
+                "aria": {
+                    "orderable":  "Order by this column",
+                    "orderableReverse": "Reverse order this column"
+                }
+
+            }
+        });
+       }
+       else{     
+        table=$('#dataTable').dataTable({
+            "sSearch": {
+                "sAddClass": 'form-control',
+            },
+            dom: '',
+            "oLanguage": {
+
+                "sSearch": "অনুসন্ধান করুনঃ ",
+                "sInfo": "<b>(দেখছেন _START_  থেকে _END_  মোট _TOTAL_ টির মধ্যে)<b>",
+                "sLengthMenu": "এন্ট্রি সংখ্যাঃ  _MENU_ ",
+                "sZeroRecords":    "সার্চ করে কোন ডাটা পাওয়া যায়নি",
+                "sEmptyTable":     "টেবিলে কোন তথ্য নেই",
+                "sInfoEmpty":      "কোন তথ্য নেই",
+                "sLoadingRecords": "লোড হচ্ছে...",
+                "sInfoFiltered":   "(মোট  _MAX_ টি এন্ট্রির মধ্যে)",
+            
+                "sPaginate": {
+                    "first":      "প্রথম গুলো",
+                    "sLast":       "শেষের গুলো",
+                    "sNext":       "পরবর্তী",
+                    "sPrevious":   "পূর্ববর্তী"
+                },
+
+            }
+        });
+    }
+
+        
+    } );
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script>
+        document.addEventListener('keyup', (event) => {
+          //var name = event.key; //var code = event.code;
+          if (event.code === "Tab") {
+              var k = 0;
+              if (event.shiftKey) {
+                  //shift+tab pressed//Code // console.log(event.target);
+                  var activeElement = document.activeElement;
+                  if (activeElement.tagName.toLowerCase() == 'button'){
+                    if(activeElement.title === 'Download Screen Reader'){
+                      $('#myModalClose').attr('id', 'myModal');
+                      $('#myModal').modal();
+                      return false;
+                    }
+                  }
+              } else {
+                  //only tab pressed //Code
+              }
+            }
+          
+        });
+        
+        //====================//
+        // Add event listener on keydown
+        var access = 0;
+        if(access === 0){
+            document.addEventListener('keyup', (event) => {
+              var name = event.key;
+              var code = event.code;
+              var i = 0;
+              if(code == "Tab" && i == 0){
+                  $('#myModal').modal();
+                  i = i + 1;
+              }
+              // Alert the key name and key code on keydown
+            });
+            var accessibilitypop = document.querySelector('#accessibilitypop');
+            function accessibility(){
+                  $('#myModal').modal('hide');
+                  document.getElementById("universalAccessBtn").click();
+                  $('#myModal').attr('id', 'myModalClose');
+                  //$('#accessibilityBar').attr('class', 'active');
+                  $('#myModal').attr('tabindex', '');
+                  document.getElementById("universalAccessBtn").focus();
+                  $('#accessibilityBar').attr('role', 'dialog');
+                  $('#universalAccessBtn').attr('tabindex', '1');
+            };
+            
+            function accessibilitySkipToMainContent(){
+                  $('#myModal').attr('tabindex', '');
+                  $('#myModal').attr('id', 'myModalClose');
+                  //$('#notice-board-bg').attr({'aria-selected': true, 'tabindex': 0});
+                  //document.getElementById("notice-board-bg").focus();
+                  $('#skip-main-content-start-here').attr({'aria-selected': true, 'tabindex': 0});
+                  document.getElementById("skip-main-content-start-here").focus();
+            }
+            
+            function accessibilitymodelClose(){
+                  //$('#notice-board-bg').attr('tabindex', '0');
+                  $('#skip-main-content-start-here').attr('tabindex', '0');
+                  $('#myModal').attr('tabindex', '');
+                  $('#myModal').attr('id', 'myModalClose');
+            }
+        
+        }
+    </script>
+    <script>
+
+        $(document).ready(function () {
+    
+            $.simpleTicker($("#news-ticker"), {
+                delay: 3500,
+                effectType: 'roll'
+            });
+    
+            //$("#ad-slider").responsiveSlides();
+            //$("#banner-slider").responsiveSlides();
+    
+        });
+    
+    </script>
+<script>
+    $(function(){
+    	$(window).on("load",function(){
+    		$(".service-list-scroll").mCustomScrollbar({
+    			setHeight: 250,
+    			//theme: "light-thick"
+    		});
+    	});
+    });
+</script>   
+
+    <script>
+        var disabledDays = '[]';
+        var date = new Date();
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                dateFormat: "yy-mm-dd",
+                onSelect: function(date){
+                    window.location="bn/site/view/calendar_event/?q="+date;
+                },
+                beforeShowDay: function(date) {                    
+                    var m = ('0' + (date.getMonth()+1)).slice(-2)
+                    var d = ('0' + date.getDate()).slice(-2)
+                    var y = date.getFullYear();
+                    var concateDate = y + "-" + m + "-" + d;
+                    var index = disabledDays.indexOf(concateDate);
+
+                    if(index != -1){
+                        return [true, 'css-class-to-highlight', ''];
+                    } else {
+                        return [true];
+                    }
+                    
+                }
+            });
+           
+        });
+    </script>
+
+<script>
+    /* Responsive Design*/
+    $(document).ready(function () {
+         
+        $(".focusClassDrop").hover(
+          function () {
+            $(".focusClassDrop").removeClass("focusin-drop");
+          },
+          function () {
+            $(".focusClassDrop").addClass("focusin-drop");
+          }
+        );
+
+        var wi = $(window).width();
+        if (wi < 768) {
+            $('#jmenu .show-menu').click(function () {
+
+                $(".mzr-responsive").slideToggle(700, "linear", function () {
+                });
+
+            });
+
+            $(".mzr-drop> a").click(function () {
+
+                $(".mzr-drop> a").siblings().addClass('sibling-toggle');
+
+                $(this).parent().find(".mzr-content").removeClass('sibling-toggle').addClass('slide-visible').slideToggle(700, "linear", function () {
+                });
+                return false;
+            });
+        }
+    });
+    /// redundent home button
+    // home page will nor show প্রথম পাতা
+
+
+</script>        
+
+
+<script>
+    var getCurrentHost = window.location.host, getHostData = ''
+
+
+    $(document).ready(function() {
+	//$("#first_level, #second_level, #third_level, #forth_level").next().addClass('test');
+	
+
+	
+	var data = {
+
+				'action': 'getHostData',
+				'hostname': getCurrentHost
+
+			};
+
+		$.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
+		
+			if(data.length>0 || Object.keys(data).length>0){
+				//console.log('Ajax List ',data);
+				// Set all Division
+				getHostData = data ;
+				var elValue = 'alldiv';				
+				$("#doptor").val(elValue);
+				$("#doptor").trigger('change');
+				//var doptorList = getDoptors('doptor', elValue, 'first_level', null);
+			}else{
+				//alert('তথ্য পাওয়া যায়নি');
+				//alert('তথ্য পাওয়া যায়নি');
+			}
+		});
+        //change language
+        $("#lang-switcher").change(function () {
+            var selectedLang = $(this).val();
+            var defaultLang = "bn";
+            //console.log(selectedLang);
+           // window.location.href = window.location.origin + '/' + selectedLang;
+           var path = window.location.pathname
+            if (path == "/" || path == "/bn") {
+                path = "/en"
+            } else if (path == "/en") {
+                path = "/bn"
+            } else {
+                if (path.indexOf('/bn/') >= 0) {
+                    path = path.replace('/bn/', '/en/')
+                } else {
+                    path = path.replace('/en/', '/bn/')
+                }
+            }
+            var href = window.location.origin + path
+            console.log(href)
+            window.location.href = href
+        });
+        console.log("//login.rajshahi.gov.bd/api/v1/theme/ajax");
+        
+        $("#doptor_navigation_go").click(function() {
+			
+			var getDoptorValue = '';
+
+			if($("#doptor").val() == 'alldiv'){
+				var getDoptorValue = $("#doptor").val();
+			}
+			
+
+            $.each(["forth_level", "third_level", "second_level", "first_level"], function(k, v) {
+                
+				
+
+                var value = $("#" + v).val();
+				
+               
+                 if(value == null || value == '')
+                    return;
+                               
+                 //alert(value);
+                if (value) {
+				
+					var option_level = $("#" + v).attr('id');
+ 
+                    var data = {
+
+                        'action': 'getRedirectDomain',
+                        'id': value,
+						'alldiv': (getDoptorValue ? 1:0),
+						'option_level' : option_level
+                    };
+
+                    $.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
+						if(data.length>0 || Object.keys(data).length>0){
+						console.log('fqdn check ', data);
+							if(data.is_secure)
+								toRedirect = data.is_secure ? '//' + data.fqdn : 'http://' + data.fqdn;
+							else
+								toRedirect = '//' + (data[0] && data[0].fqdn?data[0].fqdn:data.fqdn);
+							redirectTo(toRedirect);
+						}else{
+							//alert('তথ্য পাওয়া যায়নি');
+				            //alert('তথ্য পাওয়া যায়নি');
+						}
+                    });
+					
+                    return false;
+                }
+                else
+                {
+                   //var message = "একটি পোর্টাল নির্বাচন করুন " ;
+                   var message = "label.select-portal" ;
+                   
+                    alert(message);
+                    
+                    return false;
+                }
+                
+                
+               
+
+            });
+
+
+
+        });
+
+        $('select.doptors').select2({
+            width: '116px'
+        });
+
+        $('#first_level, #second_level, #third_level, #forth_level').select2().next().hide();
+
+        $("#doptor").change(function() {
+			$('#first_level, #second_level, #third_level, #forth_level').select2().next().hide();
+            $("#first_level,#second_level,#third_level,#forth_level").empty().hide();
+
+            var elValue = $(this).val();
+            if(elValue == 'alldiv') $('#doptor_navigation_go').hide();
+            else $('#doptor_navigation_go').show();
+			//alert(elValue);
+            var doptorList = getDoptors('doptor', elValue, 'first_level', null);
+
+        });
+        
+        $('#first_level, #second_level, #third_level, #forth_level').on('select2:select', function (e) {
+            var parentEl = $("#doptor").val();
+            if(parentEl == 'alldiv'){
+                var data = e.params.data;
+                var domain = data.element.attributes[0].nodeValue;
+                window.location.href='//' + domain;
+                //console.log('first_level',data);
+                //console.log('element',data.element.attributes[0].nodeValue);
+            }
+        });
+        
+        $("#first_level").change(function() {
+			
+			$('#second_level, #third_level, #forth_level').select2().next().hide();
+            $("#second_level,#third_level,#forth_level").empty();
+			
+            var elValue = $(this).val();
+            var parentEl = $("#doptor").val();
+            
+            //var getDomain = $('option:selected', this).attr('domain');
+			//alert(getDomain);
+			//if (getDomain != '' && getDomain != getCurrentHost && getDomain != undefined)
+			//console.log(getDomain,getCurrentHost);
+			    //window.location.href='//' + getDomain;
+			
+			if(parentEl == 'alldiv')
+				var doptorList = getDoptors('first_level', elValue, 'second_level', parentEl);
+            else if ($.inArray(parentEl, ["4", "5", "6", "7"]) !== -1)
+                var doptorList = getDoptors('first_level', elValue, 'second_level', parentEl);
+			
+			if(parentEl == 'alldiv') $('#doptor_navigation_go').hide();
+            else $('#doptor_navigation_go').show();
+
+        });
+
+        $("#second_level").change(function() {
+			$('#third_level, #forth_level').select2().next().hide();
+            $("#third_level,#forth_level").empty();
+
+            var elValue = $(this).val();
+            var parentEl = $("#doptor").val();
+            
+            //var getDomain = $('option:selected', this).attr('domain');
+			//alert(getDomain);
+			//if (getDomain != '' && getDomain != getCurrentHost && getDomain != undefined)
+			//console.log('second_level',getDomain,getCurrentHost);
+			    //window.location.href='//' + getDomain;
+			    
+			if(parentEl == 'alldiv')
+				var doptorList = getDoptors('second_level', elValue, 'third_level', parentEl);
+            else if ($.inArray(parentEl, ["5", "6", "7"]) !== -1)
+                var doptorList = getDoptors('second_level', elValue, 'third_level', parentEl);
+			
+			if(parentEl == 'alldiv') $('#doptor_navigation_go').hide();
+            else $('#doptor_navigation_go').show();
+
+        });
+
+        $("#third_level").change(function() {
+			$('#forth_level').select2().next().hide();
+            var elValue = $(this).val();
+            var parentEl = $("#doptor").val();
+            
+            //var getDomain = $('option:selected', this).attr('domain');
+			//alert(getDomain);
+			//if (getDomain != '' && getDomain != getCurrentHost && getDomain != undefined)
+			//console.log('third_level',getDomain,getCurrentHost);
+			    //window.location.href='//' + getDomain;
+            
+			if(parentEl == 'alldiv')
+				var doptorList = getDoptors('third_level', elValue, 'forth_level', parentEl);
+            else if ($.inArray(parentEl, ["6", "7"]) !== -1)
+                var doptorList = getDoptors('third_level', elValue, 'forth_level', parentEl);
+            //$(this).nextAll().hide();
+			if(parentEl == 'alldiv') $('#doptor_navigation_go').hide();
+            else $('#doptor_navigation_go').show();
+
+        });
+
+
+
+        function redirectTo(url) {
+
+            window.location.href = url;
+        }
+
+        function renderList(targetEl, list, elValue='', parentEl='') {
+		var currentLang = "bn";
+		var getSelectedId = ''
+		var selectDomain = ''
+		var getValueName = ''
+		var getLayerId = 'alldiv'
+		var getSiteName = ''
+			//$("#"+targetEl).show();
+			
+			
+            $select = $("#" + targetEl);
+						
+			console.log('List Data ->  ', list);
+			
+
+            if (list.length !== 0) {
+											
+				$select.select2().next().show();
+				$select.select2({
+					width: '116px'
+				});
+                $select = $("#" + targetEl).empty();
+                $select.append('<option value="">----</option>');
+				console.log('getHostData ', getHostData)
+				
+                $.each(list, function(key, value) {
+                    console.log('Render Log ',value);
+					console.log('ElVal Log ',elValue);
+					
+					getSiteName = value.name;
+					
+					if(elValue == 'alldiv' || parentEl =='alldiv'){
+						//$select.append('<option domain="' + value.domain + '" value=' + value.id + '>' + (currentLang=='bn'? value.name_bng:value.name_eng) + '</option>');
+						$select.append('<option domain="' + value.domain + '" value=' + value.id + '>' + getSiteName + '</option>');
+						if(value.layer_id && elValue == 'alldiv')
+							getLayerId = value.layer_id;							
+					}else{
+						$select.append('<option domain="' + value.domain + '" value=' + value.id + '>' + getSiteName + '</option>');
+					}
+					
+					if(getHostData['parent2_data'] && value.id == getHostData['parent2_data'].parent_id ){
+						getSelectedId = getHostData['parent2_data'].parent_id					
+					}
+					
+					else if(getHostData['parent2_data'] && value.id == getHostData['parent2_data'].id ){
+						getSelectedId = getHostData['parent2_data'].id					
+					}
+					
+					else if(getHostData['parent_data'] && value.id == getHostData['parent_data'].parent_id ){
+						getSelectedId = getHostData['parent_data'].parent_id					
+					}
+					
+					else if(getHostData['parent_data'] && value.id == getHostData['parent_data'].id ){
+						getSelectedId = getHostData['parent_data'].id					
+					}					
+					
+					else if(value.id == getHostData[0].parent_id ){
+						getSelectedId = getHostData[0].parent_id					
+					}
+																				
+				
+					else if(value.id == getHostData[0].id){				
+						getSelectedId = getHostData[0].id						
+					}
+					
+					else if(getHostData['parent3_data'] && value.domain == getHostData['parent3_data'].subdomain){				
+						getSelectedId = value.id						
+					}
+                    else if(getHostData['parent2_data'] && value.domain == getHostData['parent2_data'].subdomain){				
+						getSelectedId = value.id						
+					}
+					
+					else if(getHostData['parent_data'] && value.domain == getHostData['parent_data'].subdomain){				
+						getSelectedId = value.id						
+					}
+					
+					else if(value.domain == getHostData[0].subdomain){				
+						getSelectedId = value.id						
+					}
+                });
+                
+                // Khulna & Rangpur Division Static Option Start
+                if(elValue == 'alldiv' && targetEl =='first_level'){
+                    $select.append('<option domain="www.khulnadiv.gov.bd">খুলনা বিভাগ</option>');
+                    $select.append('<option domain="www.rangpurdiv.gov.bd">রংপুর বিভাগ</option>');
+                }
+                // Khulna & Rangpur Division Static Option End
+
+                $select.removeClass('d-none');
+            } else {
+                $select.empty();
+            }
+			console.log('targetEl ', targetEl)
+			if(elValue == 'alldiv' && getLayerId!= 'alldiv'){
+				$("#doptor").val(getLayerId);
+				$("#doptor").trigger("change")
+				console.log('getLayerId  ', getLayerId)				
+			}
+			$("#" + targetEl).val(getSelectedId);
+			if(getSelectedId!=''){
+				$select.prepend('<option domain="' + $("#" + targetEl).find(":selected").attr('domain') + '" value=' + getSelectedId + '>' + $("#" + targetEl).find(":selected").text() + '</option>');
+			}
+			
+			$("#" + targetEl).trigger("change")
+
+			
+        }
+
+
+        function getDoptors(el, elValue, targetEl, parentEl) {
+
+
+            var data = {
+
+                'action': 'getdoptors',
+                'el': el,
+                'elValue': elValue,
+                'target': targetEl,
+                'layer': parentEl,
+				'lang' : 'bn',
+				'currentHostId' : getHostData[0].id
+
+            };
+			console.log('=Lang==> ',data);
+
+            $.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
+                renderList(targetEl, data, elValue, parentEl);			
+				
+				
+            });
+
+
+        }
+
+    });
+
+
+    var btn = document.querySelector('#lang-btn');
+    if (btn) {
+        btn.addEventListener('click', function() {
+            var path = window.location.pathname
+            if (path == "/" || path == "/bn") {
+                path = "/en"
+            } else if (path == "/en") {
+                path = "/bn"
+            } else {
+                if (path.indexOf('/bn/') >= 0) {
+                    path = path.replace('/bn/', '/en/')
+                } else {
+                    path = path.replace('/en/', '/bn/')
+                }
+            }
+            var href = window.location.origin + path
+            console.log(href)
+            window.location.href = href
+        })
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        
+        $("#mob_navigation").click(function(){
+            $(".portal_cont").toggle();
+        });
+    });
+    
+    
+</script>        
+
+    <script>
+
+        $(document).ready(function() {
+        
+           /*$.simpleTicker($("#news-ticker"),{
+              delay : 2000,
+              effectType : 'roll'
+           });*/
+           
+           $("#banner-slider").css({"display":"block"});
+           $("#ad-slider").responsiveSlides();
+           $("#banner-slider").responsiveSlides();
+           $("#image-slider").responsiveSlides();
+           
+        });  
+        
+        //for video gallary
+        $(document).ready(function(){
+            $("ul.youtube-videogallery").youtubeVideoGallery({
+                
+    			title:'default',
+                iframeTemplate: '<div class="iframe"><div class="close"><a href="#">CLOSE</a></div><iframe title="Youtube video player" id="youtube-videogallery-iframe" style=" height: {options.innerHeight}px; width: {options.innerWidth}px;" frameborder="0" src="about:blank"></iframe></div>'
+            
+            });
+            
+            //close the iframe
+            $(".close a").click(function (e) {
+                e.preventDefault();
+                $(".youtube-videogallery-bodycover").trigger("click");
+            });
+        
+        });
+       
+       $(document).ready(function () {
+            $("div.right-side-bar, div.col-3").click(function(){
+                var get_width = $(window).width();
+                // alert(get_width);
+                if(get_width>=320 && get_width<960){
+                    $(this).addClass("col-md-6");
+				    $(this).removeClass("col-3");
+                   // $('.right-side-bar').removeClass('col-3');
+                   // $('.right-side-bar').addClass('col-md-6');
+                }
+            });
+            $("div.right-side-bar, div.col-3").click();
+            start_np();
+        });
+
+        
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=G-XL3REV1DHW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+    
+            gtag('config', 'G-XL3REV1DHW');
+            gtag('event', 'www.bogra.gov.bd (Frontend)', {
+                'event_category' : 'Frontend'
+            });
+            
+            
+        function start_np(){
+          $('#start-np').attr({'aria-selected': true, 'tabindex': 0});
+          document.getElementById("start-np").focus();
+        }
+    </script>
+    <script>
+        function shareOnClick(value) {
+            var fullURL = window.location.href;
+            if(value === 'facebook'){
+                var url = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(fullURL) + "&amp;src=sdkpreparse";
+            }else if(value === 'twitter'){
+                var url = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(fullURL);
+            }else if(value === 'whatsapp'){
+                var url = "https://wa.me/?text=" + encodeURIComponent(fullURL);
+            }else if(value === 'linkedin'){
+                var url = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(fullURL);
+            }else if(value === 'messenger'){
+                var url = "https://m.me/share/?url=" + encodeURIComponent(fullURL);
+            }else if(value === 'viber'){
+                var url = "viber://forward?text=" + encodeURIComponent(fullURL);
+            }
+            window.open(url, "_blank");
+        }
+        
+        function copyToClipboard() {
+            var link = window.location.href;
+            var textarea = document.createElement("textarea");
+            textarea.value = link;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("Link copied to clipboard!");
+        }
+        </script>
+
+        <script>
+            window.onscroll = function() {
+                if ($(window).scrollTop() >= 50){
+                    document.getElementById("header").className = "header sticky";
+    
+                }
+                else{
+                    document.getElementById("header").className = "header";
+                }
+            };
+        </script>
+        
+    <!-- Pixel Code for //inusight.com/ -->
+    <script defer src="//inusight.com/pixel/zpSefT317My3oFwG"></script>
+    <!-- END Pixel Code -->
+    
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-635f6a273f17a426"></script>
+    
+    <!-- youtube subscription api -->
+    <script src="//apis.google.com/js/platform.js"></script> 
+    {% include 'component/footer.html'%}  
+  </body>
+</html>

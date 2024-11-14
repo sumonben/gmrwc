@@ -1,0 +1,205 @@
+<style>
+    .toggleContainer {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: fit-content;
+        border: 3px solid #343434;
+        border-radius: 20px;
+        background: #343434;
+        font-weight: bold;
+        color: #343434;
+        cursor: default;
+      }
+      .toggleContainer::before {
+        content: '';
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0%;
+        border-radius:20px;
+        background: rgb(5, 223, 74);
+        transition: all 0.3s;
+      }
+      .toggleCheckbox:checked + .toggleContainer::before {
+         left: 50%;
+      }
+      .toggleContainer div {
+        padding: 6px;
+        text-align: center;
+        z-index: 1;
+      }
+      .toggleCheckbox {
+        display: none;
+      }
+      .toggleCheckbox:checked + .toggleContainer div:first-child{
+        color: white;
+        transition: color 0.3s;
+      }
+      .toggleCheckbox:checked + .toggleContainer div:last-child{
+        color: #343434;
+        transition: color 0.3s;
+      }
+      .toggleCheckbox + .toggleContainer div:first-child{
+        color: #343434;
+        transition: color 0.3s;
+      }
+      .toggleCheckbox + .toggleContainer div:last-child{
+        color: white;
+        transition: color 0.3s;
+      }
+    .top-menu{
+        border-radius: 0 0 20% 20%;
+    }
+@media(max-width: 786px){
+    .top-menu{
+        display: none;
+    }
+</style>
+
+<div id="top">
+    <div class="blocks">
+
+<div class="top-menu">
+    <div class="row mb-2 mb-md-0">
+        <div id="topbar-left" class="col-8 col-md-3 bd-gov-site" style="margin-top: 5px;"><a href="http://www.bangladesh.gov.bd/" target="_blank" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন">
+          {% if request.session.lang == 'english'%}
+          Bangladesh National Portal          
+          {% else %}
+          বাংলাদেশ জাতীয় তথ্য বাতায়ন          
+          {% endif %}</a></div>
+        <div id="sitesDropdown" class="d-none d-md-block col-md-4 middle-form" >
+            <div class="form-item">
+                <select title="বিভাগ নির্বাচন করতে এখানে ক্লিক করুন" class="chzn-select doptors mt-2 mt-md-0" id="doptor">
+                    <option>---</option>
+                    <option value="alldiv">বিভাগ </option>
+                    <!-- <option>দপ্তর সমূহ </option> -->
+    
+                                        
+                    <option value="2">
+                                        দপ্তর অফিসসমূহ
+                        <!-- দপ্তর অফিসসমূহ -->
+                    </option>
+                    
+                                        
+                    <option value="4">
+                                        বিভাগ পর্যায়ের সরকারি অফিস
+                        <!-- Divisional Govt. Office -->
+                    </option>
+                    
+                                        
+                    <option value="5">
+                                        জেলা পর্যায়ের সরকারি অফিস
+                        <!-- District Govt. Office -->
+                    </option>
+                    
+                                        
+                    <option value="6">
+                                        উপজেলা পর্যায়ের সরকারি অফিস
+                        <!-- Upazila Level Govt. Office -->
+                    </option>
+                    
+                                        
+                    <option value="7">
+                                        আঞ্চলিক অফিসসমূহ
+                        <!-- Union Govt. Office -->
+                    </option>
+                    
+                                    </select>
+    
+                <select title="" class="chzn-select doptors d-none mt-2 mt-md-0" id="first_level"></select>
+                <select title="" class="chzn-select doptors d-none mt-2 mt-md-0" id="second_level"></select>
+                <select title="" class="chzn-select doptors d-none mt-2 mt-md-0" id="third_level"></select>
+                <select title="" class="chzn-select doptors d-none mt-2 mt-md-0" id="forth_level"></select>
+    
+                <button class="btn btn-primary btn-sm" id="doptor_navigation_go">Go</button>
+    
+            </div>
+        </div>
+        <div class="col-5 col-md-3" >
+            <!-- <button id="lang-btn" class="btn btn-primary btn-sm float-right">English</button> -->
+            <div >
+              {% if request.session.lang == 'english'%}
+              <a  class="search-btn" href="{% url 'login' %}" target="_blank">Login </a>&nbsp
+              <a  class="search-btn" href="{% url 'register' %}" target="_blank">Registration </a>
+            {% else %}
+            <a  class="search-btn" href="{% url 'login' %}" target="_blank">লগিন </a>&nbsp
+            <a  class="search-btn" href="{% url 'register' %}" target="_blank">রেজিস্ট্রেশন </a>
+          {% endif %}
+                
+            </div>
+              
+        </div>
+        <form id="language_form" action="" method="post">
+            {% csrf_token %}
+            <input type="checkbox" id="toggle" name="lang_toggle" class="toggleCheckbox" onchange="LanguageSelect(this.value)" />
+            <label for="toggle" class='toggleContainer'>
+            <div id="bangla" onclick="BanglaSelect(this.id)">বাংলা</div>   
+            <div id="english" onclick="EnglishSelect(this.id)">English</div>
+            </label>
+        </form>
+        
+        
+    </div>
+    
+</div>
+<script>
+ function LanguageSelect( val ){
+        var frm = $('#language_form')[0];
+        var form= new FormData(frm);
+        var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+        // Get the data from the form
+       
+
+        // Send AJAX request
+        $.ajax({
+            enctype: 'multipart/form-data',
+            type: 'POST',
+            url: "{% url 'language_change' %}",  // Adjust the URL as per your project structure
+            data: form,
+            headers: {
+                'X-CSRFToken': csrfToken
+            },
+            
+            cache:false,
+            processData:false,
+            contentType:false,
+           
+           
+            success: function (response) {
+                if (response.success === 'success') {
+                    location.reload();
+                }
+                   
+            },
+            error: function (xhr, status, error) {
+               
+                var err = eval("(" + xhr.responseText + ")");
+                alert(err.Message);
+            }
+        });
+    }
+    function BanglaSelect( id ){
+
+        document.getElementById('toggle').value=id;
+
+    }
+    function EnglishSelect( id ){
+
+        document.getElementById('toggle').value=id;
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

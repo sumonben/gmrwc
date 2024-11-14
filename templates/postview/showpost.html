@@ -1,0 +1,129 @@
+{% extends 'basepage/govtlayout.html' %}
+
+{% block content %} 
+
+{% load static %}
+ <!-- accessibility Modal -->
+ {% include 'component/accessibilityModal.html' %}
+<!-- end accessibility Modal -->
+
+
+ <!-- Main Body  -->
+
+ <div class="container home-page" >
+    <div class="row"  >
+        <div class="col">
+            
+<!--Top Menu -->               
+{% include 'component/topbar.html' %}
+<!--Top Menu -->               
+            
+
+ <!-- Carousel Strat  -->
+
+ {% include 'component/carousel.html' %}
+ <!--Carousel End   -->
+
+
+  <!-- Plainheader Strat  -->
+
+{% include 'component/plainheader.html' %}
+
+  <!--Plainheader End   -->
+           
+  <!-- Navbar Strat  -->
+     
+{% include 'component/navbar.html' %}  
+
+
+   <!--Navbar End   -->
+
+   
+
+
+<!--Main Content Start   -->
+
+<div id="skip-main-content-start-here" style="opacity:0;font-size:1px;">Main Comtent Skiped</div>
+          
+    
+     
+{% include 'component/socialmedia.html' %}
+                  <div class="d-flex justify-content-end">
+                       <button class="mb-2 btn btn-outline-warning  btn-sm outline-none shadow-none text-right d-none" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i></button>
+                  </div>
+                   <div id="flash">
+
+   {%include 'component/notice.html'%}
+
+  
+
+   {% if request.session.lang == 'english'%}
+
+   {% if post %}
+
+    <h1 align="center" style="margin-bottom: 30px;">{{post.title_en}}</h1>
+    {% if post.file %}
+
+    <a href="{{ post.get_absolute_url|safe }}" ><h2 align="center" style="margin: 30px;">SEE PDF</h2></a>
+    <embed id="verPDF" src="{{ post.get_absolute_url|safe }}" width="80%" height="50%" style="margin-left: 10%; margin-right: 10%;" type="application/pdf">
+
+    {% endif %}
+
+    {% endif %}
+
+
+    
+    {% else %}
+    {% if post %}
+
+    <h1 align="center" style="margin: 30px;">{{post.title}}</h1>
+    {% if post.file %}
+               
+    <a href="{{ post.get_absolute_url|safe }}" target="_blank"><h3 align="center" style="margin: 30px;">পিডিএফ দেখুন</h3></a>
+
+    <embed id="verPDF" src="{{ post.get_absolute_url|safe }}" width="80%" height="50%" style="margin-left: 10%; margin-right: 10%;" type="application/pdf">
+
+
+
+    {% endif %}
+
+    {% endif %}
+   
+    {% endif %}
+    
+
+   
+
+
+           <!--/////////////////////////////ডান সাইডের বার   ///////////////////        -->      
+             
+
+        <!--/////////////////////////////ডান সাইডের বার   ///////////////////        -->      
+
+    
+    
+      </div>
+    <!--Main Content End   -->
+
+    <!--Footer Start   -->
+
+       <!--Footer End   -->
+       <script>
+
+function ShowPDF(x) {
+  if (x.matches) { // If media query matches
+     document.getElementById("verPDF").src ="https://docs.google.com/gview?embedded=true&url={%if post.file %}{{ post.get_absolute_url|urlencode }}{% else %} {% static 'images/testimony.png' %}  {% endif %}";
+     document.getElementById("verPDF").height ="50%"
+      
+  } else {
+     document.getElementById("verPDF").src ="{%if post.file %}{{ post.get_absolute_url }}{% else %} {% static 'images/testimony.png' %}  {% endif %}";
+  }
+}
+
+// Create a MediaQueryList object
+var x = window.matchMedia("(max-width: 768px)");
+ShowPDF(x);
+
+// Call listener function at run time
+         </script>
+    {% endblock %}

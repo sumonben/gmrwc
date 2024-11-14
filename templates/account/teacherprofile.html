@@ -1,0 +1,1161 @@
+
+{% extends 'basepage/govtlayout.html' %}
+
+{% block content %} 
+
+{% load static %}
+    
+    <style>
+      .pagebody{
+        margin-top: 118px;
+      }
+      #rightpan {
+        width: 250px;
+        float: right;
+        position: relative;
+        background-color: transparent;
+      }
+      @media (max-width: 768px) {
+        .pagebody{
+          margin-top: 0%;
+        }
+        #rightpan {
+          width: 100%;
+          display: none;
+      
+          flex-direction: column;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+    </style>
+    <!-- accessibility Modal -->
+    {% include 'component/accessibilityModal.html' %}
+
+
+    <div class="container home-page"  >
+        <div class="row"  >
+            <div class="col">        
+               
+      
+ 
+    
+
+
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+  </div>
+
+ 
+<style>
+ .imageBox {
+    position: relative;
+    height: 400px;
+    width: 400px;
+    border: 1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor: move;
+}
+
+.imageBox .thumbBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+    border-radius: 50%;
+}
+
+.imageBox .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    line-height: 10px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+@media(max-width:768px){
+    .container {
+    margin: 0;
+}
+.imageBox {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin-top: 0px;
+    margin-left: 0px;
+    border: 1px solid #aaa;
+    background: #fff;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor: move;
+}
+.imageBox .thumbBox {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    border: 1px solid rgb(102, 102, 102);
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0% 0% transparent;
+    border-radius: 50%;
+} 
+
+}
+.header {
+    position:fixed;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    width: 1000px;
+    z-index: 1030;
+    background: #ff6200;
+    border-radius: 50%;
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.17, .67, .54, .44);
+    transition: -webkit-transform .3s cubic-bezier(.17, .67, .54, .44);
+    transition: transform .3s cubic-bezier(.17, .67, .54, .44);
+    transition: transform .3s cubic-bezier(.17, .67, .54, .44), -webkit-transform .3s cubic-bezier(.17, .67, .54, .44)
+}
+.logo img {
+        height: 95px;
+        margin-top: -70px;
+        -webkit-transition: all .8s ease;
+        transition: all .8s ease
+    }
+.header.sticky {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+    box-shadow: 0 -12px 20px 1px #000
+}
+    .header.sticky .logo img {
+        height: 70px;
+        margin-top: -45px;
+    }
+    #college_name{
+        display: none;
+    }
+    #topbar-left{
+        display: none;
+    }
+.new-line{
+    margin-top: 10%;
+}
+@media(max-width:768px){
+    .header {
+        background: #ff6200;
+        width: 100%;
+        margin-left: 0%;
+        border-radius: 0%;
+
+    }
+    
+    .new-line{
+    margin-top: 25%;
+}
+    .top-menu{
+        display: none;
+    }
+    .header.sticky .logo img {
+        height: 70px;
+        margin-top: -2px;
+    }
+    .logo img {
+        height: 70px;
+        margin-top: -20px;
+        -webkit-transition: all .8s ease;
+        transition: all .8s ease
+    }
+    #college_name{
+        display: block;
+        text-align: center;
+        color: #ff6200;
+    }
+    .header nav {
+        text-align: right;
+        padding: 0px;
+        bottom: 30px;        
+    }
+    .header.sticky nav {
+        margin-top: 25px;
+        height: 40px;
+    }
+    
+
+}
+
+</style>
+
+<header  class="header" id="header">
+    {% include 'component/topbar.html' %}
+
+<div class="container-wrapper">
+
+<div class="main-header">
+    <a href="/" class="navbar-brand logo active router-link-active" aria-current="page"> <img src="{% static 'images/gmrwc_logo.png' %}" alt="Ictparklogo"></a>
+<nav class="navbar navbar-expand-lg p-lg-0" style="margin-left: 0px;"> 
+   <p id="college_name">সরকারি মুজিবুর রহমান মহিলা কলেজ</p><button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fas fa-bars"></span></button>
+<div id="navbarSupportedContent" class="navbar-collapse collapse" style="">
+<button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler mMenu collapsed"><span class="fa fa-close"></span></button>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><a id="home" href="/" class="nav-link active router-link-active" aria-current="page"><span class="fas fa-home"> </span></a></li>
+<li class="nav-item"><a id="home" href="/account/dashboard/" class="nav-link dropdown-toggle " aria-current="page">Dashboard</a>
+    </li>
+
+    <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle ">About us</a>
+<div aria-labelledby="navbarDropdown" class="dropDown dropdown-menu megamenu megamenu-lg">
+
+            <div class="col-lg-4 pr-0">
+                <h4 class="menu-head"><a href="/" class="">About BCSGEICTA</a></h4>
+                <ul>
+                   
+                    <li class="subMenu"><span class="fas fa-user">
+                </span><a href="/accountabout/mission" class="nav-link" onclick="myFunctionNavbar(this.id)">Mission</a></li>
+                    <li class="fas fa-eye"><a href="/accountabout/vision" class="nav-link">Vision</a></li>
+                            <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="/accountabout/ideology" class="nav-link">Ideology</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 pr-0">
+                <h4 class="menu-head"><a href="/secretariat" class="">Our Team</a></h4>
+
+                        <ul>
+                        <li class="subMenu"><span class="fas fa-user">
+                        </span><a href="https://israbentech.com/about/excutive-council" class="nav-link" onclick="myFunctionNavbar(this.id)">Excutive Council</a></li>
+                            <li class="fas fa-eye"><a href="https://israbentech.com/about/previous-excutive-council" class="nav-link">Previous Excutive Council</a></li>
+                                    <li class="subMenu"><span class="fab fa-think-peaks"> </span><a href="https://israbentech.com/about/members" class="nav-link">Members</a></li>
+                        </ul>
+            </div>
+            <div class="col-lg-4 pr-0">
+                <h4 class="menu-head"><a href="/content/committees-forums" class="">Committees &amp; Forums</a></h4>
+                <ul>
+                    <li class="subMenu"><a href="/content/board-sub-committee" class="">Board Sub-Committee</a></li>
+                    <li class="subMenu"><a href="/committees-forums/standing-committees" class="">Standing Committee(s)</a></li>
+                    <li class="subMenu"><a href="/committees-forums/forums" class="">Forum(s) &amp; Focus Group</a></li>
+                    <li class="subMenu"><a href="/committees-forums/other-committees" class="">Other Committees &amp; forums</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+</li>
+
+      <li class="nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle ">Membership</a>
+    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+        <ul>
+            
+            <li class="subMenu"><span class="fa fa-user">
+                </span><a href="/accountmembership/memberlist" class="nav-link" onclick="myFunctionNavbar(this.id)">Memberlist</a></li>
+                <li class="subMenu"><span class="fa fa-user">
+                </span><a href="/accountmembership/register" class="nav-link" onclick="myFunctionNavbar(this.id)">Become a Member</a></li>
+                <li class="subMenu"><span class="fa fa-arrow-right">
+
+            </span><a href="/accountmembership/rules-n-regulations" class="nav-link">
+                Rules and Regulations</a></li>
+            <li class="subMenu"><span class="fa fa-arrow-right">
+
+            </span><a href="/accountmembership/code-of-conduct" class="">Code of Conduct</a></li>
+        </ul>
+    </div>
+</li>
+
+
+
+
+<li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Resource</a>
+    <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+        <ul>
+                             
+            <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/books" class="nav-link">Books</a></span></li>
+            <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/ppt" class="nav-link">Power Point</a></span></li>
+                    <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/pdf" class="nav-link">PDF Lecture</a></span></li>
+                      <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://israbentech.com/resource/others" class="nav-link">Others Resources</a></span></li>
+                        <li class="subMenu"><span class="fas fa-arrow-right"><a href="https://ictparkbd.com/admin/studymaterials/lecture/add/" class="nav-link">Add  Resources</a></span></li>
+        </ul>
+    </div>
+</li>
+<li class="nav-item nav-item dropdown"><a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle ">Media
+Center</a>
+<div aria-labelledby="navbarDropdown" class="dropdown-menu">
+<ul>
+    <li class="subMenu"><a href="/accountmedia/news" class="">News</a>
+    </li>
+    <li class="subMenu"><a href="/accountmedia/image-gallery" class="">Photo
+            Gallery</a></li>
+    <li class="subMenu"><a href="/accountmedia/video-gallery" class="">Video
+            Gallery</a></li>
+    <li class="subMenu"><a href="/accountmedia/blog" class=""> Blog Media</a></li>
+    
+</ul>
+</div>
+</li>
+
+
+
+
+
+
+<!-- Right elements -->
+<div style="float:right" class="d-flex align-items-center">
+<!-- Icon -->
+<a class="text-reset me-3" href="#">
+<i class="fas fa-user"></i>
+</a>
+
+<!-- Notifications 
+<div class="dropdown">
+<a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+<i class="fas fa-bell"></i>
+<span class="badge rounded-pill badge-notification bg-danger">1</span>
+</a>
+<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+<li>
+
+<a class="dropdown-item" href="#">Some news</a>
+</li>
+<li>
+<a class="dropdown-item" href="#">Another news</a>
+</li>
+<li>
+<a class="dropdown-item" href="#">Something else here</a>
+</li>
+</ul>
+</div>-->
+<!-- Avatar -->
+<div class="dropdown">
+
+<li class="nav-item dropdown">
+<a class="nav-link nav-link dropdown-toggle parent-active" href="/account/dashboard/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><p valign="top" style="font-size: 20px; color: blue;">{{teacher.t_name_bangla}}<img src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" class="rounded-circle" height="50" width="50" loading="lazy">
+</p>
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<a class="dropdown-item" href="{% url 'profile'%}">প্রোফাইল </a>
+<a class="dropdown-item" href="{% url 'logout' %}">
+লগ-আউট
+</a>
+<a class="dropdown-item" href="/account/updateuser/">প্রোফাইল এডিট</a>
+<form id="logout-form" action="/account/logout/" method="post">
+<input type="hidden" name="csrfmiddlewaretoken" value="u1mpaKTTSp35YSbMCUTZ7XtFc4aXTetV2ckdbd16ctbAghrINXFtdeoAbpGRFguz">
+<input type="hidden">
+</form>
+
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="/account/password_change/">পাসওয়ার্ড পরিবর্তন</a>
+<div class="dropdown-divider"></div>
+
+<a class="dropdown-item" href="/blog/">ব্লগ মিডিয়া</a>
+<div class="dropdown-divider"></div>
+
+<a class="dropdown-item" href="/blog/createpost/">পোস্ট লিখুন</a>
+
+</div>
+</li>
+
+</div>
+</div>
+</ul>
+<!-- Right elements -->
+
+
+
+</ul>
+
+</div>
+</nav>
+
+</div>
+</div>
+</header>
+
+  <div class="new-line"></div>
+ <div class="container1">
+    <h3 align="center" style="color:#ff6200">{% if teacher.position %}{{ teacher.position.title}}{% else  %} **** {% endif %}</h3>
+
+
+    <div style="background-color: transparent" class="form-field2 d-flex align-items-center">
+        <div style="position: relative;text-align: center" class="logo1">
+
+<img id="profile" src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" class="rounded-circle" style="width: 150px;height: 150px">
+           <!---- <button class="fas fa-camera" data-toggle="modal" data-target="#exampleModal"></button>-->
+
+
+
+
+            <a href="{% url 'profile' %}"><h5 class="my-3">{{teacher.t_name_bangla}}</h5></a>
+            <h5 class="my-3">{{teacher.t_name}}</h5>
+            <p class="text-muted mb-1">{{teacher.designation}}({{teacher.service_id}})</p>
+            <p class="text-muted mb-1">{{teacher.t_department}}</p>
+            <p class="text-muted mb-4">সরকারি মুজিবুর রহমান মহিলা কলেজ  বগুড়া</p>
+            <div class="d-flex justify-content-center mb-2">
+                <a href="/account/updateuser/" class="btn btn-primary">প্রোফাইল তথ্য পরিবর্তন</a>
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container5">
+
+        <div class="card-body">
+            <p class="mb-4">
+            </p><h3>পেমেন্ট তথ্য</h3>
+            <p></p>
+            <div class="d-flex justify-content-center mb-2">
+                <form action="https://israbentech.com/bkash/create-payment" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="u1mpaKTTSp35YSbMCUTZ7XtFc4aXTetV2ckdbd16ctbAghrINXFtdeoAbpGRFguz">   
+                 <button type="submit" class="btn btn-success">নতুন পেমেন্ট</button>
+                </form>
+
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">January|</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+            <div class="progress rounded" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+            <div class="progress rounded mb-2" style="height: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container2">
+    <div style="margin-left: 1%;padding: 5%; width:98%" class="container2">
+
+
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                  
+                </p><h4>নাম</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.t_name_bangla}}</h4>
+                <p><h4>{{teacher.t_name}}</h4></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4 id="email">ই-মেইল</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.t_email}}</h4>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4>ফোন</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.t_phone}}</h4>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4>পদবি </h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.designation}}({{teacher.service_id}})</h4>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4>বিভাগ</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>
+                    {{teacher.t_department}}</h4>
+                <p></p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4>যোগদানের তারিখ</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.joining_date}}</h4>
+                <p></p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">
+                </p><h4>প্রথম যোগদানের তারিখ</h4>
+                <p></p>
+            </div>
+            <div class="col-sm-9">
+                <p class="text-muted mb-0">
+                </p><h4>{{teacher.first_joining_date}}</h4>
+                <p></p>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <div style="width:100%" class="container3">
+        <div style="background-color: transparent" class="card mb-4 mb-md-0">
+            <div class="card-body">
+                <div class="card">
+                    <div class="ribbon ribbon-top-right"><span>আপনার জন্য</span>
+                    </div>
+                    <div>
+                        <div class="table-responsive px-md-4 px-2 pt-3">
+
+                            <a href="/blog/createpost/" class="btn btn-success">নতুন পেমেন্ট</a>
+                                <div data-v-3171110e="" id="example-content">
+                        
+                                    <div style="background-color: transparent" id="main_content_div">
+                                        <!---->
+                                            <div data-v-3171110e="" class="row justify-content-center">
+                                                <div data-v-3171110e="" class="col-lg-7">
+                                                    <div data-v-3171110e="" class="member-search">
+                                                        <div data-v-3171110e="" class="search-body">
+    
+                                                            <div data-v-3171110e="" class="searchBox"><input data-v-3171110e="" type="text" placeholder="Search by any information" id="myInput" onkeyup="myFunction2()"> <span class="fas fa-search"></span></div>
+                                    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                    
+                                    
+                                                    <div data-v-3171110e="" class="card card-body shadow-sm">
+                                                        <!----- Link Item------------->
+                                                        
+                                                        <!-----
+                                                        <input type="text" id="myInput" onkeyup="myFunction2()" placeholder="Search for names.."
+                                                            title="Type in a name">---->
+                                    
+                                                        <table style="background-color: transparent" id="myTable2">
+                                                           
+                                                            
+                                                                <tbody><tr style="background-color: transparent;">
+                                                                    <td>
+                                                                        <div style="background-color: transparent" data-v-3171110e="" class="search-list-item row mb-3">
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-2 align-self-center text-center">
+                                                                                <img data-v-3171110e="" alt="" data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg" src="https://www.files.ictparkbd.com/media/licensed-image.jpeg" lazy="loaded">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                                            </div>
+                                                        
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-8">
+                                                                                <h4 data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/37/" class="" target="_blank">অন্তর মম বিকশিত করো- রবীন্দ্রনাথ ঠাকুর</a></h4> <small data-v-3171110e="">June 5, 2024, 4:47 a.m./Tarique Sumon</small>
+                                                                                <p data-v-3171110e="">
+                                                                                    
+                                                                                    </p><p>অন্তর মম বিকশিত করো</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;
+                                    
+                                                                                </p>
+                                                                            </div>
+                                                                            <div style="background-color: transparent " data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/37/" class="btn btn-sm btn-outline-explore" target="_blank">More
+                                                                                    Details</a></div>
+                                    
+                                    
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                    
+                                    
+                                                                </tr>
+                                                            
+                                                                <tr style="background-color: transparent;">
+                                                                    <td>
+                                                                        <div style="background-color: transparent" data-v-3171110e="" class="search-list-item row mb-3">
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-2 align-self-center text-center">
+                                                                                <img data-v-3171110e="" alt="" data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg" src="https://www.files.ictparkbd.com/media/images.jpeg" lazy="loaded">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                                            </div>
+                                                        
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-8">
+                                                                                <h4 data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/36/" class="" target="_blank">কেউ কথা রাখেনি - সুনীল গঙ্গোপাধ্যায়</a></h4> <small data-v-3171110e="">June 5, 2024, 4:41 a.m./Tarique Sumon</small>
+                                                                                <p data-v-3171110e="">
+                                                                                    
+                                                                                    </p><p>কেউ কথা রাখেনি, তেত্রিশ বছর কাটলো কেউ কথা রাখেনি<br>
+ছেলেবেলায় এক বোষ্টুমি তার আগমনী গান হঠা
+                                    
+                                                                                </p>
+                                                                            </div>
+                                                                            <div style="background-color: transparent " data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/36/" class="btn btn-sm btn-outline-explore" target="_blank">More
+                                                                                    Details</a></div>
+                                    
+                                    
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                    
+                                    
+                                                                </tr>
+                                                            
+                                                                <tr style="background-color: transparent;">
+                                                                    <td>
+                                                                        <div style="background-color: transparent" data-v-3171110e="" class="search-list-item row mb-3">
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-2 align-self-center text-center">
+                                                                                <img data-v-3171110e="" alt="" data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg" src="https://www.files.ictparkbd.com/media/Rokanuzzaman_Khan.jpg" lazy="loaded">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                                            </div>
+                                                        
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-8">
+                                                                                <h4 data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/35/" class="" target="_blank">হাট্টিমাটিম টিম – রোকনুজ্জামান খান</a></h4> <small data-v-3171110e="">June 5, 2024, 4:19 a.m./Tarique Sumon</small>
+                                                                                <p data-v-3171110e="">
+                                                                                    
+                                                                                    </p><p><strong>(হাট্টিমাটিম টিম’।</strong><br>
+<strong>তারা মাঠে পাড়ে ডিম,</strong><br>
+<st <="" p="">
+                                                                            </st></p></div>
+                                                                            <div style="background-color: transparent " data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/35/" class="btn btn-sm btn-outline-explore" target="_blank">More
+                                                                                    Details</a></div>
+                                    
+                                    
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                    
+                                    
+                                                                </tr>
+                                                            
+                                                                <tr style="background-color: transparent;">
+                                                                    <td>
+                                                                        <div style="background-color: transparent" data-v-3171110e="" class="search-list-item row mb-3">
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-2 align-self-center text-center">
+                                                                                <img data-v-3171110e="" alt="" data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg" src="https://www.files.ictparkbd.com/media/AzadHumayun.jpg" lazy="loaded">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                                            </div>
+                                                        
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-8">
+                                                                                <h4 data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/34/" class="" target="_blank">আমাকে ভালোবাসার পর – হুমায়ুন আজাদ</a></h4> <small data-v-3171110e="">June 5, 2024, 4:07 a.m./Tarique Sumon</small>
+                                                                                <p data-v-3171110e="">
+                                                                                    
+                                                                                    </p><p>আমাকে ভালবাসার পর আর কিছুই আগের মত থাকবে না তোমার,<br>
+যেমন হিরোশিমার পর আর কিছুই আগের মতো নেই
+                                    
+                                                                                </p>
+                                                                            </div>
+                                                                            <div style="background-color: transparent " data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/34/" class="btn btn-sm btn-outline-explore" target="_blank">More
+                                                                                    Details</a></div>
+                                    
+                                    
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                    
+                                    
+                                                                </tr>
+                                                            
+                                                                <tr style="background-color: transparent;">
+                                                                    <td>
+                                                                        <div style="background-color: transparent" data-v-3171110e="" class="search-list-item row mb-3">
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-2 align-self-center text-center">
+                                                                                <img data-v-3171110e="" alt="" data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg" src="https://www.files.ictparkbd.com/media/unnamed.jpg" lazy="loaded">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                                                            </div>
+                                                        
+                                    
+                                                                            <div style="background-color: transparent" data-v-3171110e="" class="col-lg-8">
+                                                                                <h4 data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/31/" class="" target="_blank">সুরঞ্জনা, ঐখানে যেয়োনাকো তুমি, বোলোনাকো কথা অই যুবকের সাথে;</a></h4> <small data-v-3171110e="">May 5, 2024, 9:39 a.m./Tarique Sumon</small>
+                                                                                <p data-v-3171110e="">
+                                                                                    
+                                                                                    </p><p>সুরঞ্জনা, ঐখানে যেয়োনাকো তুমি,<br>
+বোলোনাকো কথা অই যুবকের সাথে;<br>
+ফিরে এসো সুরঞ্জনা:<br <="" p="">
+                                                                            </p></div>
+                                                                            <div style="background-color: transparent " data-v-3171110e=""><a data-v-3171110e="" href="/blog/singlepost/31/" class="btn btn-sm btn-outline-explore" target="_blank">More
+                                                                                    Details</a></div>
+                                    
+                                    
+                                                                        </div>
+                                                                    </td>
+                                                                    
+                                    
+                                    
+                                                                </tr>
+                                                            
+                                    
+                                                        </tbody></table>
+                                                      
+                                                          
+                                                       
+                                                      
+                                          
+                                    
+                                                        <!----- Link Item------------->
+                                    
+                                                    
+                                                    </div>
+                                                    <!---->
+                                                
+                                            <div data-v-3171110e="" class="row py-3 px-4 mx-0">
+                                                <div class="col-sm-12 col-md-5 px-0">
+                                                     <div role="status" aria-live="polite">Showing 1 to 5 of 19 entries</div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-7 p-0">
+                                                    <nav aria-label="Page navigation example">
+                                                        
+                                                        <ul class="pagination">
+                                                          
+                                                            <li class="disabled"><span>«</span></li>
+                                                          
+                                                          
+                                                            
+                                                              <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+                                                            
+                                                          
+                                                            
+                                                              <li><a href="?page=2">2</a></li>
+                                                            
+                                                          
+                                                            
+                                                              <li><a href="?page=3">3</a></li>
+                                                            
+                                                          
+                                                            
+                                                              <li><a href="?page=4">4</a></li>
+                                                            
+                                                          
+                                                          
+                                                            <li><a href="?page=2">»</a></li>
+                                                          
+                                                        </ul>
+                                                      
+                                                </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
+
+    
+ 
+
+
+        <!-- Modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Profile Picture</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="container" class="container" style="display: none;">
+                            <div class="action">
+    
+                                <input type="button" id="btnCrop" value="Crop" style="float: right">
+                                <input type="button" id="btnZoomIn" value="Zoom + " style="float: right">
+                                <input type="button" id="btnZoomOut" value="Zomm -" style="float: right">
+                            </div>
+                            <div id="imageBox" class="imageBox">
+                                <div class="thumbBox"></div>
+                                <div class="spinner" style="display: none;"></div>
+                            </div>
+                            
+    
+                        </div>
+                        <div class="logo1">
+                            <img id="img" src="https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg" style="width: 150px;height: 150px">
+                            
+                            </div>
+    
+                            <form method="POST" action="/account/imageupdate" enctype="multipart/form-data">
+<input type="hidden" name="csrfmiddlewaretoken" value="u1mpaKTTSp35YSbMCUTZ7XtFc4aXTetV2ckdbd16ctbAghrINXFtdeoAbpGRFguz">                                <div class="logo1">
+                                    <input type="text" id="image" name="image" style="display: none">
+                                <input type="file" id="file" name="file" style="width: 250px;">
+                                </div>
+                           
+    
+                    </form></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                
+                </div>
+            </div>
+         </div>
+         
+         
+         
+         <!-- Modal -->
+         <!-- Button trigger modal -->
+         
+         
+         <!-- Modal -->
+         
+         
+         
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById("container").style.display = "none";
+                var options = {
+                    imageBox: '.imageBox',
+                    thumbBox: '.thumbBox',
+                    spinner: '.spinner',
+                    imgSrc: 'avatar.png'
+                }
+                var cropper;
+                document.querySelector('#file').addEventListener('change', function() {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                       // document.getElementById("img").src = e.target.result;
+                        options.imgSrc = e.target.result;
+
+                        cropper = new cropbox(options);
+
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                    this.files = [];
+                })
+                document.querySelector('#btnCrop').addEventListener('click', function() {
+                    var img = cropper.getDataURL();
+                    var imgBlob = cropper.getBlob();
+
+                    document.getElementById("img").src = img;
+                    document.getElementById("img").style.display = 'block';
+                    document.getElementById("image").value = img;
+                    document.getElementById("container").style.display = "none";
+                   // document.getElementById("file").value = imgBlob;
+                   
+         
+                })
+                document.querySelector('#btnZoomIn').addEventListener('click', function() {
+                    cropper.zoomIn();
+                })
+                document.querySelector('#btnZoomOut').addEventListener('click', function() {
+                    cropper.zoomOut();
+                })
+            };
+            /**
+             * Created by ezgoing on 14/9/2014.
+             */
+            'use strict';
+            var cropbox = function(options) {
+                var el = document.querySelector(options.imageBox),
+                    obj = {
+                        state: {},
+                        ratio: 1,
+                        options: options,
+                        imageBox: el,
+                        thumbBox: el.querySelector(options.thumbBox),
+                        spinner: el.querySelector(options.spinner),
+                        image: new Image(),
+                        getDataURL: function() {
+                            var width = this.thumbBox.clientWidth,
+                                height = this.thumbBox.clientHeight,
+                                canvas = document.createElement("canvas"),
+                                dim = el.style.backgroundPosition.split(' '),
+                                size = el.style.backgroundSize.split(' '),
+                                dx = parseInt(dim[0]) - el.clientWidth / 2 + width / 2,
+                                dy = parseInt(dim[1]) - el.clientHeight / 2 + height / 2,
+                                dw = parseInt(size[0]),
+                                dh = parseInt(size[1]),
+                                sh = parseInt(this.image.height),
+                                sw = parseInt(this.image.width);
+
+                            canvas.width = width;
+                            canvas.height = height;
+                            alert(canvas.height);
+
+                            var context = canvas.getContext("2d");
+                            context.drawImage(this.image, 0, 0, sw, sh, dx, dy, dw, dh);
+                            var imageData = canvas.toDataURL('image/png');
+                            //alert(imageData);
+
+                            return imageData;
+                        },
+                        getBlob: function() {
+                            var imageData = this.getDataURL();
+                            var b64 = imageData.replace('data:image/png;base64,', '');
+                            var binary = atob(b64);
+                            var array = [];
+                            for (var i = 0; i < binary.length; i++) {
+                                array.push(binary.charCodeAt(i));
+                            }
+                            return new Blob([new Uint8Array(array)], {
+                                type: 'image/png'
+                            });
+                        },
+                        zoomIn: function() {
+                            this.ratio *= 1.1;
+                            setBackground();
+                        },
+                        zoomOut: function() {
+                            this.ratio *= 0.9;
+                            setBackground();
+                        }
+                    },
+                    attachEvent = function(node, event, cb) {
+                        if (node.attachEvent)
+                            node.attachEvent('on' + event, cb);
+                        else if (node.addEventListener)
+                            node.addEventListener(event, cb);
+                    },
+                    detachEvent = function(node, event, cb) {
+                        if (node.detachEvent) {
+                            node.detachEvent('on' + event, cb);
+                        } else if (node.removeEventListener) {
+                            node.removeEventListener(event, render);
+                        }
+                    },
+                    stopEvent = function(e) {
+                        if (window.event) e.cancelBubble = true;
+                        else e.stopImmediatePropagation();
+                    },
+                    setBackground = function() {
+                        var w = parseInt(obj.image.width) * obj.ratio;
+                        var h = parseInt(obj.image.height) * obj.ratio;
+         
+                        var pw = (el.clientWidth - w) / 2;
+                        var ph = (el.clientHeight - h) / 2;
+                        document.getElementById("img").style.display = 'none';
+                        document.getElementById("container").style.display = "block";
+                        el.setAttribute('style',
+                            'background-image: url(' + obj.image.src + '); ' +
+                            'background-size: ' +w + 'px ' + h + 'px; ' +
+                            'background-position: ' + pw + 'px ' + ph + 'px; ' +
+                            'background-repeat: no-repeat');
+                    },
+                    imgMouseDown = function(e) {
+                        stopEvent(e);
+         
+                        obj.state.dragable = true;
+                        obj.state.mouseX = e.clientX;
+                        obj.state.mouseY = e.clientY;
+                    },
+                    imgMouseMove = function(e) {
+                        stopEvent(e);
+         
+                        if (obj.state.dragable) {
+                            var x = e.clientX - obj.state.mouseX;
+                            var y = e.clientY - obj.state.mouseY;
+         
+                            var bg = el.style.backgroundPosition.split(' ');
+         
+                            var bgX = x + parseInt(bg[0]);
+                            var bgY = y + parseInt(bg[1]);
+         
+                            el.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+         
+                            obj.state.mouseX = e.clientX;
+                            obj.state.mouseY = e.clientY;
+                        }
+                    },
+                    imgMouseUp = function(e) {
+                        stopEvent(e);
+                        obj.state.dragable = false;
+                    },
+                    zoomImage = function(e) {
+                        var evt = window.event || e;
+                        var delta = evt.detail ? evt.detail * (-120) : evt.wheelDelta;
+                        delta > -120 ? obj.ratio *= 1.1 : obj.ratio *= 0.9;
+                        setBackground();
+                    }
+         
+                obj.image.onload = function() {
+                    obj.spinner.style.display = 'block';
+                    obj.thumbBox.style.display = 'block';
+
+                    setBackground();
+         
+                    attachEvent(el, 'mousedown', imgMouseDown);
+                    attachEvent(el, 'mousemove', imgMouseMove);
+                    attachEvent(document.body, 'mouseup', imgMouseUp);
+                    var mousewheel = (/Firefox/i.test(navigator.userAgent)) ? 'DOMMouseScroll' : 'mousewheel';
+                    attachEvent(el, mousewheel, zoomImage);
+                };
+                obj.image.src = options.imgSrc;
+                attachEvent(el, 'DOMNodeRemoved', function() {
+                    detachEvent(document.body, 'DOMNodeRemoved', imgMouseUp)
+                });
+         
+                return obj;
+            };
+         </script>
+        
+         
+         
+           
+
+         
+
+ </div>
+ </div>
+</main>
+    <script src="https://basis.org.bd/public/js/frontend_app.js"></script>
+
+    <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
+    
+            </div>
+        </div>
+    </div>
+
+            <!-- #endregion --> 
+            <script>
+                
+
+        window.onscroll = function() {
+            show=document.getElementById("email");
+            if ($(window).scrollTop() >= 50){
+                document.getElementById("header").className = "header sticky";
+                //alert("sumon");
+
+            }
+            else{
+                document.getElementById("header").className = "header";
+ 
+            }
+          /*  if (document.body.scrollTop >100 || document.documentElement.scrollTop > 100) {
+                    document.getElementById("header").className = "header sticky";
+                      
+                  } else {
+                    document.getElementById("header").className = "header";
+
+                  } */                 //scrollFunction();
+              };
+          
+              function scrollFunction() {
+                  if (document.body.scrollTop ===0 || document.documentElement.scrollTop ===0) {
+                      
+                  } else {
+                    document.getElementById("header").className = "header";
+
+                  }
+              }
+          </script>
+    <script src="/static/js/userscripts.js"></script>
+  
+ 
+
+
+ 
+    
+     
+
+    {% endblock %}
