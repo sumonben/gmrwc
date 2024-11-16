@@ -598,7 +598,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                                     <th colspan="5" style="height: 25px; background-color: #245b80; color: #fff; padding: 15px; margin-bottom: 15px;">Check your Information then  Submit</th>
                                   </thead>
                                   <tbody>
-                                  <form action="{% url 'get-certificate'%}" method="post" target="_blank">
+                                  <form id="id_form" action="{% url 'get-certificate' %}" target="_blank" method="post">
                                     {% csrf_token %}
                                     <input type="text" id="student_id" name="student_id" style="display: none;" value="{{student.id}}">
                                     <tr>
@@ -646,7 +646,7 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                                     </tr>
                                     <tr>
 
-                                        <td colspan="5" align="right" valign="middle" ><button type="submit" class="btn btn-primary" >Submit</button></td>
+                                        <td colspan="5" align="right" valign="middle" ><button id="id_button" type="submit" class="btn btn-primary" >Submit</button></td>
                                         
                                     </tr>
                                 </form>
@@ -991,7 +991,68 @@ role="button" data-mdb-toggle="dropdown" aria-expanded="false">
          
          <!-- Modal -->
          
-         
+         <script>
+            $(document).ready(function () {
+                    
+                    $('#i_button').on('click', function () {
+                      
+                    var frm1 = $('#id_form')[0];
+                    var form1= new FormData(frm1);
+               
+                    var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+                    //alert("hi");
+        
+                    // Get the data from the form
+                   
+               
+                    // Send AJAX request
+                    $.ajax({
+                        enctype: 'multipart/form-data',
+                        type: 'POST',
+                        url: "{% url 'get-certificate' %}",  // Adjust the URL as per your project structure
+                        data: form1,
+                        headers: {
+                            'X-CSRFToken': csrfToken
+                        },
+                        
+                        cache:false,
+                        processData:false,
+                        contentType:false,
+                       
+                        success: function (response) {
+                            
+                            //document.getElementById("student_form").reset();
+                            if (response.status === 'success') {
+                                // Clear the form
+                                alert('response.student');
+                              // $('#student_id').val(response.student);
+                               //alert(response.status);
+               
+               
+                            } else {
+                             ///alert("Success message not found");
+                                    
+                                }
+                                
+                        },
+                        error: function (xhr, status, error) {
+                           
+                            var err = eval("(" + xhr.responseText + ")");
+                            alert(err.Message);
+                        }
+                    });
+               
+               
+                   //////////////////////////////////////////////////////////////////
+               
+                    
+                    });
+        ////////////////////Submit for admission form download/////////////////////
+        
+                   
+        
+                  });
+                </script>
          
         <script type="text/javascript">
             window.onload = function() {

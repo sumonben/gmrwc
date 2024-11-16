@@ -1,0 +1,65 @@
+{% load static %}
+<div class="blocks">
+
+</div>   
+</div>
+
+<div class="blocks">
+
+<div id="notice-board" class="box p-4">
+    <div class="notice-board-bg">
+        {% if request.session.lang == 'english'%}
+        <h2 id="notice-board-bg">Notice Board</h2>
+        <hr>
+        <div id="notice-board-ticker">
+            <ul class="list list-unstyled">
+                {% for notice in notices %}
+                <li class="clearfix">
+                    <a href="{% url 'single_notice_department' department.id notice.id %}" title="গণবিজ্ঞপ্তি">
+                        <i class="text-green fa fa-arrow-circle-right"></i>
+                        <span>{% if notice.title_en %}{{notice.title_en}} {% else %} {{notice.title}} {% endif %}</span>
+                    </a>
+                </li>
+                {% endfor %}
+                
+                            </ul>
+            <div class="clearfix">
+                <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn right">All </a>
+            </div>
+        </div>
+        {% else %}
+        <h2 id="notice-board-bg">নোটিশ বোর্ড</h2>
+        <hr>
+        <div id="notice-board-ticker">
+            <ul class="list list-unstyled">
+                {% for notice in notices %}
+                <li class="clearfix">
+                    <a href="{% url 'single_notice_department' department.id notice.id %}" title="গণবিজ্ঞপ্তি">
+                        <i class="text-green fa fa-arrow-circle-right"></i>
+                        {% if request.session.lang == 'english' and post.title_en %}
+                                        <span>{{notice.title_en}}</span>
+                                        {% else %}
+                                        <span>{{notice.title}}</span>
+                                        {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+                
+                            </ul>
+            <div class="clearfix">
+                <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn right">সকল </a>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div> 
+
+
+<div id="news" class="section-title">
+        
+    <div>
+            
+        </div>
+        </div>
+        

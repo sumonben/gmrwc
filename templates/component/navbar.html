@@ -28,7 +28,7 @@
     <div class="col-md-12">
         <div  class="menu d-none d-md-block cmn-mrg-btm">
             <ul class="menu-container meganizr mzr-slide mzr-responsive">
-                <li class="col0 home"><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+                <li class="col0 home"><a href="{{ request.path }}"><i class="fas fa-home"></i></a></li>
                                                 
                 <!-- Menu Color Admin Custom Start -->
                     <!--  -->
@@ -167,7 +167,7 @@
                         {% for page in navelement.page.all %}
 
                                 <li >
-                                    <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem navelement page page.id  %}{% else %}{% url 'showpage' navitem navelement page page.id  %}{% endif %}"
+                                    <a title="{{page.title}}" href="{% if navitem.id == 3 %}{% url 'department' navitem.name_en navelement.head_en page.heading_en page.id  %}{% else %}{% url 'showpage' navitem navelement page page.id  %}{% endif %}"
                                     >{{page.heading}}</a>
                                     
                                     <!-- Start Forth Level -->
@@ -251,15 +251,16 @@
 
              {% endfor %}
 
-                    <li class="mzr-drop col9">
-                        <a title="এনওসি">এনওসি</a>
-                        <div class="mzr-content sibling-toggle" style="display:none">
+                    <li class="mzr-drop col6">
+                        <a href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a>
+                        <!--<div class="mzr-content sibling-toggle" style="display:none">
                             <div class="one-col">
                                 <h6>অনাপত্তি সনদ প্রদান</h6>
                                 <ul class="mzr-links">
                                 </ul>
                             </div>
                         </div>
+                        --->
                     </li>
                 </ul>
             </div>

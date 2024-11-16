@@ -6,19 +6,24 @@ from django import forms
 # import GeeksModel from models.py
 from teacher.models import Teacher
 from student.models import Student, StudentCategory
-from department.models import Department,Session,Group
- 
+from student.forms import year_choices
+from department.models import Department,Session,Group,Class
+
+year_choice=year_choices()
 # create a ModelForm
 class StudentForm(forms.ModelForm):
     # specify the name of model to use
-    department=forms.ModelChoiceField(label="",queryset=Department.objects.all().values_list('id', 'name_en'),empty_label="Placeholder",)
-    group=forms.ModelChoiceField(label="",queryset=Group.objects.all().values_list('id', 'title_en'),empty_label="Placeholder",)
-    session=forms.ModelChoiceField(label="",queryset=Session.objects.all().values_list('id', 'title_en'),empty_label="Placeholder",)
-    #student_category=forms.ModelChoiceField(label="",queryset=StudentCtegory.objects.all().values_list('id', 'title_en'),empty_label="Placeholder",)
+    department=forms.ModelChoiceField(required=False,queryset=Department.objects.all(),empty_label="Department", widget=forms.Select(attrs={'class': 'form-control','onchange' : 'check_field_class_year()',}))
+    group=forms.ModelChoiceField(required=False,queryset=Group.objects.all(),empty_label="Group", widget=forms.Select(attrs={'class': 'form-control',}))
+    session=forms.ModelChoiceField(queryset=Session.objects.all(),empty_label="Session",widget=forms.Select(attrs={'class': 'form-control',}))
+    class_year=forms.ModelChoiceField(queryset=Class.objects.all(),widget=forms.Select(attrs={'class': 'form-control',}))
+    student_category=forms.ModelChoiceField(queryset=StudentCategory.objects.all(),widget=forms.Select(attrs={'class': 'form-control',}))
+    passing_year=forms.ChoiceField(choices=year_choices(),widget=forms.Select(attrs={'class': 'form-control',}))
+
     class Meta:
         model = Student
         fields = "__all__"
-        exclude=['std_id','class_roll','exam_roll','registration','passing_year','student_category','department','section','class_year','cgpa','guardian_info','present_adress','permanent_adress','user','is_active',]
+        exclude=['std_id','class_roll','exam_roll','registration','section','cgpa','guardian_info','present_adress','permanent_adress','user','is_active',]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'নাম লিখুন(ইংরেজিতে)','onkeypress' : "myFunction(this.id);"}),
             'name_bangla': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id);"}),
@@ -29,7 +34,7 @@ class StudentForm(forms.ModelForm):
             'registration': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'রেজিস্ট্রেশন নম্বর(যদি থাকে)'}),
             'session': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;','onchange' : "myFunction(this.id);"}),
             'date_of_birth': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'form-control', 'placeholder': 'Select a date','type': 'date'}),
-            'passing_year': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 100%;'}),
+            'passing_year': forms.Select(choices=year_choices,attrs={'class': 'form-control', 'style': 'width: 100%;'}),
             'student_category': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
             'group': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;'}),
             'department': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;'}),

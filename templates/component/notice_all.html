@@ -69,9 +69,9 @@
             <th>{{ forloop.counter }}</th>
                                     <td class="text"> 
                                         {% if request.session.lang == 'english' and post.title_en %}
-                                        <a href="">{{ post.title_en }}</a>
+                                        <a href="{% url 'single_notice' post.id %}">{{ post.title_en }}</a>
                                         {% else %}
-                                        <a href="">{{ post.title }}</a>
+                                        <a href="{% url 'single_notice' post.id %}">{{ post.title }}</a>
                                         {% endif %}      
                                   </td>
 

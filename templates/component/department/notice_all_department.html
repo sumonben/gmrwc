@@ -1,0 +1,98 @@
+{% load static %}
+<script>
+    function printDiv(printableArea) {
+        
+        var printContents = document.getElementById("printableArea").innerHTML;
+        var originalContents = document.body.innerHTML;
+   
+        document.body.innerHTML = printContents;
+   
+        window.print();
+   
+        document.body.innerHTML = originalContents;
+   }
+</script>
+<style>
+    
+ 
+    .dt-input {
+        width: 98%;
+    }
+    .dt-input .fa-search {
+        position: absolute;
+        top: 10px;
+        left: auto;
+        right: 10px;
+    }
+</style>
+<div class="officerlist list">
+   
+<h3 class="title">
+    
+    {% if navitem_name %}
+    {% if request.session.lang == 'english' %}
+    {{navitem.name_en}} --> {{navelement.head_en}} --> {{page.heading_en}} 
+    {% else %}
+    {{navitem.name}} --> {{navelement.head}} --> {{page.heading}} 
+    {% endif %}
+    {% endif %}
+    
+    {% if servicebox_title %}
+    {{servicebox_title}} -->{{heading}}
+    {% endif %}
+        
+        
+       <div style="float:right;" id="print_btn_div"><img src="{% static 'images/print_btn.png' %} " style="cursor: pointer;" onclick="printDiv(printableArea);" width="24" title="প্রিন্ট" alt="print_btn"></div>
+</h3>
+
+
+
+<br><div class="table-responsive chbappy1" cellpadding="10px" cellspacing="10px" id="printableArea">
+    <table id="dataTable" class="table table-bordered"><thead><tr><th scope="col">#</th>
+        {% if request.session.lang == 'english' %}
+        <th scope="">Title</th>
+        <th scope="">Date Published</th>
+        <th scope="">Download</th>
+        <th scope="">Links</th>
+        {% else %}
+        <th scope="">শিরোনাম</th>
+        <th scope="">প্রকাশের তারিখ</th>
+        <th scope="">ডাউনলোড</th>
+        <th scope="">লিংক</th>
+        {% endif %}
+        
+        
+      </tr></thead>
+      <tbody>
+        {% for post in post %}
+        <tr>
+            <th>{{ forloop.counter }}</th>
+                                    <td class="text"> 
+                                        {% if request.session.lang == 'english' and post.title_en %}
+                                        <a href="{% url 'single_notice_department' department.id post.id %}">{{ post.title_en }}</a>
+                                        {% else %}
+                                        <a href="{% url 'single_notice_department' department.id post.id %}">{{ post.title }}</a>
+                                        {% endif %}      
+                                  </td>
+
+                                        <td>{{post.date}}</td>
+
+                                        <td class="">
+                                    <a class="control-file" target="_blank"  href="{%if post.file %}{{post.file.url}} {% endif %}" title="1279.pdf" download="{%if post.file %}{{post.file.url}} {% endif %}">
+<i class="fa fa-file-pdf text-danger" style="font-size:x-large"></i>
+</a>                                            
+
+                                </td>
+                                <td class="">
+                                    
+                                   {{post.body|safe}}                                
+                                </td>
+
+
+        </tr>                
+     {% endfor %}
+    </tbody></table></div>
+
+
+
+</div>

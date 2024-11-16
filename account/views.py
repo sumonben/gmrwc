@@ -75,14 +75,15 @@ def Registration(request):
             user = UserModel.objects.create_user(username=username,
                                  email=email,last_name=last_name,
                                  password=password,is_active=False)
+            print(user_form.student_category)
+
             user_form.user=user
             user_form.save()
             
             #messages.success(request, 'Student with name  {}  added.'.format(request.POST['name']))
             return JsonResponse({'status': 'success','meaasge':'Account created Successfully'},safe=False)
         print(form.errors)
-        return JsonResponse({'status': form.errors,'meaasge':'Account created Successfully'},safe=False)
-        return render(request, 'account/register.html', {'form': form})
+        return JsonResponse({'status': form.errors,'meaasge':'Account Not Created'},safe=False)
     return render(request, 'account/register.html', {'form': form}) 
 
 @csrf_exempt
@@ -101,6 +102,7 @@ def Login(request):
             email='email'
             print(email)
             return JsonResponse({'email': email},safe=False)
+
 
         user = authenticate(request, username=email, password=password)
         if user is not None:

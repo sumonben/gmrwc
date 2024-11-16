@@ -4,9 +4,11 @@ from django.views.generic import View, TemplateView, DetailView
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
 from .models import Transaction
+from student.models import Student,GuardianInfo,SscEquvalent,SubjectChoice
 from .sslcommerz import sslcommerz_payment_gateway
+from sslcommerz_lib import SSLCOMMERZ 
 
 
 class Index(TemplateView):
@@ -16,21 +18,25 @@ def DonateView(request):
     name = request.POST['name']
     amount = request.POST['amount']
     return redirect(sslcommerz_payment_gateway(request, name, amount))
+def PaymentView(request,student,name,amount):
+    name = request.POST['name']
+    amount = request.POST['amount']
+    return redirect(sslcommerz_payment_gateway(request, name, amount))
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CheckoutSuccessView(View):
     model = Transaction
     template_name = 'mainsite/carts/checkout-success.html'
-
     
     def get(self, request, *args, **kwargs):
         return HttpResponse('nothing to see')
 
     def post(self, request, *args, **kwargs):
+        
 
         data = self.request.POST
-
+        print(data)
         try:
             Transaction.objects.create(
                 name = data['value_a'],
@@ -55,11 +61,19 @@ class CheckoutSuccessView(View):
                 risk_level=data['risk_level'],
 
             )
-            messages.success(request,'Payment Successfull')
 
+            messages.success(request,'Payment Successfull')
+            student=Student.objects.filter(phone=data['value_b']).first()
+            ssc_equivalent=SscEquvalent.objects.filter(student=student).first()
+            subject_choice=SubjectChoice.objects.filter(student=student).first()
+            print( student.department.name_en )
+            if student.department.name_en is None:
+                return render(request, 'student/testimony.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
+            else:
+                return render(request, 'student/honstestimonial.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
         except:
             messages.success(request,'Something Went Wrong')
-        return render(request, 'payment/success.html')
+        return JsonResponse({'status': 'success','meaasge':'Payment Successfully'},safe=False)
 
 
 @method_decorator(csrf_exempt, name='dispatch')

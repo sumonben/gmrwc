@@ -712,7 +712,7 @@ const progress = (value) => {
     for(i=0;i<options.length ;i++){
     options[i].selected = 'selected';
     }
-    //document.getElementById('id_compulsory_subject_to').disabled='disabled';
+    document.getElementById('id_compulsory_subject_to').disabled='disabled';
 
 
           //document.getElementById('toast-container').style.visibility ='hidden';
@@ -947,12 +947,31 @@ addChoiceBtn.addEventListener('change', () => {
     $(document).ready(function () {
             
             $('#submit-btn').on('click', function () {
+              var subjectCount=0;
+              var compulsory_options;
               var options;
+              compulsory_options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
+              subjectCount=compulsory_options.length;
+              document.getElementById('id_compulsory_subject_to').disabled='disabled';
               try{
               options=document.getElementById('id_optional_subject_to').getElementsByTagName('option');
+              var selected_4rth = document.getElementById('id_fourth_subject');
+              var flag_submit=0;
+              alert(selected_4rth.value);
               for(i=0;i<options.length ;i++){
+                subjectCount++;
+                if(options[i].value==selected_4rth.value){
+                  flag_submit=1;
+                  break;
+
+                }
               options[i].selected = 'selected';
              }
+              if(subjectCount<6 || flag_submit==1){
+                alert("Choose All 7 Subject and do not repeat twice ");
+                return false;
+              }
+              
               }catch(err){
 
               }

@@ -61,7 +61,7 @@
 
             
         
-{% include 'component/navbar.html' %}          
+{% include 'component/department/navbardept.html' %}          
       
                 <div id="skip-main-content-start-here" style="opacity:0;font-size:1px;">Main Comtent Skiped</div>
           
@@ -91,7 +91,7 @@
                    <div id="flash">
 <!--get & set site layer_id -->
     <!--5-->
-   {%include 'component/notice.html'%}
+   {%include 'component/department/notice_department.html'%}
 <!-- jQuery.simpleTicker.js start --><!-- <link href="//www.jqueryscript.net/demo/HTML-List-Based-Scroller-Ticker-Plugin-jQuery-simpleTicker/jquery.simpleTicker.css" rel="stylesheet"> --><!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --><!-- <script src="//www.jqueryscript.net/demo/HTML-List-Based-Scroller-Ticker-Plugin-jQuery-simpleTicker/jquery.simpleTicker.js"></script> --><!-- jQuery.simpleTicker.js end -->
 
 <!-- <script>
@@ -111,6 +111,22 @@ $.simpleTicker($("#demo"),{
   effectType : 'slide'
 });
 </script> -->
+{% if teacher%}
+{%include 'component/teacher/teacher_details.html'%}
+{% elif teachers%}
+{%include 'component/teacher/teacher_list.html'%}
+{% elif post%}
+{%include 'component/department/notice_all_department.html'%}
+{% else %}
+{{department.about|safe}}
+
+{% endif %}
+
+
+
+   
+
+
 <div class="row service-row">
     {% for service_box in service_boxes%}
     <hr><hr>

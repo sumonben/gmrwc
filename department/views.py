@@ -4,11 +4,38 @@ from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIVi
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from frontpage.models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Institute
-from .models import Department
+from .models import Department,NavDepartment,NavDepartmentElement
 from teacher.models import Teacher,Position
 from student.models import Student
+from django.views.decorators.clickjacking import xframe_options_exempt
 
-# Create your views here.
+
+def queryDepartmentFrontpage( departmentId ):
+    carousels = Carousel.objects.all().order_by('cid')
+    nav_department=NavDepartment.objects.all().order_by('serial') 
+    institute=Institute.objects.filter(serial=1).first()
+    principal=Teacher.objects.filter(position=1, release_date=None).first()
+    viec_principal=Teacher.objects.filter(position=2, release_date=None).first()
+    
+    position=Position.objects.filter(serial=4).first()
+    department=Department.objects.filter(id=departmentId).first()
+    teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True)
+    students=Student.objects.filter(department=department,is_active=True)
+    department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
+    notices=Post.objects.filter(category__name_en=department.name_en).order_by('-id')
+
+
+    context = {
+        'carousels': carousels,'nav_department':nav_department,'notices':notices,'department':department,
+        'principal':principal,
+        'institute':institute,
+        'viec_principal':viec_principal,
+        'department_head':department_head,
+        }
+    return context
+    
+
+
 def DepartmentPage(request, navitem_name,navelement_head,heading, id):
 
 
@@ -16,24 +43,15 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
     navitem_name=navitem_name.replace("%20", " ")
     navelement_head=navelement_head.replace("%20", " ")
     carousels = Carousel.objects.all().order_by('cid')
-    navitems=NavItem.objects.all().order_by('serial')  
+    navitems=NavItem.objects.all().order_by('serial')
+    nav_department=NavDepartment.objects.all().order_by('serial') 
+    print(nav_department) 
     page=Page.objects.filter(id=id).distinct().first()
     institute=Institute.objects.filter(serial=1).first()
     notices=Post.objects.all().order_by('-id')
     principal=Teacher.objects.filter(position=1, release_date=None).first()
     viec_principal=Teacher.objects.filter(position=2, release_date=None).first()
-    context = {
-        'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
-        'navitem_name':navitem_name,
-        'heading':heading,
-        'id':id,
-        'principal':principal,
-        'viec_principal':viec_principal,
-        'institute':institute,
-        }
     
-    if heading in 'বিভাগীয় প্রধান':
-        department_head=Teacher.objects.filter(position=2, release_date=None)
     position=Position.objects.filter(serial=4).first()
     department=Department.objects.filter(name_en=heading).first()
     teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True)
@@ -45,7 +63,7 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
     print("Hello: ",department_head)
 
     context = {
-        'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
+        'carousels': carousels,'page':page,'navitems':navitems,'nav_department':nav_department,'notices':notices,
         'navitem_name':navitem_name,
         'heading':heading,
         'id':id,
@@ -55,8 +73,6 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
         'department_head':department_head,
         }
     
-    context['teachers']=teachers
-    context['students']=students
     context['department_head']=department_head
     context['department']=department
 
@@ -126,4 +142,58 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
     
     return render(request,page.template.directory+'/'+page.template.name,context=context)
 
+def departmentItems(request,departmentId,navitem_name):
+    #navitem_name=navitem_name.replace("%20", " ")    
+    carousels = Carousel.objects.all().order_by('cid')
+    nav_department=NavDepartment.objects.all().order_by('serial') 
+    institute=Institute.objects.filter(serial=1).first()
+    principal=Teacher.objects.filter(position=1, release_date=None).first()
+    viec_principal=Teacher.objects.filter(position=2, release_date=None).first()
+    
+    position=Position.objects.filter(serial=4).first()
+    department=Department.objects.filter(id=departmentId).first()
+    teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True)
+    students=Student.objects.filter(department=department,is_active=True)
+    department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
+    notices=Post.objects.filter(category__name_en=department.name_en).order_by('-id')
 
+
+    context = {
+        'carousels': carousels,'nav_department':nav_department,'notices':notices,'department':department,
+        'principal':principal,
+        'institute':institute,
+        'viec_principal':viec_principal,
+        'department_head':department_head,
+        }
+    print(navitem_name)
+    if navitem_name == 'About': 
+        context['About']='About'
+    if navitem_name == 'Department  Head':
+        context['teacher']=department_head
+    
+    if navitem_name=='Teachers-Officers': 
+        context['teachers']=teachers
+    if navitem_name=='Students': 
+        context['students']=students
+    if navitem_name=='Seminar':
+        post=Post.objects.filter(category__name_en=department.name_en).order_by('-id') 
+        context['post']=post
+    if navitem_name=='Results': 
+        context['students']=students
+    if navitem_name=='Seminar': 
+        context['seminar']=students
+    if navitem_name=='Results': 
+        context['results']=students
+    if navitem_name=='Notices': 
+        post=Post.objects.filter(category__name_en=department.name_en).order_by('-id') 
+        context['post']=post
+    
+
+    return render(request,"department/department.html",context=context)
+
+@xframe_options_exempt
+def singleNoticeDepartment(request, departmentId,id):
+    context=queryDepartmentFrontpage(departmentId)
+    post=Post.objects.filter(id=id).first()
+    context['post']=post
+    return render(request,"department/showpost_department.html",context=context)

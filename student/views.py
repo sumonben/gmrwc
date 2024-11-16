@@ -3,6 +3,9 @@ from .forms import StudentForm,SubjectChoiceForm,AdressForm,SscEquvalentForm,Gua
 from department.models import Group,Subject
 from .models import Student,SubjectChoice,SscEquvalent
 from django.db.models import Q,Count
+from payment.sslcommerz import sslcommerz_payment_gateway
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
+
 
 # Create your views here.
 def testHtml(request ):
@@ -32,6 +35,7 @@ def certificateGenerate(request,id ,type ):
         return render(request, 'account/profile.html',{'student':student,'form':form, 'adress_form':adress_form, 'guardian_form':guardian_form,})
 
 def getCertificate(request):
+    print("sumon")
     if request.user.is_authenticated:
         student=Student.objects.filter(user=request.user).first()
         subject_choice=SubjectChoice.objects.filter(student=student).first()
@@ -48,10 +52,12 @@ def getCertificate(request):
         if request.POST.get('cgpa'):
             student.cgpa=request.POST.get('cgpa')
 
-        print(student.name)
         ssc_equivalent=SscEquvalent.objects.filter(student=student).first()
 
-        return render(request, 'student/testimonial.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
+        return redirect(sslcommerz_payment_gateway(request,student.name, 100,student.phone))
+
+        #print(response)
+        #return render(request, 'student/testimonial.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
     return render(request, 'account/login.html')
 
 def getTestimonial(request):

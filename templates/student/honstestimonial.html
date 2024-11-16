@@ -1,0 +1,119 @@
+{% extends 'basepage/govtlayout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  button#print, button#next-btn, button#submit-btn {
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #DC3545;
+  margin-left: 50%;
+  margin-top: 20px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+button#print:after, button#next-btn:after, button#submit-btn:after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05812a;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+  .top-right {
+      width: 50%;
+  position: absolute;
+  top: 30%;
+  left: 80%;
+}
+    .top-left {
+      width: 70%;
+  position: absolute;
+  top: 40%;
+  left: 20%;
+}
+table, th, td {
+  border: none;
+  
+}
+u {    
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
+}
+</style>
+<div class="container home-page" id="column"  style="height: 1000px;">
+    <div id="google_translate_element"></div>
+
+  <button id="submit-btn" class="btn-default" onclick="goToPrint()" >Download or Print</button>
+
+    <div class="row"  >
+        <div class="col" >
+            <div class="top-left">Bottom Left 
+
+    </div>
+    <div class="container">
+
+        <img height="900" width="800" src="{% static 'images/testimony_bangla.png' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin-left: 11%; margin-right: 11%; margin-top: 0%;">
+        <div class="top-right">
+          ৮৭৮৭
+        </div>
+        <div class="top-left">
+          <p><h4 style="line-height: 1.5;"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>{{student.name}}</u></b></i> পিতা- {{student.guardian_info.father_name_en}} মাতা- {{student.guardian_info.mother_name_en}} । সে এই কলেজের ছাত্রী হিসেবে জাতীয় বিশ্ববিদ্যালয়ের অধীন <i><b><u>{{student.passing_year}}</u></b></i> সালে অনুষ্ঠিত অনার্স/মাস্টার্স শেষপর্ব পরীক্ষায় <i><b><u>{{student.department.name}}</u></b></i>  বিভাগ হতে অংশগ্রহণ করে উত্তীর্ণ হয়েছে।
+            তার শিক্ষাবর্ষ ২০২৩-২৪    {{student.sesstion}}
+            রেজিস্ট্রেশন নং- <i><b><u>{{student.registration}}</u></b></i> রোল নং- {{student.exam_roll}}             এবং প্রাপ্ত শ্রেণি/সিজিপিএ     {{student.cgpa}}। 
+            আমার জানামতে তার স্বভাব চরিত্র ভালো এবং অত্র কলেজে অধ্যয়নকালীন সে আইনশৃংখলা পরিপন্থী ও কোনরূপ রাস্ট্রবিরোধী কাজে লিপ্ত ছিলো না।
+          <h4 style="line-height: 1.5;">
+            আমি তার জীবনের সর্বাত্মক উন্নতি ও সাফল্য কামনা করি। 
+          </h4>
+            
+                  
+        <h4 style="margin-left: 100px; margin-top:30%"><br>{% now "d-m-Y" %}</h4>
+
+          </p>
+          </div>
+      </div>
+        
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        function goToPrint(){
+            document.getElementById("submit-btn").style.display="none";
+            window.print();
+            document.getElementById("submit-btn").style.display="block";
+
+        }
+    </script>
+    
+{% endblock %}
