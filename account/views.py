@@ -75,7 +75,7 @@ def Registration(request):
             user = UserModel.objects.create_user(username=username,
                                  email=email,last_name=last_name,
                                  password=password,is_active=False)
-            print(user_form.student_category)
+            #print(user_form.student_category)
 
             user_form.user=user
             user_form.save()

@@ -986,18 +986,29 @@ body {
             <div class="tab-content">
 
     <div class="row">
+       
         <div class="col-md-4 col-sm-4 col-xs-4 text-left">
-            <a href="#" onclick="showhelpdeskPanel()" class="btn btn-link" style="margin-top:12px;">
+            <a  onclick="showhelpdeskPanel()" class="btn btn-link" style="margin-top:12px;">
                 <i class="fa fa-question-circle" style="font-size: 10px !important;"></i>
                 হেল্প ডেস্ক
                 <i class="fa fa-chevron-up icon-changer" style="font-size: 10px !important;"></i>
             </a>
+            
+
+                
+        
+                 
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4" style="margin-bottom:0px;padding-bottom:0px;margin-top:12px;">
                     </div>
         <div class="col-md-4 col-sm-4 col-xs-4 text-right" style="margin-bottom:0px;padding-bottom:0px">
             <div class="logoa2i" align="right">
-
+                <a   href="/" title="">
+                    হোম &nbsp;&nbsp;
+                </a>
+              <a href="{% url 'login'  %}" title="" >
+                    লগিন
+                </a>
                 <a style="text-decoration: none;text-align:right" class="btn btn-link" id="isdp-links-button" data-toggle="popover" data-original-title="" title=""><img src="{% static 'images/logo.png' %}" style="height:36px;margin-top:0px;margin-right:0px" alt="MyGov"></a>
 
                 <div id="isdp-plus-plus" style="display:none;">
@@ -1099,7 +1110,7 @@ body {
     </div>
 </div>
 <div class="create-help helpdeskPanel" style="
-    display: block;
+    display: none;
     position: relative;
     background: rgb(255, 255, 255);
     padding: 10px;
@@ -1846,25 +1857,7 @@ body {
 
     ///
 </script></div>
-<div class="content" style="padding-top: 10px!important;width: 480px!important;margin-top:0px">
-    <div class="logobd" align="left">
-       <!-- <a href="http://bangladesh.gov.bd" title="বাংলাদেশ জাতীয় তথ্য বাতায়ন" target="_blank">
-            <img src="/assets/admin/layout4/img/bd.png" alt="" style="margin-top:10px">
-        </a>
-        <a href="http://www.a2i.gov.bd" title="Aspire to Innovate (a2i)" target="_blank">
-            <img src="/assets/admin/layout4/img/a2i.png" alt="" style="margin-top:5px;height:36px !important;">
-        </a>
 
-        <a href="https://ictd.gov.bd" title="তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ" target="_blank">
-            <img src="/img/ictd_logo.png" alt="" style="margin-top:5px;">
-        </a>
-        <a href="http://doict.gov.bd" title="তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর" target="_blank">
-            <img src="/img/doict_logo.jpg" alt="" style="margin-top:5px;">
-        </a>-->
-    </div>
-    <br>
-    <div style="clear:both"></div>
-</div>
 <div id="toast-container" class="toast-top-left" aria-level="polite" role="alert">
     <div class="toast toast-error" style><button class="toast-close-button" role="button">&#10006;</button>
         <div class="toast-message" >দুঃখিত! লগইন আইডি অথবা পাসওয়ার্ড সঠিক নয়</div></div>
