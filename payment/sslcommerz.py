@@ -43,6 +43,8 @@ def sslcommerz_payment_gateway(request, name, amount,student):
     body['product_profile'] = "general"
     body['value_a'] = name
     body['value_b'] = student
+    body['value_c'] = student
+    
 
 
     response = sslcommez.createSession(body)

@@ -40,6 +40,8 @@ class CheckoutSuccessView(View):
         try:
             Transaction.objects.create(
                 name = data['value_a'],
+                phone=data['value_b'],
+                email=data['value_c'],
                 tran_id=data['tran_id'],
                 val_id=data['val_id'],
                 amount=data['amount'],

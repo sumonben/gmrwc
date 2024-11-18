@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'student',
     'admission',
     'payment',
+    'certificates',
     'rangefilter',
     'django_admin_listfilter_dropdown',
 ]

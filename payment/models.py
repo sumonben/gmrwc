@@ -4,6 +4,8 @@ from django.db import models
 
 class Transaction(models.Model):
     name = models.CharField(max_length=150)
+    phone=phone=models.CharField(max_length=11,unique=True,blank=True,null=True,)
+    email=models.EmailField(max_length=50,blank=True,null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     tran_id = models.CharField(max_length=15)
     val_id = models.CharField(max_length=75)

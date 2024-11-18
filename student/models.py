@@ -194,6 +194,8 @@ class SubjectChoice(models.Model):
 class Transaction(models.Model):
     serial=models.IntegerField(default=10)
     student=models.ForeignKey(Student,blank=True,null=True,on_delete=models.CASCADE)
+    phone=phone=models.CharField(max_length=11,unique=True,blank=True,null=True,)
+    email=models.EmailField(max_length=50,blank=True,null=True)
     transactionID=models.CharField(max_length=25,blank=True,null=True)
     purpose=models.CharField(max_length=25,blank=True,null=True)
     method=models.CharField(max_length=100,blank=True,null=True)
