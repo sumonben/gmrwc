@@ -1,0 +1,69 @@
+{% extends 'basepage/admission_layout.html' %}
+
+{% load static %}
+{% block content %}
+<style>
+    
+</style>
+<tr>
+    <td>
+    </td>
+</tr>
+<tr>
+    <td>
+    <fieldset style="margin-bottom: 2%;">
+        <table width="50%" border="1" cellspacing="0" cellpadding="2" align="center">
+          <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Choose Your Level Desired </th></thead>
+          <tbody>
+            <form method="post" action="{% url 'choice-form-entry' %}" id="form1" name="form1">
+                {% csrf_token %}
+            <tr>
+
+                <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c1" data-pageid="1">
+               
+
+                {{form}}
+                </td>
+                
+                
+                <td class="col-md-2"></td>
+                </tr>
+                
+                <tr>
+                
+                <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
+                
+                </td>
+                
+                <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
+                
+                </td>
+                <td class="col-md-2"></td>
+                </tr>
+                
+                <tr>
+                
+                <td class=" r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c9" data-pageid="1">
+                <div edit-form-cell="" class="clearfix">
+                </div>
+                </td>
+                
+                <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c10" data-pageid="1">
+                <div edit-form-cell="" class="clearfix">
+                </div>
+                </td>
+                <td class="col-md-2"></td>
+                </tr>
+                <tr >
+                    <td colspan="5" align="right">                
+                    <button type="submit"  class="btn btn-primary" >Submit</button>
+                </td></tr>
+          </form>
+
+        </tbody>
+    </table>
+    </fieldset>
+    </td>
+</tr>
+
+{% endblock  %}

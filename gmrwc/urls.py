@@ -29,6 +29,8 @@ urlpatterns = [
     path('ckeditor/', include("ckeditor_uploader.urls")),
     path('admission/', include("admission.urls")),
     path('payment/', include("payment.urls")),
+    path('certificates/', include("certificates.urls")),
+
 
 
 
