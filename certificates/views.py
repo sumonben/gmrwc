@@ -15,8 +15,11 @@ def CertificateFormEntry(request):
     adress_form = AdressForm()
     context={'form':form,'adress_form':adress_form}
     subject_form=SubjectChoiceForm(group=group)
-    context['subject_form']=subject_form
-        
+    if request.POST.get('student_category') in '3':
+        context['subject_form']=subject_form
+        return render(request,'certificate/certificate_form_entry_hsc.html',context=context)
+    return render(request,'certificate/certificate_form_entry_all.html',context=context)
+  
 
 
-    return render(request,'certificate/certificate_form_entry.html',context=context)
+    
