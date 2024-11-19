@@ -9,7 +9,7 @@ from .models import Transaction
 from student.models import Student,GuardianInfo,SscEquvalent,SubjectChoice
 from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
-
+from certificates.models import Certificate
 
 class Index(TemplateView):
     template_name = "payment/index.html"
@@ -18,6 +18,7 @@ def DonateView(request):
     name = request.POST['name']
     amount = request.POST['amount']
     return redirect(sslcommerz_payment_gateway(request, name, amount))
+
 def PaymentView(request,student,name,amount):
     name = request.POST['name']
     amount = request.POST['amount']
@@ -36,9 +37,11 @@ class CheckoutSuccessView(View):
         
 
         data = self.request.POST
-        print(data)
+        certificate=Certificate.objects.filter(phone=data['value_b'],email=data['value_c']).last()
+
+        print(certificate)
         try:
-            Transaction.objects.create(
+            transaction=Transaction.objects.create(
                 name = data['value_a'],
                 phone=data['value_b'],
                 email=data['value_c'],
@@ -63,6 +66,8 @@ class CheckoutSuccessView(View):
                 risk_level=data['risk_level'],
 
             )
+            print(certificate,transaction)
+            certificate.transaction=transaction
 
             messages.success(request,'Payment Successfull')
             student=Student.objects.filter(phone=data['value_b']).first()
@@ -75,7 +80,7 @@ class CheckoutSuccessView(View):
                 return render(request, 'student/honstestimonial.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
         except:
             messages.success(request,'Something Went Wrong')
-        return JsonResponse({'status': 'success','meaasge':'Payment Successfully'},safe=False)
+        return render(request, 'certificate/success_certificate.html')
 
 
 @method_decorator(csrf_exempt, name='dispatch')

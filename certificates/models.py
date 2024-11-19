@@ -6,8 +6,8 @@ from department.models import Session,Department,Group,Class
 class Certificate(models.Model):
     name=models.CharField(max_length=100)
     name_bangla=models.CharField(max_length=100,blank=True, null=True)
-    email=models.EmailField(max_length=50,unique=True)
-    phone=models.CharField(max_length=11,unique=True)
+    email=models.EmailField(max_length=50,null=True)
+    phone=models.CharField(max_length=11,null=True)
     father_name=models.CharField(max_length=100)
     father_name_bangla=models.CharField(max_length=100,blank=True, null=True)
     mother_name=models.CharField(max_length=100)

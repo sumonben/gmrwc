@@ -11,7 +11,7 @@ urlpatterns = [
     path('choice-certificate/',views.ChoiceCertificate, name='choice-certificate'),
     path('choice-form-entry/',views.CertificateFormEntry, name='choice-form-entry'),
 
-    #path('admission_form/', views.admissionForm, name="admission_form"),
+    path('payfor-certificate/', views.PayforCertificate, name="payfor-certificate"),
     #path('admission_form_submit/', views.admissionFormSubmit, name="admission_form_submit"),
     #path('form-download/', views.formDownload, name='form-download'),
 

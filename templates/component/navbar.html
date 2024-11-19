@@ -126,6 +126,7 @@
                 <!--  -->
                 <!--  -->
             <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
+            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'choice-certificate' %}" target="_blank" title="সনদসমূহ">সনদসমূহ</a></li>                                         
 
             {% else %}
                 {%for navitem in navitems %}
@@ -208,7 +209,9 @@
                     <!--  -->
                     <!--  -->
                     <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
-            {% endif %}                                     
+                    <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'choice-certificate' %}" target="_blank" title="সনদসমূহ">সনদসমূহ</a></li>                                         
+
+                    {% endif %}                                     
                                                                     <!-- 1  -->
 <li class="col1 mzr-drop focusin-drop focusClassDrop"><a href="#" class="submenu sub-menu focus-content" title="সাবমেনুর জন্য ক্লিক করুন" id="accessible-megamenu-1727362910601-2" aria-haspopup="true" aria-owns="accessible-megamenu-1727362910601-3" aria-controls="accessible-megamenu-1727362910601-3" aria-expanded="false">আমাদের সম্পর্কিত</a>
     <div class="mzr drop-two-columns" id="accessible-megamenu-1727362910601-3" role="group" aria-expanded="false" aria-hidden="true" aria-labelledby="accessible-megamenu-1727362910601-2" style="display: block;"><div class="one-col"><h6> মাধ্যমিক ও উচ্চ শিক্ষা অধিদপ্তর</h6><ul class="mzr-links"><li><a href="/site/page/a2ccd7fe-05cd-49ef-9de5-7ef091cabf03/মাউশির-অবস্থান" title="সাবমেনুর জন্য ক্লিক করুন">মাউশির অবস্থান</a>
@@ -253,6 +256,7 @@
 
                     <li class="mzr-drop col6">
                         <a href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a>
+                        
                         <!--<div class="mzr-content sibling-toggle" style="display:none">
                             <div class="one-col">
                                 <h6>অনাপত্তি সনদ প্রদান</h6>
@@ -262,6 +266,8 @@
                         </div>
                         --->
                     </li>
+                    <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'choice-certificate' %}" target="_blank" title="সনদসমূহ">সনদসমূহ</a></li>                                         
+
                 </ul>
             </div>
         </div>

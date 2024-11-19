@@ -5,17 +5,10 @@
     <div class="box_container" style="width: 100%; margin: 0px;">
       <div class="" style="margin: auto;width: 100%;">
           <!-- TITLE 
-          <div class="col-lg-4 offset-lg-1 mx-0 px-0">
-              <div id="title-container">
-                  <img class="covid-image" src="./img/covid-check.png">
-                  <h2>COVID-19</h2>
-                  <h3>Self Checker Form</h3>
-                  <p>A clinical assessment multi-step form that will assist individuals on deciding when to seek testing or medical care if they suspect they or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
-              </div>
-          </div>-->
+          -->
           <!-- FORMS -->
           <div >
-    <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
+    <form class="needs-validation" id="form-wrapper" action="{% url 'payfor-certificate' %}" method="post" name="form-wrapper" novalidate="">
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
@@ -53,118 +46,7 @@
                                   </tbody></table>
                                 </fieldset>
                               </td>
-                              <!--<td align="right">
-                                <fieldset>
-                                <table width="100%" border="1" cellspacing="0" cellpadding="3">
-                                  <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Basic Information(Academic)</th></thead>
-
-                                  <tbody>
-                                    <tr>
-                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                      <td width="10%" align="left" valign="middle" class="black12">{{form.nationality.label}}</td>
-                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label>
-                                          {{form.nationality}}                                        
-                                        </label>
-                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                    <tr>
-                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                      <td width="10%" align="left" valign="middle" class="black12">{{form.birth_registration.label}}</td>
-                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label>
-                                          {{form.birth_registration}}                                        
-                                        </label>
-                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                     
-                                      <tr>
-                                        <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                        <td width="10%" align="left" valign="middle" class="black12">{{form.gender.label}}</td>
-                                        <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                        <td width="25%" align="left" valign="middle"><span id="sprytextfield1">
-                                          <label>
-                                            {{form.gender}}                                        
-                                          </label>
-                                          <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                        
-                                    </tr>
-                                  
-                                  <tr>
-                                      <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                      <td width="10%" align="left" valign="middle" class="black12">{{form.exam_roll.label}}</td>
-                                      <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                      <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                        <label>
-                                          {{form.exam_roll}}                                        
-                                        </label>
-                                        <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                      <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">{{form.registration.label}}</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{form.registration}}                                        
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">{{form.session.label}}</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{form.session}}                                        
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                </tr>
-                                
-                                  <tr>
-                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">{{form.group.label}}</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{form.group}}                                        
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">{{form.marital_status.label}}</td>
-                                    <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                    <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                      <label>
-                                        {{form.marital_status}}                                        
-                                      </label>
-                                      <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                    <td width="5%" align="left" valign="middle">&nbsp;</td>
-                                <tr>
-                                  <td width="10%" align="left" valign="middle">&nbsp;</td>
-                                  <td width="10%" align="left" valign="middle" class="black12">{{form.blood_group.label}}</td>
-                                  <td width="10%" align="left" valign="middle" class="black12">:</td>
-                                  <td width="55%" align="left" valign="middle"><span id="sprytextfield1">
-                                    <label>
-                                      {{form.blood_group}}                                        
-                                    </label>
-                                    <span class="textfieldRequiredMsg">User ID is required!</span></span></td>
-                                  <td width="5%" align="left" valign="middle">&nbsp;</td>
-                              </tr>
                               
-                                                               
-                              </tbody></table>
-                              </fieldset>
-                            </td>-->
                             </tr>
                                 
                             </tbody>
@@ -295,7 +177,7 @@ const progress = (value) => {
    let succcessDiv = document.getElementById('success');
    let downloadDiv = document.getElementById('downlod_form_id');
 
-   form.onsubmit = () => { return false }
+   //form.onsubmit = () => { return false }
 
    let current_step = 0;
    let stepCount = 2;
@@ -504,7 +386,7 @@ const progress = (value) => {
 <script>
     $(document).ready(function () {
             
-            $('#submit-btn').on('click', function () {
+            $('#1submit-btn').on('click', function () {
             
             preloader.classList.add('d-block');
             var frm = $('#form-wrapper')[0];
@@ -520,7 +402,7 @@ const progress = (value) => {
             $.ajax({
                 enctype: 'multipart/form-data',
                 type: 'POST',
-                url: "{% url 'admission_form_submit' %}",  // Adjust the URL as per your project structure
+                url: "{% url 'payfor-certificate' %}",  // Adjust the URL as per your project structure
                 data: form,
                 headers: {
                     'X-CSRFToken': csrfToken
