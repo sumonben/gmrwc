@@ -68,6 +68,7 @@ class CheckoutSuccessView(View):
             )
             print(certificate,transaction)
             certificate.transaction=transaction
+            certificate.save()
 
             messages.success(request,'Payment Successfull')
             student=Student.objects.filter(phone=data['value_b']).first()
