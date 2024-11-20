@@ -12,6 +12,9 @@ urlpatterns = [
     path('choice-form-entry/',views.CertificateFormEntry, name='choice-form-entry'),
 
     path('payfor-certificate/', views.PayforCertificate, name="payfor-certificate"),
+    path('authenticate-certificate/', views.AuthenticateCertificate.as_view(), name="authenticate-certificate"),
+
+
     #path('admission_form_submit/', views.admissionFormSubmit, name="admission_form_submit"),
     #path('form-download/', views.formDownload, name='form-download'),
 

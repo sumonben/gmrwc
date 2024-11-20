@@ -40,11 +40,12 @@ class CertificateForm(forms.ModelForm):
     )
     session=forms.ModelChoiceField(queryset=Session.objects.all(),initial=Session.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
     passing_year= forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
+    department= forms.ModelChoiceField(queryset=Department.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
 
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['student_category','department','adress','is_valid','subjects','transaction']
+        exclude=['student_category','adress','is_valid','subjects','transaction']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',  'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
             'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)",'value':'sumon'}),

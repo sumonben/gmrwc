@@ -1,9 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from student.forms import SscEquvalentForm,SubjectChoiceForm,AdressForm
 from .forms import ChoiceCertificateForm,CertificateForm
 from department.models import Group
+from .models import Certificate
 from payment.sslcommerz import sslcommerz_payment_gateway,sslcommerz_payment_gateway_certificate
-
+from django.views import View
 # Create your views here.
 
 def ChoiceCertificate(request):
@@ -38,5 +40,17 @@ def PayforCertificate(request):
 
 
         return redirect(sslcommerz_payment_gateway_certificate(request,request.POST.get('name'), 100,request.POST.get('phone'),request.POST.get('email'),'certificate'))
+       
 
+class AuthenticateCertificate(View):
+    model = Certificate
+    template_name = 'certificate/authenticate_certificate.html'
     
+    def get(self, request, *args, **kwargs):
+        return render(request,self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        context={}
+        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'))
+        context['certificate']=certificate
+        return render(request,self.template_name,context)

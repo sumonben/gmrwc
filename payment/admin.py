@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import *
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'card_no', 'amount',  'status', 'created_at')
+    list_display = ('name','email','phone', 'card_no', 'amount', 'tran_id','status', 'created_at')
     list_filter = ('status', 'created_at')
     search_fields = ('currency', 'status')
 

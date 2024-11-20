@@ -1,7 +1,11 @@
 from django.db import models
+from django.urls import reverse
 from student.models import StudentCategory,Adress,SubjectChoice
 from payment.models import Transaction
 from department.models import Session,Department,Group,Class
+from django.utils.html import format_html
+from django.template.defaultfilters import escape
+
 # Create your models here.
 class Certificate(models.Model):
     name=models.CharField(max_length=100)
@@ -32,6 +36,17 @@ class Certificate(models.Model):
     
     def __str__(self):
         return self.name +':'+ self.phone
+    def amount_paid(self):
+        tran=self.transaction
+        return  tran.amount
+    def transaction_id(self):
+        tran=self.transaction
+        str=""+format_html('<a href="%s" target="_blank">%s</a> || ' )  % (reverse("admin:payment_transaction_change", args=([tran.id])) , escape(tran.tran_id))
+        return  format_html(str)
+    
+    def paid_at(self):
+        tran=self.transaction
+        return  tran.created_at
     
     def __unicode__(self):
         return self.name_bangla
