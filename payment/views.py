@@ -38,7 +38,7 @@ class CheckoutSuccessView(View):
 
         data = self.request.POST
         certificate=Certificate.objects.filter(phone=data['value_b'],email=data['value_c']).last()
-
+        transaction=None
         print(certificate)
         try:
             transaction=Transaction.objects.create(

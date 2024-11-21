@@ -13,9 +13,7 @@ urlpatterns = [
 
     path('payfor-certificate/', views.PayforCertificate, name="payfor-certificate"),
     path('authenticate-certificate/', views.AuthenticateCertificate.as_view(), name="authenticate-certificate"),
-
-
-    #path('admission_form_submit/', views.admissionFormSubmit, name="admission_form_submit"),
+    path('create-certificate/', views.CreateCertificate, name="acreate-certificate"),
     #path('form-download/', views.formDownload, name='form-download'),
 
     path('jsi18n/', django_views.i18n.JavaScriptCatalog.as_view(), name='jsi18n'),

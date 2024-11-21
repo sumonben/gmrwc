@@ -11,22 +11,29 @@ from django.views import View
 def ChoiceCertificate(request):
     form=ChoiceCertificateForm()
     return render(request,'certificate/choice_certificate.html',{'form':form})
+
 def CertificateFormEntry(request):
     print(request.POST.get('student_category'))
     group=Group.objects.filter(id=request.POST.get('group')).first()
     print(group.title_en)
-    form=CertificateForm()
+    form=CertificateForm(student_category=request.POST.get('student_category'))
     adress_form = AdressForm()
+    student_category=request.POST.get('student_category')
+    choice_certificate=request.POST.get('choice_certificate')
     context={'form':form,'adress_form':adress_form}
+    context['student_category']=student_category
+    context['choice_certificate']=choice_certificate
+    print(student_category,choice_certificate)
     subject_form=SubjectChoiceForm(group=group)
     if request.POST.get('student_category') in '3':
         context['subject_form']=subject_form
+       
         return render(request,'certificate/certificate_form_entry_hsc.html',context=context)
     return render(request,'certificate/certificate_form_entry_all.html',context=context)
   
 def PayforCertificate(request):
     if request.method=="POST":
-        form = CertificateForm(request.POST, request.FILES)
+        form = CertificateForm(request.POST, request.FILES,student_category=1)
         form_adress = AdressForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -54,3 +61,7 @@ class AuthenticateCertificate(View):
         certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'))
         context['certificate']=certificate
         return render(request,self.template_name,context)
+    
+def CreateCertificate(request):
+    
+    pass

@@ -4,48 +4,74 @@
 {% load static %}
 
         {% if certificate %}
-        <table width="100%" border="2px" cellspacing="0" cellpadding="2" align="center">
-            <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Your Certificate </th></thead>
-            <tbody>
+       
       
-            <form method="post" action="{% url 'authenticate-certificate' %}" id="form1" name="form1">
-                {% csrf_token %}
+           
                 {% for cert in certificate %}
-            <tr>
-
-                <td >
-               {{cert.name}}
-                </td>
+         
                 
-                
-                <td>
-                    {{cert.email}}
-
-                </td>
-                <td >
-                    {{cert.phone}}
-
-                </td>
-                
-                </tr>
-                {% endfor %}
-                
+               <fieldset> 
+                <table width="100%" border="2px" cellspacing="0" cellpadding="2" align="center">
+                    <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Your Certificate </th></thead>
+                    <tbody>
+                <form method="post" action="{% url 'create-certificate'%}" id="form1" name="form1">
+                    {% csrf_token %}
                 <tr>
-                
-                <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
-                 Phone:
-                </td>
-                
-                <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
-                    <input type="text" name="phone" class="textfieldUSERinfo" max-length="11">
-
-                </td>
-                <td class="col-md-2"></td>
-                </tr>
-                
-                <tr>
-                
-                <td class=" r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c9" data-pageid="1">
+                    
+                    <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c1" data-pageid="1">
+                   
+                    Email:
+                    </td>
+                    
+                    
+                    <td class="col-md-2">
+                        <input type="text" name="email" value=" {{cert.email}}" class="textfieldUSERinfo">
+                    </td>
+                    </tr>
+                    
+                    <tr>
+                    
+                    <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
+                     Phone:
+                    </td>
+                    
+                    <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
+                        <input type="text" name="phone" value=" {{cert.phone}}" class="textfieldUSERinfo" max-length="11">
+        
+                    </td>
+                    <td class="col-md-2"></td>
+                    </tr>
+                    <tr>
+                    
+                        <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
+                         Transaction:
+                        </td>
+                        
+                        <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
+                            <input type="text" name="phone" value=" {{cert.transaction}}" class="textfieldUSERinfo" max-length="11">
+            
+                        </td>
+                        <td class="col-md-2"></td>
+                        </tr>
+                    <tr>
+                    
+                    <td class=" r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c9" data-pageid="1">
+                    <div edit-form-cell="" class="clearfix">
+                    </div>
+                    </td>
+                    
+                    <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c10" data-pageid="1">
+                    <div edit-form-cell="" class="clearfix">
+                    </div>
+                    </td>
+                    <td class="col-md-2"></td>
+                    </tr>
+                    <tr >
+                        <td colspan="5" align="right">                
+                        <button type="submit"  class="btn btn-primary" >Get certificate</button>
+                    </td></tr>
+              </form>
+              <td class=" r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c9" data-pageid="1">
                 <div edit-form-cell="" class="clearfix">
                 </div>
                 </td>
@@ -56,13 +82,13 @@
                 </td>
                 <td class="col-md-2"></td>
                 </tr>
-                <tr >
-                    <td colspan="5" align="right">                
-                    <button type="submit"  class="btn btn-primary" >Submit</button>
-                </td></tr>
+               
             </tbody>
         </table>
-          </form>
+        
+              <fieldset> 
+              {% endfor %}
+                
           {% else %}
           <fieldset style="margin-bottom: 2%;">
             <table width="50%" border="1" cellspacing="0" cellpadding="2" align="center">
@@ -94,8 +120,7 @@
                     <input type="text" name="phone" class="textfieldUSERinfo" max-length="11">
 
                 </td>
-                <td class="col-md-2"></td>
-                </tr>
+               
                 
                 <tr>
                 
@@ -114,10 +139,11 @@
                     <td colspan="5" align="right">                
                     <button type="submit"  class="btn btn-primary" >Submit</button>
                 </td></tr>
+            </tbody>
+        </table>
+        </fieldset>
           </form>
-        </tbody>
-    </table>
-    </fieldset>
+        
    
           {% endif %}
         
