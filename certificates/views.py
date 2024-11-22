@@ -6,6 +6,7 @@ from department.models import Group
 from .models import Certificate
 from payment.sslcommerz import sslcommerz_payment_gateway,sslcommerz_payment_gateway_certificate
 from django.views import View
+from payment.models import Transaction
 # Create your views here.
 
 def ChoiceCertificate(request):
@@ -63,5 +64,16 @@ class AuthenticateCertificate(View):
         return render(request,self.template_name,context)
     
 def CreateCertificate(request):
-    
-    pass
+    print(request.POST.get('tran_id'))
+
+    if request.method=="POST":
+        transaction=Transaction.objects.filter(tran_id=request.POST.get('tran_id').strip()).first()
+        certificate=Certificate.objects.filter(transaction=transaction).first()
+        print(certificate)
+        if certificate.department:
+            return render(request, 'certificate/others_testimonial.html',{'certificate':certificate})
+        else:
+            return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
+    return render(request, 'certificate/hsc_testimonial.html',)
+
+

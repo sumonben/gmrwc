@@ -14,7 +14,7 @@
                 <table width="100%" border="2px" cellspacing="0" cellpadding="2" align="center">
                     <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Your Certificate </th></thead>
                     <tbody>
-                <form method="post" action="{% url 'create-certificate'%}" id="form1" name="form1">
+                <form method="post" action="{% url 'create-certificate' %}" id="form1" name="form1">
                     {% csrf_token %}
                 <tr>
                     
@@ -44,11 +44,11 @@
                     <tr>
                     
                         <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
-                         Transaction:
+                         Transaction ID(TrxID):
                         </td>
                         
                         <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
-                            <input type="text" name="phone" value=" {{cert.transaction}}" class="textfieldUSERinfo" max-length="11">
+                            <input type="text" name="tran_id" value=" {{cert.transaction.tran_id}}" class="textfieldUSERinfo">
             
                         </td>
                         <td class="col-md-2"></td>

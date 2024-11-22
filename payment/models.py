@@ -29,7 +29,7 @@ class Transaction(models.Model):
 
 
     def __str__(self):
-        return self.name + self.tran_id
+        return self.tran_id
 
         
 class PaymentGateway(models.Model):

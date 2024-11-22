@@ -1,0 +1,282 @@
+<html>
+{%load static%}
+<head>
+    <style type="text/css" media="screen">
+        @font-face {
+          font-family: "kalpurush";
+          src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+                   
+        }
+      </style>
+      
+<style>
+    body{
+        font-family: "kalpurush";
+        font-weight: normal;
+        font-style:normal;
+            
+          
+    }
+    .row{
+        margin-left:15%;
+    }
+  button#print, button#next-btn, button#submit-btn {
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #DC3545;
+  margin-left: 50%;
+  margin-top: 20px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+button#print:after, button#next-btn:after, button#submit-btn:after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05812a;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+  .top-right {
+      width: 50%;
+  position: absolute;
+  top: 30%;
+  left: 80%;
+}
+.top-middle {
+    width: 50%;
+position: absolute;
+top: 15%;
+text-align:center;
+left:10%;
+
+}
+.top-left {
+  width: 53%;
+  position: absolute;
+  top: 30%;
+  left:7%;
+}
+table, th, td {
+  border: none;
+  
+}
+u {    
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
+}
+@media print and (min-width: 480px) {
+    @font-face {
+        font-family: "kalpurushregular";
+        src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+          }
+    body{
+        font-family: "kalpurushregular";
+            
+          
+    }
+    .top-right {
+        width: 50%;
+    position: absolute;
+    top: 26%;
+    left: 80%;
+  }
+    .top-middle {
+        width: 50%;
+    position: absolute;
+    top: 8%;
+    text-align:center;
+    left:21%;
+    
+    }
+    .bottom-right {
+        width: 50%;
+        position: absolute;
+        top: 70%;
+        left:60%;
+      }
+    .top-left {
+        width: 75%;
+        position: absolute;
+        top: 30%;
+        left:10%;
+      }
+    #x {
+      color: red !important;;
+    }
+    #heading {
+        color: #000080 !important;;
+      }
+    #submit-btn {
+      display: none !important;;
+    }
+    .graph-image img{
+        display:inline;
+        position:fixed;
+        align-items: center;
+    }
+  }
+ 
+</style>
+
+</head>
+<body >
+<div class="container home-page" id="column"  style="height: 1000px;">
+    <button id="submit-btn" class="btn-default" onclick="window.print()" >Download or Print</button>
+
+    <div id="container_id" class="container">
+
+        <img height="900" width="900" src="{% static 'images/testimony_bangla.jpg' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin:auto; margin-top: 0%;">
+        <div  class="top-middle">
+
+            <h3  style="line-height: 1;">
+                <img height="40" width="40" src="{% static 'images/logo.png' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin:auto; margin-top: 0%;">
+                <br>
+                <b><u>অধ্যক্ষের কার্যালয়</u></b>
+            </h3>
+            <h1 id="x" style="line-height: 1;">
+                <table>
+                    <tr>
+                        <td><img height="60" width="60" src="{% static 'images/gmrwc_logo.png' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin:auto; margin-top: 0%;">
+                            </td>
+                        <td><b><h2 id="heading" style="margin-top:5px; font-size:25px;">সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া</b></h2></td>
+                    </tr>
+                </table>
+                
+            </h1>
+            <h1 id="x" style="line-height: 1.5;">
+                <b><u>প্রশংসা পত্র</u></b>
+            </h1>
+
+
+        </div>
+        <div  class="top-middle">
+            
+        </div>
+        <div id="serial" class="top-right">
+          ক্রমিক নং &nbsp;<u>{{certificate.id}}</u>
+        </div>
+        <div  class="top-left">
+          <p  ><h4  style="line-height: 1.5; font-weight:normal"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{certificate.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} । সে এই কলেজের ছাত্রী হিসেবে জাতীয় বিশ্ববিদ্যালয়ের অধীন <i id="para1"><b><u>{{certificate.passing_year}}</u></b></i> সালে অনুষ্ঠিত অনার্স/মাস্টার্স শেষপর্ব পরীক্ষায় &nbsp;&nbsp;<i><b><u>{{certificate.department.name}}</u></b></i> &nbsp;&nbsp; বিভাগ হতে অংশগ্রহণ করে উত্তীর্ণ হয়েছে।
+            তার শিক্ষাবর্ষ     <i id="para2"><b><u>{{certificate.session}}</u></b></i>
+            রেজিস্ট্রেশন নং- <i id="para3"><b><u>{{certificate.registration}}</u></b></i> রোল নং- <i id="para4"><b><u>{{certificate.exam_roll}}</u></b></i>             এবং প্রাপ্ত শ্রেণি/সিজিপিএ     <i id="para5"><b><u>{{certificate.cgpa}}</u></b></i>। 
+            <br>আমার জানামতে তার স্বভাব চরিত্র ভালো এবং অত্র কলেজে অধ্যয়নকালীন সে আইনশৃংখলা পরিপন্থী ও কোনরূপ রাস্ট্রবিরোধী কাজে লিপ্ত ছিলো না।
+            আমি তার জীবনের সর্বাত্মক উন্নতি ও সাফল্য কামনা করি। 
+          </h4>
+            
+                  
+        <h4 id="date" style="margin-left: 10px; margin-top:35%"><br>ইস্যু তারিখঃ {% now "d-m-Y" %}</h4>
+        <div  class="bottom-right">
+            <h4 style="line-height: .5; font-weight:normal;text-align:center">অধ্যক্ষ</h4>
+            <h4 style="line-height: .5; font-weight:normal;text-align:center">সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া</h4>
+            <h4 style="line-height: .5; font-weight:normal;text-align:center">ফোনঃ ০৫১-৬৫৩৭৭৫</h4>
+
+
+
+        </div>
+          </p>
+          </div>
+      </div>
+        
+        </div>
+    </div>
+    <div class="graph-image graph-7">
+    </div>
+      <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" style="opacity: 0.1; left: 0; right: 0; position: absolute; margin-left: 22%; margin-right: 11%; margin-top: -70%;">
+      
+      
+      </div>
+  </div>
+
+</div>
+<div id="google_translate_element"></div>
+
+    
+            
+  
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        window.onload = (event) => {
+
+        var numbers = {
+            0: '০',
+            1: '১',
+            2: '২',
+            3: '৩',
+            4: '৪',
+            5: '৫',
+            6: '৬',
+            7: '৭',
+            8: '৮',
+            9: '৯'
+        };
+        var output = '';
+        function replaceNumbers(input) {
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+              if (numbers.hasOwnProperty(input[i])) {
+                output.push(numbers[input[i]]);
+              } else {
+                output.push(input[i]);
+              }
+            }
+            return output.join('');
+          }
+        input =document.getElementById("serial").textContent.toString();
+        document.getElementById('serial').textContent = replaceNumbers(input);
+        input =document.getElementById("para1").textContent.toString();
+        document.getElementById('para1').textContent = replaceNumbers(input);
+        input =document.getElementById("para2").textContent.toString();
+        document.getElementById('para2').textContent = replaceNumbers(input);
+        input =document.getElementById("para3").textContent.toString();
+        document.getElementById('para3').textContent = replaceNumbers(input);
+        input =document.getElementById("para4").textContent.toString();
+        document.getElementById('para4').textContent = replaceNumbers(input);
+        input =document.getElementById("para5").textContent.toString();
+        document.getElementById('para5').textContent = replaceNumbers(input);
+        input =document.getElementById("date").textContent.toString();
+        document.getElementById('date').textContent = replaceNumbers(input);
+        
+        }
+
+        function goToPrint(){
+            document.getElementById("submit-btn").style.display="none";
+            document.getElementById("google_translate_element").style.display="none";
+
+            
+            window.print();
+            document.getElementById("submit-btn").style.display="block";
+
+        }
+    </script>
+    
+</body>
+</html>

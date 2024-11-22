@@ -1,0 +1,160 @@
+{% extends 'basepage/govtlayout.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  button#print, button#next-btn, button#submit-btn {
+  font-size: 17px;
+  font-weight: bold;
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background: #DC3545;
+  margin-left: 50%;
+  margin-top: 20px;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  transition: color .3s;
+  text-align: center;
+  color: #fff;
+  border: 0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+button#print:after, button#next-btn:after, button#submit-btn:after {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #05812a;
+  content: "";
+  z-index: -2;
+  transition: transform .3s;
+}
+button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover::after {
+  transform: translateY(-80%);
+  transition: transform .3s;
+}
+  .top-right {
+      width: 50%;
+  position: absolute;
+  top: 24%;
+  left: 83%;
+}
+    .top-left {
+      width: 73%;
+  position: absolute;
+  top: 32%;
+  left: 20%;
+}
+table, th, td {
+  border: none;
+  
+}
+u {    
+    border-bottom: 1px dotted #000;
+    text-decoration: none;
+}
+</style>
+<div class="container home-page" id="column"  style="height: 1000px;">
+  <button id="submit-btn" class="btn-default" onclick="goToPrint()" >Download or Print</button>
+
+    <div class="row"  >
+        <div class="col" >
+            <div class="top-left">Bottom Left 
+
+    </div>
+    <div class="container">
+
+        <img height="800px" src="{% static 'images/testimonial.jpg' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin-left: 11%; margin-right: 11%; margin-top: 0%;">
+        <div class="top-right">
+          8767
+        </div>
+        <div class="top-left">
+          <p><h4 style="line-height: 1.5;">This is certified that <i><b><u>{{student.name}}</u></b></i> dougther of {{student.guardian_info.father_name_en}} and {{student.guardian_info.mother_name_en}} was a student of {{student.group}} of HSC class of this college during the session {{student.sesstion}}. She passed the HSC Examination of {{student.passing_year}} bearing Roll no. {{student.exam_roll}} and Registration no. {{student.exam_roll}}  under Rajshahi Education Board and secured <i><b><u> CGPA 5 </u></b></i> in the scale of 5.00 </h4>
+          <h4 style="line-height: 1.5;">
+            So far I know ,She bears a good moral character and she never took part in any activity supervise of the state or of decipline of th college during the period of her study here.I wish her evry success in life.
+          </h4>
+            <table width="100%" border="0" align="center">
+              <thead>
+                    <th colspan="4" ><h5><b>Subject She Studied:</b></h5>
+                    </th>
+      
+              </thead>
+              <tbody>
+                <h5>
+
+                <tr>
+                    {% for subject in subject_choice.compulsory_subject.all|slice:"0:2" %}
+    
+    
+                    <td  > {{subject.name_en}} </td>
+    
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for subject in subject_choice.compulsory_subject.all|slice:"2:4" %}
+    
+    
+                    <td  > {{subject.name_en}} </td>
+    
+                    {% endfor %}
+                </tr>
+                
+                <tr>
+                    {% for subject in subject_choice.compulsory_subject.all|slice:"4:" %}
+    
+    
+                    <td  > {{subject.name_en}} </td>
+    
+                    {% endfor %}
+                    {% if subject_choice.optional_subject %}
+                    {% for subject in subject_choice.optional_subject.all %}
+    
+    
+                    <td  > {{subject.name_en}} </td>
+    
+                    {% endfor %}
+                    {% endif %}
+                </tr>
+                <tr>
+    
+    
+                    <td> {{subject_choice.fourth_subject.name_en}}   (4<sup>th</sup>&nbsp;Subject)</td>
+    
+                </tr>
+                
+              </h5>
+
+                
+                
+            </tbody>
+        </table>
+                  
+        <h4 style="margin-left: 100px;"><br>{% now "d-m-Y" %}</h4>
+        <h4 style="margin-left: 100px;">This Copy is <br>computer Generated</h4>
+
+          </p>
+          </div>
+      </div>
+        
+        </div>
+    </div>
+
+</div>
+    <script>
+        function goToPrint(){
+            document.getElementById("submit-btn").style.display="none";
+            window.print();
+            document.getElementById("submit-btn").style.display="block";
+
+        }
+    </script>
+    
+{% endblock %}
