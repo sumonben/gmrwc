@@ -26,7 +26,7 @@ CHOICE_CERTIFICATE=[
 
 class ChoiceCertificateForm(forms.ModelForm):
     student_category= forms.ModelChoiceField(queryset=StudentCategory.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
-    choice_certificate= forms.ChoiceField(choices=CHOICE_CERTIFICATE,widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
+    certificate_type= forms.ChoiceField(choices=CHOICE_CERTIFICATE,widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
     group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
 
     class Meta:
@@ -40,13 +40,20 @@ class CertificateForm(forms.ModelForm):
     )
     def __init__(self,*args,**kwargs):
         category = kwargs.pop('student_category')
-        super(CertificateForm,self).__init__(*args,**kwargs) 
-        if category=="3" or '4':
+        type = kwargs.pop('certificate_type')
+
+        super(CertificateForm,self).__init__(*args,**kwargs)
+        self.fields['student_category']=forms.ModelChoiceField(queryset=StudentCategory.objects.all(),initial=StudentCategory.objects.filter(id=category).first(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
+        self.fields['certificate_type']=forms.ChoiceField(choices=CHOICE_CERTIFICATE,initial=type,widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
+
+        if category=="3" or category=="4":
                 self.fields['session']=forms.ModelChoiceField(queryset=Session.objects.all(),initial=Session.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
-                self.fields['group']=forms.ModelChoiceField(queryset=Group.objects.all(),initial=Group.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
                 self.fields['passing_year']= forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
                 self.fields['department']=forms.ModelChoiceField(queryset=Department.objects.all(),initial=Department.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','style' : 'display:none',}))
-
+                if category=="3":
+                    self.fields['group']=forms.ModelChoiceField(queryset=Group.objects.filter(Q(id=1)|Q(id=2)|Q(id=3)),initial=Group.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
+                else:
+                    self.fields['group']=forms.ModelChoiceField(queryset=Group.objects.filter(Q(id=4)|Q(id=5)|Q(id=6)|Q(id=7)|Q(id=8)|Q(id=9)),initial=Group.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
         else:
                 self.fields['session']=forms.ModelChoiceField(queryset=Session.objects.all(),initial=Session.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
                 self.fields['passing_year']= forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
@@ -56,7 +63,7 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['student_category','adress','is_valid','subjects','transaction']
+        exclude=['adress','is_valid','subjects','transaction']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',  'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
             'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)",'value':'sumon'}),

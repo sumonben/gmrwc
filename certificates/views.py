@@ -17,14 +17,16 @@ def CertificateFormEntry(request):
     print(request.POST.get('student_category'))
     group=Group.objects.filter(id=request.POST.get('group')).first()
     print(group.title_en)
-    form=CertificateForm(student_category=request.POST.get('student_category'))
+    form=CertificateForm(student_category=request.POST.get('student_category'),certificate_type=request.POST.get('certificate_type'))
     adress_form = AdressForm()
     student_category=request.POST.get('student_category')
-    choice_certificate=request.POST.get('choice_certificate')
+    print(student_category)
+
+    certificate_type=request.POST.get('certificate_type')
     context={'form':form,'adress_form':adress_form}
     context['student_category']=student_category
-    context['choice_certificate']=choice_certificate
-    print(student_category,choice_certificate)
+    context['choice_certificate']=certificate_type
+    print(student_category,certificate_type)
     subject_form=SubjectChoiceForm(group=group)
     if request.POST.get('student_category') in '3':
         context['subject_form']=subject_form
@@ -34,7 +36,7 @@ def CertificateFormEntry(request):
   
 def PayforCertificate(request):
     if request.method=="POST":
-        form = CertificateForm(request.POST, request.FILES,student_category=1)
+        form = CertificateForm(request.POST, request.FILES,student_category=request.POST.get('student_category'),certificate_type=request.POST.get('certificate_type'))
         form_adress = AdressForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -70,8 +72,17 @@ def CreateCertificate(request):
         transaction=Transaction.objects.filter(tran_id=request.POST.get('tran_id').strip()).first()
         certificate=Certificate.objects.filter(transaction=transaction).first()
         print(certificate)
-        if certificate.department:
-            return render(request, 'certificate/others_testimonial.html',{'certificate':certificate})
+        if certificate.certificate_type=='1':
+            if certificate.student_category=='3':
+                return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
+            else:
+                return render(request, 'certificate/others_testimonial.html',{'certificate':certificate})
+        elif certificate.certificate_type=='2':
+            return render(request, 'certificate/character_certificate.html',{'certificate':certificate})
+        elif certificate.certificate_type=='3':
+            return render(request, 'certificate/leave_certificate.html',{'certificate':certificate})
+        elif certificate.certificate_type=='4':
+            return render(request, 'certificate/present_student_certificate.html',{'certificate':certificate})
         else:
             return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
     return render(request, 'certificate/hsc_testimonial.html',)

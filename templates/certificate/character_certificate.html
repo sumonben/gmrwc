@@ -97,16 +97,17 @@ left: 70%;
 #heading {
     color: #000080 !important;;
   }
-#graph-image{
-  opacity: 0.1; 
-  left: 0; 
-  right: 0; 
-  position: absolute;
-   margin-left: 30%; 
-   margin-right: 11%; 
-   margin-top: -40%;
-}
 
+#graph-image{
+    opacity: 0.1; 
+    left: 0; 
+    right: 0; 
+    position: absolute;
+     margin-left: 30%; 
+     margin-right: 11%; 
+     margin-top: -40%;
+}
+  
 #google_translate_element{
   diplay:none;
 }
@@ -178,7 +179,6 @@ u {
     margin-right: 11%; 
     margin-top: -70%;
   }
-  
   #google_translate_element{
     diplay:none;
 }
@@ -193,7 +193,7 @@ u {
 
     <div id="container_id" class="container">
 
-        <img  id="bg_image" src="{% static 'images/testimony_bangla.jpg' %}" alt="">
+        <img  id="bg_image" src="{% static 'images/character_certificate.jpeg' %}" alt="">
         <div  class="top-middle">
 
             <h3  style="line-height: 1.5;">
@@ -224,7 +224,7 @@ u {
                 
             </h1>
             <h1 id="x" style="line-height: 1.5;">
-                <b><u>প্রশংসা পত্র</u></b>
+                <b><u>চরিত্রগত সনদ</u></b>
             </h1>
 
 
@@ -234,13 +234,13 @@ u {
           ক্রমিক নং &nbsp;<u>{{certificate.id}}</u>
         </div>
         <div  class="top-left">
-            <p  ><h4  style="line-height: 1.5; font-weight:normal"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{certificate.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} । সে এই কলেজের ছাত্রী হিসেবে জাতীয় বিশ্ববিদ্যালয়ের অধীন <i id="para1"><b><u>{{certificate.passing_year}}</u></b></i> সালে অনুষ্ঠিত {% if certificate.student_category.id is 1 %} {{certificate.student_category}} ফাইনাল{%elif certificate.student_category.id is 2 %}{{certificate.student_category}}শেষপর্ব {% else %} {{certificate.student_category}} ( {{certificate.group.title}} ){% endif %} পরীক্ষায় &nbsp;&nbsp; {% if certificate.student_category.id is 1 or certificate.student_category.id is 2 %}<i><b><u>{{certificate.department.name}}</u></b></i> &nbsp;&nbsp; বিভাগ হতে {% endif %} অংশগ্রহণ করে উত্তীর্ণ হয়েছে।
+            <p  ><h4  style="line-height: 1.5; font-weight:575"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{certificate.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} <br>গ্রাম/মহল্লাঃ {{certificate.adress.village_or_house}}, ডাকঘরঃ {{certificate.adress.post_office}}, উপজেলাঃ {{certificate.adress.upazilla.name}}, জেলাঃ   {{certificate.adress.district.name}} । <br>সে এই কলেজের ছাত্রী হিসেবে {% if certificate.student_category.id is 3 %} মাধ্যমিক ও উচ্চমাধ্যমিক শিক্ষা বোর্ড, রাজশাহী-এর {% else %}জাতীয় বিশ্ববিদ্যালয়ের {% endif %} অধীন <i id="para1"><b><u>{{certificate.passing_year}}</u></b></i> সালে অনুষ্ঠিত {% if certificate.student_category.id is 1 %} {{certificate.student_category}} ফাইনাল{%elif certificate.student_category.id is 2 %}{{certificate.student_category}}শেষপর্ব {% else %} {{certificate.student_category}} ( {{certificate.group.title}} ){% endif %} পরীক্ষায় {% if certificate.student_category.id is 1 or certificate.student_category.id is 2 %}<i><b><u>{{certificate.department.name}}</u></b></i> &nbsp;&nbsp; বিভাগ হতে {% endif %}অংশগ্রহণ করে উত্তীর্ণ হয়েছে।
                 তার শিক্ষাবর্ষ     <i id="para2"><b><u>{{certificate.session}}</u></b></i>
                 রেজিস্ট্রেশন নং- <i id="para3"><b><u>{{certificate.registration}}</u></b></i> রোল নং- <i id="para4"><b><u>{{certificate.exam_roll}}</u></b></i>             এবং প্রাপ্ত শ্রেণি/সিজিপিএ     <i id="para5"><b><u>{{certificate.cgpa}}</u></b></i>। 
                 <br>আমার জানামতে তার স্বভাব চরিত্র ভালো এবং অত্র কলেজে অধ্যয়নকালীন সে আইনশৃংখলা পরিপন্থী ও কোনরূপ রাস্ট্রবিরোধী কাজে লিপ্ত ছিলো না।
                 <br>আমি তার জীবনের সর্বাত্মক উন্নতি ও সাফল্য কামনা করি। 
               </h4>
-                  
+                
                   
         <h4 id="date" style="margin-left: 10px; margin-top:35%"><br>ইস্যু তারিখঃ {% now "d-m-Y" %}</h4>
         <div  class="bottom-right">
@@ -259,7 +259,7 @@ u {
     </div>
     <div class="graph-image graph-7">
     </div>
-      <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="" >
+      <img id="graph-image" height="500px" src="{% static 'images/gmrwc_logo.png' %}" alt="">
       
       
       </div>
@@ -326,8 +326,6 @@ u {
     
 </body>
 </html>
-
-
 
 
 

@@ -32,6 +32,7 @@ class Certificate(models.Model):
     gender=models.CharField(max_length=15,null=True, blank=True,)
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL)
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL)
+    certificate_type=models.CharField(max_length=15,null=True, blank=True,)
     is_valid=models.BooleanField(default=False)
     
     def __str__(self):

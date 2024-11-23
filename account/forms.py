@@ -34,7 +34,6 @@ class StudentForm(forms.ModelForm):
             'registration': forms.TextInput(attrs={'class': 'form-control', 'placeholder':  'রেজিস্ট্রেশন নম্বর(যদি থাকে)'}),
             'session': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;','onchange' : "myFunction(this.id);"}),
             'date_of_birth': forms.DateInput(format=('%d-%m-%Y'),attrs={'class': 'form-control', 'placeholder': 'Select a date','type': 'date'}),
-            'passing_year': forms.Select(choices=year_choices,attrs={'class': 'form-control', 'style': 'width: 100%;'}),
             'student_category': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;','onchange' : "myFunction(this.id);"}),
             'group': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%; margin-bottom:3px;'}),
             'department': forms.Select(attrs={'class': 'form-control', 'style': 'width: 100%;'}),
