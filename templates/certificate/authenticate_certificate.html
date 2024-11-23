@@ -14,7 +14,7 @@
                 <table width="100%" border="2px" cellspacing="0" cellpadding="2" align="center">
                     <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Your Certificate </th></thead>
                     <tbody>
-                <form method="post" action="{% url 'create-certificate' %}" id="form1" name="form1">
+                <form method="post" action="{% url 'create-certificate' %}" id="form1" name="form1" target="_blank">
                     {% csrf_token %}
                 <tr>
                     
@@ -68,7 +68,7 @@
                     </tr>
                     <tr >
                         <td colspan="5" align="right">                
-                        <button type="submit"  class="btn btn-primary" >Get certificate</button>
+                        <button type="submit" id="submit-btn" >Get certificate</button>
                     </td></tr>
               </form>
               <td class=" r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c9" data-pageid="1">
@@ -137,7 +137,7 @@
                 </tr>
                 <tr >
                     <td colspan="5" align="right">                
-                    <button type="submit"  class="btn btn-primary" >Submit</button>
+                    <button type="submit" id="submit-btn"  >Submit</button>
                 </td></tr>
             </tbody>
         </table>

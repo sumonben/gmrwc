@@ -30,7 +30,6 @@ def CertificateFormEntry(request):
     subject_form=SubjectChoiceForm(group=group)
     if request.POST.get('student_category') in '3':
         context['subject_form']=subject_form
-       
         return render(request,'certificate/certificate_form_entry_hsc.html',context=context)
     return render(request,'certificate/certificate_form_entry_all.html',context=context)
   
@@ -38,12 +37,22 @@ def PayforCertificate(request):
     if request.method=="POST":
         form = CertificateForm(request.POST, request.FILES,student_category=request.POST.get('student_category'),certificate_type=request.POST.get('certificate_type'))
         form_adress = AdressForm(request.POST, request.FILES)
+        subject=None
+        if request.POST.get('student_category') is '3':
+            group=Group.objects.filter(id=request.POST.get('group')).first()
+            print(group)
+            form_subjects = SubjectChoiceForm(request.POST,group=group)
+            if form_subjects.is_valid():
+                subject=form_subjects.save()
+
 
         if form.is_valid():
             certificate=form.save(commit=False)
+            certificate.subjects=subject
             if form_adress.is_valid():
-                adress=form_adress.save()
-                certificate.adress=adress
+                if form_adress.is_valid():
+                    adress=form_adress.save()
+                    certificate.adress=adress
             print(form_adress.errors)
             certificate.save()
         print(form.errors)
@@ -73,7 +82,7 @@ def CreateCertificate(request):
         certificate=Certificate.objects.filter(transaction=transaction).first()
         print(certificate)
         if certificate.certificate_type=='1':
-            if certificate.student_category=='3':
+            if certificate.student_category.id==3:
                 return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
             else:
                 return render(request, 'certificate/others_testimonial.html',{'certificate':certificate})

@@ -49,7 +49,7 @@ class CertificateForm(forms.ModelForm):
         if category=="3" or category=="4":
                 self.fields['session']=forms.ModelChoiceField(queryset=Session.objects.all(),initial=Session.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
                 self.fields['passing_year']= forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
-                self.fields['department']=forms.ModelChoiceField(queryset=Department.objects.all(),initial=Department.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','style' : 'display:none',}))
+                self.fields['department']=forms.ModelChoiceField(queryset=Department.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','style' : 'display:none',}),required=False)
                 if category=="3":
                     self.fields['group']=forms.ModelChoiceField(queryset=Group.objects.filter(Q(id=1)|Q(id=2)|Q(id=3)),initial=Group.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
                 else:
@@ -58,7 +58,7 @@ class CertificateForm(forms.ModelForm):
                 self.fields['session']=forms.ModelChoiceField(queryset=Session.objects.all(),initial=Session.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
                 self.fields['passing_year']= forms.ChoiceField(choices=year_choices,widget=forms.Select(attrs={'class':'textfieldUSERinfo'}))
                 self.fields['department']=forms.ModelChoiceField(queryset=Department.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
-                self.fields['group']=forms.ModelChoiceField(queryset=Group.objects.all(),initial=Group.objects.last(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','style' : 'display:none',}))
+                self.fields['group']=forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','style' : 'display:none',}),required=False)
           
     class Meta:
         model = Certificate

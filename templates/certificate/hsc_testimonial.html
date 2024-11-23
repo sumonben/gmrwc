@@ -51,7 +51,7 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
       width: 73%;
   position: absolute;
   top: 32%;
-  left: 20%;
+  left: 15%;
 }
 table, th, td {
   border: none;
@@ -72,12 +72,12 @@ u {
     </div>
     <div class="container">
 
-        <img height="800px" src="{% static 'images/testimonial.jpg' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin-left: 11%; margin-right: 11%; margin-top: 0%;">
+        <img height="800" src="{% static 'images/testimonial.jpg' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin-left: 6%; margin-right: 11%; margin-top: 0%;">
         <div class="top-right">
-          8767
+            {{certificate.id}}
         </div>
         <div class="top-left">
-          <p><h4 style="line-height: 1.5;">This is certified that <i><b><u>{{student.name}}</u></b></i> dougther of {{student.guardian_info.father_name_en}} and {{student.guardian_info.mother_name_en}} was a student of {{student.group}} of HSC class of this college during the session {{student.sesstion}}. She passed the HSC Examination of {{student.passing_year}} bearing Roll no. {{student.exam_roll}} and Registration no. {{student.exam_roll}}  under Rajshahi Education Board and secured <i><b><u> CGPA 5 </u></b></i> in the scale of 5.00 </h4>
+          <p><h4 style="line-height: 1.5;">This is certified that <i><b><u>{{certificate.name}}</u></b></i> dougther of {{certificate.father_name}} and {{certificate.mother_name}} was a student of {{certificate.group}} of HSC class of this college during the session {{certificate.sesstion}}. She passed the HSC Examination of {{certificate.passing_year}} bearing Roll no. {{certificate.exam_roll}} and Registration no. {{certificate.registration}}  under Rajshahi Education Board and secured <i><b><u> CGPA {{certificate.cgpa}} </u></b></i> in the scale of 5.00 </h4>
           <h4 style="line-height: 1.5;">
             So far I know ,She bears a good moral character and she never took part in any activity supervise of the state or of decipline of th college during the period of her study here.I wish her evry success in life.
           </h4>
@@ -91,7 +91,7 @@ u {
                 <h5>
 
                 <tr>
-                    {% for subject in subject_choice.compulsory_subject.all|slice:"0:2" %}
+                    {% for subject in certificate.subjects.compulsory_subject.all|slice:"0:2" %}
     
     
                     <td  > {{subject.name_en}} </td>
@@ -99,7 +99,7 @@ u {
                     {% endfor %}
                 </tr>
                 <tr>
-                    {% for subject in subject_choice.compulsory_subject.all|slice:"2:4" %}
+                    {% for subject in certificate.subjects.compulsory_subject.all|slice:"2:4" %}
     
     
                     <td  > {{subject.name_en}} </td>
@@ -108,14 +108,14 @@ u {
                 </tr>
                 
                 <tr>
-                    {% for subject in subject_choice.compulsory_subject.all|slice:"4:" %}
+                    {% for subject in certificate.subjects.compulsory_subject.all|slice:"4:" %}
     
     
                     <td  > {{subject.name_en}} </td>
     
                     {% endfor %}
-                    {% if subject_choice.optional_subject %}
-                    {% for subject in subject_choice.optional_subject.all %}
+                    {% if certificate.subjects.optional_subject %}
+                    {% for subject in certificate.subjects.optional_subject.all %}
     
     
                     <td  > {{subject.name_en}} </td>
@@ -126,7 +126,7 @@ u {
                 <tr>
     
     
-                    <td> {{subject_choice.fourth_subject.name_en}}   (4<sup>th</sup>&nbsp;Subject)</td>
+                    <td> {{certificate.subjects.fourth_subject.name_en}}   (4<sup>th</sup>&nbsp;Subject)</td>
     
                 </tr>
                 
@@ -137,7 +137,7 @@ u {
             </tbody>
         </table>
                   
-        <h4 style="margin-left: 100px;"><br>{% now "d-m-Y" %}</h4>
+        <h4 style="margin-left: 100px; "><br>{% now "d-m-Y" %}</h4>
         <h4 style="margin-left: 100px;">This Copy is <br>computer Generated</h4>
 
           </p>

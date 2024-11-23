@@ -203,7 +203,7 @@ fieldset {
 .bdr01-A {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color: #323A89;
+	color: #067a7a;
 	text-decoration: none;
 	border-top-width: 1px;
 	border-right-width: 1px;
@@ -356,7 +356,14 @@ fieldset {
 .GrayBlue20bold {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 22px;
-	color: #024D75;
+	color: #f1f6f8;
+	text-decoration: none;
+	font-weight: bold;
+}
+.offWhite20bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 22px;
+	color: #fcfdfd;
 	text-decoration: none;
 	font-weight: bold;
 }

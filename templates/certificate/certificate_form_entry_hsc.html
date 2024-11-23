@@ -15,7 +15,7 @@
           </div>-->
           <!-- FORMS -->
           <div >
-    <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
+    <form class="needs-validation" id="form-wrapper" action="{% url 'payfor-certificate' %}" method="post" name="form-wrapper" novalidate="">
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
@@ -253,7 +253,10 @@ const progress = (value) => {
 
    let addChoiceBtn=document.getElementsByName('id_fourth_subject');
    
-   form.onsubmit = () => { return false }
+   form.onsubmit = () => {
+    document.getElementById('id_compulsory_subject_to').disabled='';
+ 
+    return true; }
 
    let current_step = 0;
    let stepCount = 3;
@@ -505,7 +508,7 @@ addChoiceBtn.addEventListener('change', () => {
 <script>
     $(document).ready(function () {
             
-            $('#submit-btn').on('click', function () {
+            $('#1submit-btn').on('click', function () {
               var subjectCount=0;
               var compulsory_options;
               var options;

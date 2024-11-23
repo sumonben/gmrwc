@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'teacher',
     'student',
     'admission',
+    'certificates',
     'payment',
     'rangefilter',
     'django_admin_listfilter_dropdown',
@@ -119,8 +120,23 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+CKEDITOR_UPLOAD_PATH = "media/uploads/"
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 
+# CKEditor Settings
+ 
 CKEDITOR_CONFIGS = {
+    'default':
+        {
+            'toolbar': 'full',
+            'width': 'auto',
+            'extraPlugins': ','.join([
+                'codesnippet',
+            ]),
+        },
+}
+'''CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 200,
@@ -144,10 +160,8 @@ CKEDITOR_CONFIGS = {
         'height': 100,
     },
 }
+'''
 
-CKEDITOR_UPLOAD_PATH = "/home/gmrwcedubd/test.gmrwc.edu.bd/uploads/"
-CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
-CKEDITOR_IMAGE_BACKEND = 'pillow'
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -163,9 +177,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS= [STATIC_DIR, ]
-STATIC_ROOT='/home/gmrwcedubd/test.gmrwc.edu.bd/static'
+STATIC_ROOT='/home/gmrwcedubd/test.gmrwc.edu.bd/static/'
 #MEDIA_ROOT =  BASE_DIR / 'media' 
 MEDIA_ROOT = "/home/gmrwcedubd/www.media.gmrwc.edu.bd/media/"
 MEDIA_URL = "https://www.media.gmrwc.edu.bd/media/"# Default primary key field type

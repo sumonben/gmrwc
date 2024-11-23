@@ -1777,7 +1777,32 @@ table.table.table-bordered, tr, td, th {
                 border-radius: 50%;
               }
             } */
-            
+            .scroll-top.active {
+                bottom: 30px;
+            }
+            .scroll-top {
+                position: fixed;
+            bottom: 107%;
+            right: 36px;
+            width: 52px;
+            height: 52px;
+            line-height: 48px;
+            font-size: 17px;
+            text-align: center;
+            color: #fff;
+            background: #007f3d;
+            border: 2px solid #007f3d;
+            border-radius: 7px;
+            box-shadow: 0 0 10px 0 rgba(79, 169, 160, .8);
+            z-index: 999;
+            -webkit-transition: all .7s linear;
+            transition: all .7s linear;
+        }
+        a, a:visited {
+            color: #333;
+            text-decoration: none;
+            outline: 0;
+        }
             </style>
 
 
@@ -1791,7 +1816,8 @@ table.table.table-bordered, tr, td, th {
 
     {%endblock%}
     
-    
+    <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
   
     <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>

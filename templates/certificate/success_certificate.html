@@ -6,16 +6,17 @@
       <div class="" style="margin: auto;width: 100%;">
          
           <div >
-    <form class="needs-validation" id="form-wrapper" action="{% url 'payfor-certificate' %}" method="post" name="form-wrapper" novalidate="">
+    <form class="needs-validation" id="form-wrapper" action="{% url 'authenticate-certificate' %}" method="post" name="form-wrapper" novalidate="">
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
                          
                             <div class="mt-5">
                              
-                                <h4>Success! Your payment for certificate is done!</h4>
-                                <h5>After Fact Checking you will able to download your certificate  </h5>
-                                <h4>To download certificate you need your phone number and trnasaction ID which is sent to your mobile </h4>
+                                <h4>1.Success! Your payment for certificate is done!</h4>
+                                <h4>2.To download certificate you need your phone number and trnasaction ID which are sent to your mobile </h4>
+                                <h5>3.After Fact Checking you will able to download your certificate  </h5>
+
                             </div>
                           
                         </div>
@@ -28,7 +29,7 @@
                   </div>
                       <div id="q-box__buttons" >
                         
-                        <button id="submit-btn" type="submit" class="d-none">Submit</button>
+                        <button id="submit-btn" type="submit" class="d-none">Certificate Download</button>
                     </div>   
               </div>
               

@@ -35,6 +35,7 @@ class SscEquvalentAdmin(ExportActionMixin,admin.ModelAdmin):
     list_filter=['id', 'ssc_or_equvalent','ssc_board']
 @admin.register(SubjectChoice)
 class SubjectChoiceAdmin(ExportActionMixin,admin.ModelAdmin):
+        list_display=['id',]
         filter_horizontal = ['compulsory_subject','optional_subject']
 
 @admin.register(Adress)
