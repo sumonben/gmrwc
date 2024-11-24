@@ -10,17 +10,17 @@
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
-                         
-                            <div class="mt-5">
-                             
-                                <h4>1.Success! Your payment for certificate is done!</h4>
-                                <h4>2.To download certificate you need your phone number and trnasaction ID which are sent to your mobile </h4>
-                                <h5>3.After Fact Checking you will able to download your certificate  </h5>
-
-                            </div>
+                        <div id="success">
+                          <div class="mt-5">
+                           
+                            <h4>1.Success! Your payment for certificate is done!</h4>
+                            <h4>2.To download certificate you need your phone number and trnasaction ID which are sent to your mobile </h4>
+                            <h5>3.After Fact Checking you will able to download your certificate  </h5>
+                          </div>
+                      </div>
+                            
                           
-                        </div>
-
+                        
                      
                           
               
@@ -62,13 +62,10 @@
   
                       
                  
-    <div id="toast-container" class="toast-top-center" aria-level="polite" role="alert">
-      <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
-          <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div></div>
-  </div>
+   
 
 
-  <script>
+  
           
           
             
@@ -76,97 +73,37 @@
 
 
 
-const progress = (value) => {
-   document.getElementsByClassName('progress-bar')[0].style.width = `${value}%`;
-}
 
-   let preloader = document.getElementById('preloader-wrapper');
+
+   
+<script>
+  let preloader = document.getElementById('preloader-wrapper');
    let bodyElement = document.querySelector('body');
    let succcessDiv = document.getElementById('success');
    let submitBtn = document.getElementById('submit-btn');
-   let downloadDiv = document.getElementById('downlod_form_id');
-   submitBtn.classList.remove('d-none');
-   submitBtn.classList.add('d-inline-block');
-   //form.onsubmit = () => { return false }
+   preloader.classList.add('d-block');
+   //////////////////////////////////////////////////////////////////
+   const timer = ms => new Promise(res => setTimeout(res, ms));
+       
+   timer(3000)
+     .then(() => {
+          bodyElement.classList.add('loaded');
+     }).then(() =>{
 
-   
-/*submitBtn.addEventListener('click', () => {
-    //preloader.classList.add('d-block');
-
-     ///////////////////Submit student form Ajax code///////////////////
-
-     var frm = $('#form-wrapper')[0];
-     var form= new FormData(frm);
-
-     var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
-
-     // Get the data from the form
-    
-
-     // Send AJAX request
-     $.ajax({
-         enctype: 'multipart/form-data',
-         type: 'POST',
-         url: "{% url 'admission_form_submit' %}",  // Adjust the URL as per your project structure
-         data: form1,
-         headers: {
-             'X-CSRFToken': csrfToken
-         },
-         
-         cache:false,
-         processData:false,
-         contentType:false,
         
-         success: function (response) {
-             
-             //document.getElementById("student_form").reset();
-             if (response.status === 'success') {
-                 // Clear the form
-                
-                alert(response.status);
-
-
-             } else {
-              alert("Success message not found");
-                     
-                 }
-                 
-         },
-         error: function (xhr, status, error) {
-            
-             var err = eval("(" + xhr.responseText + ")");
-             alert(err.Message);
-         }
+         
+         succcessDiv.classList.remove('d-none');
+         succcessDiv.classList.add('d-block');
+         submitBtn.classList.remove('d-none');
+         submitBtn.classList.add('d-inline-block');
+         
      });
-
-
-    //////////////////////////////////////////////////////////////////
-    const timer = ms => new Promise(res => setTimeout(res, ms));
-
-    timer(3000)
-      .then(() => {
-           bodyElement.classList.add('loaded');
-      }).then(() =>{
-          step[stepCount].classList.remove('d-block');
-          step[stepCount].classList.add('d-none');
-          prevBtn.classList.remove('d-inline-block');
-          prevBtn.classList.add('d-none');
-          submitBtn.classList.remove('d-inline-block');
-          submitBtn.classList.add('d-none');
-          succcessDiv.classList.remove('d-none');
-          succcessDiv.classList.add('d-block');
-      })
-      
-});*/
-
-
-
-
-</script>
-<script>
     $(document).ready(function () {
-            
-            
+      var succcessDiv;
+      var preloader;
+      succcessDiv = document.getElementById('success');
+      preloader = document.getElementById('preloader-wrapper');
+            alert("jkhuih");
             preloader.classList.add('d-block');
             
            //////////////////////////////////////////////////////////////////
@@ -177,12 +114,8 @@ const progress = (value) => {
                   bodyElement.classList.add('loaded');
              }).then(() =>{
 
-                 step[stepCount].classList.remove('d-block');
-                 step[stepCount].classList.add('d-none');
-                 prevBtn.classList.remove('d-inline-block');
-                 prevBtn.classList.add('d-none');
-                 submitBtn.classList.remove('d-inline-block');
-                 submitBtn.classList.add('d-none');
+                
+                 
                  succcessDiv.classList.remove('d-none');
                  succcessDiv.classList.add('d-block');
                  $('#download_form_id').attr('class','d-block')
