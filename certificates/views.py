@@ -70,7 +70,7 @@ class AuthenticateCertificate(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'))
+        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'), is_valid=True)
         context['certificate']=certificate
         return render(request,self.template_name,context)
     

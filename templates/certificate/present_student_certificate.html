@@ -199,7 +199,7 @@ u {
         <img  id="bg_image" src="{% static 'images/present_student.jpeg' %}" alt="">
         <div  class="top-middle">
 
-            <h3  style="line-height: 1.5;">
+            <h3  style="font-family: kalpurush;line-height: 1.5;">
                 <img height="40" width="40" src="{% static 'images/logo.png' %}" alt="">
                 <br>
                 <b>অধ্যক্ষের কার্যালয়</b>
@@ -210,14 +210,14 @@ u {
                 <tr>
                     <td><img height="60" width="60" src="{% static 'images/gmrwc_logo.png' %}" alt="">
                     </td>
-                    <td><b><h2 id="heading" style="margin-top:5px; font-size:25px;line-height: .5;">সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া</b>
+                    <td><b><h2 id="heading" style="font-family: kalpurush;margin-top:5px; font-size:25px;line-height: .5;">সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া</b>
                             </h2>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <h5 style="text-align:center;font-weight:normal;line-height: .5;">স্থাপিতঃ ১৯৬৯ </h5>
-                        <h5 style="text-align:center;font-weight:normal;line-height: .5;">wwww.gmrwc.edu.bd</h5>
+                        <h4 style="font-family: kalpurush;text-align:center;font-weight:normal;line-height: 1.2;">স্থাপিতঃ ১৯৬৩
+                        <br>wwww.gmrwc.edu.bd</h4>
                     </td>
                 </tr>
 
@@ -226,29 +226,29 @@ u {
                 </table>
                 
             </h1>
-            <h1 id="x" style="line-height: 1.5;">
+            <h1 id="x" style="font-family: kalpurush;line-height: 1.5;">
                 <b><u>অধ্যয়নরত প্রত্যয়নপত্র</u></b>
             </h1>
 
 
         </div>
         
-        <div id="serial" class="top-right">
-          ক্রমিক নং &nbsp;<u>{{certificate.id}}</u>
+        <div id="serial" class="top-right" style="font-family: kalpurush;">
+          ক্রমিক নং- &nbsp;<u>{{certificate.id}}</u>
         </div>
         <div  class="top-left">
-            <p  ><h4  style="line-height: 1.5; font-weight:normal"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{certificate.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} । সে এই কলেজের  {% if certificate.student_category.id is 3 or certificate.student_category.id is 4  %} {{certificate.student_category}} ({{certificate.group.title }}) শ্রেণিতে  {% else %} {{certificate.department.name}} বিভাগে ( {{certificate.class_year.title}} ){% endif %} অধ্যয়নরত।  <br> তার শিক্ষাবর্ষ     <i id="para1"><b><u>{{certificate.session}}</u></b></i>
+            <p  ><h4  style="font-family: kalpurush;line-height: 1.7; font-weight:normal"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{certificate.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} । সে এই কলেজের  {% if certificate.student_category.id is 3 or certificate.student_category.id is 4  %} {{certificate.student_category}} ({{certificate.group.title }}) শ্রেণিতে  {% else %} {{certificate.department.name}} বিভাগে ( {{certificate.class_year.title}} ){% endif %} অধ্যয়নরত।  <br> তার শিক্ষাবর্ষ     <i id="para1"><b><u>{{certificate.session}}</u></b></i>
                 ক্লাস রোলঃ <i id="para2"><b><u>{{certificate.class_roll}}</u></b></i> রেজিস্ট্রেশন নং- <i id="para3"><b><u>{{certificate.registration}}</u></b></i> রোল নং- <i id="para4"><b><u>{{certificate.exam_roll}}</u></b></i><i id="para5"><b><u></u></b></i>। 
-                <br>আমার জানামতে তার স্বভাব চরিত্র ভালো এবং অত্র কলেজে অধ্যয়নকালীন সে আইনশৃংখলা পরিপন্থী ও কোনরূপ রাস্ট্রবিরোধী কাজে লিপ্ত ছিলো না।
+                <br>আমার জানামতে তার স্বভাব চরিত্র ভালো এবং অত্র কলেজে অধ্যয়নকালীন সে আইনশৃংখলা পরিপন্থী ও কোনরূপ রাস্ট্রবিরোধী কাজে লিপ্ত ছিল না।
                 <br>আমি তার জীবনের সর্বাত্মক উন্নতি ও সাফল্য কামনা করি। 
               </h4>
                 
                   
-        <h4 id="date" style="margin-left: 10px; margin-top:35%"><br>ইস্যু তারিখঃ {% now "d-m-Y" %}</h4>
+        <h4 id="date" style="font-family: kalpurush;margin-left: 10px; margin-top:35%"><br>ইস্যু তারিখঃ {% now "d-m-Y" %}</h4>
         <div  class="bottom-right">
-            <h4 style="line-height: .5; font-weight:normal;text-align:center">অধ্যক্ষ</h4>
-            <h4 style="line-height: .5; font-weight:normal;text-align:center">সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া</h4>
-            <h4 style="line-height: .5; font-weight:normal;text-align:center">ফোনঃ ০৫১-৬৫৩৭৭৫</h4>
+            <h4 style="font-family: kalpurush;line-height: .5; font-weight:normal;text-align:center">অধ্যক্ষ</h4>
+            <h4 style="font-family: kalpurush;line-height: .5; font-weight:normal;text-align:center">সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া</h4>
+            <h4 style="font-family: kalpurush;line-height: .5; font-weight:normal;text-align:center">ফোনঃ ০৫১-৬৫৩৭৭৫</h4>
 
 
 
