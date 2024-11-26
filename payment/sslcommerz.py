@@ -25,9 +25,9 @@ def sslcommerz_payment_gateway(request, name, amount,student):
     body['total_amount'] = amount
     body['currency'] = "BDT"
     body['tran_id'] = generator_trangection_id()
-    body['success_url'] = 'http://localhost:8000/payment/success/'
-    body['fail_url'] = 'http://localhost:8000/payment/payment/faild/'
-    body['cancel_url'] = 'http://localhost:8000/payment'
+    body['success_url'] = 'https://test.gmrwc.edu.bd/payment/success/'
+    body['fail_url'] = 'https://test.gmrwc.edu.bd/payment/payment/faild/'
+    body['cancel_url'] = 'https://test.gmrwc.edu.bd/payment'
     body['emi_option'] = 0
     body['cus_name'] = name
     body['cus_email'] = 'request.data["email"]'

@@ -59,58 +59,64 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
   transition: transform .3s;
 }
 #bg_image{
-    margin-left:11%;
-    margin-right:11%;
-    width:1000px;
-    height:1100;
-  }
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:1000px;
+  height:1100;
+}
 .top-right {
-    width: 10%;
+  width: 10%;
 position: absolute;
 top: 60%;
-left: 70%;
+left: 65%;
 }
 .top-middle {
-    width: 50%;
-    position: absolute;
-    top: 30%;
-    text-align:center;
-    left:21%;
-    
-    }
+  width: 50%;
+  position: absolute;
+  top: 30%;
+  margin-left: 25%;
+  margin-right: 25%;
   
-.bottom-right {
-    width: 50%;
-    position: absolute;
-    top: 70%;
-    left:53%;
   }
-.top-left {
-    width: 55%;
-    position: absolute;
-    top: 80%;
-    left:21%;
 
-  }
+.bottom-right {
+  width: 100%;
+  position: absolute;
+  top: 80%;
+  text-align:right;
+  margin-left:25%;
+ 
+}
+.top-left {
+  width: 50%;
+  position: absolute;
+  top: 80%;
+  margin-left: 25%;
+  margin-right: 25%;
+ 
+}
 #x {
-  color: red !important;;
+color: red !important;
+text-align:center;
+margin-left: 25%;
+margin-right: 25%;
 }
 #heading {
-    color: #000080 !important;;
-  }
-
-#graph-image{
-    opacity: 0.1; 
-    left: 0; 
-    right: 0; 
-    position: absolute;
-     margin-left: 30%; 
-     margin-right: 11%; 
-     margin-top: -40%;
+  color: #000080 !important;;
 }
-  
+#graph-image{
+opacity: 0.1; 
+left: 0; 
+right: 0; 
+position: absolute;
+ margin-left: 30%; 
+ margin-right: 11%; 
+ margin-top: -40%;
+}
+
 #google_translate_element{
-  diplay:none;
+diplay:none;
 }
 table, th, td {
 border: none;
@@ -118,75 +124,81 @@ border: none;
 
 }
 u {    
-  border-bottom: 1px dotted #000;
-  text-decoration: none;
+border-bottom: 1px dotted #000;
+text-decoration: none;
 }
 @media print and (min-width: 480px) {
-  @font-face {
-      font-family: "kalpurushregular";
-      src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
-        }
-  body{
-      font-family: "kalpurushregular";
-          
+@font-face {
+    font-family: "kalpurushregular";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+      }
+body{
+    font-family: "kalpurushregular";
         
-  }
-  
-  #bg_image{
-    margin:auto;
-    width:900;
-    height:1000;
-  }
-  .top-right {
-      width: 50%;
-  position: absolute;
-  top: 26%;
-  left: 76%;
+      
 }
-  .top-middle {
-  width: 60%;
-  position: absolute;
-  top: 8%;
-  text-align:center;
-  left:21%;
-  
-  }
-  .bottom-right {
-      width: 50%;
-      position: absolute;
-      top: 70%;
-      left:53%;
-    }
-  .top-left {
-      width: 70%;
-      position: absolute;
-      top: 34%;
-      left:14%;
+#bg_image{
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  width:900;
+  height:1000;
+}
+.top-right {
+    width: 50%;
+position: absolute;
+top: 26%;
+left: 76%;
+}
+.top-middle {
+width: 75%;
+position: absolute;
+top:7%;
+margin-left: 12%;
+margin-right: 12%;
 
-    }
-  #x {
-    color: red !important;;
+}
+
+.bottom-right {
+    width: 100%;
+    position: absolute;
+    top: 80%;
+    text-align:right;
   }
-  #heading {
-      color: #000080 !important;;
-    }
-  #submit-btn {
-    display: none !important;;
+.top-left {
+    width: 75%;
+    position: absolute;
+    top: 34%;
+    margin-left: 12%;
+    margin-right: 12%;
   }
-  #graph-image{
-    opacity: 0.1; 
-    left: 0; 
-    right: 0; 
-    position: absolute; 
-    margin-left: 22%; 
-    margin-right: 11%; 
-    margin-top: -70%;
+#x {
+  color: red !important;
+  text-align:center;
+  margin-left: 15%;
+  margin-right:15%;
+}
+#heading {
+    color: #000080 !important;;
   }
-  #google_translate_element{
-    diplay:none;
+#submit-btn {
+  display: none !important;;
+}
+#graph-image{
+  opacity: 0.1; 
+  left: 0; 
+  right: 0; 
+  position: absolute; 
+  margin-left: 22%; 
+  margin-right: 11%; 
+  margin-top: -70%;
+}
+
+#google_translate_element{
+  diplay:none;
 }
 }
- 
+
 </style>
 
 </head>
@@ -199,7 +211,7 @@ u {
         <img  id="bg_image" src="{% static 'images/present_student.jpeg' %}" alt="">
         <div  class="top-middle">
 
-            <h3  style="font-family: kalpurush;line-height: 1.5;">
+            <h3  style="font-family: kalpurush;line-height: 1.5;text-align:center;">
                 <img height="40" width="40" src="{% static 'images/logo.png' %}" alt="">
                 <br>
                 <b>অধ্যক্ষের কার্যালয়</b>
