@@ -1,6 +1,16 @@
 from django.db import models
-
 # Create your models here.
+class PaymentPurpose(models.Model):
+    serial=models.IntegerField(default=10)
+    title=models.CharField(max_length=200, blank=True, null=True)
+    title_en=models.CharField(max_length=200, blank=True, null=True)
+    class Meta:
+        ordering = ['serial']
+        verbose_name = "Payment Purpose"
+        verbose_name_plural = "Payment Purpose"
+    def __str__(self):
+        return str(self.id)+". "+self.title +':'+ self.title_en
+
 
 class Transaction(models.Model):
     name = models.CharField(max_length=150)
@@ -8,6 +18,7 @@ class Transaction(models.Model):
     email=models.EmailField(max_length=50,blank=True,null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     tran_id = models.CharField(max_length=15,unique=True)
+    tran_purpose=models.ForeignKey(PaymentPurpose,blank=True,null=True,on_delete=models.SET_NULL)
     val_id = models.CharField(max_length=75)
     card_type = models.CharField(max_length=150)
     store_amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -40,4 +51,4 @@ class PaymentGateway(models.Model):
     class Meta:
         verbose_name = "Payment Gateway"
         verbose_name_plural = "Payment Gateway"
-        
+

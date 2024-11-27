@@ -3,7 +3,7 @@ import random
 from django.conf import settings
 from sslcommerz_lib import SSLCOMMERZ
 from .models import PaymentGateway
-
+from certificates.models import Certificate
 
 
 def generator_trangection_id( size=6, chars=string.ascii_uppercase + string.digits):
@@ -65,7 +65,7 @@ def sslcommerz_payment_gateway_certificate(request, name, amount,phone,email,cer
     body['currency'] = "BDT"
     body['tran_id'] = generator_trangection_id()
     body['success_url'] = 'http://localhost:8000/payment/success/'
-    body['fail_url'] = 'http://localhost:8000/payment/payment/faild/'
+    body['fail_url'] = 'http://localhost:8000/payment/failed/'
     body['cancel_url'] = 'http://localhost:8000/payment'
     body['emi_option'] = 0
     body['cus_name'] = name
@@ -84,10 +84,13 @@ def sslcommerz_payment_gateway_certificate(request, name, amount,phone,email,cer
     body['value_b'] = phone
     body['value_c'] = email
     body['value_d'] = certificate_type
-
+    
+    certificate=Certificate.objects.filter(phone=phone).last()
     
 
 
     response = sslcommez.createSession(body)
-    #print(response)   
+    certificate.session_key=response["sessionkey"]
+    certificate.save()
+    print(response["sessionkey"])   
     return 'https://sandbox.sslcommerz.com/gwprocess/v4/gw.php?Q=pay&SESSIONKEY=' + response["sessionkey"]

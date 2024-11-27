@@ -201,7 +201,7 @@
           </div>-->
           <!-- FORMS -->
           <div >
-    <form class="needs-validation" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
+    <form class="needs-validation" action="{% url 'admission_form_submit' %}" id="form-wrapper" method="post" name="form-wrapper" novalidate="">
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
@@ -579,7 +579,7 @@
 
                 <form id="form_download_id" method="post" action="{% url 'form-download' %}" target="_blank" >
                   {% csrf_token %}
-                <input type="hidden" value="" id="student_id" name="student_id">
+                <input type="hidden" value="{{student}}" id="student_id" name="student_id">
                 <div id="q-box__buttons" >
 
                   <button type="submit" id="btn_admission_form" style="width:300px;">Download Admission form</button>
@@ -952,7 +952,7 @@ addChoiceBtn.addEventListener('change', () => {
               var options;
               compulsory_options=document.getElementById('id_compulsory_subject_to').getElementsByTagName('option');
               subjectCount=compulsory_options.length;
-              document.getElementById('id_compulsory_subject_to').disabled='disabled';
+              document.getElementById('id_compulsory_subject_to').disabled='';
               try{
               options=document.getElementById('id_optional_subject_to').getElementsByTagName('option');
               var selected_4rth = document.getElementById('id_fourth_subject');
@@ -975,18 +975,19 @@ addChoiceBtn.addEventListener('change', () => {
               }catch(err){
 
               }
-            preloader.classList.add('d-block');
+            //preloader.classList.add('d-block');
             var frm = $('#form-wrapper')[0];
             var form= new FormData(frm);
-       
-            var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+            var form1=document.getElementById('form-wrapper');
+            form1.submit();
+          /*  var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
             //alert("hi");
 
             // Get the data from the form
            
        
             // Send AJAX request
-            $.ajax({
+     $.ajax({
                 enctype: 'multipart/form-data',
                 type: 'POST',
                 url: "{% url 'admission_form_submit' %}",  // Adjust the URL as per your project structure
@@ -1041,7 +1042,7 @@ addChoiceBtn.addEventListener('change', () => {
                  succcessDiv.classList.add('d-block');
                  $('#download_form_id').attr('class','d-block')
                  
-             })
+             }) */
             
             });
 ////////////////////Submit for admission form download/////////////////////

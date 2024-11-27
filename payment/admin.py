@@ -9,7 +9,10 @@ class TransactionAdmin(admin.ModelAdmin):
     list_filter = ('status', 'created_at')
     search_fields = ('currency', 'status')
 
-
-
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(PaymentGateway)
+
+@admin.register(PaymentPurpose)
+class UserAdmin(admin.ModelAdmin):
+    list_display=[  'id','serial','title','title_en']
+    filter_fields=[  'id','title',]

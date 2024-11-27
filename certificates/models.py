@@ -5,7 +5,7 @@ from payment.models import Transaction
 from department.models import Session,Department,Group,Class
 from django.utils.html import format_html
 from django.template.defaultfilters import escape
-
+from account.models import UserModel
 # Create your models here.
 class Certificate(models.Model):
     name=models.CharField(max_length=100)
@@ -33,6 +33,8 @@ class Certificate(models.Model):
     adress=models.ForeignKey(Adress,null=True, blank=True,on_delete=models.SET_NULL)
     transaction=models.ForeignKey(Transaction,blank=True,null=True,on_delete=models.SET_NULL)
     certificate_type=models.CharField(max_length=15,null=True, blank=True,)
+    session_key=models.CharField(max_length=100,null=True, blank=True,)
+    user=models.ForeignKey(UserModel,blank=True,null=True,on_delete=models.SET_NULL)
     is_valid=models.BooleanField(default=False)
     
     def __str__(self):

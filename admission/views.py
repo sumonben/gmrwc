@@ -3,6 +3,8 @@ from django.shortcuts import render,redirect
 from student.forms import StudentForm,AdressForm,PresentAdressForm,SscEquvalentForm,SubjectChoiceForm,GuardianForm
 from student.models import Group,StudentAdmission,Student,Session,SubjectChoice,SscEquvalent
 from django.contrib.auth import get_user_model
+from sslcommerz_lib import SSLCOMMERZ
+from payment import sslcommerz 
 
 UserModel=get_user_model()
 board={
@@ -58,7 +60,9 @@ def admissionFormSubmit(request):
 
     data = {}
     #student=StudentAdmission.objects.filter(ssc_roll=request.POST.get('password'),board=board[str[-3:]],status='Not Admitted').first()
-
+    flag1=0
+    flag2=0
+    flag3=0
     if request.method=='POST':
         group=None
 
@@ -179,14 +183,45 @@ def admissionFormSubmit(request):
 
         print(subject_form.errors)
 
+        cradentials = {'store_id': 'israb672a4e32dfea5',
+            'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
+            
+        sslcommez = SSLCOMMERZ(cradentials)
+        body = {}
+        body['student'] = request.POST.get('name')
+        body['total_amount'] = 3500
+        body['currency'] = "BDT"
+        body['tran_id'] = sslcommerz.generator_trangection_id()
+        body['success_url'] = 'http://localhost:8000/payment/success/'
+        body['fail_url'] = 'http://localhost:8000/payment/failed/'
+        body['cancel_url'] = 'http://localhost:8000/payment'
+        body['emi_option'] = 0
+        body['cus_name'] = request.POST.get('name')
+        body['cus_email'] = 'request.data["email"]'
+        body['cus_phone'] = request.POST.get('phone')
+        body['cus_add1'] = 'request.data["address"]'
+        body['cus_city'] = 'request.data["address"]'
+        body['cus_country'] = 'Bangladesh'
+        body['shipping_method'] = "NO"
+        body['multi_card_name'] = ""
+        body['num_of_item'] = 1
+        body['product_name'] = "Test"
+        body['product_category'] = "Test Category"
+        body['product_profile'] = "general"
+        body['value_a'] = request.POST.get('name')
+        body['value_b'] = request.POST.get('phone')
+        body['value_c'] = request.POST.get('email')
+        body['value_d'] = 2           
+        response = sslcommez.createSession(body)
+        print(response["sessionkey"])   
 
 
-        
-    return JsonResponse({'status': 'success','meaasge':'Account created Successfully','student':student_form.phone,},safe=False)
+      
+        return redirect('https://sandbox.sslcommerz.com/gwprocess/v4/gw.php?Q=pay&SESSIONKEY=' + response["sessionkey"])
 
 def formDownload(request):
         phone=request.POST.get('student_id')
-        print(phone)
+        print("sumon",phone)
 
         student=Student.objects.filter(phone=phone).first()
         print(student)

@@ -5,11 +5,17 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
-from .models import Transaction
+from .models import Transaction,PaymentPurpose
 from student.models import Student,GuardianInfo,SscEquvalent,SubjectChoice
 from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
 from certificates.models import Certificate
+from student.models import Student
+
+cradentials = {'store_id': 'israb672a4e32dfea5',
+            'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
+            
+sslcommez = SSLCOMMERZ(cradentials)
 
 class Index(TemplateView):
     template_name = "payment/index.html"
@@ -35,17 +41,19 @@ class CheckoutSuccessView(View):
 
     def post(self, request, *args, **kwargs):
         
-
+        context={}
         data = self.request.POST
-        certificate=Certificate.objects.filter(phone=data['value_b'],email=data['value_c']).last()
+        tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
+        context['tran_purpose']=tran_purpose
+        print(data)
         transaction=None
-        print(certificate)
         try:
             transaction=Transaction.objects.create(
                 name = data['value_a'],
                 phone=data['value_b'],
                 email=data['value_c'],
                 tran_id=data['tran_id'],
+                tran_purpose=tran_purpose,
                 val_id=data['val_id'],
                 amount=data['amount'],
                 card_type=data['card_type'],
@@ -66,31 +74,45 @@ class CheckoutSuccessView(View):
                 risk_level=data['risk_level'],
 
             )
-            print(certificate,transaction)
-            certificate.transaction=transaction
-            certificate.save()
+            print("data['value_d']:",data['value_d'])
+            if data['value_d'] == '1':
+                certificate=Certificate.objects.filter(phone=data['value_b'],email=data['value_c']).last()
+                print(certificate,transaction)
+                certificate.transaction=transaction
+                certificate.save()
+                print("Certificate:",1)
+                context['purpose']=1
 
-            messages.success(request,'Payment Successfull')
-            student=Student.objects.filter(phone=data['value_b']).first()
-            ssc_equivalent=SscEquvalent.objects.filter(student=student).first()
-            subject_choice=SubjectChoice.objects.filter(student=student).first()
-            print( student.department.name_en )
-            if student.department.name_en is None:
-                return render(request, 'student/testimony.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
-            else:
-                return render(request, 'student/honstestimonial.html',{'student':student,'ssc_equivalent':ssc_equivalent,'subject_choice':subject_choice})
+            if data['value_d'] == '2':
+                student=Student.objects.filter(phone=data['value_b']).first()
+                print(student)
+                context['purpose']=2
+                context['student']=student.phone
+            messages.success(request,'Payment Successful!!')
+            
         except:
             messages.success(request,'Something Went Wrong')
-        return render(request, 'certificate/success_certificate.html')
+            context['messages']=messages
+        return render(request, 'certificate/success_certificate.html',context)
+
+
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class CheckoutFaildView(View):
     template_name = 'payment/failed.html'
-
-
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
+        certificate=Certificate.objects.filter(transaction=None)
+        print(request.POST)
+        
+        for cert in certificate:
+            response = sslcommez.transaction_query_session(cert.session_key)
+            print(response['status'])
+            print(response)
+
+            if response['status'] in 'FAILED' or response['status'] in 'PENDING':
+                cert.delete()
         return render(request, self.template_name)

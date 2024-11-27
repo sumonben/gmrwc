@@ -6,27 +6,20 @@
       <div class="" style="margin: auto;width: 100%;">
          
           <div >
+    {% if purpose == '1' %}
     <form class="needs-validation" id="form-wrapper" action="{% url 'authenticate-certificate' %}" method="post" name="form-wrapper" novalidate="">
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
                         <div id="success">
                           <div class="mt-5">
-                           
+                             <h1>{{purpose}} </h1>
                             <h4>1.Success! Your payment for certificate is done!</h4>
                             <h4>2.To download certificate you need your phone number and trnasaction ID which are sent to your mobile </h4>
                             <h5>3.After Fact Checking you will able to download your certificate  </h5>
                           </div>
                       </div>
-                            
-                          
-                        
-                     
-                          
-              
-                          
-                      
-                  </div>
+                    </div>
                       <div id="q-box__buttons" >
                         
                         <button id="submit-btn" type="submit" class="d-none">Certificate Download</button>
@@ -34,6 +27,31 @@
               </div>
               
             </form>
+            {% else %}
+            <form id="form_download_id" method="post" action="{% url 'form-download' %}" target="_blank" >
+              {% csrf_token %}
+            <input type="hidden" value="{{student}}" id="student_id" name="student_id">
+            <div id="qbox-container">
+              <div id="steps-container">
+                <div id="success">
+                  <div class="mt-5">
+                     <h1>{{purpose}}{{student}} </h1>
+                    <h4>1.Success! Your payment for Admission is done!</h4>
+                    <h4>2.To download certificate you need your phone number and trnasaction ID which are sent to your mobile </h4>
+                    <h5>3.After Fact Checking you will able to download your certificate  </h5>
+                  </div>
+              </div>
+            </div>
+
+            <div id="q-box__buttons" >
+
+              <button type="submit" id="btn_admission_form" style="width:300px;">Download Admission form</button>
+              </div>
+            </div>
+            </form>
+              <a style="margin-top: 20px; margin-bottom: 20px; margin-left: 10%;" class="back-link" href="{% url 'choice-certificate'%}">Go back from the beginning ➜</a>
+          
+            {% endif %}
 
             <div id="download_form_id">
               <div class="mt-5">
@@ -103,7 +121,6 @@
       var preloader;
       succcessDiv = document.getElementById('success');
       preloader = document.getElementById('preloader-wrapper');
-            alert("jkhuih");
             preloader.classList.add('d-block');
             
            //////////////////////////////////////////////////////////////////

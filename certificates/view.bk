@@ -15,11 +15,6 @@ from payment.models import PaymentGateway
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from payment import sslcommerz 
-from django.db import IntegrityError, transaction
-from django.db.models import Q,Count
-from account.models import UserModel
-from django.contrib.auth import login,authenticate,logout
-
 # Create your views here.
 
 def ChoiceCertificate(request):
@@ -45,7 +40,6 @@ def CertificateFormEntry(request):
         context['subject_form']=subject_form
         return render(request,'certificate/certificate_form_entry_hsc.html',context=context)
     return render(request,'certificate/certificate_form_entry_all.html',context=context)
-
 
 def PayforCertificate(request):
     if request.method=="POST":
@@ -74,7 +68,7 @@ def PayforCertificate(request):
             sslcommez = SSLCOMMERZ(cradentials)
             body = {}
             body['student'] = request.POST.get('name')
-            body['total_amount'] = 101.5
+            body['total_amount'] = 0
             body['currency'] = "BDT"
             body['tran_id'] = sslcommerz.generator_trangection_id()
             body['success_url'] = 'http://localhost:8000/payment/success/'
@@ -82,7 +76,7 @@ def PayforCertificate(request):
             body['cancel_url'] = 'http://localhost:8000/payment'
             body['emi_option'] = 0
             body['cus_name'] = request.POST.get('name')
-            body['cus_email'] = request.POST.get('email')
+            body['cus_email'] = 'request.data["email"]'
             body['cus_phone'] = request.POST.get('phone')
             body['cus_add1'] = 'request.data["address"]'
             body['cus_city'] = 'request.data["address"]'
@@ -100,9 +94,7 @@ def PayforCertificate(request):
 
             response = sslcommez.createSession(body)
             certificate.session_key=response["sessionkey"]
-
             certificate.save()
-            
             print(response["sessionkey"])   
             return redirect('https://sandbox.sslcommerz.com/gwprocess/v4/gw.php?Q=pay&SESSIONKEY=' + response["sessionkey"])
 
@@ -121,7 +113,7 @@ class AuthenticateCertificate(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'),transaction__isnull=False, is_valid=True)
+        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'), is_valid=True)
         context['certificate']=certificate
         return render(request,self.template_name,context)
     
@@ -130,22 +122,21 @@ def CreateCertificate(request):
 
     if request.method=="POST":
         transaction=Transaction.objects.filter(tran_id=request.POST.get('tran_id').strip()).first()
-        print(transaction)
-        if transaction:
-            certificate=Certificate.objects.filter(phone=request.POST.get('phone').strip(),transaction=transaction).first()
-            if certificate.certificate_type=='1':
-                if certificate.student_category.id==3:
-                    return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
-                else:
-                    return render(request, 'certificate/others_testimonial.html',{'certificate':certificate})
-            elif certificate.certificate_type=='2':
-                return render(request, 'certificate/character_certificate.html',{'certificate':certificate})
-            elif certificate.certificate_type=='3':
-                return render(request, 'certificate/leave_certificate.html',{'certificate':certificate})
-            elif certificate.certificate_type=='4':
-                return render(request, 'certificate/present_student_certificate.html',{'certificate':certificate})
-            else:
+        certificate=Certificate.objects.filter(transaction=transaction).first()
+        print(certificate)
+        if certificate.certificate_type=='1':
+            if certificate.student_category.id==3:
                 return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
+            else:
+                return render(request, 'certificate/others_testimonial.html',{'certificate':certificate})
+        elif certificate.certificate_type=='2':
+            return render(request, 'certificate/character_certificate.html',{'certificate':certificate})
+        elif certificate.certificate_type=='3':
+            return render(request, 'certificate/leave_certificate.html',{'certificate':certificate})
+        elif certificate.certificate_type=='4':
+            return render(request, 'certificate/present_student_certificate.html',{'certificate':certificate})
+        else:
+            return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
     return render(request, 'certificate/hsc_testimonial.html',)
 
 
