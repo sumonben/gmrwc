@@ -115,17 +115,35 @@
                 <td class="apply-online">
                     <a href="http://www.bogra.gov.bd/bn/site/view/revenue_model_job"
                         title="চাকুরি কর্নার">
-                        <span>চাকুরি কর্নার
-                            <sup>(8)</sup>
+                        {% if request.session.lang == 'english' %}
+                        Service Corner
+                        <span>
+                            <sup>*</sup>
                         </span>
+                        {% else %}
+                        চাকুরি কর্নার
+                        <span>
+                            <sup>*</sup>
+                        </span>
+                        {% endif %}
                     </a>
                 </td>
                 <td class="apply-online">
                     <a href="http://www.bogra.gov.bd/bn/site/view/revenue_model_tender"
                         title="দরপত্র">
-                        <span>দরপত্র
-                            <sup>(3)</sup>
+                        {% if request.session.lang == 'english' %}
+                        Tender
+                        <span>
+                            <sup>*</sup>
                         </span>
+                        দরপত্র
+                        {% else %}
+                        Tender
+                        <span>
+                            <sup>*</sup>
+                        </span>
+                        {% endif %}
+
                     </a>
                 </td>
                 <td class="apply-online">
@@ -143,9 +161,20 @@
                     </a> -->
                     <a href="http://www.bogra.gov.bd/bn/site/view/revenuemodeladvertisement"
                         title="বিজ্ঞাপন">
-                        <span>বিজ্ঞাপন
-                            <sup>(5)</sup>
+                        {% if request.session.lang == 'english' %}
+                        Ads
+
+                        <span>
+                            <sup>*</sup>
                         </span>
+                        {% else %}
+                        বিজ্ঞাপন
+
+                        <span>
+                            <sup>*</sup>
+                        </span>
+                        {% endif %}
+
                     </a>
                 </td>
             </tr>
@@ -255,12 +284,53 @@
 <div class="block service-list">
     {% if request.session.lang == 'english' %}
     <h5 class="bk-org title eservice-title ces_title">Important Links</h5>
-
+    <div class="service-list-scroll">
+        <ul>
+                                    <li>
+                <a href="http://www.shed.gov.bd/" title="ই-ডিরেক্টরি">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Ministry of Education
+                </a>
+            </li>
+                                    <li>
+                <a href="http://www.dshe.gov.bd/" title="ই-মোবাইল কোর্ট">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Deparment of Secondary and Higher secondary 
+                </a>
+            </li>
+                                    <li>
+                <a href="http://www.nu.ac.bd/" title="জাতীয় শিক্ষক বাতায়ন">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> National University
+                </a>
+            </li>
+                                    <li>
+                <a href="http://www.rajshahieducationboard.gov.bd/" title="সুরক্ষা সিস্টেম">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Secondary and Higher Secodary Education Board, Rajshahi
+                </a>
+            </li>
+                                    <li>
+                <a href="http://www.cedp.gov.bd/" title="লাইসেন্স ম্যানেজমেন্ট সিস্টেম">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i>College Education Development Programme  (CEDP)
+                </a>
+            </li>
+                                    <li>
+                <a href="http://service.gov.bd" title="ই-লাইব্রেরী">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Aplication for Online Service
+                </a>
+            </li>
+                                    <li>
+                <a href="http://www.cga.gov.bd/index.php?option=com_wrapper" title="ল&#039;স অফ বাংলাদেশ">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Online Chalan
+                </a>
+            </li>
+                                    <li>
+                <a href="//www.epassport.gov.bd/landing" title="ই-পাসপোর্ট">
+                    <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> E-Passport
+                </a>
+            </li>
+                    </ul>
+    </div>
+    
 {% else %}
 <h5 class="bk-org title eservice-title ces_title">গুরত্বপূর্ণ লিংকসমূহ</h5>
-
-{% endif %}
-
 <div class="service-list-scroll">
     <ul>
                                 <li>
@@ -305,6 +375,9 @@
         </li>
                 </ul>
 </div>
+
+{% endif %}
+
 </div>
 
  

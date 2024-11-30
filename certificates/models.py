@@ -41,15 +41,17 @@ class Certificate(models.Model):
         return self.name +':'+ self.phone
     def amount_paid(self):
         tran=self.transaction
-        return  tran.amount
-    def transaction_id(self):
+        if tran:
+            return  tran.amount
+    def transaction_detaills(self):
         tran=self.transaction
-        str=""+format_html('<a href="%s" target="_blank">%s</a> || ' )  % (reverse("admin:payment_transaction_change", args=([tran.id])) , escape(tran.tran_id))
-        return  format_html(str)
-    
+        if tran:
+            return format_html('<a href="%s" target="_blank">%s</a>' % (reverse("admin:payment_transaction_change", args=(tran.id,)) , escape(tran.tran_id)))
+     
     def paid_at(self):
         tran=self.transaction
-        return  tran.created_at
+        if tran:
+            return  tran.created_at
     
     def __unicode__(self):
         return self.name_bangla

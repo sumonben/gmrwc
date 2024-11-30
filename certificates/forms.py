@@ -16,6 +16,7 @@ CHOICES = [
     ]
 
 CHOICE_CERTIFICATE=[
+        ('', '----------'),
         ('1', 'প্রশংসা পত্র'),
         ('2','চরিত্রগত সনদ'),
         ('3', 'ছাড়পত্র'),
@@ -26,8 +27,8 @@ CHOICE_CERTIFICATE=[
 
 class ChoiceCertificateForm(forms.ModelForm):
     student_category= forms.ModelChoiceField(queryset=StudentCategory.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
-    certificate_type= forms.ChoiceField(choices=CHOICE_CERTIFICATE,widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
-    group= forms.ModelChoiceField(queryset=Group.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','onchange' : 'myFunction(this.id)',}))
+    certificate_type= forms.ChoiceField(required=True,choices=CHOICE_CERTIFICATE,widget=forms.Select(attrs={'class': 'textfieldUSERinfo',}))
+    group= forms.ModelChoiceField(required=False,queryset=Group.objects.all(),widget=forms.Select(attrs={'class': 'textfieldUSERinfo','style':'display:none;',}))
 
     class Meta:
         model = Certificate
@@ -63,7 +64,7 @@ class CertificateForm(forms.ModelForm):
     class Meta:
         model = Certificate
         fields = "__all__"
-        exclude=['adress','is_valid','subjects','transaction','session_key']
+        exclude=['adress','is_valid','subjects','transaction','session_key','user']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'textfieldUSERinfo',  'placeholder':  'Name in English','onkeypress' : "myFunction(this.id)",'value':'sumon'}),
             'name_bangla': forms.TextInput(attrs={'class': 'textfieldUSERinfo', 'placeholder':  'নাম লিখুন(বাংলায়)','onkeypress' : "myFunction(this.id)",'value':'sumon'}),

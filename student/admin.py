@@ -19,6 +19,7 @@ class StudentResource(ModelResource):
 
 @admin.register(Student)
 class StudentAdmin(ExportActionMixin,admin.ModelAdmin):
+    search_fields=['email','phone']
     list_display=[ 'name','email','phone','student_category','department','session','user_link']
     list_display_links = ['name','email']
     list_filter=['department','student_category','session','group','class_year','is_active']
@@ -77,6 +78,6 @@ class UnionAdmin(ImportExportMixin,admin.ModelAdmin):
     
 @admin.register(StudentAdmission)
 class StudentAdmissionAdmin(ImportExportMixin,admin.ModelAdmin):
-    list_display=[ 'id','ssc_roll','name','board','passing_year','quota','group','status']
+    list_display=[ 'id','name','student_details','ssc_roll','board','passing_year','quota','group','status']
     list_display_links = ['ssc_roll','name',]
     list_filter=['board','passing_year','quota','group',]

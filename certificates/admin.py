@@ -5,6 +5,7 @@ from import_export.admin import ExportActionMixin,ImportExportMixin
 # Register your models here.
 @admin.register(Certificate)
 class CertificateAdmin(ExportActionMixin,admin.ModelAdmin):
-    list_display=[ 'name','email','phone','student_category','department','session','transaction','is_valid']
-    list_display_links = ['name','email','phone']
+    search_fields=[  'email','phone',]
+    list_display=[ 'name','email','phone','student_category','department','session','transaction_detaills','paid_at','is_valid']
+    list_display_links = ['name','email','phone',]
     list_filter=['session','group','class_year','is_valid']

@@ -21,7 +21,7 @@
     <link href="{% static 'css/admission/SpryValidationTextField.css'%}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/admission/SpryValidationPassword.css'%}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}" />
-    <link rel="stylesheet" type="text/css" href="https://www.nothi.gov.bd/assets/global/plugins/bootstrap-toastr/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register/toaster.min.css' %}">
 
     <script type="text/javascript" src="{% url 'jsi18n' %}" > </script>
     <script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
@@ -73,33 +73,7 @@
         
       
       
-        #toast-container {
-          opacity: 1;
-          visibility: hidden;
-          
-        }
-        #toast-container.toast-top-center{
-          animation: fadeInAnimation ease 8s;
-          animation-iteration-count: 1;
-          animation-fill-mode: forwards;
-        }
-        #toast-container:hover{
-        animation-play-state: paused; 
-        }
-        @keyframes fadeInAnimation {
-          0% {
-              opacity: 1;
-          }
-        
-          50% {
-              opacity: 1;
-          }
-          100% {
-              opacity: 0;
-              visibility: hidden;
-          }
-        }
-          
+         
        @media(max-width: 786px){
           .container{
             width: 100%;
@@ -127,10 +101,58 @@
           }
 
        }
+       #toast-container {
+        visibility: hidden;
+        position: fixed;
+        z-index: 999999
+    }
+       
+     
+      /* Show the snackbar when clicking on a button (class added with JavaScript) */
+     
+      #toast-container.show {
+        visibility: visible; 
+        top: 30px;
+        left: 50%;
+        width: 100%;/* Show the snackbar */
+        /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+        However, delay the fade out process for 2.5 seconds */
+        -webkit-animation: fadein 1s, fadeout 7s 8s;
+        animation: fadein 1s, fadeout 7s 8s;
+      }
+      
+      /* Animations to fade the snackbar in and out */
+      @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 30px; opacity: 1;}
+      }
+      
+      @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 30px; opacity: 1;}
+      }
+      
+      @-webkit-keyframes fadeout {
+        from {top: 30px; opacity: 1;}
+        to {top: 0; opacity: 0;}
+      }
+      
+      @keyframes fadeout {
+        from {top: 30px; opacity: 1;}
+        to {top: 0; opacity: 0;}
+      }
     </style>
     </head>
     
     <body>
+      <!-- The actual snackbar -->
+
+<div id="toast-container" aria-level="polite" role="alert">
+  <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
+      <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div>
+  </div>
+</div>
+
     <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
       <tbody><tr>
         <td>
@@ -642,11 +664,7 @@
         </td>
       </tr>
     </tbody></table>
-    <div id="toast-container" class="toast-top-center" aria-level="polite" role="alert">
-      <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
-          <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div></div>
-  </div>
-
+    
 
   <script>
           
@@ -796,16 +814,22 @@ const progress = (value) => {
       //alert("valid:"+valid);
       if(!valid){
          current_step--;
-         var x = document.getElementById("toast-container");
+      var x = document.getElementById("toast-container");
+
+  // Add the "show" class to DIV
+      x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 11000);
+         /*var x = document.getElementById("toast-container");
                    x.className = "toast-top-center";
-                   x.style.visibility ="visible";
+                   x.style.visibility="vissible"
 
                    setTimeout(function(){ 
                        x.className = x.className.replace("toast-top-center","");
-                       x.style.visibility ="hidden";
-
+                      
                        
-                    }, 8000);
+                    }, 8000);*/
                     
    
       }

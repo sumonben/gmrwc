@@ -28,20 +28,18 @@ def ChoiceCertificate(request):
 
 def CertificateFormEntry(request):
     print(request.POST.get('student_category'))
-    group=Group.objects.filter(id=request.POST.get('group')).first()
-    print(group.title_en)
     form=CertificateForm(student_category=request.POST.get('student_category'),certificate_type=request.POST.get('certificate_type'))
     adress_form = AdressForm()
     student_category=request.POST.get('student_category')
     print(student_category)
-
     certificate_type=request.POST.get('certificate_type')
     context={'form':form,'adress_form':adress_form}
     context['student_category']=student_category
     context['choice_certificate']=certificate_type
     print(student_category,certificate_type)
-    subject_form=SubjectChoiceForm(group=group)
     if request.POST.get('student_category') in '3':
+        group=Group.objects.filter(id=request.POST.get('group')).first()
+        subject_form=SubjectChoiceForm(group=group)
         context['subject_form']=subject_form
         return render(request,'certificate/certificate_form_entry_hsc.html',context=context)
     return render(request,'certificate/certificate_form_entry_all.html',context=context)
@@ -104,7 +102,7 @@ def PayforCertificate(request):
             certificate.save()
             
             print(response["sessionkey"])   
-            return redirect('https://sandbox.sslcommerz.com/gwprocess/v4/gw.php?Q=pay&SESSIONKEY=' + response["sessionkey"])
+            return redirect('https://sandbox.sslcommerz.com/EasyCheckOut/testcde' + response["sessionkey"])
 
 
         print(form.errors)

@@ -111,8 +111,8 @@ class Student(models.Model):
     std_id=models.IntegerField(default=10)
     name=models.CharField(max_length=100)
     name_bangla=models.CharField(max_length=100,blank=True, null=True)
-    email=models.EmailField(max_length=50,unique=True)
-    phone=models.CharField(max_length=11,unique=True)
+    email=models.EmailField(max_length=50,)
+    phone=models.CharField(max_length=11,)
     class_roll=models.CharField(max_length=11,null=True, blank=True,)
     session=models.ForeignKey(Session,blank=True,null=True,on_delete=models.SET_NULL)
     student_category=models.ForeignKey(StudentCategory,blank=True,null=True,on_delete=models.SET_NULL)
@@ -215,6 +215,7 @@ class Transaction(models.Model):
 
 class StudentAdmission(models.Model):
     serial=models.IntegerField(default=10)
+    student=models.OneToOneField(Student,blank=True,null=True,on_delete=models.SET_NULL)
     ssc_roll=models.CharField(max_length=25,blank=True,null=True)
     name=models.CharField(max_length=125,blank=True,null=True)
     passing_year=models.CharField( max_length=25, blank=True,null=True)
@@ -227,6 +228,11 @@ class StudentAdmission(models.Model):
         ordering = ['id']
     def __str__(self):
         return self.ssc_roll
+    def student_details(self):
+        stud=self.student
+        if stud:
+            return format_html('<a href="%s" target="_blank">%s</a>' % (reverse("admin:student_student_change", args=(stud.id,)) , escape(self.name+",\nRoll:"+stud.class_roll+', Phone:'+stud.phone)))
+    student_details.allow_tags = True
     def save(self, *args, **kwargs):
            super().save(*args, **kwargs)
            if self.serial == None:

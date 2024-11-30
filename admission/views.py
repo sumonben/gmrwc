@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render,redirect
 from student.forms import StudentForm,AdressForm,PresentAdressForm,SscEquvalentForm,SubjectChoiceForm,GuardianForm
-from student.models import Group,StudentAdmission,Student,Session,SubjectChoice,SscEquvalent
+from student.models import Group,StudentAdmission,Student,Session,SubjectChoice,SscEquvalent,StudentCategory
 from django.contrib.auth import get_user_model
 from sslcommerz_lib import SSLCOMMERZ
 from payment import sslcommerz 
@@ -123,9 +123,9 @@ def admissionFormSubmit(request):
             if group.title_en in 'Humanities':
                 s_roll=roll+2001+std_count
                 section=s_roll-roll
-                if s_roll<= 2250:
+                if section<= 2250:
                     student_form.section='A'
-                elif s_roll> 2250 and s_roll<= 2550:
+                elif section> 2250 and section<= 2550:
                     student_form.section='B'
                 else:
                     student_form.section='C'
@@ -144,11 +144,12 @@ def admissionFormSubmit(request):
                 adress=adress_form.save()
                 student_form.permanent_adress=adress
                 
-            user = UserModel.objects.create_user(username=username,
-                                 email=email,last_name=last_name,
-                                 password=password,is_active=False)
-            student_form.user=user
-            student=student_form.save()
+            
+            
+            student_category=StudentCategory.objects.filter(id=3).first()
+            student_form.student_category=student_category
+            student_form.save()
+
             print('6. Student form',email,username)
         print(form.errors)
         print(group)

@@ -56,5 +56,21 @@
     </table>
     </fieldset>
    
+<script>
+    function myFunction( id ){
+            
+            var e=document.getElementById('id_student_category')
+            var val = e.options[e.selectedIndex].value;
+            if(val == 3){
+                document.getElementById('id_group').style.display='block';
+                document.getElementByFor('id_group').label.visibility='visible';
 
+            }else{
+                
+                document.getElementById('id_group').style.display='none';
+                document.getElementByFor('id_group').label.visibility='hidden';
+
+            }
+    }
+</script>
 {% endblock  %}

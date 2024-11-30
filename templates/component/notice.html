@@ -57,15 +57,44 @@
 
 
 <div id="news" class="section-title">
-        <h5 tabindex="0" title="News Content">খবর </h5>
-        <div class="news-container">
-            <div id="news-ticker" class="ticker">
-                <ul><li>kjhsdfhfuheiu</li><li>uytugfyf</li><li>sumon</li></ul>
-            </div>
+    {% if request.session.lang == 'english'%}
+    <h5 tabindex="0" title="News Content">News </h5>
+    <div class="news-container">
+        <div id="news-ticker" class="ticker" style="color: red">
+           
+            <ul>
+                {% for notice in notices %}
+                <li>{{notice.title_en}}</li>
+                {% endfor %}
+                
+            </ul>
+           
+           
         </div>
+    </div>
     <div>
-            <a href="http://www.bogra.gov.bd/bn/site/view/news" title="সকল " class="btn">সকল 
-                </a>
+        <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn">All
+            </a>
+    </div>
+    {% else %}
+    <h5 tabindex="0" title="News Content">খবর </h5>
+    <div class="news-container">
+        <div id="news-ticker" class="ticker" style="color: red">
+          
+            <ul>
+                {% for notice in notices %}
+                <li>{{notice.title}}</li>
+                {% endfor %}
+                
+            </ul>
+           
+           
         </div>
+    </div>
+    <div>
+        <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn">সকল  
+            </a>
+    </div>
+    {% endif %}
         </div>
         

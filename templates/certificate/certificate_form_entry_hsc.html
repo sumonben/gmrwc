@@ -1,7 +1,56 @@
 {% extends 'basepage/certificate_layout.html' %}
 {% block content %}
 {% load static %}
+
+<style>
+  #toast-container {
+    visibility: hidden;
+    position: fixed;
+    z-index: 999999
+}
+   
+ 
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+ 
+  #toast-container.show {
+    visibility: visible; 
+    top: 30px;
+    left: 50%;
+    width: 100%;/* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 1s, fadeout 7s 8s;
+    animation: fadein 1s, fadeout 7s 8s;
+  }
+  
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {top: 0; opacity: 0;}
+    to {top: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {top: 30px; opacity: 1;}
+    to {top: 0; opacity: 0;}
+  }
+</style>
     <!-- CONTAINER -->
+    <div id="toast-container" aria-level="polite" role="alert">
+      <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
+          <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div>
+      </div>
+    </div>
+    
     <div class="box_container" style="width: 100%; margin: 0px;">
       <div class="" style="margin: auto;width: 100%;">
           <!-- TITLE 
@@ -201,10 +250,7 @@
   
                       
                  
-    <div id="toast-container" class="toast-top-center" aria-level="polite" role="alert">
-      <div class="toast toast-error" ><button class="toast-close-button" role="button">&#10006;</button>
-          <div class="toast-message" >দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে</div></div>
-  </div>
+    
 
 
   <script>
@@ -359,6 +405,14 @@ const progress = (value) => {
       if(!valid){
          current_step--;
          var x = document.getElementById("toast-container");
+
+  // Add the "show" class to DIV
+      x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+      setTimeout(function(){ x.className = x.className.replace("show", ""); }, 11000);
+      
+         /*var x = document.getElementById("toast-container");
                    x.className = "toast-top-center";
                    x.style.visibility ="visible";
 
@@ -367,7 +421,7 @@ const progress = (value) => {
                        x.style.visibility ="hidden";
 
                        
-                    }, 8000);
+                    }, 8000);*/
                     
    
       }

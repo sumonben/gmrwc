@@ -6,47 +6,49 @@
       <div class="" style="margin: auto;width: 100%;">
          
           <div >
+    {% if tran_purpose.id == 1 %}
     <form class="needs-validation" id="form-wrapper" action="{% url 'choice-certificate' %}" method="post" name="form-wrapper" novalidate="">
           {% csrf_token %}
               <div id="qbox-container">
                       <div id="steps-container">
                         <div id="success">
                           <div class="mt-5">
-                           
-                            <h4>1.Payment Failed ! please try again full process </h4>
+                            <h4>1.Payment failed! Please try payment the proccess for certificate again!</h4>
+                            
                           </div>
                       </div>
-                            
-                          
-                        
-                     
-                          
-              
-                          
-                      
-                  </div>
+                    </div>
                       <div id="q-box__buttons" >
                         
-                        <button id="submit-btn" type="submit" class="d-none">Certificate Download</button>
+                        <button id="submit-btn" type="submit" class="d-none">Go Back</button>
                     </div>   
               </div>
               
             </form>
-
-            <div id="download_form_id">
-              <div class="mt-5">
-
-                <form id="form_download_id" method="post" action="{% url 'form-download' %}" target="_blank" >
-                  {% csrf_token %}
-                <input type="hidden" value="" id="student_id" name="student_id">
-                <div id="q-box__buttons" >
-
-                  <button type="submit" id="btn_admission_form" style="width:300px;">Download Admission form</button>
+            {% else %}
+            <form id="form_download_id" method="post" action="{% url 'admission_login' %}" target="_blank" >
+              {% csrf_token %}
+            <input type="hidden" value="{{student}}" id="student_id" name="student_id">
+            <div id="qbox-container">
+              <div id="steps-container">
+                <div id="success">
+                  <div class="mt-5">
+                    <h4>1.Payment failed! Please try the proccess for Admission again !</h4>
+                                      
                   </div>
-                </form>
-                  <a style="margin-top: 20px; margin-bottom: 20px; margin-left: 10%;" class="back-link" href="{% url 'choice-certificate'%}">Go back from the beginning ➜</a>
               </div>
-          </div>
+            </div>
+
+            <div id="q-box__buttons" >
+
+              <button type="submit" id="btn_admission_form" style="width:300px;">Admission Page</button>
+              </div>
+            </div>
+            </form>
+              <a style="margin-top: 20px; margin-bottom: 20px; margin-left: 10%;" class="back-link" href="{% url 'admission_login'%}">Go back from the beginning ➜</a>
+          
+            {% endif %}
+
 
           </div>
       </div>

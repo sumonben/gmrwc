@@ -1,22 +1,22 @@
 <html>
 {%load static%}
 <head>
-    <style type="text/css" media="screen">
-        @font-face {
-          font-family: "kalpurush";
-          src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
-                   
-        }
-      </style>
-      
-<style>
-    body{
-        font-family: "kalpurush";
-        font-weight: normal;
-        font-style:normal;
-            
-          
+  <style type="text/css" media="screen">
+    @font-face {
+      font-family: "kalpurush";
+      src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff");
+               
     }
+  </style>
+  
+<style>
+body{
+    font-family: "kalpurush";
+    font-weight: normal;
+    font-style:normal;
+        
+      
+}
     .row{
         margin-left:15%;
     }
@@ -127,13 +127,60 @@ u {
 border-bottom: 1px dotted #000;
 text-decoration: none;
 }
+
+@media only screen and(max-width:786px){
+  .top-right {
+    width: 10%;
+  position: absolute;
+  top: 60%;
+  left: 65%;
+  }
+  .top-middle {
+    width: 50%;
+    position: absolute;
+    top: 0%;
+    margin-left: 25%;
+    margin-right: 25%;
+    
+    }
+  
+  .bottom-right {
+    width: 100%;
+    position: absolute;
+    top: 80%;
+    text-align:right;
+    margin-left:25%;
+   
+  }
+  .top-left {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+   
+  }
+  #x {
+  color: red !important;
+  text-align:center;
+  margin-left: 25%;
+  margin-right: 25%;
+  }
+}
+
 @media print and (min-width: 480px) {
-@font-face {
-    font-family: "kalpurushregular";
-    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
-      }
+  @font-face {
+    font-family: "kalpurush";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+    font-weight: normal;
+    font-style: normal;
+    }
 body{
-    font-family: "kalpurushregular";
+    font-family: "kalpurush";
         
       
 }

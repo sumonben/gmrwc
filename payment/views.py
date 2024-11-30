@@ -11,6 +11,7 @@ from .sslcommerz import sslcommerz_payment_gateway
 from sslcommerz_lib import SSLCOMMERZ 
 from certificates.models import Certificate
 from student.models import Student
+from account.models import UserModel
 
 cradentials = {'store_id': 'israb672a4e32dfea5',
             'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
@@ -80,11 +81,25 @@ class CheckoutSuccessView(View):
                 print(certificate,transaction)
                 certificate.transaction=transaction
                 certificate.save()
+                certificates=Certificate.objects.filter(phone=data['value_b'],email=data['value_c'],tran_id=None)
+                for cert in certificates:
+                    cert.delete()
+
                 print("Certificate:",1)
                 context['purpose']=1
 
             if data['value_d'] == '2':
-                student=Student.objects.filter(phone=data['value_b']).first()
+                student=Student.objects.filter(phone=data['value_b']).last()
+                password="Student@"+data['value_b']
+                user = UserModel.objects.create_user(username=data['value_b'],
+                                 email=data['value_c'],last_name="Student",
+                                 password=password,is_active=False)
+                student.user=user
+                student.save()
+                students=Student.objects.filter(phone=data['value_b'],user=None)
+                for std in students:
+                    std.delete()
+
                 print(student)
                 context['purpose']=2
                 context['student']=student.phone
@@ -101,11 +116,26 @@ class CheckoutSuccessView(View):
 @method_decorator(csrf_exempt, name='dispatch')
 class CheckoutFaildView(View):
     template_name = 'payment/failed.html'
+    
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
-        certificate=Certificate.objects.filter(transaction=None)
+        data=request.POST
+        context={}
+        tran_purpose=PaymentPurpose.objects.filter(id=data['value_d']).first()
+        context['tran_purpose']=tran_purpose
+        
+        if data['value_d'] == '1':
+            certificate=Certificate.objects.filter(phone=data['value_b'],transaction=None)
+            if certificate:
+                certificate.delete()
+        if data['value_d'] == '2':
+            student=Student.objects.filter(phone=data['value_b']).first()
+            #user=UserModel.objects.filter(username=data['value_b']).first()
+            #user.delete()
+
+        '''certificate=Certificate.objects.filter(transaction=None)
         print(request.POST)
         
         for cert in certificate:
@@ -114,5 +144,5 @@ class CheckoutFaildView(View):
             print(response)
 
             if response['status'] in 'FAILED' or response['status'] in 'PENDING':
-                cert.delete()
-        return render(request, self.template_name)
+                cert.delete()'''
+        return render(request, self.template_name,context)
