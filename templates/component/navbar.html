@@ -125,8 +125,8 @@
             <!-- Menu Color Admin Custom Start -->
                 <!--  -->
                 <!--  -->
-            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a></li>                                         
-            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'choice-certificate' %}" target="_blank" title="সনদসমূহ">সনদসমূহ</a></li>                                         
+            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">Online Admission</a></li>                                         
+            <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'choice-certificate' %}" target="_blank" title="সনদসমূহ">Testimonial and Certificate</a></li>                                         
 
             {% else %}
                 {%for navitem in navitems %}
@@ -254,8 +254,8 @@
 
              {% endfor %}
 
-                    <li class="mzr-drop col6">
-                        <a href="{% url 'admission_login' %}" target="_blank" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a>
+                    <li class="col6">
+                        <a href="{% url 'admission_login' %}" title="অনলাইন এডমিশন">অনলাইন এডমিশন</a>
                         
                         <!--<div class="mzr-content sibling-toggle" style="display:none">
                             <div class="one-col">
@@ -266,7 +266,7 @@
                         </div>
                         --->
                     </li>
-                    <li class="col7 mzr-drop focusin-drop focusClassDrop"> <a class="submenu sub-menu" href="{% url 'choice-certificate' %}" target="_blank" title="সনদসমূহ">সনদসমূহ</a></li>                                         
+                    <li class="col7"> <a href="{% url 'choice-certificate' %}" title="সনদসমূহ">সনদসমূহ</a></li>                                         
 
                 </ul>
             </div>

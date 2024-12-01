@@ -142,6 +142,9 @@ def CreateCertificate(request):
                 return render(request, 'certificate/leave_certificate.html',{'certificate':certificate})
             elif certificate.certificate_type=='4':
                 return render(request, 'certificate/present_student_certificate.html',{'certificate':certificate})
+            elif certificate.certificate_type=='5':
+                return render(request, 'certificate/attestation_letter.html',{'certificate':certificate})
+
             else:
                 return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
     return render(request, 'certificate/hsc_testimonial.html',)

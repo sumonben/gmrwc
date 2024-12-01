@@ -21,7 +21,7 @@ def queryDepartmentFrontpage( departmentId ):
     position=Position.objects.filter(serial=4).first()
 
     department=Department.objects.filter(id=departmentId).first()
-    teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True|Q(position__serial=3)|Q(position__serial=4)).order_by('designation__serial','position__serial')
+    teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True).filter((Q(position__serial=3)|Q(position__serial=4))).order_by('designation__serial','position__serial')
     students=Student.objects.filter(department=department,is_active=True)
     department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
     notices=Post.objects.filter(category__name_en=department.name_en).order_by('-id')
@@ -72,7 +72,6 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
         'principal':principal,
         'institute':institute,
         'vice_principal':vice_principal,
-        'teachers':teachers,
         'department_head':department_head,
         }
     
