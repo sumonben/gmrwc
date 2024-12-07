@@ -58,14 +58,16 @@
 
     
 
-{%if teacher%}
+ {%if teacher%}
  {% include 'component/teacher/teacher_details.html' %}
 
  {% endif %}
 
  {%if teachers %}
  {% include 'component/teacher/teacher_list.html' %}
-
+ {% endif %}
+ {%if employees %}
+ {% include 'component/employee/employee_list.html' %}
  {% endif %}
 
 

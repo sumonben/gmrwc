@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'payment',
     'certificates',
     'rangefilter',
+    'employee',
     'django_admin_listfilter_dropdown',
 ]
 

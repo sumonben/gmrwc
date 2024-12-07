@@ -111,10 +111,12 @@ $.simpleTicker($("#demo"),{
   effectType : 'slide'
 });
 </script> -->
-{% if teacher%}
+{% if teacher %}
 {%include 'component/teacher/teacher_details.html'%}
 {% elif teachers%}
 {%include 'component/teacher/teacher_list.html'%}
+{% elif employees%}
+{%include 'component/employee/employee_list.html'%}
 {% elif post%}
 {%include 'component/department/notice_all_department.html'%}
 {% else %}

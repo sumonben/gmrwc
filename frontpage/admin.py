@@ -45,6 +45,7 @@ class UserAdmin(admin.ModelAdmin):
     
 @admin.register(Page)
 class UserAdmin(admin.ModelAdmin):
+    search_fields=[  'heading','heading_en']
     list_display=[   'serial','heading','heading_en','parent_nav_link','link','template']
     filter_fields=[  'title']
     list_filter=[  'category']

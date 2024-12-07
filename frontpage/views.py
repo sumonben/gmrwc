@@ -8,11 +8,15 @@ from rest_framework.response import Response
 from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Institute
 from department.models import Department
 from teacher.models import Teacher
+from employee.models import Employee
 from student.models import Student
 from student.forms import StudentForm
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.db.models import Q,Count
+from django.views.decorators.cache import cache_page
+# Create your views here.
 
+    
 # Create your views here.
 class frontpage_view(ListCreateAPIView):
     renderer_classes = [TemplateHTMLRenderer]
@@ -88,9 +92,11 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     page=Page.objects.filter(id=id).distinct().first()
     post=page
     notices=Post.objects.all().order_by('-id')[:7]
-    principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
+    principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first() 
+    secretary=Teacher.objects.filter(position__serial=3, release_date=None,is_active=True).first()
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter(release_date=None,is_active=True).annotate(count=Count('t_department')).order_by().order_by('designation__serial','position__serial')
+    employees=Employee.objects.all().order_by('designation','employee_type','position')
     academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True).order_by('designation__serial','position__serial')
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
@@ -168,6 +174,10 @@ def showPage(request, navitem_name,navelement_head,heading, id):
         
     if heading =='Principal':
         context['teacher'] = principal
+    if heading =='President':
+        context['teacher'] = principal
+    if heading =='General Secretary':
+        context['teacher'] = secretary
 
     
     if heading =='Vice-Principal':
@@ -178,6 +188,8 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     
     if heading =='Teachers':
         context['teachers'] = teachers
+    if heading =='Employees':
+        context['employees'] = employees
     
 
     
@@ -233,12 +245,16 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
     notices=Post.objects.all().order_by('-id')[:7]
     principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
-    teachers=Teacher.objects.filter( release_date=None,is_active=True)
+    teachers=Teacher.objects.filter(release_date=None,is_active=True).annotate(count=Count('t_department')).order_by().order_by('designation__serial','position__serial')
     academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
+    employees=Employee.objects.all().order_by('designation','employee_type','position')
+
+    service_box=ServiceBox.objects.filter(id=servicebox_id).first()
     print(servicebox_title,heading)
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'servicebox_title':servicebox_title,
+        'service_box':service_box,
         'heading':heading,
         'id':id,
         'principal':principal,
@@ -258,7 +274,8 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
     
     if heading =='Teachers':
         context['teachers'] = teachers
-        
+    if heading =='Employees':
+        context['employees'] = employees  
     if servicebox_title=="Admission Guidelines" and heading=="HSC Admission" :
         post=Post.objects.filter(category__name_en="HSC",tag__name_en="Admission Notice")
         context['post']=post

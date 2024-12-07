@@ -9,7 +9,7 @@ from teacher.models import Teacher,Position
 from student.models import Student
 from django.views.decorators.clickjacking import xframe_options_exempt
 from django.db.models import Q,Count
-
+from employee.models import Employee
 
 def queryDepartmentFrontpage( departmentId ):
     carousels = Carousel.objects.all().order_by('cid')
@@ -40,14 +40,14 @@ def queryDepartmentFrontpage( departmentId ):
 
 def DepartmentPage(request, navitem_name,navelement_head,heading, id):
 
-
+    print(heading)
     heading=heading.replace("%20", " ")
     navitem_name=navitem_name.replace("%20", " ")
     navelement_head=navelement_head.replace("%20", " ")
     carousels = Carousel.objects.all().order_by('cid')
     navitems=NavItem.objects.all().order_by('serial')
     nav_department=NavDepartment.objects.all().order_by('serial') 
-    print(nav_department) 
+    #print(nav_department) 
     page=Page.objects.filter(id=id).distinct().first()
     institute=Institute.objects.filter(serial=1).first()
     notices=Post.objects.all().order_by('-id')
@@ -60,7 +60,7 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
     students=Student.objects.filter(department=department,is_active=True)
     department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
     print("position: ",position.serial)
-    print("Department: ",institute.title_en)
+    print("Department: ",department)
 
     print("Hello: ",department_head)
 
@@ -145,7 +145,7 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
     return render(request,page.template.directory+'/'+page.template.name,context=context)
 
 def departmentItems(request,departmentId,navitem_name):
-    #navitem_name=navitem_name.replace("%20", " ")    
+    navitem_name=navitem_name.replace("%20", " ")    
     carousels = Carousel.objects.all().order_by('cid')
     nav_department=NavDepartment.objects.all().order_by('serial') 
     institute=Institute.objects.filter(serial=1).first()
@@ -157,6 +157,7 @@ def departmentItems(request,departmentId,navitem_name):
     teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True).filter((Q(position__serial=4)|Q(position__serial=5))).order_by('designation__serial','position__serial')
     students=Student.objects.filter(department=department,is_active=True)
     department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
+    employees=Employee.objects.filter(employee_department=department).order_by('designation','employee_type','position')
     notices=Post.objects.filter(category__name_en=department.name_en).order_by('-id')
 
 
@@ -175,6 +176,8 @@ def departmentItems(request,departmentId,navitem_name):
     
     if navitem_name=='Teachers-Officers': 
         context['teachers']=teachers
+    if navitem_name=='Employees': 
+        context['employees']=employees
     if navitem_name=='Students': 
         context['students']=students
     if navitem_name=='Seminar':

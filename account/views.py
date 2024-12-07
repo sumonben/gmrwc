@@ -72,6 +72,17 @@ def Registration(request):
             print('4',email,username)
             data['message']="Successfully Done"
             user_form=form.save(commit=False)
+            if request.POST.get('teacher'):
+                positions=form.cleaned_data['position']
+                branchs=form.cleaned_data['branch']
+                user_form.save()
+                for i in positions:
+                    user_form.position.add(i)
+                for i in branchs:
+                    user_form.branch.add(i)
+                user_form.save()
+ 
+
             user = UserModel.objects.create_user(username=username,
                                  email=email,last_name=last_name,
                                  password=password,is_active=False)
@@ -79,6 +90,8 @@ def Registration(request):
 
             user_form.user=user
             user_form.save()
+            
+
             
             #messages.success(request, 'Student with name  {}  added.'.format(request.POST['name']))
             return JsonResponse({'status': 'success','meaasge':'Account created Successfully'},safe=False)

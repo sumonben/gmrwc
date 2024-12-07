@@ -21,7 +21,8 @@
     <link href="https://www.nothi.gov.bd/assets/admin/pages/css/login-soft.css" rel="stylesheet" type="text/css">
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="https://www.nothi.gov.bd/assets/global/css/components.css" rel="stylesheet" id="style_components" type="text/css">
-    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register/toaster.min.css' %}">
+
     
     
 
@@ -723,6 +724,7 @@ body {
     অনুগ্রহপূর্বক নথি অ্যাপ্লিকেশনের সকল কার্যক্রম উপভোগ করতে Google Chrome ব্যবহার করুন। Google Chrome ইন্সটল না থাকলে
     <a target="_blank" href="https://www.google.com/chrome/"> এখানে ক্লিক করুন </a>।
 </div>
+
 <div id="form-div" style="display: block;">
     <div class="tabbable-custom nav-justified" style="background: #FFFFFF!important; margin-bottom:0;">
         <ul class="nav nav-tabs nav-justified">
@@ -879,12 +881,6 @@ body {
                             {{form_teacher.t_phone}}
                         </div>                    
                     </div>
-
-                    <div class="col-xs-6">
-                        <div class="input text">
-                            {{form_teacher.designation}}
-                        </div>                    
-                    </div>
                     <div class="col-xs-6">
                         <div class="input text">
                             {{form_teacher.service_id}}
@@ -893,15 +889,22 @@ body {
                     
                     <div class="col-xs-6">
                         <div class="input text">
-                        {{form_teacher.batch}}
-                        </div>                    
-                    </div>
-
-                    <div class="col-xs-6">
-                        <div class="input text">
                             {{form_teacher.merit}}
                         </div>                    
                     </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>পদবিঃ </h1>{{form_teacher.designation}}
+                        </div>                    
+                    </div>
+                    
+                    <div class="col-xs-6">
+                        <div class="input text">
+                            <h1>ব্যাচঃ </h1>{{form_teacher.batch}}
+                        </div>                    
+                    </div>
+
                     
                     <div class="col-xs-12">
                     
@@ -1190,7 +1193,7 @@ body {
                 
                 <a title="ফোন নম্বরগুলি দেখুন" class="btn-link font-md PhoneNumber" href="#" data-toggle="modal" data-target="#PhoneNumber"> <i class="glyphicon glyphicon-phone"></i> হেল্প ডেস্কের ফোন নম্বর</a><br>
                 <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:bogramrcollege@gmail.com" style="font-size: 12pt!important;font-family:auto">bogramrcollege@gmail.com</a><br>
-                <img src="/img/fb.png" style="margin-left:-2px;"><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href=""> (ফেসবুক গ্রুপ)</a><br>
+                <i class="fa fa-facebook-square fa-3x p-1 text-primary"></i><a target="__tab" class="btn-link font-md" style="text-decoration: none;" href=""> (ফেসবুক গ্রুপ)</a><br>
 
                 <a class="btn-link font-md" onclick="clearCache()"><i class="fs1 efile-history3"></i> ব্রাউজার ক্যাশ মুছুন</a>
             </div>
@@ -1299,7 +1302,7 @@ body {
                 flag5=1;
                 document.getElementById("id_class_year").classList.add("form2-control");               
             }
-            if(form.get('session')=="0"){
+            if(!form.get('session')){
                 flag6=1;
                 document.getElementById("id_session").classList.add("form2-control");               
             }
@@ -1328,7 +1331,7 @@ body {
                 
                 document.getElementById("error").style.display="block";
                 document.getElementById("message").innerText=" দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে";
-
+                window.scrollTo(0, 0);
                
             }
             else{
@@ -1367,18 +1370,23 @@ body {
                         document.getElementById("student_form").reset();
                         document.getElementById('id_email').className="form-control";
                         document.getElementById('id_phone').className="form-control";
-                       // alert(response.message);
+                        window.scrollTo(0, 0);
 
 
                     } else {
                        if( response.context['id_email']!==null){
-                            document.getElementById('id_email').className="form2-control";
+                            document.getElementById('id_email').classList.add("form2-control");
                             document.getElementById('id_email').placeHolder="ইমেইল অলরেডি নিবন্ধিত";
+                            document.getElementById("message").innerText="ইমেইল অথবা ফোন নম্বরটি অলরেডি নিবন্ধিত ";                        
+                            window.scrollTo(0, 0);
+
                         }
                         if( response.context['id_phone']!==null)
-                        document.getElementById('id_phone').className="form2-control";
+                        document.getElementById('id_phone').classList.add("form2-control");
                         //document.getElementById('id_phone').placeHolder="ফোন নম্বরটি অলরেডি নিবন্ধিত";
-                        document.getElementById("message").innerText="ইমেইল অথবা ফোন নম্বরটি অলরেডি নিবন্ধিত ";                        
+                        document.getElementById("message").innerText="ইমেইল অথবা ফোন নম্বরটি অলরেডি নিবন্ধিত "; 
+                        window.scrollTo(0, 0);
+                       
                         }
                         
                 },
@@ -1414,29 +1422,29 @@ body {
                 //document.getElementById('toast-container').style="display:none;"
 						
                 $("#id_t_name").attr("placeholder","নাম পূরণ করুন ");
-                document.getElementById("id_t_name").className="form2-control";               
+                document.getElementById("id_t_name").classList.add("form2-control");              
             }
             if(!form.get('t_name_bangla')){
                 flag4=1;
                 $("#id_t_name_bangla").attr("placeholder","বাংলায় নাম পূরণ করুন ");
-                document.getElementById("id_t_name_bangla").className="form2-control";               
+                document.getElementById("id_t_name_bangla").classList.add("form2-control");               
             }
             if(!form.get('t_department')){
                 flag8=1;
-                document.getElementById("id_t_department").className="form2-control";               
+                document.getElementById("id_t_department").classList.add("form2-control");               
             }
-            if(form.get('designation')=="0"){
+            if(!form.get('designation')){
                 flag5=1;
-                document.getElementById("id_designation").className="form2-control";               
+                document.getElementById("id_designation").classList.add("form2-control");               
             }
             if(!form.get('joining_date')){
                 flag6=1;
-                document.getElementById("id_joining_date").className="form2-control";               
+                document.getElementById("id_joining_date").classList.add("form2-control");               
             }
             if(!form.get('first_joining_date')){
                 flag7=1;
 
-                document.getElementById("id_first_joining_date").className="form2-control";               
+                document.getElementById("id_first_joining_date").classList.add("form2-control");               
             }
            
             if(!(form.get('t_email')).toLowerCase().match(
@@ -1458,6 +1466,7 @@ body {
             if(flag1==1 || flag2==1 || flag3==1 || flag4==1 || flag5==1 || flag6==1 || flag7==1){
                 document.getElementById("error").style.display="block";
                 document.getElementById("message").innerText=" দুঃখিত! লাল চিহ্নিত বক্সে সঠিক তথ্য দিতে হবে";                
+                window.scrollTo(0, 0);
 
             }
             else{
@@ -1498,20 +1507,24 @@ body {
                         document.getElementById("teacher_form").reset();
                         document.getElementById('id_t_email').className="form-control";
                         document.getElementById('id_t_phone').className="form-control";
-                        alert(response.message);
+                        window.scrollTo(0, 0);
 
 
                     } else {
                        if( response.context['id_t_email']!==null){
-                            document.getElementById('id_t_email').className="form2-control";
+                            document.getElementById('id_t_email').classList.add("form2-control");
                             
                             //document.getElementById('id_email').placeHolder="ইমেইল অলরেডি নিবন্ধিত";
+                            window.scrollTo(0, 0);
+
                         }
                         if( response.context['id_t_phone']!==null){
-                        document.getElementById('id_t_phone').className="form2-control";
+                        document.getElementById('id_t_phone').classList.add("form2-control");
                         //document.getElementById('id_phone').placeHolder="ফোন নম্বরটি অলরেডি নিবন্ধিত";
                         }
-                        document.getElementById("message").innerText="ইমেইল অথবা ফোন নম্বরটি অলরেডি নিবন্ধিত ";                        
+                        document.getElementById("message").innerText="ইমেইল অথবা ফোন নম্বরটি অলরেডি নিবন্ধিত "; 
+                        window.scrollTo(0, 0);
+                       
                         }
                 },
                 error: function (xhr, status, error) {
@@ -1545,29 +1558,29 @@ body {
             if(!form.get('t_name')){
                 flag3=1;
                 $("#id_t_name").attr("placeholder","নাম পূরণ করুন ");
-                document.getElementById("id_t_name").className="form2-control";               
+                document.getElementById("id_t_name").classList.add("form2-control");               
             }
             if(!form.get('t_name_bangla')){
                 flag4=1;
                 $("#id_t_name_bangla").attr("placeholder","বাংলায় নাম পূরণ করুন ");
-                document.getElementById("id_t_name_bangla").className="form2-control";               
+                document.getElementById("id_t_name_bangla").classList.add("form2-control");               
             }
             if(!form.get('t_department')){
                 flag8=1;
-                document.getElementById("id_t_department").className="form2-control";               
+                document.getElementById("id_t_department").classList.add("form2-control");               
             }
             if(form.get('designation')=="0"){
                 flag5=1;
-                document.getElementById("id_designation").className="form2-control";               
+                document.getElementById("id_designation").classList.add("form2-control");               
             }
             if(!form.get('joining_date')){
                 flag6=1;
-                document.getElementById("id_joining_date").className="form2-control";               
+                document.getElementById("id_joining_date").classList.add("form2-control");               
             }
             if(!form.get('first_joining_date')){
                 flag7=1;
 
-                document.getElementById("id_first_joining_date").className="form2-control";               
+                document.getElementById("id_first_joining_date").classList.add("form2-control");               
             }
             if(!(form.get('t_email')).toLowerCase().match(
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -1575,14 +1588,14 @@ body {
                 flag1=1;
                 $("#id_t_email").attr("placeholder","সঠিক ই-মেইল দিন");
             
-                    document.getElementById("id_t_email").className="form2-control";
+                    document.getElementById("id_t_email").classList.add("form2-control");
 
             }
             
             if(isNaN(form.get('t_phone')) ||  (form.get('t_phone')).length<11 || (form.get('t_phone')).length>11){
                 flag2=1;
                 $("#id_t_phone").attr("placeholder","সঠিক ফোন নম্বর দিন");
-                    document.getElementById("id_t_phone").className="form2-control";
+                    document.getElementById("id_t_phone").classList.add("form2-control");
 
             }
             if(flag1==1 || flag2==1 || flag3==1 || flag4==1 || flag5==1 || flag6==1 || flag7==1 || flag8==1){
@@ -1622,17 +1635,17 @@ body {
                         document.getElementById("teacher").value='';
                         document.getElementById("teacher_form").reset();
                         document.getElementById('id_t_email').className="form-control";
-                        document.getElementById('id_t_phone').className="form2-control";
+                        document.getElementById('id_t_phone').classList.add("form2-control");
                         alert(response.status);
 
 
                     } else {
                        if( response.context['id_t_email']!==null){
-                            document.getElementById('id_t_email').className="form2-control";
+                            document.getElementById('id_t_email').classList.add("form2-control");
                             //document.getElementById('id_email').placeHolder="ইমেইল অলরেডি নিবন্ধিত";
                         }
                         if( response.context['id_t_phone']!==null)
-                        document.getElementById('id_t_phone').className="form2-control";
+                        document.getElementById('id_t_phone').classList.add("form2-control");
                         //document.getElementById('id_phone').placeHolder="ফোন নম্বরটি অলরেডি নিবন্ধিত";                        
                         }
                 },
@@ -1860,7 +1873,7 @@ body {
 
 <div id="toast-container" class="toast-top-left" aria-level="polite" role="alert">
     <div class="toast toast-error" style><button class="toast-close-button" role="button">&#10006;</button>
-        <div class="toast-message" >দুঃখিত! লগইন আইডি অথবা পাসওয়ার্ড সঠিক নয়</div></div>
+        <div class="toast-message" >দুঃখিত! সঠিক ভাবে তথ্য প্রদান করুন</div></div>
 </div>
 <br>
 <div class="content" style="padding-top: 10px!important;width: 480px!important;margin-top:0px">
