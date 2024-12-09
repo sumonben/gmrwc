@@ -59,8 +59,8 @@ def DepartmentPage(request, navitem_name,navelement_head,heading, id):
     teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True).filter((Q(position__serial=3)|Q(position__serial=4))).order_by('designation__serial','position__serial')
     students=Student.objects.filter(department=department,is_active=True)
     department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
-    print("position: ",position.serial)
-    print("Department: ",department)
+    #print("position: ",position.serial)
+    #print("Department: ",department)
 
     print("Hello: ",department_head)
 

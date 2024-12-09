@@ -186,14 +186,14 @@
         </a>
         <div role="navigation" id="dawgdrops">
             <ul class="meganizr mzr-slide mzr-responsive mb-3" style="display: none;">
-                <li class="col0 home"><a href=/bn></a></li>
+                <li class="col2"><a href="/"></a><i class="fas fa-home"></i></li>
                 {%for navitem in nav_department %}
 
-                <li class="mzr-drop col{{navitem.id}}">
+                <li class="col{{navitem.id}}">
                     <a href="{% url 'department-nav' department.id  navitem.title_en %}" title="{{navitem.title}}">{{navitem.title}}</a>
-                    <div class="mzr-content sibling-toggle" style="display:none">
+                    <!--<div class="mzr-content sibling-toggle" style="display:none">
                         
-                        <!--{% for navelement in navitem.navelement.all%}
+                        {% for navelement in navitem.navelement.all%}
 
                         <div class="one-col">
                             <h6>{{navelement.head}}</h6>
@@ -208,8 +208,8 @@
                                                                     
                                                         
                         </div>
-                        {% endfor %}-->
-                    </div>
+                        {% endfor %}
+                    </div>-->
                 </li>
 
              {% endfor %}
