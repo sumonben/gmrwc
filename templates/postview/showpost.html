@@ -43,7 +43,7 @@
 
 <!--Main Content Start   -->
 
-<div id="skip-main-content-start-here" style="opacity:0;font-size:1px;">Main Comtent Skiped</div>
+<div id="skip-main-content-start-here" style="opacity:0;font-size:1px;"></div>
           
     
      
@@ -53,7 +53,7 @@
                   </div>
                    <div id="flash">
 
-   {%include 'component/notice.html'%}
+   <!--{%include 'component/notice.html'%}-->
 
   
 
@@ -61,7 +61,9 @@
 
    {% if post %}
 
-    <h1 align="center" style="margin-bottom: 30px;">{{post.title_en}}</h1>
+    <h2 align="center" style="margin-bottom: 30px;">{{post.title_en}}</h2>
+    <h3 align="center" style="margin: 30px;">{{post.body_en|safe}}</h3>
+
     {% if post.file %}
 
     <a href="{{ post.get_absolute_url|safe }}" ><h2 align="center" style="margin: 30px;">SEE PDF</h2></a>
@@ -76,7 +78,9 @@
     {% else %}
     {% if post %}
 
-    <h1 align="center" style="margin: 30px;">{{post.title}}</h1>
+    <h2 align="center" style="margin: 30px;">{{post.title}}</h2>
+    <h3 align="center" style="margin: 30px;">{{post.body|safe}}</h3>
+
     {% if post.file %}
                
     <a href="{{ post.get_absolute_url|safe }}" target="_blank"><h3 align="center" style="margin: 30px;">পিডিএফ দেখুন</h3></a>

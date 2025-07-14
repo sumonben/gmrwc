@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -146,6 +147,7 @@ class Post(models.Model):
     body=RichTextField(blank=True,null=True)
     body_en=RichTextField(blank=True,null=True)
     file=models.FileField(upload_to='media/',blank=True,null=True,)
+    link=models.CharField(max_length=500,blank=True,null=True)
     date=models.DateField(blank=True, null=True)
     category=models.ManyToManyField(Category,blank=True,null=True,)
     tag=models.ManyToManyField(Tag,blank=True,null=True,)
@@ -156,7 +158,13 @@ class Post(models.Model):
         return self.title
     def get_absolute_url(self):
         return uri_to_iri(self.file.url)
-
+    def __unicode__(self):
+        return self.title
+    def clean(self, *args, **kwargs):
+        data = super(Post, self).clean(*args, **kwargs)
+        if data:
+            data.name = data.name.encode('utf-8','ignore')
+            return data
 class NavElement(models.Model):
     serial=models.IntegerField(default=10)
     head=models.CharField(max_length=100,unique=True)

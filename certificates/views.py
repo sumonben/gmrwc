@@ -4,6 +4,7 @@ from student.forms import SscEquvalentForm,SubjectChoiceForm,AdressForm
 from .forms import ChoiceCertificateForm,CertificateForm
 from department.models import Group
 from .models import Certificate
+from teacher.models import Teacher
 from payment.sslcommerz import sslcommerz_payment_gateway,sslcommerz_payment_gateway_certificate
 from django.views import View
 from payment.models import Transaction
@@ -46,6 +47,7 @@ def CertificateFormEntry(request):
 
 
 def PayforCertificate(request):
+    context={}
     if request.method=="POST":
         form = CertificateForm(request.POST, request.FILES,student_category=request.POST.get('student_category'),certificate_type=request.POST.get('certificate_type'))
         form_adress = AdressForm(request.POST, request.FILES)
@@ -66,7 +68,7 @@ def PayforCertificate(request):
                     adress=form_adress.save()
                     certificate.adress=adress
 
-            cradentials = {'store_id': 'israb672a4e32dfea5',
+            '''cradentials = {'store_id': 'israb672a4e32dfea5',
             'store_pass': 'israb672a4e32dfea5@ssl', 'issandbox': True} 
             
             sslcommez = SSLCOMMERZ(cradentials)
@@ -75,9 +77,9 @@ def PayforCertificate(request):
             body['total_amount'] = 101.5
             body['currency'] = "BDT"
             body['tran_id'] = sslcommerz.generator_trangection_id()
-            body['success_url'] = 'http://localhost:8000/payment/success/'
-            body['fail_url'] = 'http://localhost:8000/payment/failed/'
-            body['cancel_url'] = 'http://localhost:8000/payment'
+            body['success_url'] = 'https://www.test.gmrwc.edu.bd/payment/success/'
+            body['fail_url'] = 'https://www.test.gmrwc.edu.bd/payment/failed/'
+            body['cancel_url'] = 'https://www.test.gmrwc.edu.bd/payment'
             body['emi_option'] = 0
             body['cus_name'] = request.POST.get('name')
             body['cus_email'] = request.POST.get('email')
@@ -97,12 +99,17 @@ def PayforCertificate(request):
             body['value_d'] = 1            
 
             response = sslcommez.createSession(body)
-            certificate.session_key=response["sessionkey"]
+            certificate.session_key=response["sessionkey"]'''
 
             certificate.save()
+            context['purpose']=1
+            context['certificate_id']=certificate.id
+            context['phone']=request.POST.get('phone')
             
-            print(response["sessionkey"])   
-            return redirect('https://sandbox.sslcommerz.com/EasyCheckOut/testcde' + response["sessionkey"])
+
+            return render(request, 'certificate/success_certificate.html',context)
+            #print(response["sessionkey"])   
+            #return redirect('https://sandbox.sslcommerz.com/EasyCheckOut/testcde' + response["sessionkey"])
 
 
         print(form.errors)
@@ -119,7 +126,7 @@ class AuthenticateCertificate(View):
 
     def post(self, request, *args, **kwargs):
         context={}
-        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'),transaction__isnull=False, is_valid=True)
+        certificate=Certificate.objects.filter(email=request.POST.get('email'),phone=request.POST.get('phone'), is_valid=True)
         context['certificate']=certificate
         return render(request,self.template_name,context)
     
@@ -127,9 +134,32 @@ def CreateCertificate(request):
     print(request.POST.get('tran_id'))
 
     if request.method=="POST":
+        context={}
         transaction=Transaction.objects.filter(tran_id=request.POST.get('tran_id').strip()).first()
         print(transaction)
-        if transaction:
+        principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
+        context['principal']=principal
+        certificate=Certificate.objects.filter(phone=request.POST.get('phone').strip(),id=request.POST.get('tran_id'),is_valid=True).first()
+        context['certificate']=certificate
+
+        if certificate:
+            if certificate.certificate_type=='1':
+                if certificate.student_category.id==3:
+                    return render(request, 'certificate/hsc_testimonial.html',context)
+                else:
+                    return render(request, 'certificate/others_testimonial.html',context)
+            elif certificate.certificate_type=='2':
+                return render(request, 'certificate/character_certificate.html',context)
+            elif certificate.certificate_type=='3':
+                return render(request, 'certificate/leave_certificate.html',context)
+            elif certificate.certificate_type=='4':
+                return render(request, 'certificate/present_student_certificate.html',context)
+            elif certificate.certificate_type=='5':
+                return render(request, 'certificate/attestation_letter.html',context)
+
+            else:
+                return render(request, 'certificate/hsc_testimonial.html',context)
+        '''if transaction:
             certificate=Certificate.objects.filter(phone=request.POST.get('phone').strip(),transaction=transaction).first()
             if certificate.certificate_type=='1':
                 if certificate.student_category.id==3:
@@ -146,7 +176,10 @@ def CreateCertificate(request):
                 return render(request, 'certificate/attestation_letter.html',{'certificate':certificate})
 
             else:
-                return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})
-    return render(request, 'certificate/hsc_testimonial.html',)
+                return render(request, 'certificate/hsc_testimonial.html',{'certificate':certificate})'''
+        not_found='Certificate not checked yet'
+        context['not_found']=not_found
+
+    return render(request, 'certificate/authenticate_certificate.html',context)
 
 

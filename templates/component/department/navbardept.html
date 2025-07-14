@@ -182,18 +182,22 @@
     <div class="mob_menu d-block d-md-none" id="jmenu">
         <a href="javascript:;" class="show-menu menu-head" title=" মেনু নির্বাচন করুন">
             <i class="fas fa-bars"></i>
+            {% if request.session.lang == 'english'%}
+            <span style="margin-left:10px;"> Select Menu   </span>
+            {% else %}
             <span style="margin-left:10px;"> মেনু নির্বাচন করুন </span>
+            {% endif %}
         </a>
         <div role="navigation" id="dawgdrops">
             <ul class="meganizr mzr-slide mzr-responsive mb-3" style="display: none;">
-                <li class="col0 home"><a href=/bn></a></li>
+                <li class="col2"><a href="/"></a><i class="fas fa-home"></i></li>
                 {%for navitem in nav_department %}
 
-                <li class="mzr-drop col{{navitem.id}}">
-                    <a href="{% url 'department-nav' department.id  navitem.title_en %}" title="{{navitem.title}}">{{navitem.title}}</a>
-                    <div class="mzr-content sibling-toggle" style="display:none">
+                <li class="col{{navitem.id}}">
+                    <a href="{% url 'department-nav' department.id  navitem.title_en %}" title="{{navitem.title}}">{% if request.session.lang == 'english'%}{{navitem.title_en}} {% else %}{{navitem.title}} {% endif %}</a>
+                    <!--<div class="mzr-content sibling-toggle" style="display:none">
                         
-                        <!--{% for navelement in navitem.navelement.all%}
+                        {% for navelement in navitem.navelement.all%}
 
                         <div class="one-col">
                             <h6>{{navelement.head}}</h6>
@@ -208,8 +212,8 @@
                                                                     
                                                         
                         </div>
-                        {% endfor %}-->
-                    </div>
+                        {% endfor %}
+                    </div>-->
                 </li>
 
              {% endfor %}

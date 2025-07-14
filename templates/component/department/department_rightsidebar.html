@@ -41,10 +41,10 @@
 
   
                                <h1 class="title" style="text-align: center;"><u>Head of Department</u></h1>
-                               <h3 class="title" style="text-align: center;">{%if department_head %}{{department_head.t_name}}{% endif %}</h3>
+                              
                                {% else %}
                                <h1 class="title" style="text-align: center;"><u>বিভাগীয় প্রধান</u></h1>
-                               <h3 class="title" style="text-align: center;">{%if department_head %}{{department_head.t_name_bangla}}{% endif %}</h3>
+                             
                                
                                {% endif %}
 
@@ -56,9 +56,9 @@
 
 
   
-                    <h3  style="text-align: center;">{%if department_head %}{{department_head.t_name}}{% endif %}</h3>
+                    <a href="{% url 'department-nav' department.id  'Department  Head' %} "><h3  style="text-align: center;">{%if department_head %}{{department_head.t_name}}{% endif %}</h3></a>
                     {% else %}
-                    <h3  style="text-align: center;">{%if department_head %}{{department_head.t_name_bangla}}{% endif %}</h3>
+                    <a href="{% url 'department-nav' department.id  'Department  Head' %} "><h3  style="text-align: center;">{%if department_head %}{{department_head.t_name_bangla}}{% endif %}</h3></a>
                     
                     {% endif %}
 </div>  
@@ -122,7 +122,7 @@
                                         <sup>(5)</sup>
                                     </span>
                                 </a> -->
-                                <a href="http://www.bogra.gov.bd/bn/site/view/revenuemodeladvertisement"
+                                <a href=""
                                     title="বিজ্ঞাপন">
                                     {% if request.session.lang == 'english' %}
                                     Ads
@@ -147,23 +147,21 @@
                 
                         <div class="npsylhet_ad owl-carousel">
                                 <div class="ad_item">
-                        <a href="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//646/9cb/fea/6469cbfea616d475812219.jpg">
-                            <img alt="Advertisement banner" src=//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//646/9cb/fea/6469cbfea616d475812219.jpg width="100%" height="150" style="border: none;" alt=" " />
-                        </a>  
-                    </div>
-                                <div class="ad_item">
-                        <a href="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//643/7b8/603/6437b8603b46f361116110.jpeg">
-                            <img alt="Advertisement banner" src=//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//643/7b8/603/6437b8603b46f361116110.jpeg width="100%" height="150" style="border: none;" alt=" " />
-                        </a>  
-                    </div>
+            <a href="{% static 'images/aniversary.jpg'%}">
+                <img alt="Advertisement banner" src="{% static 'images/aniversary.jpg'%}" width="100%" height="150" style="border: none;" alt=" " />
+            </a>  
+        </div>
+                    <div class="ad_item">
+            <a href="{% static 'images/n.jpg'%}">
+                <img alt="Advertisement banner" src={% static 'images/n.jpg'%} width="100%" height="150" style="border: none;" alt=" " />
+            </a>  
+        </div>
                             </div>
                     </div>
             </div>        
                 
         <div class="block service-list">
-<a href="http://webmail.mopa.gov.bd/" target="_blank">
-    <h5 class="bk-org title eservice-title ces_title">MoPA ওয়েবমেইল </h5>
-</a>
+
 <div class="content">
 
 
@@ -173,7 +171,7 @@
         
                 
         <div class="block service-list">
-            <a href="http://webmail.mopa.gov.bd/" target="_blank">
+            <a href="/" target="_blank">
                 {% if request.session.lang == 'english' %}
                     <h5 class="bk-org title eservice-title ces_title">Academic Calender </h5>
             
@@ -192,7 +190,7 @@
                     
                             
                     <div class="block service-list">
-            <a href="{% url 'teacherlist' 'content_name' 'head' 'type' 'vacantpost' %}">
+            <a href="{% url 'teacher_vacant_post' %}">
                 {% if request.session.lang == 'english' %}
                 <h5 class="bk-org title eservice-title ces_title">Vacant Posts </h5>
             
@@ -369,7 +367,7 @@
                     class="share-buttons">
                     <i class="fa fa-youtube-square fa-3x p-1 text-primary"></i>
                 </a>
-                        <a title="facebook" href="//www.facebook.com/DCBogura" target="_blank"
+                        <a title="facebook" href="//www.facebook.com/profile.php?id=100006628218798" target="_blank"
                     class="share-buttons">
                     <i class="fa fa-facebook-square fa-3x p-1 text-primary"></i>
                 </a>
@@ -477,9 +475,9 @@
             
             {% endif %}
             
-            <!--<div class="content">
-               <img alt="জরুরি হটলাইন" src="//file.portal.gov.bd/media/central/uploaded-files/National-Helpline.jpg" style="height:100%; width:100%">
-            </div>-->
+            <div class="content">
+               <img alt="জরুরি হটলাইন" src="//file.portal.gov.bd/media/central/uploaded-files/National-Helpline.jpg" style=" width:100%">
+            </div>
             </div>        
                         
                 

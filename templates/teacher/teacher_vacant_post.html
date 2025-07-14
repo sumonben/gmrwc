@@ -59,7 +59,7 @@
     
 
 {%if teachers %}
- {% include 'component/teacher/list_form.html' %}
+ {% include 'component/teacher/vacant_post.html' %}
 
  {% endif %}
 
@@ -73,8 +73,13 @@
                         <!-- Share Content bottom option start -->
                        <div class="d-flex justify-content-between hide-for-print my-3">
                             <div>
+                            {% if request.session.lang == 'english'%}
+                            <p class="share-title">Click here to share this content</p>
+
+                            {% else %}
                                 <p class="share-title">কনটেন্টটি শেয়ার করতে ক্লিক করুন</p>
-                                <div class="blocks">
+                            {% endif %}                                
+                            <div class="blocks">
     <div class="d-flex gap-1">
         <a class="social_btn facebook fb-xfbml-parse-ignore" href="javascript:void(0)" onclick="shareOnClick('facebook')"><i class="fab fa-facebook-f"></i></a> 
         <a class="twitter-share-button twitter social_btn" href="javascript:void(0)" onclick="shareOnClick('twitter')"><i class="fab fa-twitter"></i></a>
@@ -89,14 +94,7 @@
                             </div>
                             <div class="share-content-box">
                                 
-                                <div>
-                                    <a href="#" onclick="loadOpinionPoll(this)"><img src="http://file.portal.gov.bd/media/central/chart.png" alt="Polling" style="width:28px;height:24px;"></a>
-                                    <p class="share-text-style">পোলিং</p>
-                                </div>
-                                <div>
-                                    <a href="#" onclick="loadCommentSection(this, 2)"><img src="http://file.portal.gov.bd/media/central/comment.png" alt="Polling" style="width:28px;height:24px;"></a>
-                                    <p class="share-text-style">মতামত দিন</p>
-                                </div>
+                               
                             </div>
                         </div>
                        <!-- Share Content bottom option end -->

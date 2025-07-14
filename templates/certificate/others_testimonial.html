@@ -129,7 +129,7 @@ text-decoration: none;
 }
 
 
-@media print and (min-width: 480px) {
+@media print {
   @font-face {
     font-family: "kalpurush";
     src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
@@ -205,11 +205,11 @@ margin-right: 12%;
   diplay:none;
 }
 }
-@media only screen and(max-width:978px){
+@media only screen and(min-width:768px){
   .top-right {
     width: 10%;
   position: absolute;
-  top: 60%;
+  top: 0%;
   left: 65%;
   }
   .top-middle {
@@ -301,8 +301,9 @@ margin-right: 12%;
                 <br>আমি তার জীবনের সর্বাত্মক উন্নতি ও সাফল্য কামনা করি। 
               </h4>
                   
-                  
-        <h4 id="date" style="font-family: kalpurush;margin-left: 10px; margin-top:35%"><br>ইস্যু তারিখঃ {% now "d-m-Y" %}</h4>
+                        <img height="70px" src="{% if principal %}{{principal.signature.url}}{% endif %}" alt="" style="margin-right:100px;margin-left:65%;position:absolute;margin-top:15%">
+  
+        <h4 id="date" style="font-family: kalpurush;margin-left: 10px; margin-top:35%"><br>ইস্যু তারিখঃ {% now "d-m-Y" %}</h4>              
         <div  class="bottom-right">
             <h4 style="font-family: kalpurush;line-height: 1.2; font-weight:normal;text-align:center">অধ্যক্ষ<br>
             সরকারি মুজিবুর রহমান মহিলা কলেজ, বগুড়া<br>

@@ -30,15 +30,26 @@
 <h3 class="title">
     
     {% if navitem_name %}
-    {% if request.session.lang == 'english' %}
-    {{navitem.name_en}} --> {{navelement.head_en}} --> {{page.heading_en}} 
+        {% if request.session.lang == 'english' %}
+        {{navitem.name_en}} --> {{navelement.head_en}} --> {{page.heading_en}} 
+        {% else %}
+        {{navitem.name}} --> {{navelement.head}} --> {{page.heading}} 
+        {% endif %}
+    {% elif service_box %}
+            {% if request.session.lang == 'english' %}
+
+                {{service_box.title_en}} -->{{page.heading_en}}
+            {% else %}
+            
+                {{service_box.title}} -->{{page.heading}}
+
+            {% endif %}
     {% else %}
-    {{navitem.name}} --> {{navelement.head}} --> {{page.heading}} 
-    {% endif %}
-    {% endif %}
-    
-    {% if servicebox_title %}
-    {{servicebox_title}} -->{{heading}}
+        {% if request.session.lang == 'english' %}
+            All Notices
+        {% else %}
+        সকল নোটিশ
+        {% endif %}
     {% endif %}
         
         
@@ -52,13 +63,11 @@
         {% if request.session.lang == 'english' %}
         <th scope="">Title</th>
         <th scope="">Date Published</th>
-        <th scope="">Download</th>
-        <th scope="">Links</th>
+        <th scope="">Download/Link</th>
         {% else %}
         <th scope="">শিরোনাম</th>
         <th scope="">প্রকাশের তারিখ</th>
-        <th scope="">ডাউনলোড</th>
-        <th scope="">লিংক</th>
+        <th scope="">ডাউনলোড/লিংক </th>
         {% endif %}
         
         
@@ -78,15 +87,22 @@
                                         <td>{{post.date}}</td>
 
                                         <td class="">
-                                    <a class="control-file" target="_blank"  href="{%if post.file %}{{post.file.url}} {% endif %}" title="1279.pdf" download="{%if post.file %}{{post.file.url}} {% endif %}">
-<i class="fa fa-file-pdf text-danger" style="font-size:x-large"></i>
-</a>                                            
+                                    {%if post.file %}<a class="control-file" target="_blank"  href="{{post.file.url}}"   download="{{post.file.url}}">
+                                    <i class="fa fa-file-pdf text-danger" style="font-size:x-large"></i>
+                                    </a>  
+                                    {% endif %}
+                                {%if post.link %}
+
+                                        {% if request.session.lang == 'english' %}
+                                           <a href="{{post.link}}">See Here</a> 
+                                           {% else %}
+                                           <a href="{{post.link}}">লিংক দেখুন</a> 
+                                           
+                                        {% endif %}
+                                {% endif %}
 
                                 </td>
-                                <td class="">
-                                    
-                                   {{post.body|safe}}                                
-                                </td>
+                                
 
 
         </tr>                

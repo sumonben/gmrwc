@@ -56,11 +56,15 @@
 
    {%include 'component/notice.html'%}
    
-   {% autoescape off %}
+   <br>
    
-   {{page.body}}
-   
-   {% endautoescape %}   
+   {% if request.session.lang == 'english'%}
+
+   {{page.body_en|safe}}
+       {% else %}
+   {{page.body|safe}}
+
+    {% endif %}
 
 
                    </div>

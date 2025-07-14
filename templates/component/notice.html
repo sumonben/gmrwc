@@ -7,13 +7,14 @@
 <div class="blocks">
 
 <div id="notice-board" class="box p-4">
+     
     <div class="notice-board-bg">
         {% if request.session.lang == 'english'%}
         <h2 id="notice-board-bg">Notice Board</h2>
         <hr>
         <div id="notice-board-ticker">
             <ul class="list list-unstyled">
-                {% for notice in notices %}
+                {% for notice in notices|slice:":8" %}
                 <li class="clearfix">
                     <a href="{% url 'single_notice' notice.id %}" title="গণবিজ্ঞপ্তি">
                         <i class="text-green fa fa-arrow-circle-right"></i>
@@ -32,7 +33,7 @@
         <hr>
         <div id="notice-board-ticker">
             <ul class="list list-unstyled">
-                {% for notice in notices %}
+                {% for notice in notices|slice:":8" %}
                 <li class="clearfix">
                     <a href="{% url 'single_notice' notice.id %}" title="গণবিজ্ঞপ্তি">
                         <i class="text-green fa fa-arrow-circle-right"></i>
@@ -64,7 +65,7 @@
            
             <ul>
                 {% for notice in notices %}
-                <li>{{notice.title_en}}</li>
+<li><i class="text-green fa fa-arrow-circle-right"></i><a style="color: red" href="{% url 'single_notice' notice.id %}"> {{notice.title_en}} </a></li>
                 {% endfor %}
                 
             </ul>
@@ -73,7 +74,7 @@
         </div>
     </div>
     <div>
-        <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn">All
+        <a style="color: red" href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn">All
             </a>
     </div>
     {% else %}
@@ -83,7 +84,8 @@
           
             <ul>
                 {% for notice in notices %}
-                <li>{{notice.title}}</li>
+<li><i class="text-green fa fa-arrow-circle-right"></i><a style="color: red" href="{% url 'single_notice' notice.id %}"> {{notice.title}} </a></li>
+
                 {% endfor %}
                 
             </ul>

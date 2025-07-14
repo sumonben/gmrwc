@@ -12,6 +12,10 @@
     #site-name{
         margin-bottom: -17px;
     }
+    .bottom_text{
+          
+          font-size:20px;
+      }
     @media(max-width: 786px){
         
         #header-site-info{
@@ -22,9 +26,8 @@
             position: fixed;
             width: 100%;
             height: 14%;
-            padding-bottom: 50px;
-            padding-left: 50px;
-            border-radius: 20%;
+            padding-left:80px;
+            border-radius: 10%;
             margin-top: -100px;
             margin-left: -21px;
         }
@@ -32,12 +35,14 @@
             display: none;
         }
         #logo{
-            width: 80px;
+            width: 120px;
             margin: 0px;
         }
         #logo-image{
-            width: 80px;
-            margin-left: -30px;
+            height:120px;
+            width: 120px;
+
+            margin-left: -40px;
         }
         #site-name-wrapper{
             text-align:center;
@@ -50,6 +55,10 @@
             margin-bottom: -17px;
             line-height:1;
         }
+      .bottom_text{
+          
+          font-size:10px;
+      }
         
     }
  </style>   
@@ -61,24 +70,28 @@
         <div class="clearfix" id="site-name-wrapper">
             
             {% if request.session.lang == 'english' %}
-            <span id="site-name" style="text-align: center;">
-                <a style="text-align: center;"title="বগুড়া জেলা " href="/" >{{institute.title_en}}</a>                
+            <span id="site-name" style="text-align: center; margin-left:0px;">
+                <a style="text-align: center;margin-left:-10px;"title="বগুড়া জেলা " href="/" >{{institute.title_en}}</a>                
             </span>
             <span id="site-name" style="text-align: center;">
                 <a title="বগুড়া জেলা " href="/" >{{institute.address_en}}</a>
                 
             </span>
             <span id="slogan" style="text-align: center;">{{institute.slogan_en}}</span>
+            <span class="bottom_text" style="text-align: center;"><a style="text-align: center;color:white;font-weight:bold"title="বগুড়া জেলা " href="/" >(Former: Govt. Mujibur Rahman Women's College)</a></span>
+
              {% else %}  
                 
             <span id="site-name" style="text-align: center;">
-                <a style="text-align: center;"title="বগুড়া জেলা " href="/" >{{institute.title}}</a>                
+                <a style="text-align: center;"title="বগুড়া জেলা " href="/" >{{institute.title}}</a><br>
             </span>
             <span id="site-name" style="text-align: center;">
                 <a title="বগুড়া জেলা " href="/" >{{institute.address}}</a>
                 
             </span>
             <span id="slogan" style="text-align: center;">{{institute.slogan}}</span>
+            <span class="bottom_text"  style="text-align: center;"><a style="text-align: center;color:white;font-weight:bold"title="বগুড়া জেলা " href="/" >(পূর্বতন নামঃ সরকারি মুজিবুর রহমান মহিলা কলেজ)</a></span>
+
             {% endif %}
         </div>
     </div>

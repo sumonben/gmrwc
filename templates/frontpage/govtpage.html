@@ -15,10 +15,7 @@
     }
 </style>
 
- <!-- accessibility Modal -->
- {% include 'component/accessibilityModal.html' %}
-<!-- end accessibility Modal -->
- <!--   -->
+ 
 
 
 
@@ -30,29 +27,12 @@
 {% include 'component/topbar.html' %}
 <!--Top Menu -->               
 
-<!--  -->
 
             
         
                 
 
-<!--     <div class="w-100">
-    <a title="" href="/bn/site/top_banner/G5fC-বগুড়া-জেলা-ব্র্যান্ডিং">
-    <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/files/www.bogra.gov.bd/top_banner/c988406c_3ca2_4f44_90bc_cedc47530830/14572f4000cd37952441124eadfa0c18.png" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং"></a>
-</div>
-    <div class="w-100">
-    <a title="" href="/bn/site/top_banner/Wpp9-বেহুলার-বাসর-ঘর">
-    <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b46/6f2/618b466f2634c119530378.jpg" class="d-block w-100" alt="বেহুলার বাসর ঘর"></a>
-</div>
-    <div class="w-100">
-    <a title="" href="/bn/site/top_banner/Fb9s-বগুড়ার-প্রসিদ্ধ-দই-ও-মিষ্টান্ন">
-    <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/a1c/a42/618a1ca42ff7a982350399.jpg" class="d-block w-100" alt="বগুড়ার প্রসিদ্ধ দই ও মিষ্টান্ন"></a>
-</div>
-    <div class="w-100">
-    <a title="" href="/bn/site/top_banner/ক্ষুদ্র-ও-মাঝারি-শিল্পে-সমৃদ্ধ-বগুড়া-জেলা">
-    <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b45/7ab/618b457abacd7498109935.jpg" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা"></a>
-</div>
- -->
+
  <style>
  #site-info {
     clear: both;
@@ -96,7 +76,7 @@
     @media(max-width: 786px){
         #banner-slider{
             position: relative;
-            margin-top: 25%;
+            margin-top: 20%;
         }#founder{
             width: 100px;
             height: 100px;
@@ -109,9 +89,9 @@
     <div class="carousel-inner">
             
         <div class="carousel-item  w-100 active">
-            <a title="" href="/bn/site/top_banner/ক্ষুদ্র-ও-মাঝারি-শিল্পে-সমৃদ্ধ-বগুড়া-জেলা">
+            <a title="" href="{%static 'images/college_gate.jpg'%}">
              <!--<img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b45/7ab/618b457abacd7498109935.jpg" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা"> -->
-            <img style="height: 242px;" src="{%static 'images/college_gate.jpg'%}" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা" load="lazy">
+            <img style="height: 242px;" src="{%static 'images/college_gate.jpg'%}" class="d-block w-100" alt="mujibur rahman women's college" lazy="loading">
             </a>
         </div>
 
@@ -119,9 +99,9 @@
                                       <!-- Expensive or dynamic content here -->
       {% for carousel in carousels %}      
       <div class="carousel-item  w-100">
-          <a title="" href="/bn/site/top_banner/G5fC-বগুড়া-জেলা-ব্র্যান্ডিং">
+          <a title="" href="{{ carousel.cimage.url }}">
           <!-- <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/files/www.bogra.gov.bd/top_banner/c988406c_3ca2_4f44_90bc_cedc47530830/14572f4000cd37952441124eadfa0c18.png" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং"> -->
-          <img style="height: 242px;" src="{{ carousel.cimage.url }}" class="d-block w-100" alt="বগুড়া জেলা ব্র্যান্ডিং" load="lazy">
+          <img style="height: 242px;" src="{{ carousel.cimage.url }}" class="d-block w-100" alt="বগুড়া" load="lazy">
           </a>
       </div>
      {% endfor %}        
@@ -130,12 +110,6 @@
                                                                
 
             
-      <div class="carousel-item  w-100 ">
-          <a title="" href="/bn/site/top_banner/ক্ষুদ্র-ও-মাঝারি-শিল্পে-সমৃদ্ধ-বগুড়া-জেলা">
-          <!-- <img style="height: 242px;" src="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//618/b45/7ab/618b457abacd7498109935.jpg" class="d-block w-100" alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা"> -->
-          <img id="founder" style="float: right;" src="{%static 'images/founder.jpg'%}" class="d-block " alt="ক্ষুদ্র ও মাঝারি শিল্পে সমৃদ্ধ বগুড়া জেলা" load="lazy">
-          </a>
-      </div>
     </div>
   </div>
   <!--/carousel-->
@@ -176,6 +150,8 @@
                    <div id="flash">
 <!--get & set site layer_id -->
     <!--5-->
+       {%include 'component/front_button.html'%}
+
    {%include 'component/notice.html'%}
 <!-- jQuery.simpleTicker.js start --><!-- <link href="//www.jqueryscript.net/demo/HTML-List-Based-Scroller-Ticker-Plugin-jQuery-simpleTicker/jquery.simpleTicker.css" rel="stylesheet"> --><!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --><!-- <script src="//www.jqueryscript.net/demo/HTML-List-Based-Scroller-Ticker-Plugin-jQuery-simpleTicker/jquery.simpleTicker.js"></script> --><!-- jQuery.simpleTicker.js end -->
 
@@ -435,16 +411,7 @@ $.simpleTicker($("#demo"),{
        
        
                 
-   <div class="block">
-
-    <div class="content">
-                    <table border="1" cellpadding="1" cellspacing="1" style="height:240px; width:720px"><tbody><tr><td><iframe frameborder="0" height="240" src="//www.youtube.com/embed/-7KRaSg-IeI" width="300" preload="none"></iframe></td>
-        <td><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14479.872526257583!2d89.373203!3d24.864938!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc551af65981d1%3A0x79362f623331af76!2sGovt.%20Mujibur%20Rahman%20Mohila%20College!5e0!3m2!1sen!2sbd!4v1724352112044!5m2!1sen!2sbd" width="400" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" preload="none"></iframe></td>
-    </tr></tbody></table><p>&nbsp;</p>
-
-    </div>  
-
-</div>
+{% include 'component/mapandvideo.html' %}                
 
 </div>
 
@@ -463,9 +430,7 @@ $.simpleTicker($("#demo"),{
         
                     
                     
-                <!-- 129 - [70,71,82,129,133] -->
-                    
-            <!-- block-bangladesh_eDirectory-default <br> -->    
+               
              
             
         {% include 'component/rightsidebar.html'%}

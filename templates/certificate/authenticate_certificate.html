@@ -3,21 +3,25 @@
 {% block content %}
 {% load static %}
 
-        {% if certificate %}
+        {% if 1 %}
        
       
-           
-                {% for cert in certificate %}
-         
+           <fieldset>
+
                 
-               <fieldset> 
+                
                 <table width="100%" border="2px" cellspacing="0" cellpadding="2" align="center">
+                                {% if not_found %}
+                                <thead class="r-align-right r-ori-vert	col-md-4" data-single="" data-cellid="grid_c1" data-pageid="1">
+                                <th colspan="5"><h3 style=" background-color: #ff0000;">Certicicate not yet activated</h3></th>
+                                </thead>
+                            {% endif  %}
                     <thead style="height: 25px; background-color: #245b80; color: #fff;padding: 15px"><th colspan="5" style="height: 25px; background-color: #245b80; color: #fff;padding: 15px;">Your Certificate </th></thead>
                     <tbody>
                 <form method="post" action="{% url 'create-certificate' %}" id="form1" name="form1" target="_blank">
                     {% csrf_token %}
                 <tr>
-                    
+                            
                     <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c1" data-pageid="1">
                    
                     Email:
@@ -25,7 +29,7 @@
                     
                     
                     <td class="col-md-2">
-                        <input type="text" name="email" value=" {{cert.email}}" class="textfieldUSERinfo">
+                        <input type="text" name="email"  class="textfieldUSERinfo">
                     </td>
                     </tr>
                     
@@ -36,7 +40,7 @@
                     </td>
                     
                     <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
-                        <input type="text" name="phone" value=" {{cert.phone}}" class="textfieldUSERinfo" max-length="11">
+                        <input type="text" name="phone"  class="textfieldUSERinfo" max-length="11" required>
         
                     </td>
                     <td class="col-md-2"></td>
@@ -44,11 +48,11 @@
                     <tr>
                     
                         <td class="r-align-right r-ori-vert							col-md-4						" data-single="" data-cellid="grid_c3" data-pageid="1">
-                         Transaction ID(TrxID):
+                         CertificateID:
                         </td>
                         
                         <td class=" r-ori-vert							col-md-6						" data-single="" data-cellid="grid_c4" data-pageid="1">
-                            <input type="text" name="tran_id" value=" {{cert.transaction.tran_id}}" class="textfieldUSERinfo">
+                            <input type="text" name="tran_id"  class="textfieldUSERinfo" required>
             
                         </td>
                         <td class="col-md-2"></td>
@@ -86,9 +90,8 @@
             </tbody>
         </table>
         
-              <fieldset> 
-              {% endfor %}
-                
+    <fieldset> 
+
           {% else %}
           <fieldset style="margin-bottom: 2%;">
             <table width="50%" border="1" cellspacing="0" cellpadding="2" align="center">

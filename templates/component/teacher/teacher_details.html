@@ -1,10 +1,11 @@
+{% load static  %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 mt-3">
             <div class="card" >
                 <div class="card-horizontal" >
                     <div class="img-square-wrapper">
-                    <img class="" width="250px" height="200px" src="{%if teacher.image %}{{ teacher.image.url }}{% else %}https://www.files.ictparkbd.com/media/unnamed_feuOxUZ.jpg{% endif %}" alt="Card image cap"></div>
+                    <img class="" width="250px" height="200px" src="{%if teacher.image %}{{ teacher.image.url }}{% else %}{% static 'images/no_image.png' %}{% endif %}" alt="Card image cap"></div>
                     <div class="card-body">
                         {% if request.session.lang == 'english' %}
                         <h4 class="card-title" style="text-align: center;">
@@ -32,7 +33,7 @@
                                     <p style="text-align: center;">
                                         <b>Phone: </b> : 
                                         <!-- ০২৫৮৯৯০০০২০ (অফিস) ০২৫৮৯৯০০০২১ (বাংলো) -->
-                                                                            ০51-65375 (Office) 
+                                                        01309119250  (Office) 
                                     </p>
 
                                     <p style="text-align: center;">
@@ -50,9 +51,7 @@
                                                                 <p style="text-align: center;"><b>Joining Date in current workplace: </b> : 
                                         <!-- 09-12-2024 -->
                                                                                                                                                                                                                                                                                                     <span class="day">১২</span>
-                                        <span >
                                             {{teacher.joining_date}}
-                                        </span>
                                     </p>
 
                                 </div>                                    {% else %}
@@ -82,7 +81,7 @@
                                                 <p style="text-align: center;">
                                                     <b>ফোন (অফিস)</b> : 
                                                     <!-- ০২৫৮৯৯০০০২০ (অফিস) ০২৫৮৯৯০০০২১ (বাংলো) -->
-                                                                                        ০51-65375 (অফিস) 
+                                                               01309119250 (অফিস) 
                                                 </p>
 
                                                 <p style="text-align: center;">
@@ -100,9 +99,7 @@
                                                                             <p style="text-align: center;"><b>বর্তমান কর্মস্থলে যোগদানের তারিখ</b> : 
                                                     <!-- 09-12-2024 -->
                                                                                                                                                                                                                                                                                                                 <span class="day">১২</span>
-                                                    <span >
                                                         {{teacher.joining_date}}
-                                                    </span>
                                                 </p>
 
                                         </div>
@@ -114,5 +111,47 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4 col-sm-4 col-xs-4 text-left" style="float:right;position:relative;">
+        <a  onclick="showhelpdeskPanel()" class="btn btn-link" style="margin-top:12px;color:red;">
+            <i class="fa fa-question-circle" style="font-size: 10px !important;"></i>
+            {% if request.session.lang == 'english' %}
+
+                More Details
+                {% else %}
+                বিস্তারিত
+                {% endif %}
+            <i class="fa fa-chevron-up icon-changer" style="font-size: 10px !important;"></i>
+
+        </a>
+    </div>
 </div>
+<div class="create-help helpdeskPanel" style="display: none;
+    position: relative;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    z-index: 100%;
+    border-top: 1px solid rgb(85, 119, 119);">
+    <div class="row" style="margin-left: 2%;margin-right: 2%;">
+        
+       
+
+            {% if request.session.lang == 'english' %}
+
+                {{teacher.bio_en|safe}}
+                {% else %}
+                {{teacher.bio|safe}}
+                {% endif %}
+
+
+           
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+<script>
+function showhelpdeskPanel() {
+    $('.helpdeskPanel').toggle(500);
+    $('.icon-changer').toggleClass("fa-chevron-up fa-chevron-down");
+}
+</script>
 

@@ -1,10 +1,19 @@
-{% extends 'basepage/govtlayout.html' %}
-{% load static %}
-
-{% block content %}
+<html>
+{%load static%}
+<head>
 <style>
+ @font-face {
+    font-family: "kalpurush";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+    font-weight: normal;
+    font-style: normal;
+    }
   body{
-    font-family:"Arial";
+    font-family: "kalpurush";
   }
   button#print, button#next-btn, button#submit-btn {
   font-size: 17px;
@@ -45,36 +54,63 @@ button#print:hover::after, button#next-btn:hover::after, button#submit-btn:hover
   transition: transform .3s;
 }
   .top-right {
-    font-family:"Arial";
+    font-family: "kalpurush";
       width: 50%;
   position: absolute;
   top: 24%;
   left: 83%;
 }
     .top-left {
-      font-family:"Arial";
+    font-family: "kalpurush";
       width: 73%;
   position: absolute;
   top: 32%;
-  left: 15%;
+  left: 12%;
 }
-table, th, td {
-  border: none;
+
+@media print and (min-width: 480px) {
+    
+  @font-face {
+    font-family: "kalpurush";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+      url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+    font-weight: normal;
+    font-style: normal;
+    }
+      
+    
   
+
+            #submit-btn {
+              display: none !important;;
+            }
+          }
+table, th, td {
+  border: 1px;
+  
+}
+#first_table{
+    position:absolute;
 }
 u {    
     border-bottom: 1px dotted #000;
     text-decoration: none;
 }
 </style>
+</head>
+<body >
 <div class="container home-page" id="column"  style="height: 1000px;">
-  <button id="submit-btn" class="btn-default" onclick="goToPrint()" >Download or Print</button>
+        <button id="submit-btn" class="btn-default" onclick="window.print()" >Download or Print</button>
 
+<table id="first_table" width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tbody><tr>
+        <td>
     <div class="row"  >
         <div class="col" >
-            <div class="top-left">Bottom Left 
-
-    </div>
+            
     <div class="container">
 
         <img height="800" src="{% static 'images/testimonial.jpg' %}" alt="" style="opacity: 1; left: 0; right: 0; position: relative; margin-left: 6%; margin-right: 11%; margin-top: 0%;">
@@ -82,14 +118,16 @@ u {
             {{certificate.id}}
         </div>
         <div class="top-left">
-          <p><h4 style="line-height: 1.5;">This is certified that <i><b><u>{{certificate.name}}</u></b></i> dougther of {{certificate.father_name}} and {{certificate.mother_name}} was a student of {{certificate.group}} of HSC class of this college during the session {{certificate.sesstion}}. She passed the HSC Examination of {{certificate.passing_year}} bearing Roll no. {{certificate.exam_roll}} and Registration no. {{certificate.registration}}  under Rajshahi Education Board and secured <i><b><u> CGPA {{certificate.cgpa}} </u></b></i> in the scale of 5.00 </h4>
-          <h4 style="line-height: 1.5;">
-            So far I know ,She bears a good moral character and she never took part in any activity supervise of the state or of decipline of th college during the period of her study here.I wish her evry success in life.
-          </h4>
-            <table width="100%" border="0" align="center">
-              <thead>
-                    <th colspan="4" ><h5><b>Subject She Studied:</b></h5>
+          <p style="line-height: 1.5;">This is certified that <i><b><u>{{certificate.name}}</u></b></i> dougther of {{certificate.father_name}} and {{certificate.mother_name}} was a student of {{certificate.group}} of HSC class of this college during the session {{certificate.sesstion}}. She passed the HSC Examination of {{certificate.passing_year}} bearing Roll no. {{certificate.exam_roll}} and Registration no. {{certificate.registration}}  under Rajshahi Education Board and secured <i><b><u> CGPA {{certificate.cgpa}} </u></b></i> in the scale of 5.00 
+            <br>So far I know ,She bears a good moral character and she never took part in any activity supervise of the state or of decipline of th college during the period of her study here.I wish her evry success in life.
+         
+            
+            <table width="60%" style=" margin-left:10%;margin-right:30%;margin-top:5%"  >
+               <thead>
+                   <th colspan="4" >
+                        <h4><b>Subject She Studied:</b></h4>
                     </th>
+                    
       
               </thead>
               <tbody>
@@ -141,8 +179,9 @@ u {
                 
             </tbody>
         </table>
-                  
-        <h4 style="margin-left: 100px; "><br>{% now "d-m-Y" %}</h4>
+        <img height="70px" src="{% if principal %}{{principal.signature.url}}{% endif %}" alt="" style="margin-right:100px;margin-left:70%;position:absolute;margin-top:20px%">
+
+        <h4 style="margin-left: 100px;margin-top:20px% "><br>{% now "d-m-Y" %}</h4>
         <h4 style="margin-left: 100px;">This Copy is <br>computer Generated</h4>
 
           </p>
@@ -151,6 +190,10 @@ u {
         
         </div>
     </div>
+    </td>
+    </tr>
+    </tbody>
+    </table>
 
 </div>
     <script>
@@ -162,4 +205,6 @@ u {
         }
     </script>
     
-{% endblock %}
+
+</body>
+</html>
