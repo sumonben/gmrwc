@@ -30,7 +30,7 @@ urlpatterns = [
     path('admission/', include("admission.urls")),
     path('payment/', include("payment.urls")),
     path('certificates/', include("certificates.urls")),
-    path('blog/', include("blog.urls")),
+    path('news/', include("blog.urls")),
 
 
 

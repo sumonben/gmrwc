@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 import random
 import string
@@ -24,6 +25,7 @@ class Profile(models.Model):
     
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    name_en = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.name
@@ -31,27 +33,38 @@ class Tag(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    name_en = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return self.name
 
+class PlaceHolder(models.Model):
+    serial=models.IntegerField(default=0)
+    name = models.CharField(max_length=50, unique=True)
+    name_en = models.CharField(max_length=50, null=True)
+
+    def __str__(self):
+        return self.name+":"+self.name_en
     
 class Post(models.Model):
     class Meta:
         ordering = ["publish_date"]
     
+    serial=models.IntegerField(default=0)
     title = models.CharField(max_length=255, unique=True)
     subtitle = models.CharField(max_length=255, blank=True)
     slug = models.SlugField(max_length=255, allow_unicode=True, unique=True)
-    body = RichTextField(blank=True, null=True)
+    body=RichTextUploadingField(blank=True,null=True)
+    body_en=RichTextUploadingField(blank=True,null=True)    
     meta_description = models.CharField(max_length=150, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
     publish_date = models.DateTimeField(blank=True, null=True)
     published = models.BooleanField(default=False)
     categories = models.ManyToManyField(Category, blank=True)
-    author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
+    place_holder=models.ManyToManyField(PlaceHolder, blank=True,null=True)
+    author = models.ForeignKey(Profile, on_delete=models.PROTECT)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='blog_posts')
     image=models.ImageField(upload_to='media/news',blank=True,null=True)
 
