@@ -193,9 +193,9 @@ def admissionFormSubmit(request):
         body['total_amount'] = 3500
         body['currency'] = "BDT"
         body['tran_id'] = sslcommerz.generator_trangection_id()
-        body['success_url'] = 'http://localhost:8000/payment/success/'
-        body['fail_url'] = 'http://localhost:8000/payment/failed/'
-        body['cancel_url'] = 'http://localhost:8000/payment'
+        body['success_url'] = 'https://www.test.gmrwc.edu.bd/payment/success/'
+        body['fail_url'] = 'https://www.test.gmrwc.edu.bd/payment/failed/'
+        body['cancel_url'] = 'https://www.test.gmrwc.edu.bd/payment'
         body['emi_option'] = 0
         body['cus_name'] = request.POST.get('name')
         body['cus_email'] = 'request.data["email"]'

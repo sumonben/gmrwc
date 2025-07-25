@@ -37,6 +37,9 @@ class PostCreateForm(forms.ModelForm):
 
             }
 class CommentGuestForm(forms.ModelForm):
+    name=forms.CharField( label='নাম')
+    email=forms.CharField( label='ই-মেইল')
+    content=forms.CharField(widget=CKEditorWidget(config_name='awesome_ckeditor'), label='মন্তব্য')
     class Meta:
         model = CommentGuest
         fields = ('name', 'email', 'content') 

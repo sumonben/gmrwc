@@ -41,22 +41,19 @@
 
     {% if request.session.lang == 'english' %}
     <h1 class="title" style="text-align: center;"><u>College Founder</u></h1>
-    <h3 class="title" style="text-align: center;">Md. Mujibur Rahman Vandari</h3>
     <div class="content">
         <p><img src="{%static 'images/founder.jpg'%}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
 
-<h4 style="text-align: center;margin: 2px;">Md. Mujibur Rahman Vandari</h4>
+<a href="https://test.gmrwc.edu.bd/showpage/About%20College/College%20Establishment/About%20Founder/5/"><h4 style="text-align: center;margin: 2px;"><h4 style="text-align: center;margin: 2px;">Mojibor Rahman Bhandari</h4></a>
 </div>  
 
 
        {% else %}
        <h1 class="title" style="text-align: center;"><u>কলেজ প্রতিষ্ঠাতা</u></h1>
-       <h3 class="title" style="text-align: center;">মোঃ মজিবর রহমান ভান্ডারী</h3>
        <div class="content">
         <p><img src="{%static 'images/founder.jpg'%}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
 
-<h4 style="text-align: center;margin: 2px;">মোঃ মজিবর রহমান ভান্ডারী</h4>
-</div>  
+  <a href="https://test.gmrwc.edu.bd/showpage/About%20College/College%20Establishment/About%20Founder/5/"><h4 style="text-align: center;margin: 2px;">মজিবর রহমান ভান্ডারী</h4></a></div>  
 
     {% endif %}
     
@@ -75,11 +72,10 @@
     {% if principal %}
 
     <h1 class="title" style="text-align: center;"><u>Principal</u></h1>
-    <h3 class="title" style="text-align: center;">{{principal.t_name}}</h3>
     <div class="content">
         <p><img src="{{ principal.image.url}}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
 
-<h4 style="text-align: center;margin: 2px;">{{principal.t_name}}</h4>
+        <a href="{% url 'teacher_details' principal.id %}"><h4 style="text-align: center;margin: 2px;">{{principal.t_name}}</h4></a>
 </div>  
 {% endif %}
 
@@ -87,11 +83,10 @@
        {% if principal %}
 
        <h1 class="title" style="text-align: center;"><u>অধ্যক্ষ</u></h1>
-       <h3 class="title" style="text-align: center;">{{principal.t_name_bangla}}</h3>
        <div class="content">
         <p><img src="{{ principal.image.url}}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
 
-<h4 style="text-align: center; margin: 2px;">{{principal.t_name_bangla}}</h4>
+<a href="{% url 'teacher_details' principal.id %}"> <h4 style="text-align: center; margin: 2px;">{{principal.t_name_bangla}}</h4></a>
 </div>  
 {% endif %}
 
@@ -103,6 +98,44 @@
     
 
 </div>            
+
+           
+
+<div class="block">
+
+  
+
+    {% if request.session.lang == 'english' %}
+    {% if vice_principal %}
+
+    <h1 class="title" style="text-align: center;"><u>Vice Principal</u></h1>
+    <div class="content">
+        <p><img src="{{ vice_principal.image.url}}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
+
+        <a href="{% url 'teacher_details' vice_principal.id %}"><h4 style="text-align: center;margin: 2px;">{{vice_principal.t_name}}</h4></a>
+</div>  
+{% endif %}
+
+       {% else %}
+       {% if vice_principal %}
+
+       <h1 class="title" style="text-align: center;"><u>উপাধ্যক্ষ</u></h1>
+       <div class="content">
+        <p><img src="{{ vice_principal.image.url}}" style="width: 100%;" class="fr-fic fr-dib" data-result="success"></p>
+
+<a href="{% url 'teacher_details' vice_principal.id %}"> <h4 style="text-align: center; margin: 2px;">{{vice_principal.t_name_bangla}}</h4></a>
+</div>  
+{% endif %}
+
+    {% endif %}
+    
+                               
+            
+    
+    
+
+</div>            
+
 
         
                 
@@ -183,14 +216,14 @@
    
     
             <div class="npsylhet_ad owl-carousel">
-                    <div class="ad_item">
-            <a href="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//646/9cb/fea/6469cbfea616d475812219.jpg">
-                <img alt="Advertisement banner" src=//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//646/9cb/fea/6469cbfea616d475812219.jpg width="100%" height="150" style="border: none;" alt=" " />
+        <div class="ad_item">
+            <a href="{% static 'images/aniversary.jpg'%}">
+                <img alt="Advertisement banner" src="{% static 'images/aniversary.jpg'%}" width="100%" height="150" style="border: none;" alt=" " />
             </a>  
         </div>
                     <div class="ad_item">
-            <a href="//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//643/7b8/603/6437b8603b46f361116110.jpeg">
-                <img alt="Advertisement banner" src=//file-rajshahi.portal.gov.bd/uploads/f5258379-edf7-4f4a-9306-d58f03afca06//643/7b8/603/6437b8603b46f361116110.jpeg width="100%" height="150" style="border: none;" alt=" " />
+            <a href="{% static 'images/n.jpg'%}">
+                <img alt="Advertisement banner" src={% static 'images/n.jpg'%} width="100%" height="150" style="border: none;" alt=" " />
             </a>  
         </div>
                 </div>
@@ -221,7 +254,7 @@
         
                 
         <div class="block service-list">
-<a href="{% url 'teacherlist' 'content_name' 'head' 'type' 'vacantpost' %}">
+<a href="{% url  'teacher_vacant_post' %}">
     {% if request.session.lang == 'english' %}
     <h5 class="bk-org title eservice-title ces_title">Vacant Posts </h5>
 
@@ -287,12 +320,12 @@
     <div class="service-list-scroll">
         <ul>
                                     <li>
-                <a href="http://www.shed.gov.bd/" title="ই-ডিরেক্টরি">
+                <a href="http://www.shed.gov.bd/" title="">
                     <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Ministry of Education
                 </a>
             </li>
                                     <li>
-                <a href="http://www.dshe.gov.bd/" title="ই-মোবাইল কোর্ট">
+                <a href="http://www.dshe.gov.bd/" title="">
                     <i class=" text-green fa fa-check-circle" aria-hidden="true"></i> Deparment of Secondary and Higher secondary 
                 </a>
             </li>
@@ -394,13 +427,17 @@
         {% endif %}
           
 <div class="content">
-            <a title="youtube" href="//www.youtube.com/channel/UCTcTpn0miTlITwieVIxRLow" target="_blank"
+            <a title="youtube" href="https://www.youtube.com/@gmrwc" target="_blank"
         class="share-buttons">
-        <i class="fa fa-youtube-square fa-3x p-1 text-primary"></i>
+        <i class="fa fa-youtube-play" style="font-size:48px;color:red"></i>
     </a>
-            <a title="facebook" href="//www.facebook.com/DCBogura" target="_blank"
+            <a title="facebook" href="https://www.facebook.com/profile.php?id=100006628218798" target="_blank"
         class="share-buttons">
         <i class="fa fa-facebook-square fa-3x p-1 text-primary"></i>
+    </a>
+   
+    <a title="facebook" href="https://www.whatsapp.com" target="_blank" class="share-buttons">
+    <i class="fa fa-whatsapp" style="font-size:48px;color:green"></i>
     </a>
         </div>
 </div>
@@ -506,9 +543,9 @@
 
 {% endif %}
 
-<!--<div class="content">
-   <img alt="জরুরি হটলাইন" src="//file.portal.gov.bd/media/central/uploaded-files/National-Helpline.jpg" style="height:100%; width:100%">
-</div>-->
+<div class="content">
+   <img alt="জরুরি হটলাইন" src="{% static 'images/hotline_v.2_bn.png'%}" style="height:400px; width:100%">
+</div>
 </div>        
             
     

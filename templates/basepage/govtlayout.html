@@ -5,23 +5,23 @@
     <!-- Required meta tags -->
    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     
     <link rel="stylesheet" href="{%static 'css/profile/payment.css'%}">
     
     <link rel="stylesheet" href="{%static 'css/profile/profile.css'%}">
     <link href="{% static 'css/profile/frontend.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/css/youtube-video-gallery.css">
-    <link rel="stylesheet" href="{% static 'css/font.css'%}" as="css" type="text/css">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"  crossorigin="anonymous" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous" />
+    <!--<link rel="stylesheet" href="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/css/youtube-video-gallery.css">-->
 
     <link rel="stylesheet" href="{% static 'css/meganizr.css'%}">
     
-    
+        <link rel="stylesheet" href="{% static 'css/profile/twitter.css' %}" />
+
     <!-- Biggapon  CSS Start -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" integrity="sha512-X/RSQYxFb/tvuz6aNRTfKXDnQzmnzoawgEQ4X8nZNftzs8KFFH23p/BA6D2k0QCM4R0sY1DEy9MIY9b3fwi+bg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Biggapon  CSS End -->
     
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
     <script>
         var lang = "bn";
     </script>
-    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/responsiveslides.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/responsiveslides.min.js'%}" crossorigin="anonymous"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
@@ -49,7 +49,7 @@
     <!-- userway accessibility end -->
     
     <!-- custom accessibility start -->
-    <link rel="stylesheet" href="//file.portal.gov.bd/media/central/accessibility/css/asb.css">
+    <link rel="stylesheet" href="{% static 'css/asb.css' %}">
    
     <!-- Biggapon Js End -->  
     <style type="text/css">
@@ -82,7 +82,7 @@
     </style>
 
    <!--  <title>www.bogra.gov.bd</title> -->
-   <title>  মহিলা কলেজ,বগুড়া</title>
+   <title> সরকারি মজিবর রহমান  ভান্ডারী মহিলা কলেজ,বগুড়া</title>
    <!-- <link rel="icon" href="//cdn.sylhet.gov.bd/media/central/themes/default/img/favicon.ico" type="image/x-icon"> -->
    
             <link rel="icon" href="{% static 'images/gmrwc_logo.png'%}" type="image/x-icon">
@@ -102,6 +102,13 @@ body {
   font-size: 16px;
   color: #000;
 }
+img[lazy=loading] {
+        background-repeat: no-repeat;
+        background-image: url(data:image/gif;base64,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);
+        background-size: 100px;
+        background-position: 50%;
+        background-color: #f4f4f4
+    }
 
 video {
     width: 100%
@@ -506,14 +513,10 @@ table.content-type-list td[scope='row'] {
 }
 }
 
+
+
 @media only screen and (min-width:320px) and (max-width:959px) and (max-width:786){
-    @font-face {
-          font-family: "kalpurush";
-          src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
-         
-          font-weight: normal;
-          font-style: normal;
-        }
+    
      body {
         font-family: kalpurush;
         margin: 0;
@@ -606,6 +609,8 @@ div#notice-board {
         display: block !important;
         width: 100% !important;
         height: auto !important;
+        padding-top:15px;
+        padding-bottom:5px;
     }
     #logo{
         display: block!important;
@@ -805,7 +810,7 @@ table.table.table-bordered, tr, td, th {
         
         @media only screen and (min-width: 960px) {
         	body{
-        		background: url("{% static 'images/bg_main.gif'%}") repeat-y scroll center top rgba(0, 0, 0, 0);
+        		background: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/img/bg_main.gif") repeat-y scroll center top rgba(0, 0, 0, 0);
         	}
         	.container {
         	    position: relative;
@@ -814,7 +819,7 @@ table.table.table-bordered, tr, td, th {
                 padding: 0;
         	}
         	.footer-artwork {
-        	    background: url("{% static 'images/footer_top_bg.png'%}") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+        	    background: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/img/footer_top_bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
         	}
         }
         
@@ -1439,14 +1444,17 @@ table.table.table-bordered, tr, td, th {
         
         }
         
-        @media only screen and (max-width: 959px) {
+        @media only screen (min-width: 768px) and (max-width: 959px) {
     
-            .mzr-responsive.mzr-slide > li.focusin-drop:focus-within > div,
-            .mzr-responsive.mzr-slide > li.focusin-drop:focus-within > ul,
-            .mzr-responsive.mzr-slide > li > ul li.focusin-drop:focus-within > ul,
-            .mzr-responsive.mzr-fade > li.focusin-drop:focus-within > div,
-            .mzr-responsive.mzr-fade > li.focusin-drop:focus-within > ul,
-            .mzr-responsive.mzr-fade > li > ul li.focusin-drop:focus-within > ul { top: auto;	}
+            .mzr-slide > li.focusin-drop:focus-within > div,
+            .mzr-slide > li.focusin-drop:focus-within > ul,
+            .mzr-slide > li > ul li.focusin-drop:focus-within > ul {
+                top: 37px;
+                opacity: 1;
+                overflow: visible;
+                visibility: visible;
+                display: block;
+            }
     
         }
         
@@ -1789,11 +1797,12 @@ table.table.table-bordered, tr, td, th {
         
 
     {%endblock%}
-    
+        <link rel="stylesheet" href="{% static 'css/font.css'%}" as="css" type="text/css">
     <a href="#" class="scroll-top"><i class="fa fa-arrow-up"></i></a>
     <a href="#" class="scroll-top active"><i class="fa fa-arrow-up"></i></a>
+
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
-  
+   
     <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
     
     <script>
@@ -1889,72 +1898,7 @@ table.table.table-bordered, tr, td, th {
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script src="//code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script> -->
     <script src="//cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-    <script>
-        document.addEventListener('keyup', (event) => {
-          //var name = event.key; //var code = event.code;
-          if (event.code === "Tab") {
-              var k = 0;
-              if (event.shiftKey) {
-                  //shift+tab pressed//Code // console.log(event.target);
-                  var activeElement = document.activeElement;
-                  if (activeElement.tagName.toLowerCase() == 'button'){
-                    if(activeElement.title === 'Download Screen Reader'){
-                      $('#myModalClose').attr('id', 'myModal');
-                      $('#myModal').modal();
-                      return false;
-                    }
-                  }
-              } else {
-                  //only tab pressed //Code
-              }
-            }
-          
-        });
-        
-        //====================//
-        // Add event listener on keydown
-        var access = 0;
-        if(access === 0){
-            document.addEventListener('keyup', (event) => {
-              var name = event.key;
-              var code = event.code;
-              var i = 0;
-              if(code == "Tab" && i == 0){
-                  $('#myModal').modal();
-                  i = i + 1;
-              }
-              // Alert the key name and key code on keydown
-            });
-            var accessibilitypop = document.querySelector('#accessibilitypop');
-            function accessibility(){
-                  $('#myModal').modal('hide');
-                  document.getElementById("universalAccessBtn").click();
-                  $('#myModal').attr('id', 'myModalClose');
-                  //$('#accessibilityBar').attr('class', 'active');
-                  $('#myModal').attr('tabindex', '');
-                  document.getElementById("universalAccessBtn").focus();
-                  $('#accessibilityBar').attr('role', 'dialog');
-                  $('#universalAccessBtn').attr('tabindex', '1');
-            };
-            
-            function accessibilitySkipToMainContent(){
-                  $('#myModal').attr('tabindex', '');
-                  $('#myModal').attr('id', 'myModalClose');
-                  //$('#notice-board-bg').attr({'aria-selected': true, 'tabindex': 0});
-                  //document.getElementById("notice-board-bg").focus();
-                  $('#skip-main-content-start-here').attr({'aria-selected': true, 'tabindex': 0});
-                  document.getElementById("skip-main-content-start-here").focus();
-            }
-            
-            function accessibilitymodelClose(){
-                  //$('#notice-board-bg').attr('tabindex', '0');
-                  $('#skip-main-content-start-here').attr('tabindex', '0');
-                  $('#myModal').attr('tabindex', '');
-                  $('#myModal').attr('id', 'myModalClose');
-            }
-        
-        }
-    </script>
+    
     <script>
 
         $(document).ready(function () {
@@ -2064,7 +2008,7 @@ table.table.table-bordered, tr, td, th {
 
 			};
 
-		$.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
+		/*$.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
 		
 			if(data.length>0 || Object.keys(data).length>0){
 				//console.log('Ajax List ',data);
@@ -2078,7 +2022,7 @@ table.table.table-bordered, tr, td, th {
 				//alert('তথ্য পাওয়া যায়নি');
 				//alert('তথ্য পাওয়া যায়নি');
 			}
-		});
+		});*/
         //change language
         $("#lang-switcher").change(function () {
             var selectedLang = $(this).val();
@@ -2101,7 +2045,7 @@ table.table.table-bordered, tr, td, th {
             console.log(href)
             window.location.href = href
         });
-        console.log("//login.rajshahi.gov.bd/api/v1/theme/ajax");
+        //console.log("//login.rajshahi.gov.bd/api/v1/theme/ajax");
         
         $("#doptor_navigation_go").click(function() {
 			
@@ -2135,7 +2079,7 @@ table.table.table-bordered, tr, td, th {
 						'option_level' : option_level
                     };
 
-                    $.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
+                   /* $.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
 						if(data.length>0 || Object.keys(data).length>0){
 						console.log('fqdn check ', data);
 							if(data.is_secure)
@@ -2147,7 +2091,7 @@ table.table.table-bordered, tr, td, th {
 							//alert('তথ্য পাওয়া যায়নি');
 				            //alert('তথ্য পাওয়া যায়নি');
 						}
-                    });
+                    });*/
 					
                     return false;
                 }
@@ -2399,11 +2343,11 @@ table.table.table-bordered, tr, td, th {
             };
 			console.log('=Lang==> ',data);
 
-            $.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
+            /*$.get("//login.rajshahi.gov.bd/api/v1/theme/ajax", data, function(data, status) {
                 renderList(targetEl, data, elValue, parentEl);			
 				
 				
-            });
+            });*/
 
 
         }
@@ -2556,10 +2500,9 @@ table.table.table-bordered, tr, td, th {
         </script>
         
     <!-- Pixel Code for //inusight.com/ -->
-    <script defer src="//inusight.com/pixel/zpSefT317My3oFwG"></script>
     <!-- END Pixel Code -->
     
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- Go to www.addthis.com/dashboard to customize your tools 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-635f6a273f17a426"></script>
     
     <!-- youtube subscription api -->
@@ -2572,20 +2515,9 @@ table.table.table-bordered, tr, td, th {
     <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
     <script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/simple-ticker.js" crossorigin="anonymous"></script>
-    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/jquery.youtubevideogallery.js" crossorigin="anonymous"></script>
+    <!--<script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/jquery.youtubevideogallery.js" crossorigin="anonymous"></script>-->
     
     
-    <!-- Online Polling -->
-    <script src="//polling.portal.gov.bd/js/npop.script.js" defer></script>
-    <!-- Comment Management Tools -->
-    <script src="//polling.portal.gov.bd/js/npc.script.js" defer></script>
-    <script src="//file.portal.gov.bd/media/central/accessibility/js/asb.js" type="text/javascript"></script>
-    <!-- accessibility active issues -->
-    <script src="//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/js/app.js" crossorigin="anonymous"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js" integrity="sha512-9CWGXFSJ+/X0LWzSRCZFsOPhSfm6jbnL+Mpqo0o8Ke2SYr8rCTqb4/wGm+9n13HtDE1NQpAEOrMecDZw4FXQGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
-    <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
-
     
   
   
@@ -2604,7 +2536,826 @@ table.table.table-bordered, tr, td, th {
             autoplayTimeout: 4000,
             loop: true
         });
+        
         });
+        
+        
+        
+        
+        /**
+ * ASB - Accessibility Settings Bar
+ * version 0.5
+ */
+$(document).ready(function () {
+    (function () {
+        /**
+         * Content
+         */
+
+            // Tecla que serÃ¡ usada para complementar o atalho do teclado.
+        const accessKey = 'a';
+
+        // DefiniÃ§Ãµes dos botÃµes
+        const btns1 = {
+            btnBanglaFont: {
+                active: true,
+                dataAccessibility: "bangla",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "বাংলা",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnEnglishFont: {
+                active: true,
+                dataAccessibility: "english",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "English",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnLoginFont: {
+                active: true,
+                dataAccessibility: "login",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "Login",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnRegisterFont: {
+                active: true,
+                dataAccessibility: "register",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "Register",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+        }
+
+        const btns = {
+            
+            btnDecFont: {
+                active: true,
+                dataAccessibility: "decFont",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "A <sup>-</sup>",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnOriFont: {
+                active: true,
+                dataAccessibility: "oriFont",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "A <sup>o</sup>",
+                iconClass: "",
+                text: "",
+                label: "original font"
+            },
+            btnIncFont: {
+                active: true,
+                dataAccessibility: "incFont",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "A <sup>+</sup>",
+                iconClass: "",
+                text: "",
+                label: "increment font"
+            },
+            btnHighContrast: {
+                active: true,
+                dataAccessibility: "contrast",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-tint"],
+                text: " Monochrome",
+                label: " Monochrome"
+            },
+            btnDarkMode: {
+                active: true,
+                dataAccessibility: "dark",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-adjust"],
+                text: "Invert Colors",
+                label: "Invert Colors"
+            },
+
+            btnBigCursor: {
+                active: true,
+                dataAccessibility: "bcursor",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-mouse-pointer"],
+                text: "Big Cursor",
+                label: "Big Cursor"
+            },
+
+            btnHighlightLink: {
+                active: true,
+                dataAccessibility: "highlink",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-link"],
+                text: "Highlight Links",
+                label: "Highlight Links"
+            },
+
+            btnHeading: {
+                active: true,
+                dataAccessibility: "heading",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-heading"],
+                text: "Show Headings",
+                label: "Show Headings"
+            },
+
+            // btnMarkerLine: {
+            //   active: true,
+            //   dataAccessibility: "markerLine",
+            //   class: "setAccessibility",
+            //   icon: "FontAwesome",
+            //   iconClass: ["fas", "fa-ruler-horizontal"],
+            //   text: "Marker Line",
+            //   label: "Marker Line"
+            // },
+            btnReadingLine: {
+                active: true,
+                dataAccessibility: "readingLine",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-book-open"],
+                text: "Reading Guide",
+                label: "Reading Guide",
+            },
+            btnReset: {
+                active: true,
+                dataAccessibility: "reset",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-redo-alt"],
+                text: "Reset",
+                label: "Reset",
+            },
+            /*btnkey: {
+                active: true,
+                dataAccessibility: "keyboard",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-keyboard"],
+                text: "Keyboard Shortcut",
+                label: "keyboard Shortcut",
+            },
+            btnDownload: {
+                active: true,
+                dataAccessibility: "download",
+                class: "setAccessibility",
+                icon: "FontAwesome",
+                iconClass: ["fas", "fa-download"],
+                text: "Download Screen Reader",
+                label: "Download Screen Reader",
+            },*/
+
+        }
+
+        /**
+         * Creating the bar
+         */
+
+        const accessibilityBar = document.createElement("div");
+        accessibilityBar.id = "accessibilityBar";
+        accessibilityBar.tabindex = "0"
+        accessibilityBar.title = "Accessibility Menu"
+        // document.getElementById("app").append(accessibilityBar);
+
+        document.body.insertBefore(accessibilityBar, document.body.childNodes[2]);
+
+
+        /**
+         * Creating main button
+         */
+        let btnAccessibilityBar;
+
+        function createMainButton() {
+            btnAccessibilityBar = document.createElement("button");
+            btnAccessibilityBar.id = "universalAccessBtn";
+
+            btnAccessibilityBar.type = "button";
+            btnAccessibilityBar.ariaLabel = "accessibility menu";
+            btnAccessibilityBar.accessKey = accessKey;
+            accessibilityBar.appendChild(btnAccessibilityBar);
+
+            const icon = document.createElement("i");
+            btnAccessibilityBar.appendChild(icon);
+            icon.classList.add("fas", "fa-universal-access");
+
+            const spanText = document.createElement("span");
+            const spanTextNode = document.createTextNode("Settings");
+            spanText.appendChild(spanTextNode);
+            btnAccessibilityBar.appendChild(spanText);
+        }
+
+        createMainButton();
+
+        /**
+         * Creating anothers button
+         */
+
+        function createButtons(el) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.ariaLabel = el.label;
+            button.title = el.label;
+            button.classList.add(el.class);
+            button.classList.add(el.class2);
+            button.setAttribute('data-accessibility', el.dataAccessibility);
+            accessibilityBar.appendChild(button);
+
+            const wrapIcon = document.createElement("strong");
+            button.appendChild(wrapIcon);
+
+            if (el.icon === "FontAwesome") {
+                const icon = document.createElement("i");
+                wrapIcon.appendChild(icon);
+                icon.classList.add(...el.iconClass
+            )
+                ;
+            } else {
+                const textIcon = document.createElement("span");
+                textIcon.innerHTML = el.icon;
+                wrapIcon.appendChild(textIcon);
+            }
+
+            const textButton = document.createTextNode(el.text);
+            button.appendChild(textButton);
+        }
+        Object.keys(btns1).forEach(function (item) {
+            if (btns1[item].active) {
+                createButtons(btns1[item]);
+            }
+        });
+        Object.keys(btns).forEach(function (item) {
+            if (btns[item].active) {
+                createButtons(btns[item]);
+            }
+        });
+        
+
+
+        const html = document.documentElement; //<html> for font-size settings
+        const body = document.body; //<body> for the adjusts classes
+        const btnAccessibility = document.querySelectorAll(".setAccessibility"); // Getting settings buttons
+
+        if (btnAccessibilityBar) {
+            setTimeout(function () {
+                btnAccessibilityBar.classList.add("collapsed");
+            }, 2000);
+        }
+
+        /**
+         * ReadingLine
+         */
+
+        const readingLine = document.createElement("div");
+        readingLine.id = "readingLine";
+        document.body.insertBefore(readingLine, document.body.firstChild);
+
+        html.addEventListener("mousemove", function (e) {
+            if (body.classList.contains("accessibility_readingLine")) {
+                let linePositionY = e.pageY - 10;
+                // console.log(linePositionY);
+                const elReadingLine = document.querySelector("#readingLine"); // Toggle button
+                elReadingLine.style.top = `${linePositionY}px`;
+            }
+        });
+
+        /**
+         * MarkerLine
+         */
+
+        const markerLine = document.createElement("div");
+        markerLine.id = "markerLine";
+        document.body.insertBefore(markerLine, document.body.firstChild);
+
+        html.addEventListener("mousemove", function (e) {
+            if (body.classList.contains("accessibility_markerLine")) {
+                let linePositionY = e.pageY - 10;
+                // console.log(linePositionY);
+                const elmarkerLine = document.querySelector("#markerLine"); // Toggle button
+                elmarkerLine.style.top = `${linePositionY}px`;
+            }
+        });
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === === === === openBar === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+
+        btnAccessibilityBar.addEventListener("click", (e) => {
+            accessibilityBar.classList.toggle("active")
+    }
+        )
+        ;
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === ===  toggleAccessibilities  === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+
+        function toggleAccessibilities(action) {
+            switch (action) {
+                case "bangla":
+                    var form1 = document.createElement("form");
+                    form1.setAttribute("method", "post");
+                    form1.setAttribute("action", "/language_change_media");
+                    form1.setAttribute("id", "language_form");
+
+                    var ID = document.createElement("input");
+                    ID.setAttribute("type", "text");
+                    ID.setAttribute("name", "lang_toggle1");
+                    ID.setAttribute("value","bangla");
+                    form1.append(ID);
+        
+                    var form= new FormData(form1);
+                    alert(ID.value);
+                    var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+
+        // Send AJAX request
+                    $.ajax({
+                        enctype: 'multipart/form-data',
+                        type: 'POST',
+                        url: "{% url 'language_change_media' %}",  
+                        data: form,
+                        headers: {
+                            'X-CSRFToken': csrfToken
+                        },
+                        
+                        cache:false,
+                        processData:false,
+                        contentType:false,
+                    
+                    
+                        success: function (response) {
+                            if (response.success === 'success') {
+                                document.getElementById('toggle').value="bangla";
+                                location.reload();
+
+
+                            }
+                            
+                        },
+                        error: function (xhr, status, error) {
+                        
+                            var err = eval("(" + xhr.responseText + ")");
+                            alert(err.Message);
+                        }
+                    });
+                    break;
+                case "english":
+                    var form1 = document.createElement("form");
+                    form1.setAttribute("method", "post");
+                    form1.setAttribute("action", "/language_change_media");
+                    form1.setAttribute("id", "language_form");
+
+                    var ID = document.createElement("input");
+                    ID.setAttribute("type", "text");
+                    ID.setAttribute("name", "lang_toggle1");
+                    ID.setAttribute("value","english");
+                    form1.append(ID);
+        
+                    var form= new FormData(form1);
+                    alert(ID.value);
+                    var csrfToken = $('[name="csrfmiddlewaretoken"]').val();
+
+
+        // Send AJAX request
+                    $.ajax({
+                        enctype: 'multipart/form-data',
+                        type: 'POST',
+                        url: "{% url 'language_change_media' %}",  
+                        data: form,
+                        headers: {
+                            'X-CSRFToken': csrfToken
+                        },
+                        
+                        cache:false,
+                        processData:false,
+                        contentType:false,
+                    
+                    
+                        success: function (response) {
+                            if (response.success === 'success') {
+                                document.getElementById('toggle').value="english";
+                                location.reload();
+
+
+                            }
+                            
+                        },
+                        error: function (xhr, status, error) {
+                        
+                            var err = eval("(" + xhr.responseText + ")");
+                            alert(err.Message);
+                        }
+                    });
+                    break;
+                case "login":
+                    window.location.href = 'https://gmrwc.edu.bd/account/login/';                    
+                    //window.toggleLogin(action);
+                    break;
+                case "register":
+                        window.location.href = 'https://gmrwc.edu.bd/account/register/';                    
+                        //window.toggleLogin(action);
+                        break;
+                    
+                case "keyboard":
+                    window.location.href = `${window.location.origin}/keyboard-shortcut`;
+                    break;
+                case "download":
+                    window.open('https://www.nvaccess.org/files/nvda/releases/2020.4/nvda_2020.4.exe');
+                    break;
+                case "contrast":
+                    window.toggleContrast();
+                    break;
+                case "dark":
+                    window.toggleDark();
+                    break;
+                case "bcursor":
+                    window.toggleCursor();
+                    break;
+                case "highlink":
+                    window.toggleLink();
+                    break;
+                case "heading":
+                    window.toggleHeading();
+                    break;
+                case "incFont":
+                    window.toggleFontSize(action);
+                    break;
+                case "oriFont":
+                    window.toggleFontSize(action);
+                    break;
+                case "decFont":
+                    window.toggleFontSize(action);
+                    break;
+                case "readingLine":
+                    body.classList.toggle("accessibility_readingLine");
+                    break;
+                case "markerLine":
+                    body.classList.toggle("accessibility_markerLine");
+                    break;
+                case "reset":
+                    Dark.currentState === true ? Dark.setState(false) : null;
+                    Contrast.currentState === true ? Contrast.setState(false) : null;
+                    Cursor.currentState === true ? Cursor.setState(false) : null;
+                    Link.currentState === true ? Link.setState(false) : null;
+                    Heading.currentState === true ? Heading.setState(false) : null;
+                    window.toggleFontSize("oriFont");
+                    body.classList.remove("accessibility_readingLine");
+                    body.classList.remove("accessibility_markerLine");
+                    break;
+                default:
+                    break;
+            }
+            // accessibilityBar.classList.toggle("active");
+        }
+
+        btnAccessibility.forEach(button =>
+        button.addEventListener("click", () =>
+        toggleAccessibilities(button.dataset.accessibility)
+        )
+        )
+        ;
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === === ===  FontSize   === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+
+        const htmlFontSize = parseFloat(
+            getComputedStyle(document.documentElement).getPropertyValue("font-size")
+        );
+        let FontSize = {
+            storage: "fontSizeState",
+            cssClass: "fontSize",
+            currentState: null,
+            check: checkFontSize,
+            getState: getFontSizeState,
+            setState: setFontSizeState,
+            toggle: toggleFontSize,
+            updateView: updateViewFontSize
+        };
+
+        window.toggleFontSize = function (action) {
+            FontSize.toggle(action);
+        };
+
+        FontSize.check();
+
+        function checkFontSize() {
+            this.updateView();
+        }
+
+        function getFontSizeState() {
+            return sessionStorage.getItem(this.storage)
+                ? sessionStorage.getItem(this.storage)
+                : 100;
+        }
+
+        function setFontSizeState(state) {
+            sessionStorage.setItem(this.storage, "" + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewFontSize() {
+            if (this.currentState === null) this.currentState = this.getState();
+
+            this.currentState
+                ? (html.style.fontSize = '15px') : "";
+
+            this.currentState
+                ? body.classList.add(this.cssClass + this.currentState)
+                : "";
+        }
+
+        
+        function toggleFontSize(action) {
+            switch (action) {
+                case "incFont":
+                    if (parseFloat(this.currentState) < 180) {
+                        body.classList.remove(this.cssClass + this.currentState);
+                        this.setState(parseFloat(this.currentState) + 20);
+                    } else {
+                        // alert("Exceed limit");
+                    }
+                    break;
+                case "oriFont":
+                    body.classList.remove(this.cssClass + this.currentState);
+                    this.setState(100);
+                    break;
+                case "decFont":
+                    if (parseFloat(this.currentState) > 60) {
+                        body.classList.remove(this.cssClass + this.currentState);
+                        this.setState(parseFloat(this.currentState) - 20);
+                    } else {
+                        // alert("Exceed limit");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === ===  HighConstrast  === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+        let Contrast = {
+            storage: "contrastState",
+            cssClass: "contrast",
+            currentState: null,
+            check: checkContrast,
+            getState: getContrastState,
+            setState: setContrastState,
+            toggle: toggleContrast,
+            updateView: updateViewContrast
+        };
+
+        window.toggleContrast = function () {
+            Contrast.toggle();
+        };
+
+        Contrast.check();
+
+        function checkContrast() {
+            this.updateView();
+        }
+
+        function getContrastState() {
+            return sessionStorage.getItem(this.storage) === "true";
+        }
+
+        function setContrastState(state) {
+            sessionStorage.setItem(this.storage, "" + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewContrast() {
+            if (this.currentState === null) this.currentState = this.getState();
+
+            this.currentState
+                ? body.classList.add(this.cssClass)
+                : body.classList.remove(this.cssClass);
+        }
+
+        function toggleContrast() {
+            this.setState(!this.currentState);
+            Dark.currentState === true ? Dark.setState(false) : null;
+        }
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === === ===   DarkMode  === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+        let Dark = {
+            storage: "darkState",
+            cssClass: "darkmode",
+            currentState: null,
+            check: checkDark,
+            getState: getDarkState,
+            setState: setDarkState,
+            toggle: toggleDark,
+            updateView: updateViewDark
+        };
+
+        window.toggleDark = function () {
+            Dark.toggle();
+        };
+
+        Dark.check();
+
+        function checkDark() {
+            this.updateView();
+        }
+
+        function getDarkState() {
+            return sessionStorage.getItem(this.storage) === "true";
+        }
+
+        function setDarkState(state) {
+            sessionStorage.setItem(this.storage, "" + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewDark() {
+            if (this.currentState === null) this.currentState = this.getState();
+
+            this.currentState
+                ? body.classList.add(this.cssClass)
+                : body.classList.remove(this.cssClass);
+        }
+
+        function toggleDark() {
+            this.setState(!this.currentState);
+            Contrast.currentState === true ? Contrast.setState(false) : null;
+        }
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === === ===  BigCursor  === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+        let Cursor = {
+            storage: "cursorState",
+            cssClass: "cursormode",
+            currentState: null,
+            check: checkCursor,
+            getState: getCursorState,
+            setState: setCursorState,
+            toggle: toggleCursor,
+            updateView: updateViewCursor
+        };
+
+        window.toggleCursor = function () {
+            Cursor.toggle();
+        };
+
+        Cursor.check();
+
+        function checkCursor() {
+            this.updateView();
+        }
+
+        function getCursorState() {
+            return sessionStorage.getItem(this.storage) === "true";
+        }
+
+        function setCursorState(state) {
+            sessionStorage.setItem(this.storage, "" + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewCursor() {
+            if (this.currentState === null) this.currentState = this.getState();
+            this.currentState ? body.classList.add(this.cssClass) : body.classList.remove(this.cssClass);
+        }
+
+        function toggleCursor() {
+            this.setState(!this.currentState);
+        }
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === === ===  Higlight Link  === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+        let Link = {
+            storage: "linkState",
+            cssClass: "linkmode",
+            currentState: null,
+            check: checkLink,
+            getState: getLinkState,
+            setState: setLinkState,
+            toggle: toggleLink,
+            updateView: updateViewLink
+        };
+
+        window.toggleLink = function () {
+            Link.toggle();
+        };
+
+        Link.check();
+
+        function checkLink() {
+            this.updateView();
+        }
+
+        function getLinkState() {
+            return sessionStorage.getItem(this.storage) === "true";
+        }
+
+        function setLinkState(state) {
+            sessionStorage.setItem(this.storage, "" + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewLink() {
+            if (this.currentState === null) this.currentState = this.getState();
+            this.currentState ? body.classList.add(this.cssClass) : body.classList.remove(this.cssClass);
+        }
+
+        function toggleLink() {
+            this.setState(!this.currentState);
+        }
+
+      /*
+       === === === === === === === === === === === === === === === === === ===
+       === === === === === === ===  Higlight Heading  === === === === === === === ===
+       === === === === === === === === === === === === === === === === === ===
+       */
+        let Heading = {
+            storage: "headingState",
+            cssClass: "headingmode",
+            currentState: null,
+            check: checkHeading,
+            getState: getHeadingState,
+            setState: setHeadingState,
+            toggle: toggleHeading,
+            updateView: updateViewHeading
+        };
+
+        window.toggleHeading = function () {
+            Heading.toggle();
+        };
+
+        Heading.check();
+
+        function checkHeading() {
+            this.updateView();
+        }
+
+        function getHeadingState() {
+            return sessionStorage.getItem(this.storage) === "true";
+        }
+
+        function setHeadingState(state) {
+            sessionStorage.setItem(this.storage, "" + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewHeading() {
+            if (this.currentState === null) this.currentState = this.getState();
+            this.currentState ? body.classList.add(this.cssClass) : body.classList.remove(this.cssClass);
+        }
+
+        function toggleHeading() {
+            this.setState(!this.currentState);
+        }
+    })();
+});
+        
     </script>
     {% include 'component/footer.html'%} 
  

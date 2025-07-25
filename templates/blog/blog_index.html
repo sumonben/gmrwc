@@ -19,7 +19,7 @@
 
       <div class="row">
         <div class="col-lg-12 col-md-12">
-          <div class="latest_newsarea"> <span>সাম্প্রতিক নিউজ</span>
+          <div class="latest_newsarea" > <span>সাম্প্রতিক নিউজ</span>
             <ul id="ticker01" class="news_sticker">
               {% for p in allpost|slice:":15"%}
               <li><a href="{{ p.get_absolute_url }}"><img src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}  {% endif %}" alt="">{{p.title}}</a></li>
@@ -71,10 +71,10 @@
                                                             <div  style="background-color: transparent"  data-v-3171110e="" class="col-lg-2 align-self-center text-center">
                                                                 <img
                                                                     data-v-3171110e="" alt=""
-                                                                    data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg"
+                                                                    data-src=""
                                                                     
-                                                                    src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}  {% endif %}"
-                                                                     lazy="loaded">
+                                                                    src="{%if p.image %}{{p.image.url}}{% else %} {% static 'images/gmrwc_logo.png' %}  {% endif %}"
+                                                                     width="100px;" height="70px;" lazy="loaded">
                     
                     
                     
@@ -163,7 +163,7 @@
               <ul class="latest_postnav">
                 {%for lp in latest_posts %}
                 <li>
-                  <div class="media"> <a href="{{lp.get_absolute_url}}" class="media-left"> <img alt="" src="{%if lp.image %}{{lp.image.url}}{% elif lp.author.user.image%}{{lp.author.user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{%endif %}"> </a>
+                  <div class="media"> <a href="{{lp.get_absolute_url}}" class="media-left"> <img alt="" src="{%if lp.image %}{{lp.image.url}}{% else %} {% static 'images/gmrwc_logo.png' %}{%endif %}"> </a>
                     <div class="media-body"> <a href="{{lp.get_absolute_url}}" class="catg_title"> {{lp.title}}</a> </div>
                   </div>
                 </li>
@@ -181,19 +181,19 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
           <div class="left_content">
             <div class="single_post_content">
-              <h2><span>কবিতা ও ছোটগল্প</span></h2>
+               <h2><span></span></h2> 
               <div class="single_post_content_left">
                 <ul class="business_catgnav  wow fadeInDown">
                     
-                    {% for p in allpost|slice:"2:5" %}
+                    {% for p in allpost|slice:"3:5" %}
                   <li>
                     <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="images/featured_img1.jpg"> <span class="overlay"></span> </a>
                       <figcaption> <a href="{{p.get_absolute_url}}">{{p.title}}</a> </figcaption>
-                      <figure>
+                      <p>
                       {{p.body|safe|slice:":100"}}....<a
                         data-v-3171110e="" href="{{p.get_absolute_url}}"
                          target="_blank">আরও পড়ুন</a>
-                    </figure>
+                    </p>
                     <small><a href="tech-author.html" title=""> {% for answer in p.categories.all %}
                       {{ answer }},
                     {% endfor %}</a></small>                    <small><a href="tech-single.html" title="">{{p.date_created}}</a></small>
@@ -207,18 +207,18 @@
               </div>
               <div class="single_post_content_right">
                 <ul class="spost_nav">
-                  {%for p in allpost %}
-                  {%for answer in p.categories.all %}
+                  {%for p in allpost|slice:"5:10" %}
+                  {% comment %} {%for answer in p.categories.all %}
 
-                  {% if answer|stringformat:"s" == 'কবিতা'|stringformat:"s" %}
+                  {% if answer|stringformat:"s" == 'কবিতা'|stringformat:"s" %} {% endcomment %}
                   <li>
                     <div class="media wow fadeInDown"> <a href="{{p.get_absolute_url}}" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> </a>
                       <div class="media-body"> <a href="{{p.get_absolute_url}}" class="catg_title">{{p.title}}</a> </div>
                      
                     </div>
                   </li>
-                  {% endif %}
-                  {% endfor %}
+                  {% comment %} {% endif %}
+                  {% endfor %} {% endcomment %}
                   
                   {% endfor %}
                   
@@ -231,36 +231,21 @@
                   <h2><span>গল্প </span></h2>
                   <ul class="business_catgnav wow fadeInDown">
                     
-                  {%for p in allpost|slice:":1" %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'গল্প'|stringformat:"s" %}
+                  {%for p in allpost|slice:"10:11" %}
+                  
                     <li>
-                      <figure class="bsbig_fig"> <a href="{{p.get_absolute_url}}" class="featured_img"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> <span class="overlay"></span> </a>
+                      <figure class="bsbig_fig"> <a href="{{p.get_absolute_url}}" class="featured_img"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}">  </a>
                         <figcaption> <a href="pages/single_page.html">{{p.title}}</a> </figcaption>
                         <p>{{p.boddy|safe|slice:"100"}}</p>
                       </figure>
                     </li>
                     
-                    {%endif%}
-                    {% endfor %}
+                    
                     {% endfor %}
                   </ul>
                   <ul class="spost_nav">
                     
-                  {%for p in allpost|slice:"1:" %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'গল্প'|stringformat:"s" %}
-                    <li>
-                      <div class="media wow fadeInDown"> <a href="{{p.get_absolute_url}}" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> </a>
-                        <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> {{p.title}}</a> </div>
-                      </div>
-                    </li>
-                    {%endif%}
-                    {% endfor %}
-                    {% endfor %}
-
+                 
                   </ul>
                 </div>
               </div>
@@ -269,34 +254,18 @@
                   <h2><span>তথ্যপ্রযুক্তি</span></h2>
                   <ul class="business_catgnav">
                     
-                  {%for p in allpost|slice:":1" %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'গল্প'|stringformat:"s" %}
-                    <li>
-                      <figure class="bsbig_fig"> <a href="{{p.get_absolute_url}}" class="featured_img"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> <span class="overlay"></span> </a>
-                        <figcaption> <a href="{{p.get_absolute_url}}">{{p.title}}</a> </figcaption>
-                        <p>{{p.boddy|safe|slice:"100"}}</p>
-                      </figure>
-                    </li>
-                    
-                    {%endif%}
-                    {% endfor %}
-                    {% endfor %}
+                 
                   </ul>
                   <ul class="spost_nav">
                     
-                  {%for p in allpost %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'কবিতা'|stringformat:"s" %}
+                  {%for p in allpost|slice:"11:16" %}
+                 
                     <li>
                       <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> </a>
                         <div class="media-body"> <a href="{{p.get_absolute_url}}" class="catg_title"> {{p.title}}</a> </div>
                       </div>
                     </li>
-                    {%endif%}
-                    {% endfor %}
+                   
                     {% endfor %}
                     
                   </ul>
@@ -306,36 +275,14 @@
             <div class="single_post_content">
               <h2><span>পড়াশোনা</span></h2>
               <ul class="photograph_nav  wow fadeInDown">
+                  {%for p in allpost|slice:"16:22" %}
                 <li>
-                  <div class="photo_grid">
-                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img2.jpg" title="Photography Ttile 1"> <img src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}" alt=""/></a> </figure>
+                  <div class="photo_grid" >
+                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="{{p.get_absolute_url}}" title="Photography Ttile 1"> <img src="{%if p.image %}{{p.image.url}}{% else %} {% static 'images/gmrwc_logo.png' %}{% endif %}" height="10" alt=""/></a> </figure>
                   </div>
                 </li>
-                <li>
-                  <div class="photo_grid">
-                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img3.jpg" title="Photography Ttile 2"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-                  </div>
-                </li>
-                <li>
-                  <div class="photo_grid">
-                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img4.jpg" title="Photography Ttile 3"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-                  </div>
-                </li>
-                <li>
-                  <div class="photo_grid">
-                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img4.jpg" title="Photography Ttile 4"> <img src="images/photograph_img4.jpg" alt=""/> </a> </figure>
-                  </div>
-                </li>
-                <li>
-                  <div class="photo_grid">
-                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img2.jpg" title="Photography Ttile 5"> <img src="images/photograph_img2.jpg" alt=""/> </a> </figure>
-                  </div>
-                </li>
-                <li>
-                  <div class="photo_grid">
-                    <figure class="effect-layla"> <a class="fancybox-buttons" data-fancybox-group="button" href="images/photograph_img3.jpg" title="Photography Ttile 6"> <img src="images/photograph_img3.jpg" alt=""/> </a> </figure>
-                  </div>
-                </li>
+                {% endfor %}
+
               </ul>
             </div>
             <div class="single_post_content">
@@ -344,9 +291,7 @@
                 <ul class="business_catgnav">
                   
                   {%for p in allpost|slice:":1" %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'রম্য রচনা'|stringformat:"s" %}
+                  
                     <li>
                       <figure class="bsbig_fig"> <a href="{{p.get_absolute_url}}" class="featured_img"> <img height="250px" width="auto" alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> <span class="overlay"></span> </a>
                         <figcaption> <a href="{{p.get_absolute_url}}">{{p.title}}</a> </figcaption>
@@ -354,21 +299,17 @@
                       </figure>
                     </li>
                     
-                    {%endif%}
-                    {% endfor %}
+                   
                     {% endfor %}
                     
                   {%for p in allpost|slice:"1:3" %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'রম্য রচনা'|stringformat:"s" %}
+                  
                     <li>
                       <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> </a>
                         <div class="media-body"> <a href="{{p.get_absolute_url}}" class="catg_title"> {{p.title}}</a> </div>
                       </div>
                     </li>
-                    {%endif%}
-                    {% endfor %}
+                   
                     {% endfor %}
                 </ul>
               </div>
@@ -376,16 +317,13 @@
                 <ul class="spost_nav">
                   
                   {%for p in allpost|slice:"3:10" %}
-                  {%for answer in p.categories.all %}
-
-                  {% if answer|stringformat:"s" == 'রম্য রচনা'|stringformat:"s" %}
+                  
                     <li>
                       <div class="media wow fadeInDown"> <a href="{{p.get_absolute_url}}" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> </a>
                         <div class="media-body"> <a href="{{p.get_absolute_url}}" class="catg_title"> {{p.title}}</a> </div>
                       </div>
                     </li>
-                    {%endif%}
-                    {% endfor %}
+                    
                     {% endfor %}
                   
                 </ul>
@@ -405,11 +343,11 @@
                   </div>
                 </li>
                 {% endfor %}
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
+                <!--<li>-->
+                <!--  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>-->
+                <!--    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>-->
+                <!--  </div>-->
+                <!--</li>-->
                 
               </ul>
             </div>
@@ -429,32 +367,22 @@
                   </ul>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="video">
+                   {% for video in videos %}
                   <div class="vide_area">
-                    <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="180" height="120" src="{{video.embeded_link}}" title="{{video.title}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  <p>{{video.title}}</p>
                   </div>
+                  {% endfor %}
                 </div>
                 <div role="tabpanel" class="tab-pane" id="comments">
                   <ul class="spost_nav">
+                    {% for comment in allcomments %} 
                     <li>
-                      <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                        <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                      <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <p>{{comment.name}}</p> </a>
+                        <div class="media-body"> <a href="single_page.html" class="catg_title">{% if comment %} {{ comment.content|safe }}{% endif %}</a> </div>
                       </div>
                     </li>
-                    <li>
-                      <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                        <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img1.jpg"> </a>
-                        <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="images/post_img2.jpg"> </a>
-                        <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                      </div>
-                    </li>
+                    {% endfor %}
                   </ul>
                 </div>
               </div>
@@ -484,59 +412,7 @@
         </div>
       </div>
     </section>
-    <footer id="footer">
-      <div class="footer_top">
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="footer_widget wow fadeInLeftBig">
-              <h2>আর্কাইভ পোস্ত
-
-              </h2>
-              {% regroup all_posts by date_created.year as year_list %}
-
-              <ul class="tag_nav">
-              {% for year in year_list %}
-                  <li>
-                      {% regroup year.list by date_created.month as month_list %}
-                      <ul>
-                      {% for month in month_list %}
-                          <li><a href="{% url 'post_archive_month' year.grouper month.grouper %}">{{ month.list.0.date_created|date }} ({{ month.list|length }})</a></li>
-                      {% endfor %}
-                      </ul>
-                  </li>
-              {% endfor %}
-              </ul>
- 
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="footer_widget wow fadeInDown">
-              <h2>ট্যাগসমূহ</h2>
-              <ul class="tag_nav">
-                {% for tag in tags %}
-                <li><a href="{% url 'showmultiple' 'tag' tag.id  %}">{{tag.name}}</a></li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="footer_widget wow fadeInRightBig">
-              <h2>Contact</h2>
-              <img src="{% static 'images/sumon.jpg'%}" class="rounded-circle" height="50" width="50" alt="/images/ict_logo.jpg" loading="lazy">
-              <address>
-              Tarique Sumon<br>
-              Israben Tech<br>
-              cell: 01712539569
-              </address>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer_bottom">
-        <p class="copyright">Copyright &copy; 2024 <a href="index.html">Tarique Sumon</a></p>
-        <p class="developer">Developed By Israbentech</p>
-      </div>
-    </footer>
+    
   </div>
   </main>
 {% endblock %}

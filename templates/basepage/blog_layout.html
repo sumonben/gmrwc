@@ -5,11 +5,11 @@
 
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
     <meta name="description" content="ICT Park">
-    <meta name="keywords" content="Blog ICT Park Bangladesh,কবিতা, ছোটগল্প, ব্লগ,গল্প,পড়াশোনা">
+    <meta name="keywords" content="">
     <meta name="author" content="Tarique Sumon ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog ICT Park Bangladesh</title>
-<link rel="shortcut icon" href="{%  static 'images/ictpark_monogram.png'%}">
+    <title>কলেজ  নিউজ পোর্টাল</title>
+<link rel="shortcut icon" href="{%  static 'images/gmrwc_logo.png'%}">
 
     
 <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css' %}">
@@ -73,14 +73,17 @@
 </style>
 
 
+<link rel="stylesheet" href="{% static 'css/font.css'%}" as="css" type="text/css">
 </head>
 
-<body style="width: 100%; margin: 0px;" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" >
+<body style="width: 100%; margin: 0px;font-family:kalpurush" data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0" >
      {% comment %} {%if user.is_authenticated %}
     {% include 'component/navbarhome.html' %}
     {%else%}
     {% include 'component/navbarfront.html' %}
     {%endif%} {% endcomment %}
+    {% include 'component/navbarfront.html' %}
+
 
 
          <!----------------Page Banner (header)---------------------------->
@@ -97,7 +100,59 @@
 
 
 
+                <footer id="footer">
+      <div class="footer_top">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="footer_widget wow fadeInLeftBig">
+              <h2>আর্কাইভ পোস্টসমুহ
 
+              </h2>
+              {% regroup all_posts by date_created.year as year_list %}
+
+              <ul class="tag_nav">
+              {% for year in year_list %}
+                  <li>
+                      {% regroup year.list by date_created.month as month_list %}
+                      <ul>
+                      {% for month in month_list %}
+                          <li><a href="{% url 'post_archive_month' year.grouper month.grouper %}">{{ month.list.0.date_created|date }} ({{ month.list|length }})</a></li>
+                      {% endfor %}
+                      </ul>
+                  </li>
+              {% endfor %}
+              </ul>
+ 
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="footer_widget wow fadeInDown">
+              <h2>ট্যাগসমূহ</h2>
+              <ul class="tag_nav">
+                {% for tag in tags %}
+                <li><a href="{% url 'showmultiple' 'tag' tag.id  %}">{{tag.name}}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="footer_widget wow fadeInRightBig">
+              <h2>Contact</h2>
+              <img src="{% static 'images/ictparkbd_logo.jpg'%}"   width="80" alt="" loading="lazy">
+              <address>
+              Tarique Sumon<br>
+              ICT Park Bangladesh<br>
+              cell: 01712539569
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom">
+        <p class="copyright">Copyright &copy; 2024 <a href="index.html">Govt. Mojibor Rahman Women's College, Bogura.</a></p>
+        <p class="developer">Developed By ICT Park Bangladesh</p>
+      </div>
+    </footer>
 
                 <script src="https://basis.org.bd/public/js/frontend_app.js"></script>
 
@@ -112,12 +167,37 @@
                     };
                 
                     function scrollFunction() {
-                        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-                            document.getElementById("header").className = "header sticky";
-                        } else {
-                            document.getElementById("header").className = "header";
-                        }
-                    }
+                var x = window.matchMedia("(max-width: 989px)")
+                  if (document.body.scrollTop >50 || document.documentElement.scrollTop > 50) {
+                    document.getElementById("header").className = "header sticky";
+
+                    document.getElementById("heading").style= "padding-top:-20px;font-size:30px;";
+
+                   if (x.matches) { 
+                    document.getElementById("heading").style= "padding-top:-20px;font-size:30px;";
+                   
+                                      } else {
+                      document.getElementById("heading").style= "padding-top:-20px;font-size:30px;";
+                      document.getElementById("sub-heading").style.display = "none";
+
+                     
+                    } 
+                      
+                  } else {
+                    document.getElementById("header").className = "header";
+                    document.getElementById("sub-heading").style.display = "block";
+
+              if (x.matches) { 
+                document.getElementById("heading").style= "padding-top:-20px;font-size:30px;";
+              } else {
+                    document.getElementById("heading").style= "padding-top:-20px;font-size:30px;";
+                    }  
+
+
+                  }
+                 
+              }
+          
                 </script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

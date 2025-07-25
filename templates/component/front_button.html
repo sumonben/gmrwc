@@ -1,0 +1,33 @@
+<style>
+    #notice-board{
+        margin-top:10px;
+    }
+    @media(max-width:767px){
+           #notice-board{
+        margin-top:0px;
+    } 
+    }
+</style>
+<div id="notice-board" class="box p-4">
+
+    <div class="notice-board-bg">
+
+    {% if request.session.lang == 'english'%}
+
+        <a class="btn btn-sm btn-success " style="width:46%;position:relative;margin:4px;background-color:#009999;"  href="https://student.gmrwc.edu.bd/result/" target="_blank"> <h4 class="text-white"> Online Result </h4> </a> 
+        <a class="btn btn-sm btn-success " style="width:46%;position:relative;margin:4px;"  href="https://student.gmrwc.edu.bd/payment/" target="_blank"> <h4 class="text-white"> Pay Now </h4> </a> <br>
+        <a class="btn btn-sm btn-danger " style="width:46%;position:relative;margin:4px;"  href="https://student.gmrwc.edu.bd/admission/login/" target="_blank"> <h4 class="text-white"> Admission </h4> </a> 
+        <a class="btn btn-sm btn-danger " style="width:46%;position:relative;margin:4px;background-color:#009999;"  href="https://www.facebook.com/profile.php?id=100006628218798" target="_blank"> <h4 class="text-white"> Facebook Group</h4> </a>
+
+
+    {% else %}
+
+         <a class="btn btn-sm btn-primary " style="width:46%;position:relative;margin:4px;background-color:#009999;" href="https://student.gmrwc.edu.bd/result/" target="_blank"> <h4 class="text-white" style="color:#c91e04"> অনলাইন ফলাফল </h4> </a>  
+         <a class="btn btn-sm btn-success " style="width:46%;position:relative;margin:4px;" href="https://student.gmrwc.edu.bd/payment/" target="_blank"> <h4 class="text-white"> ফি প্রদান </h4> </a> <br>
+         <a class="btn btn-sm btn-danger " style="width:46%;position:relative;margin:4px;" href="https://student.gmrwc.edu.bd/admission/login/" target="_blank"><h4 class="text-white"> অনলাইন ভর্তি </h4> </a> 
+         <a class="btn btn-sm btn-primary " style="width:46%;position:relative;margin:4px;background-color:#009999;" href="https://www.facebook.com/profile.php?id=100006628218798" target="_blank"> <h4 class="text-white"> ফেসবুক গ্রুপ</h4> </a>
+
+
+    {% endif %}
+    </div>
+</div>

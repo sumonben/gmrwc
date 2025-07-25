@@ -12,7 +12,7 @@ def posts(request):
         d = timezone.now() - timedelta(days=100)
         post=Post.objects.all().select_related('author')
         latest_posts=Post.objects.all().select_related('author').order_by('-id')[:7]
-        popular_posts = Post.objects.annotate(total_views=Count('likes')).filter(date_created__gte=d, total_views__gt=0).order_by('-total_views')[:5]
+        popular_posts = Post.objects.annotate(total_views=Count('views')).filter(date_created__gte=d, total_views__gt=0).order_by('-total_views')[:5]
         users=UserModel.objects.all()
         post=Post.objects.all().select_related('author').order_by('-id')[:8]
         categories=Category.objects.all()

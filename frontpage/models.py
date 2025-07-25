@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -8,8 +9,7 @@ from django.utils.safestring import mark_safe
 from django.db import transaction
 from django.db.models import F, Max
 from django.utils.encoding import uri_to_iri
-import os
-from datetime import datetime
+
 TYPE_CHOICES=( ("1","static" ), 
     ("2","dynamic"),("3","link"),("4","department"))
 DESIGNATION_CHOICES = ( 
@@ -138,12 +138,6 @@ class Page(models.Model):
             return format_html(strf)
         else:
             return navitem
-def get_file_path(instance, filename):
-        ext = filename.split('.')[-1]
-        name = filename.split('.')[-2]
-        filename = "%s.%s" % (datetime.now(), ext)
-        return os.path.join('media/', filename)
-    
 class Post(models.Model):
     serial=models.IntegerField(default=10)
     heading=models.CharField(max_length=100,blank=True,null=True)
@@ -152,7 +146,8 @@ class Post(models.Model):
     title_en=models.CharField(max_length=500,unique=True,blank=True,null=True)
     body=RichTextField(blank=True,null=True)
     body_en=RichTextField(blank=True,null=True)
-    file=models.FileField(upload_to=get_file_path,blank=True,null=True,)
+    file=models.FileField(upload_to='media/',blank=True,null=True,)
+    link=models.CharField(max_length=500,blank=True,null=True)
     date=models.DateField(blank=True, null=True)
     category=models.ManyToManyField(Category,blank=True,null=True,)
     tag=models.ManyToManyField(Tag,blank=True,null=True,)
@@ -163,8 +158,13 @@ class Post(models.Model):
         return self.title
     def get_absolute_url(self):
         return uri_to_iri(self.file.url)
-    
-
+    def __unicode__(self):
+        return self.title
+    def clean(self, *args, **kwargs):
+        data = super(Post, self).clean(*args, **kwargs)
+        if data:
+            data.name = data.name.encode('utf-8','ignore')
+            return data
 class NavElement(models.Model):
     serial=models.IntegerField(default=10)
     head=models.CharField(max_length=100,unique=True)

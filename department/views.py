@@ -21,7 +21,7 @@ def queryDepartmentFrontpage( departmentId ):
     position=Position.objects.filter(serial=4).first()
 
     department=Department.objects.filter(id=departmentId).first()
-    teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True).filter((Q(position__serial=3)|Q(position__serial=4))).order_by('designation__serial','position__serial')
+    teachers=Teacher.objects.filter(~Q(position__serial=1),~Q(position__serial=2),t_department=department,release_date=None,is_active=True).order_by('t_department__serial','designation__serial','position__serial')
     students=Student.objects.filter(department=department,is_active=True)
     department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
     notices=Post.objects.filter(category__name_en=department.name_en).order_by('-id')
@@ -40,7 +40,7 @@ def queryDepartmentFrontpage( departmentId ):
 
 def DepartmentPage(request, navitem_name,navelement_head,heading, id):
 
-    print(heading)
+    #print(heading)
     heading=heading.replace("%20", " ")
     navitem_name=navitem_name.replace("%20", " ")
     navelement_head=navelement_head.replace("%20", " ")
@@ -151,10 +151,9 @@ def departmentItems(request,departmentId,navitem_name):
     institute=Institute.objects.filter(serial=1).first()
     principal=Teacher.objects.filter(position=1, release_date=None).first()
     vice_principal=Teacher.objects.filter(position=2, release_date=None).first()
-    
     position=Position.objects.filter(serial=4).first()
     department=Department.objects.filter(id=departmentId).first()
-    teachers=Teacher.objects.filter(t_department=department, release_date=None,is_active=True).filter((Q(position__serial=4)|Q(position__serial=5))).order_by('designation__serial','position__serial')
+    teachers=Teacher.objects.filter(~Q(position__serial=1),~Q(position__serial=2),t_department=department,release_date=None,is_active=True).order_by('designation__serial','position__serial')
     students=Student.objects.filter(department=department,is_active=True)
     department_head=Teacher.objects.filter(t_department=department, position=position, release_date=None,is_active=True).first()
     employees=Employee.objects.filter(employee_department=department).order_by('designation','employee_type','position')
@@ -164,6 +163,7 @@ def departmentItems(request,departmentId,navitem_name):
     context = {
         'carousels': carousels,'nav_department':nav_department,'notices':notices,'department':department,
         'principal':principal,
+        'navitem_name':navitem_name,
         'institute':institute,
         'vice_principal':vice_principal,
         'department_head':department_head,

@@ -54,7 +54,7 @@
                     <div data-v-3171110e="" class="col-lg-7">
                         <div data-v-3171110e="" class="member-search">
                             <div data-v-3171110e="" class="search-body">
-                                <h1>All Post for  {{ type }}( {{ name }})</h1>
+                                <h1>সকল নিউজ  {{ type }}( {{ name }})</h1>
                                 <div data-v-3171110e="" class="searchBox"><input data-v-3171110e="" type="text"
                                         placeholder="Search by any information" id="myInput" onkeyup="myFunction2()"> <span
                                          class="fas fa-search"></span></div>
@@ -187,7 +187,7 @@
     <div class="single_sidebar">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">ক্যাটাগরি</a></li>
-        <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Videভিডিওo</a></li>
+        <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">ভিডিও</a></li>
         <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">মন্তব্যসমূহ</a></li>
       </ul>
       <div class="tab-content">
@@ -199,32 +199,23 @@
           </ul>
         </div>
         <div role="tabpanel" class="tab-pane" id="video">
-          <div class="vide_area">
-            <iframe width="100%" height="250" src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0" allowfullscreen=""></iframe>
-          </div>
+           {% for video in videos %}
+                  <div class="vide_area">
+                  <iframe width="180" height="120" src="{{video.embeded_link}}" title="{{video.title}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  <p>{{video.title}}</p>
+                  </div>
+            {% endfor %}
         </div>
         <div role="tabpanel" class="tab-pane" id="comments">
           <ul class="spost_nav">
+             {% for comment in comments %} 
             <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <p>{{comment.name}}</p> </a>
+                <div class="media-body"> <a href="single_page.html" class="catg_title">{% if comment %} {{ comment.content|safe }}{% endif %}</a> </div>
               </div>
             </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-              </div>
-            </li>
+            {% endfor %}
+            
           </ul>
         </div>
       </div>
@@ -254,57 +245,7 @@
 </div>
 </div>
 </section>
-<footer id="footer">
-  <div class="footer_top">
-    <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="footer_widget wow fadeInLeftBig">
-          <h2>আর্কাইভ পোস্টসমূহ</h2>
-          {% regroup all_posts by date_created.year as year_list %}
 
-          <ul class="tag_nav">
-          {% for year in year_list %}
-              <li>
-                  {% regroup year.list by date_created.month as month_list %}
-                  <ul>
-                  {% for month in month_list %}
-                      <li><a href="{% url 'post_archive_month' year.grouper month.grouper %}">{{ month.list.0.date_created|date }} ({{ month.list|length }})</a></li>
-                  {% endfor %}
-                  </ul>
-              </li>
-          {% endfor %}
-          </ul>
-
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="footer_widget wow fadeInDown">
-          <h2>ট্যাগসমূহ</h2>
-          <ul class="tag_nav">
-            {% for tag in tags %}
-            <li><a href="{% url 'showmultiple' 'tag' tag.id  %}">{{tag.name}}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="footer_widget wow fadeInRightBig">
-          <h2>যোগাযোগ</h2>
-          <img src="{% static 'images/sumon.jpg'%}" class="rounded-circle" height="50" width="50" alt="/images/ict_logo.jpg" loading="lazy">
-          <address>
-          Tarique Sumon<br>
-          Israben Tech<br>
-          cell: 01712539569
-          </address>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer_bottom">
-    <p class="copyright">Copyright &copy; 2024 <a href="index.html">Tarique Sumon</a></p>
-    <p class="developer">Developed By Israbentech</p>
-  </div>
-</footer>
 </div>
 </main>
 

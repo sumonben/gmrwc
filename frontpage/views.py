@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.utils.encoding import uri_to_iri
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
@@ -26,7 +27,7 @@ class frontpage_view(ListCreateAPIView):
         institute=Institute.objects.first()
         pages = Page.objects.all().order_by('serial')
         navitems=NavItem.objects.all().order_by('serial')
-        notices=Post.objects.all().order_by('-id')[:7]
+        notices=Post.objects.all().order_by('serial', '-id')
         service_boxes=ServiceBox.objects.all().order_by('serial')
         principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
         vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
@@ -37,7 +38,7 @@ class frontpage_view(ListCreateAPIView):
         #for chapter in singlepost:
         # print(chapter.name)
         #serializer = frontpageSerializer(carousel,many=True)
-        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'viec_principal':vice_principal,'institute':institute})
+        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'vice_principal':vice_principal,'institute':institute})
 def queryFrontpage():
     institute=Institute.objects.first()
     carousels = Carousel.objects.all().order_by('cid')
@@ -45,8 +46,9 @@ def queryFrontpage():
     notices=Post.objects.all().order_by('-id')[:7]
     principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
+    secretary=Teacher.objects.filter(position__serial=5, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter(release_date=None,is_active=True).annotate(count=Count('t_department')).order_by().order_by('designation__serial','position__serial')
-    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True).order_by('designation__serial','position__serial')
+    academic_council=Teacher.objects.filter(position__serial=4, release_date=None,is_active=True).order_by('designation__serial','position__serial')
     context = {
         'institute':institute,
         'carousels': carousels,
@@ -55,6 +57,7 @@ def queryFrontpage():
         'principal':principal,
         'institute':institute,
         'viec_principal':vice_principal,
+        'secretary':secretary,
         'academic_council':academic_council,
         }
     return context
@@ -62,7 +65,20 @@ def queryFrontpage():
 
 
     
+def languageChangeMedia(request):
+    print('lang',request.POST.get('lang_toggle1', False))
+    if 'lang' not in request.session:
+        request.session['lang']='bangla'
+        print('2',request.session['lang'])
+        del request.session['lang']
+    if request.POST.get('lang_toggle1', False) == 'english':
+        request.session['lang']='english'
+        print('3',request.session['lang'])
+    else:
+        request.session['lang']='bangla'
 
+    return JsonResponse({'success': "success"},safe=False)
+    
 def languageChange(request):
     print('1',request.POST.get('lang_toggle', False))
     if 'lang' not in request.session:
@@ -93,11 +109,11 @@ def showPage(request, navitem_name,navelement_head,heading, id):
     post=page
     notices=Post.objects.all().order_by('-id')[:7]
     principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first() 
-    secretary=Teacher.objects.filter(position__serial=3, release_date=None,is_active=True).first()
+    secretary=Teacher.objects.filter(position__serial=5, release_date=None,is_active=True).first()
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
-    teachers=Teacher.objects.filter(release_date=None,is_active=True).annotate(count=Count('t_department')).order_by().order_by('designation__serial','position__serial')
+    teachers=Teacher.objects.filter(~Q(position__serial=1),~Q(position__serial=2),release_date=None,is_active=True).order_by('t_department__serial','designation__serial','position__serial')
     employees=Employee.objects.all().order_by('designation','employee_type','position')
-    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True).order_by('designation__serial','position__serial')
+    academic_council=Teacher.objects.filter(position__serial=4, release_date=None,is_active=True).order_by('designation__serial','position__serial')
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'navitem_name':navitem_name,
@@ -109,10 +125,11 @@ def showPage(request, navitem_name,navelement_head,heading, id):
         'principal':principal,
         'institute':institute,
         'viec_principal':vice_principal,
+        'secretary':secretary,
         'academic_council':academic_council,
         }
     #if navelement_head=="HSC" and heading=="Admission Notice" :
-    post=Post.objects.filter(category__name_en=navelement_head,tag__name_en=heading)
+    post=Post.objects.filter(category__name_en=navelement_head,tag__name_en=heading).order_by('-id')
     context['post']=post
     
     '''if navelement_head=="HSC" and heading=="Admission Application" :
@@ -174,15 +191,12 @@ def showPage(request, navitem_name,navelement_head,heading, id):
         
     if heading =='Principal':
         context['teacher'] = principal
+    if heading =='Vice Principal':
+        context['teacher'] = vice_principal
     if heading =='President':
         context['teacher'] = principal
     if heading =='General Secretary':
         context['teacher'] = secretary
-
-    
-    if heading =='Vice-Principal':
-        context['teacher'] = vice_principal
-
     if heading =='Academic Council':
         context['teachers'] = academic_council
     
@@ -237,6 +251,8 @@ def showPage(request, navitem_name,navelement_head,heading, id):
         return redirect(page.link)
 
 def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
+    heading=heading.replace("%20", " ")
+    servicebox_title=servicebox_title.replace("%20", " ")
     teacher=None
     carousels = Carousel.objects.all().order_by('cid')
     institute=Institute.objects.first()
@@ -245,12 +261,12 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
     notices=Post.objects.all().order_by('-id')[:7]
     principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
-    teachers=Teacher.objects.filter(release_date=None,is_active=True).annotate(count=Count('t_department')).order_by().order_by('designation__serial','position__serial')
-    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
+    secretary=Teacher.objects.filter(position__serial=5, release_date=None,is_active=True).first()
+    teachers=Teacher.objects.filter(~Q(position__serial=1),~Q(position__serial=2),release_date=None,is_active=True).order_by('t_department__serial','designation__serial','position__serial')
+    academic_council=Teacher.objects.filter(position__serial=4, release_date=None,is_active=True)
     employees=Employee.objects.all().order_by('designation','employee_type','position')
 
     service_box=ServiceBox.objects.filter(id=servicebox_id).first()
-    print(servicebox_title,heading)
     context = {
         'carousels': carousels,'page':page,'navitems':navitems,'notices':notices,
         'servicebox_title':servicebox_title,
@@ -260,11 +276,11 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
         'principal':principal,
         'institute':institute,
         'viec_principal':vice_principal,
+        'secretary':secretary,
         'academic_council':academic_council,
         }
     if heading =='Principal':
         context['teacher'] = principal
-
     
     if heading =='Vice-Principal':
         context['teacher'] = vice_principal
@@ -279,7 +295,6 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
     if servicebox_title=="Admission Guidelines" and heading=="HSC Admission" :
         post=Post.objects.filter(category__name_en="HSC",tag__name_en="Admission Notice")
         context['post']=post
-        print(post)
 
     
     if servicebox_title=="Admission Guidelines" and heading=="Honors Admission" :
@@ -346,11 +361,11 @@ def tableAllShow(request, tableall ):
     carousels = Carousel.objects.all().order_by('cid')
     institute=Institute.objects.first()
     navitems=NavItem.objects.all().order_by('serial')
-    notices=Post.objects.all().order_by('-id')[:7]
+    notices=Post.objects.all().order_by('serial')[:7]
     principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
     vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
     teachers=Teacher.objects.filter( release_date=None,is_active=True)
-    academic_council=Teacher.objects.filter(Q(position__serial=4)|Q(position__serial=1)|Q(position__serial=2), release_date=None,is_active=True)
+    academic_council=Teacher.objects.filter(position__serial=4, release_date=None,is_active=True)
     post=Post.objects.all().order_by('-id')
     context = {
         'carousels': carousels,'navitems':navitems,'notices':notices,

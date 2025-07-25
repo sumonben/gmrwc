@@ -45,6 +45,13 @@ class PlaceHolder(models.Model):
 
     def __str__(self):
         return self.name+":"+self.name_en
+class YoutubeVideo(models.Model):
+    class Meta:
+        ordering = ["serial"]
+    
+    serial=models.IntegerField(default=0)
+    title = models.CharField(max_length=255, blank=True,null=True)
+    embeded_link=models.URLField(max_length=500)
     
 class Post(models.Model):
     class Meta:
@@ -65,6 +72,8 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True)
     place_holder=models.ManyToManyField(PlaceHolder, blank=True,null=True)
     author = models.ForeignKey(Profile, on_delete=models.PROTECT)
+    views = models.PositiveIntegerField(default=0)
+    like = models.PositiveIntegerField(default=0)
     likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='blog_posts')
     image=models.ImageField(upload_to='media/news',blank=True,null=True)
 
@@ -83,12 +92,20 @@ class Post(models.Model):
     def get_related_posts_by_tags(self):
         return Post.objects.filter(tags__in=self.tags.all())
     def number_of_likes(self):
-        return self.likes.all().count()
-    
+        return self.like
+
+class Like(models.Model):
+        post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes_count')
+        ip_address = models.GenericIPAddressField()
+        created_at = models.DateTimeField(auto_now_add=True)
+
+        class Meta:
+            unique_together = ('post', 'ip_address') 
+            
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
     title = models.CharField(max_length=100,blank=True,null=True)
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE,null=True,blank=True)
     content = RichTextField()
     date_posted = models.DateTimeField(auto_now=True)
 
@@ -102,11 +119,11 @@ class CommentGuest(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
     content = RichTextField()
-    post = models.ForeignKey(Post, related_name='commentsguest', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='commentguest', on_delete=models.CASCADE)
     date_posted = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ('-date_posted',)
 
     def __str__(self):
-        return 'Comment by {}-{}'.format(self.name,self.email)
+        return 'Commented by: {}-{}'.format(self.name,self.email)

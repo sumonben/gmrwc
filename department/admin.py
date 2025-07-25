@@ -6,7 +6,7 @@ from import_export.admin import ExportActionMixin,ImportExportMixin
 
 # Register your models here.
 @admin.register(Department)
-class UserAdmin(admin.ModelAdmin):
+class UserAdmin(ImportExportMixin,admin.ModelAdmin):
     list_display=[  'serial','name','code','professor', 'associate_professor', 'assistant_professor','lecturer','about']
     list_filter=[  'name','code',]
     list_display_links = ['serial','name','code']

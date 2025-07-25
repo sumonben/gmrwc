@@ -2,7 +2,7 @@ from django.contrib import admin
 
 
 
-from blog.models import Profile, Post, Tag,Category,Comment,CommentGuest
+from blog.models import Profile, Post, Tag,Category,Comment,CommentGuest,PlaceHolder,Like,YoutubeVideo
 import random
 import string
 # Register your models here.
@@ -16,7 +16,16 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
-
+@admin.register(PlaceHolder)
+class PlaceHolderAdmin(admin.ModelAdmin):
+    model = PlaceHolder
+@admin.register(YoutubeVideo)
+class YoutubeVideoAdmin(admin.ModelAdmin):
+    model = YoutubeVideo
+    list_display = ('id',"serial","title",'embeded_link')
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
+    model = Like
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     model = Comment

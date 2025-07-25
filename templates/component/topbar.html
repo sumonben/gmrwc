@@ -4,11 +4,12 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         width: fit-content;
+        height: fit-content;
         border: 3px solid #343434;
         border-radius: 20px;
         background: #343434;
         font-weight: bold;
-        color: #343434;
+        color:rgb(250, 8, 8);
         cursor: default;
       }
       .toggleContainer::before {
@@ -16,6 +17,7 @@
         position: absolute;
         width: 50%;
         height: 100%;
+        color:rgb(250, 8, 8);
         left: 0%;
         border-radius:20px;
         background: rgb(5, 223, 74);
@@ -25,7 +27,7 @@
          left: 50%;
       }
       .toggleContainer div {
-        padding: 6px;
+        padding: 2px;
         text-align: center;
         z-index: 1;
       }
@@ -37,11 +39,11 @@
         transition: color 0.3s;
       }
       .toggleCheckbox:checked + .toggleContainer div:last-child{
-        color: #343434;
+        color:rgb(248, 6, 6);
         transition: color 0.3s;
       }
       .toggleCheckbox + .toggleContainer div:first-child{
-        color: #343434;
+        color:rgb(240, 14, 14);
         transition: color 0.3s;
       }
       .toggleCheckbox + .toggleContainer div:last-child{
@@ -51,10 +53,12 @@
     .top-menu{
         border-radius: 0 0 20% 20%;
     }
-@media(max-width: 786px){
+@media(max-width: 767px){
     .top-menu{
         display: none;
     }
+}
+
 </style>
 
 <div id="top">
@@ -70,39 +74,40 @@
           {% endif %}</a></div>
         <div id="sitesDropdown" class="d-none d-md-block col-md-4 middle-form" >
             <div class="form-item">
-                <select title="বিভাগ নির্বাচন করতে এখানে ক্লিক করুন" class="chzn-select doptors mt-2 mt-md-0" id="doptor">
+                {% if request.session.lang == 'english'%}
+
+                    <a  class="search-btn" style="color: white;" href="https://old.gmrwc.edu.bd" target="_blank">Old Website </a>&nbsp
+                {% else %}
+                    <a  class="search-btn" style="color: white;" href="https://old.gmrwc.edu.bd" target="_blank"> পূর্বতন ওয়েবসাইট</a>&nbsp
+                    {% endif %}
+
+                <!--<select title="বিভাগ নির্বাচন করতে এখানে ক্লিক করুন" class="chzn-select doptors mt-2 mt-md-0" id="doptor">
                     <option>---</option>
                     <option value="alldiv">বিভাগ </option>
-                    <!-- <option>দপ্তর সমূহ </option> -->
-    
+
                                         
                     <option value="2">
                                         দপ্তর অফিসসমূহ
-                        <!-- দপ্তর অফিসসমূহ -->
                     </option>
                     
                                         
                     <option value="4">
                                         বিভাগ পর্যায়ের সরকারি অফিস
-                        <!-- Divisional Govt. Office -->
                     </option>
                     
                                         
                     <option value="5">
                                         জেলা পর্যায়ের সরকারি অফিস
-                        <!-- District Govt. Office -->
                     </option>
                     
                                         
                     <option value="6">
                                         উপজেলা পর্যায়ের সরকারি অফিস
-                        <!-- Upazila Level Govt. Office -->
                     </option>
                     
                                         
                     <option value="7">
                                         আঞ্চলিক অফিসসমূহ
-                        <!-- Union Govt. Office -->
                     </option>
                     
                                     </select>
@@ -112,7 +117,7 @@
                 <select title="" class="chzn-select doptors d-none mt-2 mt-md-0" id="third_level"></select>
                 <select title="" class="chzn-select doptors d-none mt-2 mt-md-0" id="forth_level"></select>
     
-                <button class="btn btn-primary btn-sm" id="doptor_navigation_go">Go</button>
+                <button class="btn btn-primary btn-sm" id="doptor_navigation_go">Go</button>-->
     
             </div>
         </div>
@@ -120,11 +125,11 @@
             <!-- <button id="lang-btn" class="btn btn-primary btn-sm float-right">English</button> -->
             <div >
               {% if request.session.lang == 'english'%}
-              <a  class="search-btn" href="{% url 'login' %}" target="_blank">Login </a>&nbsp
-              <a  class="search-btn" href="{% url 'register' %}" target="_blank">Registration </a>
+              <a  class="search-btn" style="color: white;" href="{% url 'login' %}" target="_blank">Login </a>&nbsp
+              <a  class="search-btn" style="color: white;" href="{% url 'register' %}" target="_blank">Registration </a>
             {% else %}
-            <a  class="search-btn" href="{% url 'login' %}" target="_blank">লগিন </a>&nbsp
-            <a  class="search-btn" href="{% url 'register' %}" target="_blank">রেজিস্ট্রেশন </a>
+            <a  class="search-btn" style="color: white;" href="{% url 'login' %}" target="_blank">লগিন </a>&nbsp
+            <a  class="search-btn" style="color: white;" href="{% url 'register' %}" target="_blank">রেজিস্ট্রেশন </a>
           {% endif %}
                 
             </div>
