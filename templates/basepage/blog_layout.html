@@ -108,31 +108,34 @@
               <h2>আর্কাইভ পোস্টসমুহ
 
               </h2>
-              {% regroup all_posts by date_created.year as year_list %}
+              {% regroup allposts by date_created.year as year_list %}
 
-              <ul class="tag_nav">
+              <div class="tag_nav">
               {% for year in year_list %}
-                  <li>
+              
+              {{year.grouper}}
+             
+                 
                       {% regroup year.list by date_created.month as month_list %}
-                      <ul>
+                     
                       {% for month in month_list %}
-                          <li><a href="{% url 'post_archive_month' year.grouper month.grouper %}">{{ month.list.0.date_created|date }} ({{ month.list|length }})</a></li>
+                          <a href="{% url 'post_archive_month' year.grouper month.grouper %}">{{ month.list.0.date_created|date:"M" }} ({{ month.list|length }})</a>
                       {% endfor %}
-                      </ul>
-                  </li>
+                     
+                
               {% endfor %}
-              </ul>
- 
+              </div>
+              
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
             <div class="footer_widget wow fadeInDown">
               <h2>ট্যাগসমূহ</h2>
-              <ul class="tag_nav">
+              <div class="tag_nav">
                 {% for tag in tags %}
-                <li><a href="{% url 'showmultiple' 'tag' tag.id  %}">{{tag.name}}</a></li>
+                <a href="{% url 'showmultiple' 'tag' tag.id  %}">|{{tag.name}}|</a>
                 {% endfor %}
-              </ul>
+              </div>
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4">
@@ -141,7 +144,6 @@
               <img src="{% static 'images/ictparkbd_logo.jpg'%}"   width="80" alt="" loading="lazy">
               <address>
               Tarique Sumon<br>
-              ICT Park Bangladesh<br>
               cell: 01712539569
               </address>
             </div>
@@ -149,7 +151,7 @@
         </div>
       </div>
       <div class="footer_bottom">
-        <p class="copyright">Copyright &copy; 2024 <a href="index.html">Govt. Mojibor Rahman Women's College, Bogura.</a></p>
+        <p class="copyright">Copyright &copy; 2025 <a href="index.html">Govt. Mojibor Rahman Women's College, Bogura.</a></p>
         <p class="developer">Developed By ICT Park Bangladesh</p>
       </div>
     </footer>
@@ -185,6 +187,7 @@
                       
                   } else {
                     document.getElementById("header").className = "header";
+                    document.getElementById("heading").style= "font-size:30px;";
                     document.getElementById("sub-heading").style.display = "block";
 
               if (x.matches) { 
@@ -195,7 +198,7 @@
 
 
                   }
-                 
+ 
               }
           
                 </script>
@@ -240,6 +243,7 @@
                 
                     });
                 </script>
+                
 
 </body>
 

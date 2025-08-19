@@ -12,7 +12,51 @@ $(document).ready(function () {
         const accessKey = 'a';
 
         // DefiniÃ§Ãµes dos botÃµes
+        const btns1 = {
+            btnBanglaFont: {
+                active: true,
+                dataAccessibility: "bangla",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "বাংলা",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnEnglishFont: {
+                active: true,
+                dataAccessibility: "english",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "English",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnLoginFont: {
+                active: true,
+                dataAccessibility: "login",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "Login",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+            btnRegisterFont: {
+                active: true,
+                dataAccessibility: "register",
+                class: "setAccessibility",
+                class2: "setAccessibility2",
+                icon: "Register",
+                iconClass: "",
+                text: "",
+                label: "decrement font"
+            },
+        }
+
         const btns = {
+            
             btnDecFont: {
                 active: true,
                 dataAccessibility: "decFont",
@@ -119,7 +163,7 @@ $(document).ready(function () {
                 text: "Reset",
                 label: "Reset",
             },
-            btnkey: {
+            /*btnkey: {
                 active: true,
                 dataAccessibility: "keyboard",
                 class: "setAccessibility",
@@ -136,7 +180,7 @@ $(document).ready(function () {
                 iconClass: ["fas", "fa-download"],
                 text: "Download Screen Reader",
                 label: "Download Screen Reader",
-            },
+            },*/
 
         }
 
@@ -211,12 +255,17 @@ $(document).ready(function () {
             const textButton = document.createTextNode(el.text);
             button.appendChild(textButton);
         }
-
+        Object.keys(btns1).forEach(function (item) {
+            if (btns1[item].active) {
+                createButtons(btns1[item]);
+            }
+        });
         Object.keys(btns).forEach(function (item) {
             if (btns[item].active) {
                 createButtons(btns[item]);
             }
         });
+        
 
 
         const html = document.documentElement; //<html> for font-size settings
@@ -283,6 +332,21 @@ $(document).ready(function () {
 
         function toggleAccessibilities(action) {
             switch (action) {
+                case "english":
+                    alert(sessionStorage.getItem("lang"));
+
+                    window.location.reload();
+                    //window.toggleLogin(action);
+                    break;
+                case "login":
+                    window.location.href = 'https://test.gmrwc.edu.bd/account/login/';                    
+                    //window.toggleLogin(action);
+                    break;
+                case "register":
+                        window.location.href = 'https://test.gmrwc.edu.bd/account/register/';                    
+                        //window.toggleLogin(action);
+                        break;
+                    
                 case "keyboard":
                     window.location.href = `${window.location.origin}/keyboard-shortcut`;
                     break;
@@ -395,6 +459,7 @@ $(document).ready(function () {
                 : "";
         }
 
+        
         function toggleFontSize(action) {
             switch (action) {
                 case "incFont":

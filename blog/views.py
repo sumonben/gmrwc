@@ -19,18 +19,19 @@ from account.models import UserModel
 from .models import Post,Tag,Category,Profile,CommentGuest,Comment,Like,YoutubeVideo
 from django.db.models import Count
 from .forms import PostCreateForm,CommentGuestForm,CommentForm
+from datetime import date
 import datetime
 # Create your views here.
 def blog_index(request):
    # if request.user.is_authenticated:
-        allpost=Post.objects.all().select_related('author').order_by('-id')
-
-        d = timezone.now() - timedelta(days=15)
-        post=Post.objects.all().select_related('author')
-        latest_posts=Post.objects.all().select_related('author').order_by('-id')[:7]
+        allpost=Post.objects.all().order_by('-id')
+        
+        d = timezone.now() - timedelta(days=45)
+        post=Post.objects.all()
+        latest_posts=Post.objects.all().order_by('-id')[:7]
         popular_posts = Post.objects.filter(date_created__gte=d, views__gt=0).order_by('-views')[:5]
         users=UserModel.objects.all()
-        post=Post.objects.all().select_related('author').order_by('-id')[:8]
+        post=Post.objects.all().order_by('-id')[:8]
         categories=Category.objects.all()
         tags=Tag.objects.all()
         videos=YoutubeVideo.objects.all().order_by("-id")[:5] 
@@ -71,9 +72,9 @@ class PostView(DetailView):
         singlepost=get_object_or_404(Post, pk=pk)
         singlepost.views+=1
         singlepost.save()
-        allpost=Post.objects.all().select_related('author').order_by('-id')
+        allpost=Post.objects.all().order_by('-id')
         videos=YoutubeVideo.objects.all().order_by("-id")[:5] 
-        post=Post.objects.all().select_related('author').order_by('-id')[:10]
+        post=Post.objects.all().order_by('-id')[:10]
         related_posts = Post.objects.filter(categories__in=singlepost.categories.all()).distinct()
         categories=Category.objects.all()
         tags=Tag.objects.all()
@@ -169,7 +170,7 @@ def BlogPostLike(request, pk):
 def singlePost(request, pk):
     d = timezone.now() - timedelta(days=8)
     singlepost=get_object_or_404(Post, pk=pk)
-    post=Post.objects.all().select_related('author').order_by('-id')[:7]
+    post=Post.objects.all().order_by('-id')[:7]
     related_posts = Post.objects.filter(categories__in=singlepost.categories.all()).distinct()
     categories=Category.objects.all()
     tags=Tag.objects.all()
@@ -231,7 +232,7 @@ def creatPost(request):
 
 def showMultiple(request, type, id):
     d = timezone.now() - timedelta(days=100)
-    post=Post.objects.all().select_related('author').order_by('-id')[:7]
+    post=Post.objects.all().order_by('-id')[:7]
     categories=Category.objects.all()
     tags=Tag.objects.all()
     popular_posts = Post.objects.filter(date_created__gte=d, views__gt=0).order_by('-views')[:5]    

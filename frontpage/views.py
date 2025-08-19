@@ -7,6 +7,7 @@ from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIVi
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from .models import Carousel,Page,NavItem,NavElement,Post,ServiceBox,Institute
+from blog.models import Post as News
 from department.models import Department
 from teacher.models import Teacher
 from employee.models import Employee
@@ -31,14 +32,14 @@ class frontpage_view(ListCreateAPIView):
         service_boxes=ServiceBox.objects.all().order_by('serial')
         principal=Teacher.objects.filter(position__serial=1, release_date=None,is_active=True).first()   
         vice_principal=Teacher.objects.filter(position__serial=2, release_date=None,is_active=True).first()
-        print(principal)
+        news=News.objects.all().order_by('-id')[:7]
         #chapters = Chapter.objects.all
         #news = News.objects.all
         #chapters="sumon"
         #for chapter in singlepost:
         # print(chapter.name)
         #serializer = frontpageSerializer(carousel,many=True)
-        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'vice_principal':vice_principal,'institute':institute})
+        return Response({ 'carousels': carousels,'pages':pages,'navitems':navitems,'notices':notices,'service_boxes':service_boxes,'principal':principal,'vice_principal':vice_principal,'institute':institute,'news':news})
 def queryFrontpage():
     institute=Institute.objects.first()
     carousels = Carousel.objects.all().order_by('cid')

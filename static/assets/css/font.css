@@ -1,3 +1,22 @@
-@font-face{font-family:"Oswald"; font-style:normal; font-weight:400; src:local("Oswald Regular"),local("Oswald-Regular"),url("../fonts/Oswald-Regular-400.woff") format("woff")}
-@font-face{font-family:"Varela"; font-style:normal; font-weight:400; src:local("Varela"),url("../fonts/Varela-400.woff") format("woff")}
-@font-face{font-family:"Open Sans"; font-style:normal; font-weight:400; src:local("Open Sans"),local("OpenSans"),url("../fonts/OpenSans-400.woff") format("woff")}
+
+@font-face {
+    font-family: "kalpurush";
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+    src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.woff") format("woff"),
+         url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.ttf") format("truetype"),
+          url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.svg#Kalpurush") format("svg"),
+            url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot?#iefix") format("embedded-opentype");
+
+  font-weight: normal;
+    font-style: normal;
+  }
+  @media only screen and (min-width:320px) and (max-width:959px) and (max-width:786){
+    @font-face {
+          font-family: "kalpurush";
+          src: url("//file-rajshahi.portal.gov.bd/media/central/themes/theme-default/fonts/Kalpurush.eot");
+         
+          font-weight: normal;
+          font-style: normal;
+        }
+
+}

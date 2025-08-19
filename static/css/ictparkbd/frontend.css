@@ -19348,9 +19348,7 @@ html {
     overflow-y: auto
 }
 
-img {
-    max-width: 100%
-}
+
 
 :focus {
     outline: none
@@ -20293,8 +20291,9 @@ button.close.text-light.search-box-close {
     }
 
     .logo img {
-        height: 70px;
+        height: 80px;
         margin-top: -10px;
+        margin-left: 18px;
         -webkit-transition: all .8s ease;
         transition: all .8s ease
     }

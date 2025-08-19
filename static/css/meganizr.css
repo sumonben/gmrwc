@@ -1,5 +1,5 @@
 /* ###################################################################
-
+	
 	ITEM NAME  : Meganizr Responsive CSS3 Mega Menu
 	ITEM URI   : http://codecanyon.net/item/meganizr-responsive-css3-mega-menu/2629504
 	VERSION    : 1.0.2
@@ -27,7 +27,7 @@
 
 	/* // 1. RESET STYLES */
 	/* ################################################################ */
-	.meganizr, .meganizr ul, .meganizr li, .meganizr a, .meganizr img, .meganizr div, .meganizr p, .meganizr form, .meganizr input, .meganizr textarea, .meganizr h3, .meganizr h4, .meganizr h5 { margin: 0; padding: 0; font-size: 12px; }
+	.meganizr, .meganizr ul, .meganizr li, .meganizr a, .meganizr img, .meganizr div, .meganizr p, .meganizr form, .meganizr input, .meganizr textarea, .meganizr h3, .meganizr h4, .meganizr h5 { margin: 0; padding: 0; font-size: 12px; font-weight:bold;  }
 	.meganizr a { text-decoration: none; }
 	.meganizr li { list-style: none; }
 	.meganizr input, .meganizr textarea, .meganizr img { outline: none; border: none; background: none; }
@@ -74,10 +74,10 @@
 		z-index: 550;
 		display: block;
 		padding: 11px 15px 11px 15px;
-
+		
 
 		/* font-family: 'Play', Helvetica, Arial, sans-serif; */
-		font-size: 15px;
+		font-size: 17px;
 		color: #525252;
 		text-shadow: 0px 1px 1px white;
 
@@ -107,7 +107,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-
+		
 		/*background: transparent url(../img/drop-arrow.png) no-repeat bottom center;*/
 	}
 
@@ -200,8 +200,9 @@
 	.meganizr .six-col { width: 950px; }
 
 	.meganizr .one-col, .meganizr .two-col, .meganizr .three-col, .meganizr .four-col, .meganizr .five-col, .meganizr .six-col {
-		float: left;
+		float: none;
 		margin: 10px;
+		display: inline-table;
 	}
 
 	/* Dropdown Levels */
@@ -239,7 +240,6 @@
 
 		border-bottom: 1px dotted #e1e1e1;
 
-		font-family: 'Play', Helvetica, Arial, sans-serif;
 		font-size: 14px;
 		color: #5e5e5e;
 		text-shadow: 0px 1px 1px white;
@@ -283,7 +283,6 @@
 
 	/* Text */
 	.mzr-content h2, .mzr-content h3, .mzr-content h4 {
-		color: #555;
 		margin: 10px 0;
 	}
 
@@ -378,7 +377,7 @@
 		padding: 9px 10px 8px 35px;
 		line-height: 18px;
 		margin-bottom: 10px;
-
+		
 		background-color: #f6f6f6;
 		background-repeat: no-repeat;
 		background-position: 10px 9px;
@@ -423,7 +422,7 @@
 			height: auto;
 			float: left;
 			clear: both;
-			margin: 25px 0;
+			margin: 25px 0; 
 		}
 
 		.mzr-responsive > li,
@@ -435,7 +434,7 @@
 			width: 33.2%;
 		}
 
-		.mzr-responsive > li.mzr-drop { background: url(http://cdn.sylhet.gov.bd/media/central/themes/default/img/arrow-down.png) no-repeat right center; }
+		.mzr-responsive > li.mzr-drop { background: url(../img/arrow-down.png) no-repeat right center; }
 
 		.mzr-responsive .drop-two-columns,
 		.mzr-responsive .drop-three-columns,
@@ -511,7 +510,7 @@
 
 		.mzr-responsive > li > ul a {
 			margin-left: 10px;
-			margin-right: 10px;
+			margin-right: 10px; 
 		}
 
 		.mzr-responsive > li > ul li.mzr-drop > a,
@@ -561,17 +560,23 @@
 	.meganizr > li.col4 > a{color: #098346;}
 	.meganizr > li.col5 > a{color: #1399BE;}
 	.meganizr > li.col6 > a{color: #8768DE;}
-	.meganizr > li.col7 > a{color: #C40A2A;}
-	.meganizr > li.col8 > a{color: #098346;}
 
-	.meganizr > li:hover,
-	.meganizr > li > a:hover{ color: #fff !important; background-color:#000000; }
+	.meganizr > li.col7 > a{color: #FF6600;}
+	.meganizr > li.col8 > a{color: #C40A2A;}
+	.meganizr > li.col9 > a{color: #84154D;}
+	.meganizr > li.col10 > a{color: #098346;}
+	.meganizr > li.col11 > a{color: #1399BE;}
+	.meganizr > li.col12 > a{color: #8768DE;}
+
+	/*.meganizr > li:hover,*/ 
+	.meganizr > li > a:hover{ color: #fff; background-color:#000000; }
+
+	.mzr-content{ background-color:#fff !important; }
+
+	.meganizr > li.col1:hover, .meganizr > li.col1 > a:hover{ background-color: #333; }
 
 	.meganizr > li.col1:hover,
-        .meganizr > li.col1 > a:hover{ background-color: #333; }
-	.meganizr > li.col1:hover,
-	.meganizr > li.col1 > a:hover{ background-color: #FF6600;}
-
+	.meganizr > li.col1 > a:hover{ background-color: #FF6600; color: #fff;}
 	.meganizr > li.col2:hover,
 	.meganizr > li.col2 > a:hover{ background-color: #C40A2A; color: #fff; }
 	.meganizr > li.col3:hover,
@@ -582,10 +587,18 @@
 	.meganizr > li.col5 > a:hover{ background-color: #1399BE; color: #fff; }
 	.meganizr > li.col6:hover,
 	.meganizr > li.col6 > a:hover{ background-color: #8768DE; color: #fff; }
-    .meganizr > li.col7:hover,
-	.meganizr > li.col7 > a:hover{ background-color: #C40A2A; color: #fff; }
+	.meganizr > li.col7:hover,
+	.meganizr > li.col7 > a:hover{ background-color: #FF6600; color: #fff; }
 	.meganizr > li.col8:hover,
-	.meganizr > li.col8 > a:hover{ background-color: #098346; color: #fff; }
+	.meganizr > li.col8 > a:hover{ background-color: #C40A2A; color: #fff; }
+	.meganizr > li.col9:hover,
+	.meganizr > li.col9 > a:hover{ background-color: #84154D; color: #fff; }
+	.meganizr > li.col10:hover,
+	.meganizr > li.col10 > a:hover{ background-color: #098346; color: #fff; }
+	.meganizr > li.col11:hover,
+	.meganizr > li.col11 > a:hover{ background-color: #1399BE; color: #fff; }
+	.meganizr > li.col12:hover,
+	.meganizr > li.col12 > a:hover{ background-color: #8768DE; color: #fff; }
 
 	.mzr-content h6{font-weight:bold;}
 	li.col0 h6{font-weight:bold; margin-bottom: 4px;}
@@ -595,10 +608,14 @@
 	li.col4 h6{color: #098346;font-weight:bold; margin-bottom: 4px;}
 	li.col5 h6{color: #1399BE;font-weight:bold; margin-bottom: 4px;}
 	li.col6 h6{color: #8768DE;font-weight:bold; margin-bottom: 4px;}
-    li.col7 h6{color: #C40A2A;font-weight:bold; margin-bottom: 4px;}
-    li.col8 h6{color: #098346;font-weight:bold; margin-bottom: 4px;}
+	li.col7 h6{color: #FF6600;font-weight:bold; margin-bottom: 4px;}
+	li.col8 h6{color: #C40A2A;font-weight:bold; margin-bottom: 4px;}
+	li.col9 h6{color: #84154D;font-weight:bold; margin-bottom: 4px;}
+	li.col10 h6{color: #098346;font-weight:bold; margin-bottom: 4px;}
+	li.col11 h6{color: #1399BE;font-weight:bold; margin-bottom: 4px;}
+	li.col12 h6{color: #8768DE;font-weight:bold; margin-bottom: 4px;}
 
-    li.col1 .drop-five-columns { margin-left: -83px;}
+	li.col1 .drop-five-columns { margin-left: -83px;}
 	li.col1 .drop-six-columns { margin-left: -83px;}
 
 	li.col2 .drop-four-columns { margin-left: -100px;}
@@ -630,59 +647,34 @@
 	li.col7 .drop-five-columns { margin-left: -150px;}
 	li.col7 .drop-six-columns { margin-left: -150px;}
 
-        @media only screen and (max-width: 959px) {
-        li.col1 .drop-five-columns { margin-left: auto !important;}
-        li.col1 .drop-six-columns { margin-left: auto !important;}
 
-        li.col2 .drop-four-columns { margin-left: auto !important;}
-        li.col2 .drop-five-columns { margin-left: auto !important;}
-        li.col2 .drop-six-columns { margin-left: auto !important;}
+	li.col1 .mzr-content{border-top: #FF6600 solid 8px;}
+	li.col2 .mzr-content{border-top: #C40A2A solid 8px;}
+	li.col3 .mzr-content{border-top: #84154D solid 8px;}
+	li.col4 .mzr-content{border-top: #098346 solid 8px;}
+	li.col5 .mzr-content{border-top: #1399BE solid 8px;}
+	li.col6 .mzr-content{border-top: #8768DE solid 8px;}
 
-        li.col3 .drop-four-columns { margin-left: auto !important;}
-        li.col3 .drop-five-columns { margin-left: auto !important;}
-        li.col3 .drop-six-columns { margin-left: auto !important;}
+	li.col7 .mzr-content{border-top: #FF6600 solid 8px;}
+	li.col8 .mzr-content{border-top: #C40A2A solid 8px;}
+	li.col9 .mzr-content{border-top: #84154D solid 8px;}
+	li.col10 .mzr-content{border-top: #098346 solid 8px;}
+	li.col11 .mzr-content{border-top: #1399BE solid 8px;}
+	li.col12 .mzr-content{border-top: #8768DE solid 8px;}
 
-        li.col4 .drop-three-columns { margin-left: auto !important;}
-        li.col4 .drop-four-columns { margin-left: auto !important;}
-        li.col4 .drop-five-columns { margin-left: auto !important;}
-        li.col4 .drop-six-columns { margin-left: auto !important;}
+	.mzr-drop .mzr-content{border-top: #333 solid 8px;}
 
-        li.col5 .drop-three-columns { margin-left: auto !important;}
-        li.col5 .drop-four-columns { margin-left: auto !important;}
-        li.col5 .drop-five-columns { margin-left: auto !important;}
-        li.col5 .drop-six-columns { margin-left: auto !important;}
-
-        li.col6 .drop-three-columns { margin-left: auto !important;}
-        li.col6 .drop-four-columns { margin-left: auto !important;}
-        li.col6 .drop-five-columns { margin-left: auto !important;}
-        li.col6 .drop-six-columns { margin-left: auto !important;}
-
-        li.col7 .drop-two-columns { margin-left: auto !important;}
-        li.col7 .drop-three-columns { margin-left: auto !important;}
-        li.col7 .drop-four-columns { margin-left: auto !important;}
-        li.col7 .drop-five-columns { margin-left: auto !important;}
-        li.col7 .drop-six-columns { margin-left: auto !important;}
-        }
-
-        li.col1 .mzr-content{border-top: #FF6600 solid 8px;}
-		li.col2 .mzr-content{border-top: #C40A2A solid 8px;}
-		li.col3 .mzr-content{border-top: #84154D solid 8px;}
-		li.col4 .mzr-content{border-top: #098346 solid 8px;}
-		li.col5 .mzr-content{border-top: #1399BE solid 8px;}
-		li.col6 .mzr-content{border-top: #8768DE solid 8px;}
-	    li.col7 .mzr-content{border-top: #C40A2A solid 8px;}
-	    li.col8 .mzr-content{border-top: #098346 solid 8px;}
-		.mzr-drop .mzr-content{border-top: #333 solid 8px;}
-
-        @media only screen and (max-width: 900px) {
-
-
-        }
 
 
 	/* Responsive Menu*/
+	.show-menu{
+	    display: none;
+	    background-color: #333333;
+	    font-size: 14px;
+	    padding:5px;
+	}
 
-	@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     ul.meganizr li.col0{
     	display: none !important;
     }

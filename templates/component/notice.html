@@ -79,12 +79,13 @@
     </div>
     {% else %}
     <h5 tabindex="0" title="News Content">খবর </h5>
+
     <div class="news-container">
         <div id="news-ticker" class="ticker" style="color: red">
           
             <ul>
-                {% for notice in notices %}
-<li><i class="text-green fa fa-arrow-circle-right"></i><a style="color: red" href="{% url 'single_notice' notice.id %}"> {{notice.title}} </a></li>
+                {% for n in news %}
+<li><a style="color: red" href="{{n.get_absolute_url}}"> <img width="20px" height="15px" alt="" src="{%if n.image %}{{n.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/gmrwc_logo.png' %}{% endif %}">{{n.title}} </a></li>
 
                 {% endfor %}
                 
@@ -94,7 +95,7 @@
         </div>
     </div>
     <div>
-        <a href="{% url 'tableshow' 'noticeall'  %}" title="সকল " class="btn">সকল  
+        <a href="https://gmrwc.edu.bd/news" title="সকল " class="btn">সকল  
             </a>
     </div>
     {% endif %}

@@ -23,16 +23,18 @@
             {% endfor %}
         </ul>
         <div class="social_area">
-          <ul class="social_nav">
-            <li class="facebook"><a href="#"></a></li>
-            <li class="twitter"><a href="#"></a></li>
-            <li class="flickr"><a href="#"></a></li>
-            <li class="pinterest"><a href="#"></a></li>
-            <li class="googleplus"><a href="#"></a></li>
-            <li class="vimeo"><a href="#"></a></li>
-            <li class="youtube"><a href="#"></a></li>
-            <li class="mail"><a href="#"></a></li>
-          </ul>
+         
+           <ul class="social_nav">
+                <li class="facebook"><a href="https://www.facebook.com/people/Gmrc-Bogra/100006628218798/"></a></li>
+                <li class="youtube"><a href="https://www.youtube.com/c/gmrwc"></a></li>
+                <li class="mail"><a href="malito:gmrwcollege@gmail.com"></a></li>
+                <li class="twitter"><a href="#"></a></li>
+                <li class="flickr"><a href="#"></a></li>
+                <li class="pinterest"><a href="#"></a></li>
+                <li class="googleplus"><a href="#"></a></li>
+                <li class="vimeo"><a href="#"></a></li>
+              </ul>
+         
         </div>
       </div>
     </div>
@@ -52,8 +54,8 @@
                     <div data-v-3171110e="" class="col-lg-7">
                         <div data-v-3171110e="" class="member-search">
                             <div data-v-3171110e="" class="search-body">
-                                <h1>Post archives for {{ month|date:"F" }}, {{ month|date:"Y" }}</h1>
-                                <h2 data-v-3171110e="">Search Post</h2>
+                                <h1>খবরসমুহ {{ month|date:"F" }}, {{ month|date:"Y" }}</h1>
+                                <h2 data-v-3171110e="">সার্চ করুন</h2>
                                 <div data-v-3171110e="" class="searchBox"><input data-v-3171110e="" type="text"
                                         placeholder="Search by any information" id="myInput" onkeyup="myFunction2()"> <span
                                          class="fas fa-search"></span></div>
@@ -74,7 +76,7 @@
         
                             <table  style="background-color: transparent" id="myTable2">
                                
-                                {% for p in all_posts %}
+                                {% for p in object_list  %}
                                     <tr  style="background-color: transparent" >
                                         <td>
                                             <div  style="background-color: transparent"  data-v-3171110e="" class="search-list-item row mb-3">
@@ -84,7 +86,7 @@
                                                         data-v-3171110e="" alt=""
                                                         data-src="https://basis.org.bd/public/images/logo/88416f37e13872f50043c7cf9e1b82af.jpg"
                                                         
-                                                        src="{%if p.author.user.image%}{{p.author.user.image.url}}{% else %} {% static 'images/avatar.jpg' %}  {% endif %}"
+                                                        src="{%if p.image %}{{p.image.url}}{% elif p.author.user.image %}{{p.author.user.image.url}}{% else %} {% static 'images/gmrwc_logo.png' %}  {% endif %}"
                                                          lazy="loaded">
         
         
@@ -102,7 +104,7 @@
                                                                 {{ cats }}
                                                               {% endfor %}</a> <span><i class="fa fa-calendar"></i>{{p.date_created}}</span> <a href="#"><i class="fa fa-tags"></i>{% for tag in p.tags.all %}
                                                                 {{ tag }}
-                                                              {% endfor %}</a>  </div>
+                                                              {% endfor %}</a> <small><a href="tech-single.html" title=""><i class="fa fa-eye"></i> {{ p.views }}</a></small> </div>
                                                     
                                                 </div>
                                                 <div  style="background-color: transparent "  data-v-3171110e="" ><a
@@ -134,7 +136,7 @@
                     
                 <div data-v-3171110e="" class="row py-3 px-4 mx-0">
                     <div class="col-sm-12 col-md-5 px-0">
-                        <div role="status" aria-live="polite">Showing 1 to 15 of 2432 entries</div>
+                        {% comment %} <div role="status" aria-live="polite">Showing 1 to 15 of 2432 entries</div> {% endcomment %}
                     </div>
                     <div class="col-sm-12 col-md-7 p-0">
                         <nav aria-label="Page navigation example">
@@ -174,7 +176,7 @@
       <ul class="spost_nav">
         {%for p in popular_posts %}
           <li>
-            <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="{{p.get_absolute_url}}" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/avatar.jpg' %}{% endif %}"> </a>
+            <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="{{p.get_absolute_url}}" class="media-left"> <img alt="" src="{%if p.image %}{{p.image.url}}{% elif user.image%}{{user.image.url}}{% else %} {% static 'images/gmrwc_logo.png' %}{% endif %}"> </a>
               <div class="media-body"> <a href="{{p.get_absolute_url}}" class="catg_title"> {{p.title}}</a> </div>
             </div>
           </li>
@@ -186,7 +188,7 @@
     <div class="single_sidebar">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab" data-toggle="tab">ক্যাটাগরি</a></li>
-        <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Videভিডিওo</a></li>
+        <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">ভিডিও</a></li>
         <li role="presentation"><a href="#comments" aria-controls="messages" role="tab" data-toggle="tab">মন্তব্যসমূহ</a></li>
       </ul>
       <div class="tab-content">
@@ -204,33 +206,14 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="comments">
           <ul class="spost_nav">
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img1.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-              </div>
-            </li>
-            <li>
-              <div class="media wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;"> <a href="single_page.html" class="media-left"> <img alt="" src="../images/post_img2.jpg"> </a>
-                <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-              </div>
-            </li>
+            
           </ul>
         </div>
       </div>
     </div>
     <div class="single_sidebar wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
       <h2><span>বিজ্ঞাপন</span></h2>
-      <a class="sideAdd" href="#"><img src="../images/add_img.jpg" alt=""></a> </div>
+        <a class="sideAdd" href="https://ictparkbd.com/" target="_blank"><img src="{% static 'images/ictparkbd_logo.jpg' %}" height="250px" width="250px" loading="lazy" alt=""></a> </div>
     <div class="single_sidebar wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
       <h2><span>আর্কাইভ ক্যাটাগরি</span></h2>
       <select class="catgArchive">

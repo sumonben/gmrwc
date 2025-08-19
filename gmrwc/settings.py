@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import os,sys,locale
 from pathlib import Path
 
@@ -9,12 +11,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR =os.path.join(BASE_DIR,'templates')
-STATIC_DIR =os.path.join(BASE_DIR,'static')
-
-MEDIA_ROOT =  BASE_DIR / 'media' 
-MEDIA_URL = '/media/'
-STATIC_URL = 'static/'
-STATICFILES_DIRS= [STATIC_DIR, ]
+#STATIC_DIR =os.path.join(BASE_DIR,'static')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -23,9 +20,9 @@ SECRET_KEY = 'django-insecure-bp%m!abw*9i(5w03ppawu9jyl0&if-l#++6n2enu41)xvnym@y
 STORE_ID='sumonben'
 STORE_PASS="Sumon@747934"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['209.74.88.131','localhost','gmrwc.edu.bd','www.gmrwc.edu.bd','gmrbwc.edu.bd','www.gmrbwc.edu.bd']
 
 SESSION_COOKIE_AGE = 43000 # 3 minutes. "1209600(2 weeks)" by default 
 SESSION_SAVE_EVERY_REQUEST = True # "False" by default
@@ -98,7 +95,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'gmrbwc',
+            'USER': 'postgres',
+            'PASSWORD': 'Sumon@747934',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
 }
 
 
@@ -188,6 +193,11 @@ USE_I18N = True
 USE_TZ = True
 
 
+
+MEDIA_ROOT =  BASE_DIR / 'media' 
+MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
+STATIC_ROOT=os.path.join(BASE_DIR,'static/')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
