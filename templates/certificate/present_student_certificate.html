@@ -217,6 +217,8 @@ margin-right: 12%;
         <div  class="top-middle">
 
             <h3  style="font-family: kalpurush;line-height: 1.5;text-align:center;">
+                <br>
+                <br>
                 <img height="40" width="40" src="{% static 'images/logo.png' %}" alt="">
                 <br>
                 <b>অধ্যক্ষের কার্যালয়</b>
@@ -254,7 +256,7 @@ margin-right: 12%;
           ক্রমিক নং- &nbsp;<u>{{certificate.id}}</u>
         </div>
         <div  class="top-left">
-            <p  ><h4  style="font-family: kalpurush;line-height: 1.7; font-weight:normal"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{certificate.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} । সে এই কলেজের  {% if certificate.student_category.id is 3 or certificate.student_category.id is 4  %} {{certificate.student_category}} ({{certificate.group.title }}) শ্রেণিতে  {% else %} {{certificate.department.name}} বিভাগে ( {{certificate.class_year.title}} ){% endif %} অধ্যয়নরত।  <br> তার শিক্ষাবর্ষ     <i id="para1"><b><u>{{certificate.session}}</u></b></i>
+            <p  ><h4  style="font-family: kalpurush;line-height: 1.7; font-weight:normal"> প্রত্যয়ন করা যাচ্ছে যে <i><b><u>&nbsp;&nbsp;{{student.name_bangla}}&nbsp;&nbsp;</u></b></i> পিতা- {{certificate.father_name_bangla}} , &nbsp;মাতা- {{certificate.mother_name_bangla}} । সে এই কলেজের  {% if certificate.student_category.id is 3 or certificate.student_category.id is 4  %} {{certificate.student_category}} ({{certificate.group.title }}) শ্রেণিতে  {% else %} {{certificate.department.name}} বিভাগে ( {{certificate.class_year.title}} ){% endif %} অধ্যয়নরত।  <br> তার শিক্ষাবর্ষ     <i id="para1"><b><u>{{certificate.session}}</u></b></i>
                 ক্লাস রোলঃ <i id="para2"><b><u>{{certificate.class_roll}}</u></b></i> রেজিস্ট্রেশন নং- <i id="para3"><b><u>{{certificate.registration}}</u></b></i> রোল নং- <i id="para4"><b><u>{{certificate.exam_roll}}</u></b></i><i id="para5"><b><u></u></b></i>। 
                 <br>আমার জানামতে তার স্বভাব চরিত্র ভালো এবং অত্র কলেজে অধ্যয়নকালীন সে আইনশৃংখলা পরিপন্থী ও কোনরূপ রাস্ট্রবিরোধী কাজে লিপ্ত ছিল না।
                 <br>আমি তার জীবনের সর্বাত্মক উন্নতি ও সাফল্য কামনা করি। 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.forms import Field
-from .models import Teacher ,Designation,Position,BcsBatch
+from .models import Teacher ,Designation,Position,BcsBatch, Committee
 from import_export.admin import ExportActionMixin
 from import_export.widgets import ManyToManyWidget
 from import_export.resources import ModelResource
@@ -63,7 +63,14 @@ class ProfileAdmin(ExportActionMixin,admin.ModelAdmin):
     save_as = True
     resource_class = StudentResource
     from_encoding = "utf-8"
-    
+
+@admin.register(Committee)
+class CommitteeAdmin(ExportActionMixin,admin.ModelAdmin):
+    list_display=[ 'serial','title','title_en']
+    list_display_links = ['serial','title']
+    filter_horizontal = ['members_teacher','members_employee']
+
+
 @admin.register(Designation)
 class TeacherDesignationAdmin(ExportActionMixin,admin.ModelAdmin):
     list_display=[ 'serial','title','title_en']

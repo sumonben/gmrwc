@@ -28,7 +28,6 @@ def ChoiceCertificate(request):
     return render(request,'certificate/choice_certificate.html',{'form':form})
 
 def CertificateFormEntry(request):
-    print(request.POST.get('student_category'))
     form=CertificateForm(student_category=request.POST.get('student_category'),certificate_type=request.POST.get('certificate_type'))
     adress_form = AdressForm()
     student_category=request.POST.get('student_category')

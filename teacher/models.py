@@ -6,6 +6,7 @@ from django.urls import include, re_path, reverse
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from department.models import Department,Branch
+from employee.models import Employee
 from django.contrib.auth import get_user_model
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -77,3 +78,23 @@ class Teacher(models.Model):
     def __unicode__(self):
         return self.t_name_bangla
 
+class Committee(models.Model):
+    serial=models.IntegerField(default=0)
+    title=models.CharField(max_length=100,blank=True,null=True, verbose_name="কমিটির নাম (বাংলায়)")
+    title_en=models.CharField(max_length=100,blank=True,null=True, verbose_name="Committee Name(English)")
+    convenor=models.ForeignKey(Teacher,blank=True,related_name="convenor",null=True,on_delete=models.CASCADE,verbose_name="আহবায়ক")
+    members_teacher=models.ManyToManyField(Teacher, null=True, blank=True, verbose_name="সদস্যগণ(শিক্ষক/কর্মকর্তা)")
+    members_employee=models.ManyToManyField(Employee, null=True, blank=True, verbose_name="সদস্যগণ(কর্মচারী)")
+    member_secretary=models.ForeignKey(Teacher,related_name="member_secretary",blank=True,null=True,on_delete=models.CASCADE,verbose_name="সদস্য সচিব")
+    created_at=models.DateField(blank=True, null=True, verbose_name="গঠনের তারিখ")
+    desolve_at=models.DateField(blank=True, null=True, verbose_name="মেয়াদের শেষ তারিখ")
+    is_active=models.BooleanField(default=False, verbose_name="সক্রিয় কিনা?")
+
+
+    class Meta:
+        ordering = ['serial']
+    def __str__(self):
+        if self.title:
+            return self.title
+        else:
+            return str(self.id)

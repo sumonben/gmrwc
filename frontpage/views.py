@@ -57,7 +57,7 @@ def queryFrontpage():
         'notices':notices,
         'principal':principal,
         'institute':institute,
-        'viec_principal':vice_principal,
+        'vice_principal':vice_principal,
         'secretary':secretary,
         'academic_council':academic_council,
         }
@@ -125,7 +125,7 @@ def showPage(request, navitem_name,navelement_head,heading, id):
         'navelement':navelement,
         'principal':principal,
         'institute':institute,
-        'viec_principal':vice_principal,
+        'vice_principal':vice_principal,
         'secretary':secretary,
         'academic_council':academic_council,
         }
@@ -276,7 +276,7 @@ def showServiceBoxItem(request, servicebox_id ,servicebox_title,heading, id):
         'id':id,
         'principal':principal,
         'institute':institute,
-        'viec_principal':vice_principal,
+        'vice_principal':vice_principal,
         'secretary':secretary,
         'academic_council':academic_council,
         }
@@ -372,7 +372,7 @@ def tableAllShow(request, tableall ):
         'carousels': carousels,'navitems':navitems,'notices':notices,
         'principal':principal,
         'institute':institute,
-        'viec_principal':vice_principal,
+        'vice_principal':vice_principal,
         'academic_council':academic_council,
         'post':post,
         'teachers':teachers,
